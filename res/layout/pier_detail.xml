@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TableRow
+        android:layout_margin="@dimen/dialog_option_margin"
+        android:gravity="center">
+        <TextView 
+            android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+        	android:textSize="@dimen/dialog_font"
+			android:gravity="center_vertical|right"	        
+        	android:text="@string/start_pier" />
+        <EditText
+	        android:id="@+id/et_start_pier"
+	        android:layout_width="@dimen/dialog_edit_space"
+			android:layout_height="wrap_content"
+			android:inputType="number"
+        	android:hint="@string/pls_enter" />
+    </TableRow>
+    
+    <TableRow
+        android:layout_margin="@dimen/dialog_option_margin"
+        android:gravity="center">
+        <TextView 
+            android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+        	android:textSize="@dimen/dialog_font"
+			android:gravity="center_vertical|right"	        
+        	android:text="@string/end_pier" />
+        <EditText
+	        android:id="@+id/et_end_pier"
+	        android:layout_width="@dimen/dialog_edit_space"
+			android:layout_height="wrap_content"
+			android:inputType="number"
+        	android:hint="@string/pls_enter" />
+    </TableRow>
+    
+    <TableRow
+        android:layout_margin="@dimen/dialog_option_margin"
+        android:gravity="center">
+        <TextView 
+            android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+        	android:textSize="@dimen/dialog_font"
+			android:gravity="center_vertical|right"	        
+        	android:text="@string/per_pier_num" />
+        <EditText
+	        android:id="@+id/et_per_pier_num"
+	        android:layout_width="@dimen/dialog_edit_space"
+			android:layout_height="wrap_content"
+			android:inputType="number"
+        	android:hint="@string/pls_enter" />
+    </TableRow>
+    
+    <TableRow
+        android:layout_margin="@dimen/dialog_option_margin"
+        android:gravity="center">
+	    <CheckBox
+	        android:id="@+id/ck_bent_cap"
+	        android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical|center"
+        	android:textSize="@dimen/dialog_font"
+			android:text="@string/bent_cap" />
+	    <CheckBox
+	        android:id="@+id/ck_tie_beam"
+	        android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="@dimen/dialog_font"
+			android:gravity="center_vertical|left"
+			android:text="@string/tie_beam" />
+    </TableRow>
+
+</TableLayout>

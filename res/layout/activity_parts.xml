@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <TableRow
+        android:id="@+id/pa_tr1"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/activity_margin_right"
+        android:orientation="vertical" >
+    </TableRow>
+    
+    <TableLayout 
+        android:id="@+id/pa_tl1"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="8"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/group_margin"
+        android:layout_marginRight="@dimen/group_margin"
+        android:background="@drawable/parts_bg">
+	    
+        <TableRow 
+            android:id="@+id/b2_tr2"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dip"
+	        android:layout_weight="1"
+	        android:focusable="true"
+			android:focusableInTouchMode="true">
+	        
+            <TextView
+		        android:id="@+id/tv_lower_parts"
+		        android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_marginLeft="@dimen/group_inside_margin"
+				android:gravity="center_vertical"
+	        	android:textSize="@dimen/group_title_font"
+		        android:text="@string/lower_parts" />
+        </TableRow>
+	    
+        <!-- 第一行 -->
+	    <TableRow
+	        android:id="@+id/pa_tr3"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dip"
+	        android:layout_weight="1"
+	        android:layout_marginRight="@dimen/activity_margin_right"
+	        android:orientation="vertical" >
+			
+			<!-- 翼墙、耳墙 -->
+		    <TextView
+		        android:id="@+id/tv_wing_wall"
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+	        	android:textSize="@dimen/activity_font"
+				android:gravity="center_vertical|right"
+		        android:text="@string/wing_wall" />
+		    <LinearLayout
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="2"
+				android:gravity="center_vertical|left" >
+		        <CheckBox
+			        android:id="@+id/wall_l0"
+			        android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="@dimen/activity_font"
+					android:text="@string/L0" />
+			    <CheckBox
+			        android:id="@+id/wall_r0"
+			        android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="@dimen/activity_font"
+					android:text="@string/R0" />
+			    <CheckBox
+			        android:id="@+id/wall_l1"
+			        android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="@dimen/activity_font"
+					android:text="@string/L1" />
+			    <CheckBox
+			        android:id="@+id/wall_r1"
+			        android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="@dimen/activity_font"
+					android:text="@string/R1" />
+		    </LinearLayout>
+		    
+		    <!-- 锥坡 -->
+		    <TextView
+		        android:id="@+id/tv_conical_slope"
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="0.5"
+	        	android:textSize="@dimen/activity_font"
+				android:gravity="center_vertical|right"
+		        android:text="@string/conical_slope" />
+		    <LinearLayout
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="2"
+				android:gravity="center_vertical|left" >
+			    <CheckBox
+			        android:id="@+id/slope_l0"
+			        android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="@dimen/activity_font"
+					android:text="@string/L0" />
+			    <CheckBox
+			        android:id="@+id/slope_r0"
+			        android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="@dimen/activity_font"
+					android:text="@string/R0" />
+			    <CheckBox
+			        android:id="@+id/slope_l1"
+			        android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="@dimen/activity_font"
+					android:text="@string/L1" />
+			    <CheckBox
+			        android:id="@+id/slope_r1"
+			        android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="@dimen/activity_font"
+					android:text="@string/R1" />
+		    </LinearLayout>
+		</TableRow>
+    	
+        <!-- 第二行 -->
+	    <TableRow
+	        android:id="@+id/pa_tr4"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dip"
+	        android:layout_weight="1"
+	        android:layout_marginRight="@dimen/activity_margin_right"
+	        android:orientation="vertical" >
+			
+			<!-- 护坡个数 -->
+		    <TextView
+		        android:id="@+id/tv_protection_slope"
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+	        	android:textSize="@dimen/activity_font"
+				android:gravity="center_vertical|right"
+		        android:text="@string/protection_slope" />
+		    <EditText
+		        android:id="@+id/et_protection_slope"
+		        android:layout_width="0dip"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:gravity="center_vertical"
+				android:inputType="number"
+		        android:hint="@string/pls_enter" />
+		    
+		    <!-- 桥墩详情 -->
+		    <TextView
+		        android:id="@+id/tv_pier_detail"
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+	        	android:textSize="@dimen/activity_font"
+				android:gravity="center_vertical|right"
+		        android:text="@string/pier_detail" />
+		    <EditText
+		        android:id="@+id/et_pier_detail"
+		        android:layout_width="0dip"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:inputType="number"
+		        android:hint="@string/pls_click" />
+		</TableRow>
+    
+	    <!-- 第三行 -->
+	    <TableRow
+	        android:id="@+id/pa_tr5"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dip"
+	        android:layout_weight="1"
+	        android:layout_marginRight="@dimen/activity_margin_right"
+	        android:orientation="vertical" >
+		    
+	        <!-- 桥台个数 -->
+		    <TextView
+		        android:id="@+id/tv_abutment_num"
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+	        	android:textSize="@dimen/activity_font"
+				android:gravity="center_vertical|right"
+		        android:text="@string/abutment_num" />
+		    <EditText
+		        android:id="@+id/et_abutment_num"
+		        android:layout_width="0dip"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:gravity="center_vertical"
+				android:inputType="number"
+		        android:hint="@string/pls_enter" />
+		    
+		    <!-- 墩台基础个数 -->
+		    <TextView
+		        android:id="@+id/tv_pa_num"
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+	        	android:textSize="@dimen/activity_font"
+				android:gravity="center_vertical|right"
+		        android:text="@string/pa_num" />
+		    <EditText
+		        android:id="@+id/et_pa_num"
+		        android:layout_width="0dip"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:gravity="center_vertical"
+				android:inputType="number"
+		        android:hint="@string/pls_enter" />
+		</TableRow>
+		
+	    <!-- 第四行 -->
+	    <TableRow
+	        android:id="@+id/pa_tr6"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dip"
+	        android:layout_weight="1"
+	        android:layout_marginRight="@dimen/activity_margin_right"
+	        android:orientation="vertical" >
+			
+			<!-- 河床个数 -->
+		    <TextView
+		        android:id="@+id/tv_bed_num"
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+	        	android:textSize="@dimen/activity_font"
+				android:gravity="center_vertical|right"
+		        android:text="@string/bed_num" />
+		    <EditText
+		        android:id="@+id/et_bed_num"
+		        android:layout_width="0dip"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:gravity="center_vertical"
+				android:inputType="number"
+		        android:hint="@string/pls_enter" />
+		    
+		    <!-- 调治构造物个数 -->
+		    <TextView
+		        android:id="@+id/tv_reg_structure"
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+	        	android:textSize="@dimen/activity_font"
+				android:gravity="center_vertical|right"
+		        android:text="@string/reg_structure" />
+		    <EditText
+		        android:id="@+id/et_reg_structure"
+		        android:layout_width="0dip"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:gravity="center_vertical"
+				android:inputType="number"
+		        android:hint="@string/pls_enter" />
+		</TableRow>
+        
+    </TableLayout>
+    
+    <TableRow
+        android:id="@+id/pa_tr7"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/button_margin" >
+        
+        <Button
+		    android:id="@+id/pa_last_btn"
+		    android:layout_width="0dip"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:layout_marginLeft="@dimen/button_margin"
+		    android:layout_gravity="center_vertical"
+		    android:text="@string/last_step"
+		    android:background="@color/lightgray"
+		    style="?android:attr/buttonBarButtonStyle" />
+		
+		<Button
+		    android:id="@+id/pa_next_btn"
+		    android:layout_width="0dip"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:layout_marginLeft="@dimen/button_margin"
+		    android:layout_gravity="center_vertical"
+		    android:text="@string/next_step"
+		    android:background="@color/lightgray"
+		    style="?android:attr/buttonBarButtonStyle" />
+    </TableRow>
+        
+</TableLayout>

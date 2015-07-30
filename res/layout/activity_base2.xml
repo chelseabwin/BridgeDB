@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+       
+    <TableRow
+        android:id="@+id/b2_tr1"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/activity_margin_right"
+        android:orientation="vertical" >
+        
+        <!-- 桥梁分类 -->
+	    <TextView
+	        android:id="@+id/tv_bridge_classify"
+	        android:layout_width="0dip"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+			android:gravity="center_vertical|right"
+	        android:text="@string/bridge_classify" />
+	    <Spinner
+	        android:id="@+id/sp_bridge_classify"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical"
+			android:entries="@array/bridge_classify"
+			android:layout_weight="2" />
+	    
+	    <!-- 设计荷载等级 -->
+	    <TextView
+	        android:id="@+id/tv_design_load"
+	        android:layout_width="0dip"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+			android:gravity="center_vertical|right"
+	        android:text="@string/design_load" />
+	    <Spinner
+	        android:id="@+id/sp_design_load"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical"
+			android:entries="@array/design_load"
+			android:layout_weight="2" />
+    </TableRow>
+    
+    <TableRow
+        android:id="@+id/b2_tr2"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/activity_margin_right"
+        android:orientation="vertical" >
+        
+        <!-- 桥梁用途 -->
+	    <TextView
+	        android:id="@+id/tv_bridge_use"
+	        android:layout_width="0dip"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+			android:gravity="center_vertical|right"
+	        android:text="@string/bridge_use" />
+	    <Spinner
+	        android:id="@+id/sp_bridge_use"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical"
+			android:entries="@array/bridge_use"
+			android:layout_weight="2" />
+	    
+	    <!-- 桥梁状态 -->
+	    <TextView
+	        android:id="@+id/tv_bridge_status"
+	        android:layout_width="0dip"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+			android:gravity="center_vertical|right"
+	        android:text="@string/bridge_status" />
+	    <Spinner
+	        android:id="@+id/sp_bridge_status"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical"
+			android:entries="@array/bridge_status"
+			android:layout_weight="2" />
+    </TableRow>
+    
+    <TableLayout 
+        android:id="@+id/b2_tl2"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="6"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/group_margin"
+        android:layout_marginRight="@dimen/group_margin"
+        android:background="@drawable/corners_bg">
+	    
+        <TableRow 
+            android:id="@+id/b2_tr3"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dip"
+	        android:layout_weight="1">
+	        
+            <TextView
+		        android:id="@+id/tv_upper_type"
+		        android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_marginLeft="@dimen/group_inside_margin"
+				android:gravity="center_vertical"
+	        	android:textSize="@dimen/group_title_font"
+		        android:text="@string/upper_type" />
+        </TableRow>
+	    
+        <TableRow
+	        android:id="@+id/b2_tr4"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dip"
+	        android:layout_weight="1"
+	        android:orientation="vertical"
+	        android:layout_marginLeft="@dimen/group_inside_margin"
+	        android:layout_marginRight="@dimen/group_inside_margin" >
+	    
+	        <!-- 材料编码 -->
+		    <TextView
+		        android:id="@+id/tv_material_code"
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+	        	android:textSize="@dimen/activity_font"
+	        	android:textColor="@color/red"
+				android:gravity="center_vertical|right"
+		        android:text="@string/material_code" />
+		    <Spinner
+		        android:id="@+id/sp_material_code"
+		        android:layout_width="0dip"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:entries="@array/material_code" />
+	    
+		    <!-- 桥面板位 -->
+		    <TextView
+		        android:id="@+id/tv_bridge_panel"
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+	        	android:textSize="@dimen/activity_font"
+	        	android:textColor="@color/red"
+				android:gravity="center_vertical|right"
+		        android:text="@string/bridge_panel" />
+		    <Spinner
+		        android:id="@+id/sp_bridge_panel"
+		        android:layout_width="0dip"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:entries="@array/bridge_panel" />
+    	</TableRow>
+    	
+        <TableRow
+	        android:id="@+id/b2_tr5"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dip"
+	        android:layout_weight="1"
+	        android:orientation="vertical"
+	        android:layout_marginLeft="@dimen/group_inside_margin"
+	        android:layout_marginRight="@dimen/group_inside_margin" >
+	    
+	        <!-- 受力型式 -->
+		    <TextView
+		        android:id="@+id/tv_stress_pattern"
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+	        	android:textSize="@dimen/activity_font"
+	        	android:textColor="@color/red"
+				android:gravity="center_vertical|right"
+		        android:text="@string/stress_pattern" />
+		    <Spinner
+		        android:id="@+id/sp_stress_pattern"
+		        android:layout_width="0dip"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:entries="@array/stress_pattern" />
+	    
+		    <!-- 支座类型 -->
+		    <TextView
+		        android:id="@+id/tv_support_type"
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+	        	android:textSize="@dimen/activity_font"
+	        	android:textColor="@color/red"
+				android:gravity="center_vertical|right"
+		        android:text="@string/support_type" />
+		    <Spinner
+		        android:id="@+id/sp_support_type"
+		        android:layout_width="0dip"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:entries="@array/support_type" />
+    	</TableRow>
+    
+	    <TableRow
+	        android:id="@+id/b2_tr6"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dip"
+	        android:layout_weight="1"
+	        android:orientation="vertical"
+	        android:layout_marginLeft="@dimen/group_inside_margin"
+	        android:layout_marginRight="@dimen/group_inside_margin"
+	        android:background="@drawable/corners_bg" >
+		    
+	        <!-- 桥型 -->
+		    <TextView
+		        android:id="@+id/tv_bridge_type"
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+	        	android:textSize="@dimen/activity_font"
+	        	android:textColor="@color/red"
+				android:gravity="center_vertical|right"
+		        android:text="@string/bridge_type" />
+		    <Spinner
+		        android:id="@+id/sp_bridge_type"
+		        android:layout_width="0dip"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:entries="@array/bridge_type" />
+		    <Spinner
+		        android:id="@+id/sp_bridge_type2"
+		        android:layout_width="0dip"
+				android:layout_height="wrap_content"
+				android:layout_weight="2" />
+		    <TextView
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="1" />
+	    </TableRow>
+        
+    </TableLayout>
+    
+    <TableRow
+        android:id="@+id/b2_tr7"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/button_margin" >
+        
+        <Button
+		    android:id="@+id/b2_last_btn"
+		    android:layout_width="0dip"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:layout_marginLeft="@dimen/button_margin"
+		    android:layout_gravity="center_vertical"
+		    android:text="@string/last_step"
+		    android:background="@color/lightgray"
+		    style="?android:attr/buttonBarButtonStyle" />
+		
+		<Button
+		    android:id="@+id/b2_next_btn"
+		    android:layout_width="0dip"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:layout_marginLeft="@dimen/button_margin"
+		    android:layout_gravity="center_vertical"
+		    android:text="@string/next_step"
+		    android:background="@color/lightgray"
+		    style="?android:attr/buttonBarButtonStyle" />
+    </TableRow>
+        
+</TableLayout>

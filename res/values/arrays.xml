@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 路线类型 -->
+    <string-array name="path_type">
+        <item>[L]左线</item>
+        <item>[R]右线</item>
+        <item>[K]跨线</item>
+        <item>[Z]匝道</item>
+        <item>[Y]支线</item>
+    </string-array>
+    
+    <!-- 公路技术等级 -->
+    <string-array name="rode_grade">
+        <item>[0]高速公路</item>
+        <item>[1]一级公路</item>
+        <item>[2]二级公路</item>
+        <item>[3]三级公路</item>
+        <item>[4]四级公路</item>
+        <item>[5]等外路</item>
+    </string-array>
+    
+    <!-- 跨越地物类型 -->
+    <string-array name="across_type">
+        <item>[1]沟壑</item>
+        <item>[2]跨海</item>
+        <item>[3]河流（运河、湖泊）</item>
+        <item>[4]管道（大型运输管道）</item>
+        <item>[5]道路</item>
+        <item>[6]铁路</item>
+        <item>[7]水渠</item>
+        <item>[8]其他地物</item>
+    </string-array>
+    
+    <!-- 桥梁性质 -->
+    <string-array name="bridge_nature">
+        <item>[1]永久性</item>
+        <item>[2]半永久性</item>
+        <item>[3]临时性</item>
+    </string-array>
+    
+    <!-- 桥梁分类 -->
+    <string-array name="bridge_classify">
+        <item>[1]特大桥</item>
+        <item>[2]大桥</item>
+        <item>[3]中桥</item>
+        <item>[4]小桥</item>
+    </string-array>
+    
+    <!-- 设计荷载等级 -->
+    <string-array name="design_load">
+        <item>[1]公路I级</item>
+        <item>[2]公路II级</item>
+        <item>[3]汽车-超20级</item>
+        <item>[4]汽车-20级</item>
+        <item>[5]其他</item>
+    </string-array>
+    
+    <!-- 桥梁用途 -->
+    <string-array name="bridge_use">
+        <item>[1]公路桥</item>
+        <item>[2]公铁两用</item>
+        <item>[3]漫水桥</item>
+        <item>[4]高速公路跨线桥</item>
+        <item>[5]人行桥</item>
+        <item>[6]其他</item>
+    </string-array>
+    
+    <!-- 桥梁状态 -->
+    <string-array name="bridge_status">
+        <item>[1]营运</item>
+        <item>[2]在建</item>
+        <item>[3]正在改建</item>
+    </string-array>
+    
+    <!-- 材料编码 -->
+    <string-array name="material_code">
+        <item>[1]预应力钢筋混凝土</item>
+        <item>[2]部分预应力钢筋混凝土</item>
+        <item>[3]钢筋混凝土</item>
+        <item>[4]其他圬工材料</item>
+        <item>[5]钢</item>
+        <item>[6]其他材料</item>
+    </string-array>
+    
+    <!-- 桥面板位 -->
+    <string-array name="bridge_panel">
+        <item>[1]上承</item>
+        <item>[2]中承</item>
+        <item>[3]下承</item>
+    </string-array>
+    
+    <!-- 受力型式 -->
+    <string-array name="stress_pattern">
+        <item>[1]简支</item>
+        <item>[2]连续</item>
+        <item>[3]悬臂</item>
+        <item>[4]无铰</item>
+        <item>[5]二铰</item>
+        <item>[6]三铰</item>
+        <item>[7]其他</item>
+    </string-array>
+    
+    <!-- 支座类型 -->
+    <string-array name="support_type">
+        <item>[1]板式橡胶支座</item>
+        <item>[2]盆式橡胶支座</item>
+        <item>[3]聚四佛乙烯滑板式支座</item>
+        <item>[4]钢支座</item>
+        <item>[5]减震支座</item>
+        <item>[6]其他</item>
+    </string-array>
+    
+    <!-- 桥型 -->
+    <string-array name="bridge_type">
+        <item>[1]板桥</item>
+        <item>[2]梁桥</item>
+        <item>[3]刚构</item>
+        <item>[4]拱桥</item>
+        <item>[5]斜拉桥</item>
+    </string-array>
+    
+    <!-- 板桥 -->
+    <string-array name="slab_bridge">
+        <item>[1.1]实心板梁</item>
+        <item>[1.2]空心板梁</item>
+        <item>[1.3]整体现浇板</item>
+    </string-array>
+    
+    <!-- 梁桥 -->
+    <string-array name="girder_bridge">
+        <item>[2.1]T梁</item>
+        <item>[2.2]I形梁</item>
+        <item>[2.3]II形梁</item>
+        <item>[2.4]箱型梁</item>
+        <item>[2.5]桁架梁</item>
+        <item>[2.6]组合式梁</item>
+    </string-array>
+    
+    <!-- 刚构 -->
+    <string-array name="rigid_frame">
+        <item>[3.1]门式刚构</item>
+        <item>[3.2]斜腿刚构</item>
+        <item>[3.3]T形刚构</item>
+        <item>[3.4]连续刚构</item>
+        <item>[3.5]刚构-连续组合</item>
+    </string-array>
+    
+    <!-- 拱桥 -->
+    <string-array name="arch_bridge">
+        <item>[4.1]板拱</item>
+        <item>[4.2]肋拱</item>
+        <item>[4.3]双曲拱</item>
+        <item>[4.4]箱型拱</item>
+        <item>[4.5]桁架拱</item>
+        <item>[4.6]刚架拱</item>
+        <item>[4.7]系杆拱</item>
+        <item>[4.8]其他拱桥</item>
+    </string-array>
+    
+    <!-- 斜拉桥 -->
+    <string-array name="cable_stayed">
+        <item>[5.1]斜拉桥</item>
+        <item>[5.2]矮塔斜拉桥</item>
+    </string-array>
+    
+    <!-- 桥墩、桥台、墩台基础材料 -->
+    <string-array name="all_material">
+        <item>[1]钢筋混凝土</item>
+        <item>[2]浆砌块石</item>
+        <item>[3]浆砌片石</item>
+        <item>[4]预应力钢筋混凝土</item>
+        <item>[5]其他</item>
+    </string-array>
+    
+    <!-- 桥墩截面形式 -->
+    <string-array name="section_form">
+        <item>[1]空心</item>
+        <item>[2]实心</item>
+        <item>[3]其他</item>
+    </string-array>
+    
+    <!-- 桥墩类型 -->
+    <string-array name="pier_type">
+        <item>[1]重力式墩</item>
+        <item>[2]单柱墩</item>
+        <item>[3]双柱式墩</item>
+        <item>[4]多柱墩</item>
+        <item>[5]双壁墩</item>
+        <item>[6]其他</item>
+    </string-array>
+    
+    <!-- 桥台类型 -->
+    <string-array name="abutment_type">
+        <item>[1]肋板式桥台</item>
+        <item>[2]薄壁式桥台</item>
+        <item>[3]轻型桥台</item>
+        <item>[4]U形桥台</item>
+        <item>[5]八字形桥台</item>
+        <item>[6]其他</item>
+    </string-array>
+    
+    <!-- 墩台基础类型 -->
+    <string-array name="pier_abutment_base">
+        <item>[1]灌注桩基础</item>
+        <item>[2]扩大基础</item>
+        <item>[3]其他</item>
+    </string-array>
+    
+    <!-- 桥面铺装类型 -->
+    <string-array name="deck_type">
+        <item>[1]沥青混凝土</item>
+        <item>[2]水泥混凝土</item>
+        <item>[3]其他</item>
+    </string-array>
+    
+    <!-- 伸缩缝类型 -->
+    <string-array name="joint_type">
+        <item>[1]毛勒缝</item>
+        <item>[2]橡胶伸缩缝</item>
+        <item>[3]梳形钢板伸缩缝</item>
+        <item>[4]锌铁皮U形伸缩缝</item>
+        <item>[5]其他</item>
+    </string-array>
+    
+    <!-- 通航等级 -->
+    <string-array name="navigation_level">
+        <item>[1]不通航</item>
+        <item>[2]一级航道</item>
+        <item>[3]二级航道</item>
+        <item>[4]三级航道</item>
+        <item>[5]四级航道</item>
+        <item>[6]五级航道</item>
+        <item>[7]六级航道</item>
+        <item>[8]七级航道</item>
+        <item>[9]其他</item>
+    </string-array>
+</resources>

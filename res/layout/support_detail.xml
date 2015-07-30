@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TableRow
+        android:layout_margin="@dimen/dialog_option_margin"
+        android:gravity="center">
+        <TextView 
+            android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+        	android:textSize="@dimen/dialog_font"
+			android:gravity="center_vertical|right"	        
+        	android:text="@string/start_spt" />
+        <EditText
+	        android:id="@+id/et_start_spt"
+	        android:layout_width="@dimen/dialog_edit_space"
+			android:layout_height="wrap_content"
+			android:inputType="number"
+        	android:hint="@string/pls_enter" />
+    </TableRow>
+    
+    <TableRow
+        android:layout_margin="@dimen/dialog_option_margin"
+        android:gravity="center">
+        <TextView 
+            android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+        	android:textSize="@dimen/dialog_font"
+			android:gravity="center_vertical|right"	        
+        	android:text="@string/end_spt" />
+        <EditText
+	        android:id="@+id/et_end_spt"
+	        android:layout_width="@dimen/dialog_edit_space"
+			android:layout_height="wrap_content"
+			android:inputType="number"
+        	android:hint="@string/pls_enter" />
+    </TableRow>
+    
+    <TableRow
+        android:layout_margin="@dimen/dialog_option_margin"
+        android:gravity="center">
+        <TextView 
+            android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+        	android:textSize="@dimen/dialog_font"
+			android:gravity="center_vertical|right"	        
+        	android:text="@string/per_row_num" />
+        <EditText
+	        android:id="@+id/et_per_row_num"
+	        android:layout_width="@dimen/dialog_edit_space"
+			android:layout_height="wrap_content"
+			android:inputType="number"
+        	android:hint="@string/pls_enter" />
+    </TableRow>
+    
+    <TableRow
+        android:layout_margin="@dimen/dialog_option_margin"
+        android:gravity="center">
+        <TextView 
+            android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+        	android:textSize="@dimen/dialog_font"
+			android:gravity="center_vertical|right"	        
+        	android:text="@string/per_spt_num" />
+        <EditText
+	        android:id="@+id/et_per_spt_num"
+	        android:layout_width="@dimen/dialog_edit_space"
+			android:layout_height="wrap_content"
+			android:inputType="number"
+        	android:hint="@string/pls_enter" />
+    </TableRow>
+
+</TableLayout>

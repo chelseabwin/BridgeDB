@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+       
+    <!-- 第一行 -->
+    <TableRow
+        android:id="@+id/st_tr1"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:focusable="true"
+		android:focusableInTouchMode="true"
+        android:layout_marginRight="@dimen/activity_margin_right"
+        android:orientation="vertical" >
+		
+		<!-- 桥跨组合 -->
+	    <TextView
+	        android:id="@+id/tv_bridge_span"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+			android:gravity="center_vertical|right"
+	        android:text="@string/bridge_span" />
+	    <EditText
+	        android:id="@+id/et_bridge_span"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+			android:gravity="center_vertical"
+	        android:hint="@string/pls_enter" />
+	    
+	    <!-- 最大跨径 -->
+	    <TextView
+	        android:id="@+id/tv_longest_span"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+			android:gravity="center_vertical|right"
+	        android:text="@string/longest_span" />
+	    <EditText
+	        android:id="@+id/et_longest_span"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+	        android:hint="@string/pls_enter" />
+	</TableRow>
+	
+    <!-- 第二行 -->
+    <TableRow
+        android:id="@+id/st_tr2"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/activity_margin_right"
+        android:orientation="vertical" >
+		
+		<!-- 桥梁全长 -->
+	    <TextView
+	        android:id="@+id/tv_total_len"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+			android:gravity="center_vertical|right"
+	        android:text="@string/total_len" />
+	    <EditText
+	        android:id="@+id/et_total_len"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+			android:gravity="center_vertical"
+	        android:hint="@string/pls_enter" />
+	    
+	    <!-- 桥宽组合 -->
+	    <TextView
+	        android:id="@+id/tv_bridge_wide"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+			android:gravity="center_vertical|right"
+	        android:text="@string/bridge_wide" />
+	    <EditText
+	        android:id="@+id/et_bridge_wide"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+			android:gravity="center_vertical"
+	        android:hint="@string/pls_enter" />
+	</TableRow>
+	
+    <!-- 第三行 -->
+    <TableRow
+        android:id="@+id/st_tr3"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/activity_margin_right"
+        android:orientation="vertical" >
+		
+		<!-- 桥面全宽 -->
+	    <TextView
+	        android:id="@+id/tv_full_wide"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+			android:gravity="center_vertical|right"
+	        android:text="@string/full_wide" />
+	    <EditText
+	        android:id="@+id/et_full_wide"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+			android:gravity="center_vertical"
+	        android:hint="@string/pls_enter" />
+	    
+	    <!-- 桥面净宽 -->
+	    <TextView
+	        android:id="@+id/tv_clear_wide"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+			android:gravity="center_vertical|right"
+	        android:text="@string/clear_wide" />
+	    <EditText
+	        android:id="@+id/et_clear_wide"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+			android:gravity="center_vertical"
+	        android:hint="@string/pls_enter" />
+	</TableRow>
+	
+    <!-- 第四行 -->
+    <TableRow
+        android:id="@+id/st_tr4"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/activity_margin_right"
+        android:orientation="vertical" >
+		
+		<!-- 桥高 -->
+	    <TextView
+	        android:id="@+id/tv_bridge_high"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+			android:gravity="center_vertical|right"
+	        android:text="@string/bridge_high" />
+	    <EditText
+	        android:id="@+id/et_bridge_high"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+	        android:hint="@string/pls_enter" />
+	    
+	    <!-- 桥梁限高 -->
+	    <TextView
+	        android:id="@+id/tv_high_limit"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+			android:gravity="center_vertical|right"
+	        android:text="@string/high_limit" />
+	    <EditText
+	        android:id="@+id/et_high_limit"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+			android:gravity="center_vertical"
+	        android:hint="@string/pls_enter" />
+	</TableRow>
+	
+    <!-- 第五行 -->
+    <TableRow
+        android:id="@+id/st_tr5"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/activity_margin_right"
+        android:orientation="vertical" >
+		
+		<!-- 建桥时间 -->
+	    <TextView
+	        android:id="@+id/tv_building_time"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+			android:gravity="center_vertical|right"
+	        android:text="@string/building_time" />
+	    <EditText
+	        android:id="@+id/et_building_time"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+	        android:hint="@string/pls_enter" />
+	    
+	    <!-- 通航等级 -->
+	    <TextView
+	        android:id="@+id/tv_navigation_level"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+			android:gravity="center_vertical|right"
+	        android:text="@string/navigation_level" />
+	    <Spinner
+	        android:id="@+id/sp_navigation_level"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:entries="@array/navigation_level"
+			android:layout_weight="2" />
+	</TableRow>
+	
+    <!-- 第六行 -->
+    <TableRow
+        android:id="@+id/st_tr6"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/activity_margin_right"
+        android:orientation="vertical" >
+		
+		<!-- 跨中截面高 -->
+	    <TextView
+	        android:id="@+id/tv_section_high"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+			android:gravity="center_vertical|right"
+	        android:text="@string/section_high" />
+	    <EditText
+	        android:id="@+id/et_section_high"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+	        android:hint="@string/pls_enter" />
+	    
+	    <!-- 桥面纵坡 -->
+	    <TextView
+	        android:id="@+id/tv_deck_profile_grade"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+			android:gravity="center_vertical|right"
+	        android:text="@string/deck_profile_grade" />
+	    <EditText
+	        android:id="@+id/et_deck_profile_grade"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+	        android:hint="@string/pls_enter" />
+	</TableRow>
+	
+    <TableRow
+        android:id="@+id/st_tr7"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/button_margin" >
+        
+        <Button
+		    android:id="@+id/st_last_btn"
+		    android:layout_width="0dip"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:layout_marginLeft="@dimen/button_margin"
+		    android:layout_gravity="center_vertical"
+		    android:text="@string/last_step"
+		    android:background="@color/lightgray"
+		    style="?android:attr/buttonBarButtonStyle" />
+		
+		<Button
+		    android:id="@+id/st_next_btn"
+		    android:layout_width="0dip"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:layout_marginLeft="@dimen/button_margin"
+		    android:layout_gravity="center_vertical"
+		    android:text="@string/next_step"
+		    android:background="@color/lightgray"
+		    style="?android:attr/buttonBarButtonStyle" />
+    </TableRow>
+        
+</TableLayout>

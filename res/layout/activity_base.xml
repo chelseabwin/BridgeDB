@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+       
+    <!-- 第一行 -->
+    <TableRow
+        android:id="@+id/b1_tr1"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:focusable="true"
+		android:focusableInTouchMode="true"
+        android:layout_marginRight="@dimen/activity_margin_right"
+        android:orientation="vertical" >
+		
+		<!-- 桥梁名称 -->
+	    <TextView
+	        android:id="@+id/tv_bridge_name"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+        	android:textColor="@color/red"
+			android:gravity="center_vertical|right"
+	        android:text="@string/bridge_name" />
+	    <EditText
+	        android:id="@+id/et_bridge_name"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+			android:gravity="center_vertical"
+	        android:hint="@string/pls_enter"/>
+	    
+	    <!-- 路线号 -->
+	    <TextView
+	        android:id="@+id/tv_path_num"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+        	android:textColor="@color/red"
+			android:gravity="center_vertical|right"
+	        android:text="@string/path_num" />
+	    <EditText
+	        android:id="@+id/et_path_num"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+	        android:hint="@string/pls_enter" />
+	</TableRow>
+	
+    <!-- 第二行 -->
+    <TableRow
+        android:id="@+id/b1_tr2"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/activity_margin_right"
+        android:orientation="vertical" >
+		
+		<!-- 路线名称 -->
+	    <TextView
+	        android:id="@+id/tv_path_name"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+			android:gravity="center_vertical|right"
+	        android:text="@string/path_name" />
+	    <EditText
+	        android:id="@+id/et_path_name"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+			android:gravity="center_vertical"
+	        android:hint="@string/pls_enter" />
+	    
+	    <!-- 路线类型 -->
+	    <TextView
+	        android:id="@+id/tv_path_type"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+        	android:textColor="@color/red"
+			android:gravity="center_vertical|right"
+	        android:text="@string/path_type" />
+	    <Spinner
+	        android:id="@+id/sp_path_type"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical"
+			android:entries="@array/path_type"
+			android:layout_weight="2" />
+	</TableRow>
+	
+    <!-- 第三行 -->
+    <TableRow
+        android:id="@+id/b1_tr3"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/activity_margin_right"
+        android:orientation="vertical" >
+		
+		<!-- 公路技术等级 -->
+	    <TextView
+	        android:id="@+id/tv_rode_grade"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+			android:gravity="center_vertical|right"
+	        android:text="@string/rode_grade" />
+	    <Spinner
+	        android:id="@+id/sp_rode_grade"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:entries="@array/rode_grade"
+			android:layout_weight="2" />
+	    
+	    <!-- 顺序号 -->
+	    <TextView
+	        android:id="@+id/tv_order_num"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+        	android:textColor="@color/red"
+			android:gravity="center_vertical|right"
+	        android:text="@string/order_num" />
+	    <EditText
+	        android:id="@+id/et_order_num"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+			android:gravity="center_vertical"
+	        android:hint="@string/pls_enter" />
+	</TableRow>
+	
+    <!-- 第四行 -->
+    <TableRow
+        android:id="@+id/b1_tr4"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/activity_margin_right"
+        android:orientation="vertical" >
+		
+		<!-- 所在地 -->
+	    <TextView
+	        android:id="@+id/tv_location"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+        	android:textColor="@color/red"
+			android:gravity="center_vertical|right"
+	        android:text="@string/location" />
+	    <EditText
+	        android:id="@+id/et_location"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+	        android:hint="@string/pls_enter" />
+	    
+	    <!-- 中心桩号 -->
+	    <TextView
+	        android:id="@+id/tv_center_stake"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+			android:gravity="center_vertical|right"
+	        android:text="@string/center_stake" />
+	    <EditText
+	        android:id="@+id/et_center_stake"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+			android:gravity="center_vertical"
+	        android:hint="@string/pls_enter" />
+	</TableRow>
+	
+    <!-- 第五行 -->
+    <TableRow
+        android:id="@+id/b1_tr5"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/activity_margin_right"
+        android:orientation="vertical" >
+		
+		<!-- 管养单位 -->
+	    <TextView
+	        android:id="@+id/tv_custody_unit"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+        	android:textColor="@color/red"
+			android:gravity="center_vertical|right"
+	        android:text="@string/custody_unit" />
+	    <EditText
+	        android:id="@+id/et_custody_unit"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+	        android:hint="@string/pls_enter" />
+	    
+	    <!-- 跨越地物名称 -->
+	    <TextView
+	        android:id="@+id/tv_across_name"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+			android:gravity="center_vertical|right"
+	        android:text="@string/across_name" />
+	    <EditText
+	        android:id="@+id/et_across_name"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+			android:gravity="center_vertical"
+	        android:hint="@string/pls_enter" />
+	</TableRow>
+	
+    <!-- 第六行 -->
+    <TableRow
+        android:id="@+id/b1_tr6"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/activity_margin_right"
+        android:orientation="vertical" >
+		
+		<!-- 跨越地物类型 -->
+	    <TextView
+	        android:id="@+id/tv_across_type"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+			android:gravity="center_vertical|right"
+	        android:text="@string/across_type" />
+	    <Spinner
+	        android:id="@+id/sp_across_type"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:entries="@array/across_type"
+			android:layout_weight="2" />
+	    
+	    <!-- 桥梁性质 -->
+	    <TextView
+	        android:id="@+id/tv_bridge_nature"
+	        android:layout_width="0dip"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+        	android:textSize="@dimen/activity_font"
+			android:gravity="center_vertical|right"
+	        android:text="@string/bridge_nature" />
+	    <Spinner
+	        android:id="@+id/sp_bridge_nature"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:entries="@array/bridge_nature"
+			android:layout_weight="2" />
+	</TableRow>
+	
+    <TableRow
+        android:id="@+id/b1_tr7"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/button_margin" >
+        
+        <Button
+		    android:id="@+id/back_btn"
+		    android:layout_width="0dip"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:layout_marginLeft="@dimen/button_margin"
+		    android:layout_gravity="center_vertical"
+		    android:text="@string/back"
+		    android:background="@color/lightgray"
+		    style="?android:attr/buttonBarButtonStyle" />
+		
+		<Button
+		    android:id="@+id/next_step_btn"
+		    android:layout_width="0dip"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:layout_marginLeft="@dimen/button_margin"
+		    android:layout_gravity="center_vertical"
+		    android:text="@string/next_step"
+		    android:background="@color/lightgray"
+		    style="?android:attr/buttonBarButtonStyle" />
+    </TableRow>
+        
+</TableLayout>

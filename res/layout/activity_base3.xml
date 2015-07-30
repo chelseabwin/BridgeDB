@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <TableRow
+        android:id="@+id/b3_tr1"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/activity_margin_right"
+        android:orientation="vertical" >
+    </TableRow>
+    
+    <TableLayout 
+        android:id="@+id/b3_tl2"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="8"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/group_margin"
+        android:layout_marginRight="@dimen/group_margin"
+        android:background="@drawable/corners_bg">
+	    
+        <TableRow 
+            android:id="@+id/b3_tr2"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dip"
+	        android:layout_weight="1">
+	        
+            <TextView
+		        android:id="@+id/tv_upper_type"
+		        android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_marginLeft="@dimen/group_inside_margin"
+				android:gravity="center_vertical"
+	        	android:textSize="@dimen/group_title_font"
+		        android:text="@string/lower_type" />
+        </TableRow>
+	    
+        <TableRow
+	        android:id="@+id/b3_tr3"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dip"
+	        android:layout_weight="1"
+	        android:orientation="vertical"
+	        android:layout_marginLeft="@dimen/group_inside_margin"
+	        android:layout_marginRight="@dimen/group_inside_margin" >
+	    
+	        <!-- 桥墩材料 -->
+		    <TextView
+		        android:id="@+id/tv_pier_material"
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+	        	android:textSize="@dimen/activity_font"
+				android:gravity="center_vertical|right"
+		        android:text="@string/pier_material" />
+		    <Spinner
+		        android:id="@+id/sp_pier_material"
+		        android:layout_width="0dip"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:entries="@array/all_material" />
+	    
+		    <!-- 桥墩截面形式 -->
+		    <TextView
+		        android:id="@+id/tv_section_form"
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+	        	android:textSize="@dimen/activity_font"
+				android:gravity="center_vertical|right"
+		        android:text="@string/section_form" />
+		    <Spinner
+		        android:id="@+id/sp_section_form"
+		        android:layout_width="0dip"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:entries="@array/section_form" />
+    	</TableRow>
+    	
+        <TableRow
+	        android:id="@+id/b3_tr4"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dip"
+	        android:layout_weight="1"
+	        android:orientation="vertical"
+	        android:layout_marginLeft="@dimen/group_inside_margin"
+	        android:layout_marginRight="@dimen/group_inside_margin" >
+	    
+	        <!-- 桥墩类型 -->
+		    <TextView
+		        android:id="@+id/tv_pier_type"
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+	        	android:textSize="@dimen/activity_font"
+				android:gravity="center_vertical|right"
+		        android:text="@string/pier_type" />
+		    <Spinner
+		        android:id="@+id/sp_pier_type"
+		        android:layout_width="0dip"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:entries="@array/pier_type" />
+	    
+		    <TextView
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="3"
+	        	android:textSize="@dimen/activity_font" />
+    	</TableRow>
+    
+	    <TableRow
+	        android:id="@+id/b3_tr5"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dip"
+	        android:layout_weight="1"
+	        android:orientation="vertical"
+	        android:layout_marginLeft="@dimen/group_inside_margin"
+	        android:layout_marginRight="@dimen/group_inside_margin" >
+	    
+	        <!-- 桥台材料 -->
+		    <TextView
+		        android:id="@+id/tv_abutment_material"
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+	        	android:textSize="@dimen/activity_font"
+				android:gravity="center_vertical|right"
+		        android:text="@string/abutment_material" />
+		    <Spinner
+		        android:id="@+id/sp_abutment_material"
+		        android:layout_width="0dip"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:entries="@array/all_material" />
+	    
+		    <!-- 桥台类型 -->
+		    <TextView
+		        android:id="@+id/tv_abutment_type"
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+	        	android:textSize="@dimen/activity_font"
+				android:gravity="center_vertical|right"
+		        android:text="@string/abutment_type" />
+		    <Spinner
+		        android:id="@+id/sp_abutment_type"
+		        android:layout_width="0dip"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:entries="@array/abutment_type" />
+	    </TableRow>
+	    
+	    <TableRow
+	        android:id="@+id/b3_tr6"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dip"
+	        android:layout_weight="1"
+	        android:orientation="vertical"
+	        android:layout_marginLeft="@dimen/group_inside_margin"
+	        android:layout_marginRight="@dimen/group_inside_margin" >
+	    
+	        <!-- 墩台基础材料 -->
+		    <TextView
+		        android:id="@+id/tv_pier_abutment_material"
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+	        	android:textSize="@dimen/activity_font"
+				android:gravity="center_vertical|right"
+		        android:text="@string/pier_abutment_material" />
+		    <Spinner
+		        android:id="@+id/sp_pier_abutment_material"
+		        android:layout_width="0dip"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:entries="@array/all_material" />
+	    
+		    <!-- 墩台基础 -->
+		    <TextView
+		        android:id="@+id/tv_pier_abutment_base"
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+	        	android:textSize="@dimen/activity_font"
+				android:gravity="center_vertical|right"
+		        android:text="@string/pier_abutment_base" />
+		    <Spinner
+		        android:id="@+id/sp_pier_abutment_base"
+		        android:layout_width="0dip"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:entries="@array/pier_abutment_base" />
+	    </TableRow>
+        
+    </TableLayout>
+    
+    <TableRow
+        android:id="@+id/b3_tr7"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/activity_margin_right"
+        android:orientation="vertical" >
+    </TableRow>
+    
+    <TableLayout 
+        android:id="@+id/b3_tl3"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="3"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/group_margin"
+        android:layout_marginRight="@dimen/group_margin"
+        android:background="@drawable/corners_bg">
+	    
+        <TableRow 
+            android:id="@+id/b3_tr8"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dip"
+	        android:layout_weight="1">
+	        
+            <TextView
+		        android:id="@+id/tv_bridge_decking"
+		        android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_marginLeft="@dimen/group_inside_margin"
+				android:gravity="center_vertical"
+	        	android:textSize="@dimen/group_title_font"
+		        android:text="@string/bridge_decking" />
+        </TableRow>
+	    
+        <TableRow
+	        android:id="@+id/b3_tr9"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dip"
+	        android:layout_weight="1"
+	        android:orientation="vertical"
+	        android:layout_marginLeft="@dimen/group_inside_margin"
+	        android:layout_marginRight="@dimen/group_inside_margin" >
+	    
+	        <!-- 桥面铺装类型 -->
+		    <TextView
+		        android:id="@+id/tv_deck_type"
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+	        	android:textSize="@dimen/activity_font"
+	        	android:textColor="@color/red"
+				android:gravity="center_vertical|right"
+		        android:text="@string/deck_type" />
+		    <Spinner
+		        android:id="@+id/sp_deck_type"
+		        android:layout_width="0dip"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:entries="@array/deck_type" />
+	    
+		    <!-- 伸缩缝类型 -->
+		    <TextView
+		        android:id="@+id/tv_joint_type"
+		        android:layout_width="0dip"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+	        	android:textSize="@dimen/activity_font"
+				android:gravity="center_vertical|right"
+		        android:text="@string/joint_type" />
+		    <Spinner
+		        android:id="@+id/sp_joint_type"
+		        android:layout_width="0dip"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:entries="@array/joint_type" />
+    	</TableRow>
+        
+    </TableLayout>
+    
+    <TableRow
+        android:id="@+id/b2_tr7"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/button_margin" >
+        
+        <Button
+		    android:id="@+id/b3_last_btn"
+		    android:layout_width="0dip"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:layout_marginLeft="@dimen/button_margin"
+		    android:layout_gravity="center_vertical"
+		    android:text="@string/last_step"
+		    android:background="@color/lightgray"
+		    style="?android:attr/buttonBarButtonStyle" />
+		
+		<Button
+		    android:id="@+id/b3_next_btn"
+		    android:layout_width="0dip"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:layout_marginLeft="@dimen/button_margin"
+		    android:layout_gravity="center_vertical"
+		    android:text="@string/next_step"
+		    android:background="@color/lightgray"
+		    style="?android:attr/buttonBarButtonStyle" />
+    </TableRow>
+        
+</TableLayout>
