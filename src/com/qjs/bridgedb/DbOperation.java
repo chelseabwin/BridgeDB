@@ -16,7 +16,7 @@ public class DbOperation
 	{
 		dbHelper = new DatabaseHelper(context);
 	}
-	
+
 	/** 插入数据
 	 * 
 	 * @param table 待插入表名
@@ -99,8 +99,16 @@ public class DbOperation
 	 */
 	public Cursor queryData(String result, String table, String where)
 	{
+		String sql = null;
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
-		String sql = "select " + result + " from " + table + " where " + where;
+		if (where == null) 
+		{
+			sql = "select " + result + " from " + table;
+		}
+		else 
+		{
+			sql = "select " + result + " from " + table + " where " + where;
+		}
 		
 		Log.i("-- query --", sql);
 		

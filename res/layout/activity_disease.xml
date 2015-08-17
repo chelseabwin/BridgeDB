@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:baselineAligned="false"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="horizontal"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp" 
+    android:divider="?android:attr/dividerHorizontal"
+	android:showDividers="middle" >
     
-    <TextView
-        android:id="@+id/textViewDisease"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20pt"
-        android:text="@string/disease_title" />    
+    <fragment 
+        android:name="com.qjs.bridgedb.BridgeListFragment"
+        android:id="@+id/bridge_list"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+    
+    <FrameLayout 
+        android:id="@+id/bridge_detail_container"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3" />
 
 </LinearLayout>
