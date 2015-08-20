@@ -10,7 +10,7 @@
 	android:showDividers="middle" >
     
     <fragment 
-        android:name="com.qjs.bridgedb.BridgeListFragment"
+        android:name="com.qjs.bridgedb.disease.BridgeListFragment"
         android:id="@+id/bridge_list"
         android:layout_width="0dp"
         android:layout_height="match_parent"

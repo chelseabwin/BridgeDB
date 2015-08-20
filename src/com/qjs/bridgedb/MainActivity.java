@@ -1,5 +1,8 @@
 package com.qjs.bridgedb;
 
+import com.qjs.bridgedb.collection.BaseActivity;
+import com.qjs.bridgedb.disease.DiseaseActivity;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
