@@ -32,34 +32,16 @@ public class BridgeDetailFragment extends Fragment
 		mTabHost = (FragmentTabHost) rootView.findViewById(android.R.id.tabhost);
 		mTabHost.setup(getActivity(), getChildFragmentManager(), R.id.realtabcontent);
 		
+		// 设置标签页属性及bundle参数
 		mTabHost.addTab(mTabHost.newTabSpec("sub1").setIndicator("上部结构"),
-				SubFragment1.class, null);
+				SubFragment1.class, getArguments());
 
 		mTabHost.addTab(mTabHost.newTabSpec("sub2").setIndicator("下部结构"),
-				SubFragment2.class, null);
+				SubFragment2.class, getArguments());
 
 		mTabHost.addTab(mTabHost.newTabSpec("sub3").setIndicator("桥面系"),
-				SubFragment3.class, null);
+				SubFragment3.class, getArguments());
 		
-		
-		
-		
-//		Bundle args = getArguments();
-//		
-//		if (args != null)
-//		{
-//			DbOperation db = new DbOperation(this.getActivity());
-//			// 根据id查找数据
-//			Cursor cursor = db.queryData("*", "base1", "id=" + args.getInt("BRIDGE_ID"));
-//			
-//			if (cursor.moveToFirst()) 
-//			{
-//				// 显示title属性
-//				//((TextView) rootView.findViewById(R.id.tilte)).setText(cursor.getString(cursor.getColumnIndex("bridge_name")));
-//				// 让book_desc文本框显示book对象的desc属性
-//				//((TextView) rootView.findViewById(R.id.book_desc)).setText(book.desc);
-//			}
-//		}
 		return rootView;
 	}
 }

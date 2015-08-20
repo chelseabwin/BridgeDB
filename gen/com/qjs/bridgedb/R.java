@@ -585,7 +585,7 @@ public final class R {
         public static final int parts_bg=0x7f020005;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a00d7;
+        public static final int action_settings=0x7f0a00da;
         public static final int b1_tr1=0x7f0a0000;
         public static final int b1_tr2=0x7f0a0005;
         public static final int b1_tr3=0x7f0a000a;
@@ -620,8 +620,8 @@ public final class R {
         public static final int bridge_base=0x7f0a0062;
         public static final int bridge_detail_container=0x7f0a0060;
         public static final int bridge_list=0x7f0a005f;
-        public static final int ck_bent_cap=0x7f0a00d1;
-        public static final int ck_tie_beam=0x7f0a00d2;
+        public static final int ck_bent_cap=0x7f0a00d4;
+        public static final int ck_tie_beam=0x7f0a00d5;
         public static final int disease_info=0x7f0a0063;
         public static final int et_abutment_num=0x7f0a0079;
         public static final int et_across_name=0x7f0a0018;
@@ -637,9 +637,9 @@ public final class R {
         public static final int et_deck_num=0x7f0a0096;
         public static final int et_deck_profile_grade=0x7f0a00c5;
         public static final int et_drainage_system=0x7f0a00a2;
-        public static final int et_end_pier=0x7f0a00cf;
-        public static final int et_end_spt=0x7f0a00d4;
-        public static final int et_end_stride=0x7f0a00cc;
+        public static final int et_end_pier=0x7f0a00d2;
+        public static final int et_end_spt=0x7f0a00d7;
+        public static final int et_end_stride=0x7f0a00cf;
         public static final int et_full_wide=0x7f0a00b4;
         public static final int et_general_detail=0x7f0a008c;
         public static final int et_high_limit=0x7f0a00bb;
@@ -652,17 +652,17 @@ public final class R {
         public static final int et_pa_num=0x7f0a007b;
         public static final int et_path_name=0x7f0a0007;
         public static final int et_path_num=0x7f0a0004;
-        public static final int et_per_pier_num=0x7f0a00d0;
-        public static final int et_per_row_num=0x7f0a00d5;
-        public static final int et_per_spt_num=0x7f0a00d6;
-        public static final int et_per_stride_num=0x7f0a00cd;
+        public static final int et_per_pier_num=0x7f0a00d3;
+        public static final int et_per_row_num=0x7f0a00d8;
+        public static final int et_per_spt_num=0x7f0a00d9;
+        public static final int et_per_stride_num=0x7f0a00d0;
         public static final int et_pier_detail=0x7f0a0076;
         public static final int et_protection_slope=0x7f0a0074;
         public static final int et_reg_structure=0x7f0a0080;
         public static final int et_section_high=0x7f0a00c3;
-        public static final int et_start_pier=0x7f0a00ce;
-        public static final int et_start_spt=0x7f0a00d3;
-        public static final int et_start_stride=0x7f0a00cb;
+        public static final int et_start_pier=0x7f0a00d1;
+        public static final int et_start_spt=0x7f0a00d6;
+        public static final int et_start_stride=0x7f0a00ce;
         public static final int et_support_detail=0x7f0a008f;
         public static final int et_total_len=0x7f0a00af;
         public static final int guardrail_l=0x7f0a009e;
@@ -763,6 +763,7 @@ public final class R {
         public static final int tv_drainage_system=0x7f0a00a1;
         public static final int tv_full_wide=0x7f0a00b3;
         public static final int tv_general_detail=0x7f0a008b;
+        public static final int tv_girder=0x7f0a00cb;
         public static final int tv_guardrail=0x7f0a009d;
         public static final int tv_high_limit=0x7f0a00ba;
         public static final int tv_illuminated_sign=0x7f0a00a3;
@@ -791,11 +792,13 @@ public final class R {
         public static final int tv_section_high=0x7f0a00c2;
         public static final int tv_sidewalk=0x7f0a009a;
         public static final int tv_stress_pattern=0x7f0a0034;
+        public static final int tv_support=0x7f0a00cd;
         public static final int tv_support_detail=0x7f0a008e;
         public static final int tv_support_type=0x7f0a0036;
         public static final int tv_total_len=0x7f0a00ae;
         public static final int tv_upper_parts=0x7f0a0087;
         public static final int tv_upper_type=0x7f0a002d;
+        public static final int tv_wet_joint=0x7f0a00cc;
         public static final int tv_wing_wall=0x7f0a0068;
         public static final int wall_l0=0x7f0a0069;
         public static final int wall_l1=0x7f0a006b;
