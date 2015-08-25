@@ -63,7 +63,8 @@
         <activity
             android:name="com.qjs.bridgedb.disease.DiseaseActivity"
             android:label="@string/app_name"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
     </application>
 

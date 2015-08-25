@@ -234,4 +234,15 @@
         <item>[8]七级航道</item>
         <item>[9]其他</item>
     </string-array>
+    
+    <!-- 主梁病害 -->
+    <string-array name="girder_evaluate">
+        <item>[1]混凝土保护层厚度</item>
+        <item>[2]钢筋锈蚀</item>
+        <item>[3]混凝土碳化</item>
+        <item>[4]混凝土强度</item>
+        <item>[5]跨中挠度</item>
+        <item>[6]结构变位</item>
+        <item>[7]预应力构件损伤</item>
+    </string-array>
 </resources>

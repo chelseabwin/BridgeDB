@@ -11,6 +11,7 @@
     <string name="pls_choose">请选择</string>
     <string name="pls_click">请点击查看</string>
     <string name="bn_add">添加</string>
+    <string name="bn_submit">提交</string>
     
     <string name="L0">L0</string>
     <string name="R0">R0</string>
@@ -151,5 +152,32 @@
     
     <!-- 病害信息页 -->
     <string name="disease_title">病害信息页</string>
+    
+    <!-- 上部结构-主梁 -->
+    <string name="voids_pits">蜂窝、麻面</string>
+    <string name="Peeling_off_angle">剥落、掉角</string>
+    <string name="cavitation">空洞、孔洞</string>
+    <string name="fissure">裂缝</string>
+    <string name="other_disease">其他病害</string>
+    
+    <string name="vertical_fissure">竖向裂缝</string>
+    <string name="landscape_fissure">横向裂缝</string>
+    <string name="slant_fissure">斜向裂缝</string>
+    <string name="lengthways_fissure">纵向裂缝</string>
+    <string name="net_fissure">网裂缝</string>
+    
+    <string name="dis_desc1">纵向距本跨梁端</string>
+    <string name="dis_desc2">米  到</string>
+    <string name="dis_desc3">米</string>
+    
+    <string name="dis_desc4">面积</string>
+    <string name="dis_desc5">长度</string>
+    <string name="dis_desc6">宽度</string>
+    
+    <string name="left_flange">左翼板</string>
+    <string name="right_flange">右翼板</string>
+    <string name="left_web">左腹板</string>
+    <string name="right_web">右腹板</string>
+    <string name="bottom_plate">底板</string>
 
 </resources>

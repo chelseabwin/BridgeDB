@@ -30,6 +30,6 @@ public class DiseaseActivity extends FragmentActivity implements BridgeListFragm
 		// 使用fragment替换bridge_detail_container容器当前显示的Fragment
 		getSupportFragmentManager().beginTransaction()
 			.replace(R.id.bridge_detail_container, bdf)
-			.commit();		
+			.commit();
 	}
 }
