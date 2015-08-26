@@ -13,13 +13,11 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class Base3Activity extends Activity
-{	
+public class Base3Activity extends Activity {	
 	int bg_id; // 桥梁id
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_base3);
 		
@@ -30,12 +28,10 @@ public class Base3Activity extends Activity
 		
 		final DbOperation db = new DbOperation(Base3Activity.this);
 		
-		if (fromPrev != null)
-		{
+		if (fromPrev != null) {
 			bg_id = bundle.getInt("toNextId"); // 获取从上一页面传递过来的id
 		}
-		else if (fromNext != null)
-		{
+		else if (fromNext != null) {
 			bg_id = bundle.getInt("toPrevId"); // 获取从下一页面传递过来的id
 		}
 		
@@ -43,8 +39,7 @@ public class Base3Activity extends Activity
 		final Cursor cursor = db.queryData("*", "base3", "bg_id='" + bg_id + "'");
 		
 		// 如果有原始数据，则将原始数据填入文本框
-		if (cursor.moveToFirst())
-		{
+		if (cursor.moveToFirst()) {
 			DbOperation.setSpinnerItemSelectedByValue((Spinner) findViewById(R.id.sp_pier_material), cursor.getString(cursor.getColumnIndex("pier_material")));
 			DbOperation.setSpinnerItemSelectedByValue((Spinner) findViewById(R.id.sp_section_form), cursor.getString(cursor.getColumnIndex("section_form")));
 			DbOperation.setSpinnerItemSelectedByValue((Spinner) findViewById(R.id.sp_pier_type), cursor.getString(cursor.getColumnIndex("pier_type")));
@@ -60,11 +55,10 @@ public class Base3Activity extends Activity
 		
 		// 上一步
         Button b3_last_btn = (Button)findViewById(R.id.b3_last_btn);
-        b3_last_btn.setOnClickListener(new OnClickListener()
-        {        	
+        b3_last_btn.setOnClickListener(new OnClickListener() {
+        	
         	@Override
-        	public void onClick(View v)
-        	{
+        	public void onClick(View v) {
         		Intent intent = new Intent(Base3Activity.this, Base2Activity.class);
         		intent.putExtra("toPrevId", bg_id); // 传给上一页的id
         		intent.putExtra("toPrev", "toPrevBg"); // 跳转上一页标识
@@ -74,11 +68,10 @@ public class Base3Activity extends Activity
         
         // 下一步
         Button b3_next_btn = (Button)findViewById(R.id.b3_next_btn);
-        b3_next_btn.setOnClickListener(new OnClickListener()
-        {        	
+        b3_next_btn.setOnClickListener(new OnClickListener() {
+        	
         	@Override
-        	public void onClick(View v) 
-        	{        		
+        	public void onClick(View v) {        		
         		// 获取数据
         		String pier_material = ((Spinner) findViewById(R.id.sp_pier_material)).getSelectedItem().toString(); // 桥墩材料
         		String section_form = ((Spinner) findViewById(R.id.sp_section_form)).getSelectedItem().toString(); // 桥墩截面形式
@@ -93,8 +86,7 @@ public class Base3Activity extends Activity
         		String joint_type = ((Spinner) findViewById(R.id.sp_joint_type)).getSelectedItem().toString(); // 伸缩缝类型
         		
         		// 如果有原始数据，执行修改操作
-        		if (cursor.moveToFirst())
-        		{
+        		if (cursor.moveToFirst()) {
         			String setValue = "pier_material='" + pier_material + "',section_form='" + section_form + "',pier_type='" + pier_type 
         					+ "',abutment_material='" + abutment_material + "',abutment_type='" + abutment_type + "',pier_abutment_material='" + pier_abutment_material
         					+ "',pier_abutment_base='" + pier_abutment_base + "',deck_type='" + deck_type + "',joint_type='" + joint_type + "'";
@@ -102,12 +94,10 @@ public class Base3Activity extends Activity
         			// 修改数据
         			int flag = db.updateData("base3", setValue, "bg_id='" + bg_id + "'");
         			
-        			if (flag == 0)
-            		{
+        			if (flag == 0) {
             			Toast.makeText(Base3Activity.this, "修改失败", Toast.LENGTH_SHORT).show();
             		}
-            		else
-            		{
+            		else {
             			Toast.makeText(Base3Activity.this, "修改成功", Toast.LENGTH_SHORT).show();
             			
             			Intent intent = new Intent(Base3Activity.this, StructureActivity.class);
@@ -116,8 +106,7 @@ public class Base3Activity extends Activity
                 		startActivity(intent);
             		}
         		}
-        		else // 没有则执行插入操作
-        		{
+        		else { // 没有则执行插入操作
         			String key = "bg_id, pier_material, section_form, pier_type, abutment_material, abutment_type,"
         					+ "pier_abutment_material, pier_abutment_base, deck_type, joint_type";
             		
@@ -127,12 +116,10 @@ public class Base3Activity extends Activity
             		// 插入数据
         			int flag = db.insertData("base3", key, values);
             		
-            		if (flag == 0)
-            		{
+            		if (flag == 0) {
             			Toast.makeText(Base3Activity.this, "添加失败", Toast.LENGTH_SHORT).show();
             		}
-            		else
-            		{
+            		else {
             			Toast.makeText(Base3Activity.this, "添加成功", Toast.LENGTH_SHORT).show();
             			
             			Intent intent = new Intent(Base3Activity.this, StructureActivity.class);

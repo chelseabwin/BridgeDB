@@ -12,20 +12,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class BridgeDetailFragment extends Fragment
-{	 
+public class BridgeDetailFragment extends Fragment {	 
     private FragmentTabHost mTabHost; // 定义FragmentTabHost对象  
     
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
 
 	// 重写该方法，该方法返回的View将作为Fragment显示的组件
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{		
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {		
 		// 加载/res/layout/目录下的fragment_bridge_detail.xml布局文件
 		View rootView = inflater.inflate(R.layout.fragment_bridge_detail, null);
 		

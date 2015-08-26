@@ -8,8 +8,36 @@
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical" >
 	    
+	    <RadioGroup 
+	        android:id="@+id/up_rg"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:layout_marginLeft="20dp"
+	        android:layout_marginTop="20dp" >
+        
+	        <RadioButton
+	           android:id="@+id/rbtn_girder"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:text="@string/girder" />
+	
+	        <RadioButton
+	           android:id="@+id/rbtn_wet_joint"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:text="@string/wet_joint" />
+	
+	        <RadioButton
+	           android:id="@+id/rbtn_support"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:text="@string/support" />
+	        
+	    </RadioGroup>
+	    
 	    <TextView  
-	        android:id="@+id/tv_girder"         
+	        android:id="@+id/tv_span_num"         
 	        android:layout_width="wrap_content"  
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="7dp"
@@ -18,16 +46,7 @@
 	        android:layout_marginRight="7dp" />
 	    
 	    <TextView  
-	        android:id="@+id/tv_wet_joint"         
-	        android:layout_width="wrap_content"  
-	        android:layout_height="wrap_content"
-	        android:layout_marginTop="7dp"
-	        android:layout_marginBottom="7dp"
-	        android:layout_marginLeft="20dp"
-	        android:layout_marginRight="7dp" />
-	    
-	    <TextView  
-	        android:id="@+id/tv_support"         
+	        android:id="@+id/tv_span_detail"         
 	        android:layout_width="wrap_content"  
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="7dp"

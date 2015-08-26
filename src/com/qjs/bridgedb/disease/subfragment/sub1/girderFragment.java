@@ -14,8 +14,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class girderFragment extends Fragment
-{
+public class girderFragment extends Fragment {
 	private TextView diseaseDescription; // ≤°∫¶√Ë ˆ
 	private RadioGroup rg,rg2;
 	private Spinner otherDisease;
@@ -25,8 +24,7 @@ public class girderFragment extends Fragment
 	String diseaseAttribute = "∑‰Œ—°¢¬È√Ê"; // ≤°∫¶ Ù–‘
 	
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_upper_page1, container, false);
 		
 		diseaseDescription = (TextView) rootView.findViewById(R.id.tv_disease_description);
@@ -38,19 +36,16 @@ public class girderFragment extends Fragment
 		rbtn_fissure1 = (RadioButton) rootView.findViewById(R.id.rbtn_fissure1);
 		
 		Bundle args = getArguments();
-		if (args != null)
-		{
+		if (args != null) {
 			diseaseDescription.setTextSize(20);
 			diseaseDescription.setText("≤°∫¶√Ë ˆ£∫÷˜¡∫(" + args.getString("GIRDER") + ")");
 			
 			rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 				@Override
-				public void onCheckedChanged(RadioGroup group, int checkedId) 
-				{
+				public void onCheckedChanged(RadioGroup group, int checkedId) {
 					// TODO Auto-generated method stub
-					switch (checkedId)
-					{
+					switch (checkedId) {
 						case 2131362001:
 							diseaseAttribute = "∑‰Œ—°¢¬È√Ê";
 							otherDisease.setVisibility(View.GONE); // “˛≤ÿ°∞∆‰À˚°±Œƒ±æøÚ
@@ -92,20 +87,16 @@ public class girderFragment extends Fragment
 							ll1.setVisibility(View.GONE);
 							ll2.setVisibility(View.VISIBLE);
 							
-							rg2.setOnCheckedChangeListener(new OnCheckedChangeListener() 
-							{
+							rg2.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 								@Override
-								public void onCheckedChanged(RadioGroup group, int checkedId) 
-								{
+								public void onCheckedChanged(RadioGroup group, int checkedId) {
 									// TODO Auto-generated method stub
-									if (checkedId == 2131362012) 
-									{
+									if (checkedId == 2131362012) {
 										// œ‘ ææ‡¿Î—°œÓ
 										ll1.setVisibility(View.VISIBLE);
 										ll2.setVisibility(View.GONE);										
 									}
-									else 
-									{
+									else {
 										// œ‘ ææ‡¿Î—°œÓ
 										ll1.setVisibility(View.GONE);
 										ll2.setVisibility(View.VISIBLE);

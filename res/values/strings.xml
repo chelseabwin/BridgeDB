@@ -153,6 +153,10 @@
     <!-- 病害信息页 -->
     <string name="disease_title">病害信息页</string>
     
+    <string name="girder">主梁</string>
+    <string name="wet_joint">湿接缝</string>
+    <string name="support">支座</string>
+    
     <!-- 上部结构-主梁 -->
     <string name="voids_pits">蜂窝、麻面</string>
     <string name="Peeling_off_angle">剥落、掉角</string>

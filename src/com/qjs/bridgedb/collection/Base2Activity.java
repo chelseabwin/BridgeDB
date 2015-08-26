@@ -15,16 +15,14 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class Base2Activity extends Activity
-{	
+public class Base2Activity extends Activity {	
 	Spinner sp_bt; // 桥梁类型一级
 	Spinner sp_bt2; // 桥梁类型二级
 	
 	int bg_id; // 桥梁id
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_base2);
 		
@@ -35,12 +33,10 @@ public class Base2Activity extends Activity
 		
 		final DbOperation db = new DbOperation(Base2Activity.this);
 		
-		if (fromPrev != null)
-		{
+		if (fromPrev != null) {
 			bg_id = bundle.getInt("toNextId"); // 获取从上一页面传递过来的id
 		}
-		else if (fromNext != null)
-		{
+		else if (fromNext != null) {
 			bg_id = bundle.getInt("toPrevId"); // 获取从下一页面传递过来的id
 		}
 		
@@ -58,11 +54,10 @@ public class Base2Activity extends Activity
 		// 根据id查找数据
 		final Cursor cursor = db.queryData("*", "base2", "bg_id='" + bg_id + "'");
 		
-		sp_bt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-		{
+		sp_bt.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			
 			@Override
-			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) // 选项改变的时候触发
-			{
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) { // 选项改变的时候触发
 				// TODO Auto-generated method stub				
 				ArrayAdapter<String> adapterType = new ArrayAdapter<String>(Base2Activity.this,
                         android.R.layout.simple_spinner_item, // 显示风格
@@ -72,32 +67,28 @@ public class Base2Activity extends Activity
 				sp_bt2.setAdapter(adapterType); // 把adapterType添加到sp_bt2
 				
 				// 为级联菜单的第二联赋值，由于setAdapter会重置列表的position值，故在这里判断赋值
-				if (cursor.moveToFirst())
-				{
+				if (cursor.moveToFirst()) {
 					String num2 = cursor.getString(cursor.getColumnIndex("bridge_type")).substring(3, 4); // 获取级联菜单第二联的编号
 					int key2 = Integer.parseInt(num2) - 1; // 将编号转换为整型(编号从0开始，故-1处理)
-					try
-					{
+					
+					try {
 						sp_bt2.setSelection(key2, true); // 尝试设置级联菜单第二联选择的key
 					}
-					catch (Exception e)
-					{
+					catch (Exception e) {
 						sp_bt2.setSelection(0, true); // 如果越界则设置为第一个
 					}					
 				}
 			}
 
 			@Override
-			public void onNothingSelected(AdapterView<?> arg0) 
-			{
+			public void onNothingSelected(AdapterView<?> arg0) {
 				// TODO Auto-generated method stub
 				
 			}
 		});
 		
 		// 如果有原始数据，则将原始数据填入文本框
-		if (cursor.moveToFirst())
-		{
+		if (cursor.moveToFirst()) {
 			String num1 = cursor.getString(cursor.getColumnIndex("bridge_type")).substring(1, 2); // 获取级联菜单第一联的编号
 			int key1 = Integer.parseInt(num1) - 1; // 将编号转换为整型(编号从0开始，故-1处理)
 			
@@ -115,11 +106,10 @@ public class Base2Activity extends Activity
 		
 		// 上一步
         Button b2_last_btn = (Button)findViewById(R.id.b2_last_btn);
-        b2_last_btn.setOnClickListener(new OnClickListener()
-        {        	
+        b2_last_btn.setOnClickListener(new OnClickListener() {        	
+        	
         	@Override
-        	public void onClick(View v)
-        	{
+        	public void onClick(View v) {
         		Intent intent = new Intent(Base2Activity.this, BaseActivity.class);
         		intent.putExtra("toPrevId", bg_id); // 传给上一页的id
         		intent.putExtra("toPrev", "toPrevBg"); // 跳转上一页标识
@@ -129,11 +119,10 @@ public class Base2Activity extends Activity
         
         // 下一步
         Button b2_next_btn = (Button)findViewById(R.id.b2_next_btn);
-        b2_next_btn.setOnClickListener(new OnClickListener() 
-        {        	
+        b2_next_btn.setOnClickListener(new OnClickListener() {        	
+        	
         	@Override
-        	public void onClick(View v)
-        	{        		
+        	public void onClick(View v) {        		
         		// 获取数据
         		String bridge_classify = ((Spinner) findViewById(R.id.sp_bridge_classify)).getSelectedItem().toString(); // 桥梁分类
         		String design_load = ((Spinner) findViewById(R.id.sp_design_load)).getSelectedItem().toString(); // 设计荷载等级
@@ -147,8 +136,7 @@ public class Base2Activity extends Activity
         		String bridge_type = ((Spinner) findViewById(R.id.sp_bridge_type2)).getSelectedItem().toString(); // 桥型
         		
         		// 如果有原始数据，执行修改操作
-        		if (cursor.moveToFirst())
-        		{
+        		if (cursor.moveToFirst()) {
         			String setValue = "bridge_classify='" + bridge_classify + "',design_load='" + design_load + "',bridge_use='" + bridge_use 
         					+ "',bridge_status='" + bridge_status + "',material_code='" + material_code + "',bridge_panel='" + bridge_panel
         					+ "',stress_pattern='" + stress_pattern + "',support_type='" + support_type + "',bridge_type='" + bridge_type + "'";
@@ -156,12 +144,10 @@ public class Base2Activity extends Activity
         			// 修改数据
         			int flag = db.updateData("base2", setValue, "bg_id='" + bg_id + "'");
         			
-        			if (flag == 0)
-            		{
+        			if (flag == 0) {
             			Toast.makeText(Base2Activity.this, "修改失败", Toast.LENGTH_SHORT).show();
             		}
-            		else
-            		{
+            		else {
             			Toast.makeText(Base2Activity.this, "修改成功", Toast.LENGTH_SHORT).show();
             			
             			Intent intent = new Intent(Base2Activity.this, Base3Activity.class);
@@ -170,8 +156,7 @@ public class Base2Activity extends Activity
                 		startActivity(intent);
             		}
         		}
-        		else // 没有则执行插入操作
-        		{
+        		else { // 没有则执行插入操作 
         			String key = "bg_id, bridge_classify, design_load, bridge_use, bridge_status,"
             				+ "material_code, bridge_panel, stress_pattern, support_type, bridge_type";
             		
@@ -181,12 +166,10 @@ public class Base2Activity extends Activity
             		// 插入数据
         			int flag = db.insertData("base2", key, values);
             		
-            		if (flag == 0)
-            		{
+            		if (flag == 0) {
             			Toast.makeText(Base2Activity.this, "添加失败", Toast.LENGTH_SHORT).show();
             		}
-            		else
-            		{
+            		else {
             			Toast.makeText(Base2Activity.this, "添加成功", Toast.LENGTH_SHORT).show();
             			
             			Intent intent = new Intent(Base2Activity.this, Base3Activity.class);

@@ -5,19 +5,16 @@ import com.qjs.bridgedb.R;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
-public class DiseaseActivity extends FragmentActivity implements BridgeListFragment.Callbacks
-{	
+public class DiseaseActivity extends FragmentActivity implements BridgeListFragment.Callbacks {	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) 
-	{
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_disease);
 	}
 	
 	// 实现BridgeListFragment.Callbacks接口的方法
 	@Override
-	public void onItemSelected(Integer id) 
-	{
+	public void onItemSelected(Integer id) {
 		// TODO Auto-generated method stub
 		// 创建Bundle，准备向Fragment传入参数
 		Bundle bd = new Bundle();

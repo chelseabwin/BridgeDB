@@ -7,13 +7,11 @@ import android.util.Log;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
-public class DbOperation
-{
+public class DbOperation {
 	
 	private DatabaseHelper dbHelper;
 	
-	public DbOperation(Context context)
-	{
+	public DbOperation(Context context) {
 		dbHelper = new DatabaseHelper(context);
 	}
 
@@ -24,25 +22,21 @@ public class DbOperation
 	 * @param values 插入参数值
 	 * @return 插入成功返回新数据id，失败返回0
 	 */
-	public int insertData(String table, String key, String values)
-	{		
+	public int insertData(String table, String key, String values) {		
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
 		String sql = "insert into " + table + "(" + key + ") values(" + values + ")";
 		
 		Log.i("-- insert --", sql);
 		
 		db.beginTransaction();
-		try
-		{
+		try {
 			db.execSQL(sql);
 			db.setTransactionSuccessful();
 		}
-		catch(Exception e)
-		{
+		catch(Exception e) {
 			return 0;
 		}
-		finally
-		{
+		finally {
 			db.endTransaction();
 		}
 		
@@ -64,25 +58,21 @@ public class DbOperation
 	 * @param where 修改位置
 	 * @return 修改成功返回1，失败返回0
 	 */
-	public int updateData(String table, String setValue, String where)
-	{
+	public int updateData(String table, String setValue, String where) {
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
 		String sql = "update " + table + " set " + setValue + " where " + where;
 		
 		Log.i("-- update --", sql);
 		
 		db.beginTransaction();
-		try
-		{
+		try {
 			db.execSQL(sql);
 			db.setTransactionSuccessful();
 		}
-		catch(Exception e)
-		{
+		catch(Exception e) {
 			return 0;
 		}
-		finally
-		{
+		finally {
 			db.endTransaction();
 		}
 		
@@ -97,16 +87,13 @@ public class DbOperation
 	 * @param where 查询位置
 	 * @return 返回查询结果
 	 */
-	public Cursor queryData(String result, String table, String where)
-	{
+	public Cursor queryData(String result, String table, String where) {
 		String sql = null;
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
-		if (where == null) 
-		{
+		if (where == null) {
 			sql = "select " + result + " from " + table;
 		}
-		else 
-		{
+		else  {
 			sql = "select " + result + " from " + table + " where " + where;
 		}
 		
@@ -115,17 +102,14 @@ public class DbOperation
 		Cursor cursor;
 		
 		db.beginTransaction();
-		try
-		{
+		try {
 			cursor = db.rawQuery(sql, null);
 			db.setTransactionSuccessful();
 		}
-		catch(Exception e)
-		{
+		catch(Exception e) {
 			return null;
 		}
-		finally
-		{
+		finally {
 			db.endTransaction();
 		}
 		
@@ -137,14 +121,11 @@ public class DbOperation
 	 * @param spinner
 	 * @param value
 	 */
-	public static void setSpinnerItemSelectedByValue(Spinner spinner, String value)
-	{
+	public static void setSpinnerItemSelectedByValue(Spinner spinner, String value) {
 		SpinnerAdapter apsAdapter = spinner.getAdapter(); // 得到SpinnerAdapter对象
 	    int k = apsAdapter.getCount();
-		for(int i = 0; i < k; i++)
-		{
-			if(value.equals(apsAdapter.getItem(i).toString()))
-			{
+		for(int i = 0; i < k; i++) {
+			if(value.equals(apsAdapter.getItem(i).toString())) {
 				spinner.setSelection(i,true);// 默认选中项
 				break;
 			}

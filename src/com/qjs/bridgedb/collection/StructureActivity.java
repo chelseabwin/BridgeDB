@@ -22,15 +22,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class StructureActivity extends Activity 
-{	
+public class StructureActivity extends Activity {	
 	int bg_id; // 桥梁id	
 	Spinner sp_nl; // 通航等级	
 	boolean flag; // 建桥时间标志位
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) 
-	{
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_structure);
 		
@@ -41,12 +39,10 @@ public class StructureActivity extends Activity
 		
 		final DbOperation db = new DbOperation(StructureActivity.this);
 		
-		if (fromPrev != null)
-		{
+		if (fromPrev != null) {
 			bg_id = bundle.getInt("toNextId"); // 获取从上一页面传递过来的id
 		}
-		else if (fromNext != null)
-		{
+		else if (fromNext != null) {
 			bg_id = bundle.getInt("toPrevId"); // 获取从下一页面传递过来的id
 		}
 		
@@ -54,8 +50,7 @@ public class StructureActivity extends Activity
 		final Cursor cursor = db.queryData("*", "structure", "bg_id='" + bg_id + "'");
 		
 		// 如果有原始数据，则将原始数据填入文本框
-		if (cursor.moveToFirst())
-		{
+		if (cursor.moveToFirst()) {
 			// 获取数据
 			((EditText) findViewById(R.id.et_bridge_span)).setText(cursor.getString(cursor.getColumnIndex("bridge_span")));
 			((EditText) findViewById(R.id.et_longest_span)).setText(cursor.getString(cursor.getColumnIndex("longest_span")));
@@ -74,28 +69,24 @@ public class StructureActivity extends Activity
 				
 		// 建桥时间
 		EditText et_building_time = (EditText) findViewById(R.id.et_building_time);
-		et_building_time.setOnTouchListener(new OnTouchListener() 
-		{
+		et_building_time.setOnTouchListener(new OnTouchListener() {
+			
 			@Override
-			public boolean onTouch(View v, MotionEvent event) 
-			{
+			public boolean onTouch(View v, MotionEvent event) {
 				// TODO Auto-generated method stub
-				if (event.getAction() == MotionEvent.ACTION_DOWN) 
-				{					
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {					
 					int c_year, c_month, c_day;
 					EditText et = (EditText) findViewById(R.id.et_building_time);
 					String str = et.getText().toString();
 					
-					if(str == null || str.length() <= 0) // 如果未选中日期，则将当天设为默认弹出日期
-					{
+					if(str == null || str.length() <= 0) { // 如果未选中日期，则将当天设为默认弹出日期
 						Calendar c = Calendar.getInstance();
 						
 						c_year = c.get(Calendar.YEAR);
 				        c_month = c.get(Calendar.MONTH);
 				        c_day = c.get(Calendar.DAY_OF_MONTH);
 					}
-					else // 如果已选中日期，则将选中日期设为默认弹出日期
-					{
+					else { // 如果已选中日期，则将选中日期设为默认弹出日期
 						String[] date_arr = str.split(" - ");
 						
 						c_year = Integer.parseInt(date_arr[0]);
@@ -105,15 +96,13 @@ public class StructureActivity extends Activity
 			        
 			        DatePickerDialog picker = new DatePickerDialog(StructureActivity.this, 
 			        		// 绑定监听器
-	        				new DatePickerDialog.OnDateSetListener() 
-			        		{
+	        				new DatePickerDialog.OnDateSetListener() {
+			        		
 								@Override
 								public void onDateSet(DatePicker dp, int year,
-									int month, int dayOfMonth) 
-								{
+									int month, int dayOfMonth) {
 									// 只有当状态位为真时才会修改editText
-									if(flag) 
-									{
+									if(flag) {
 										EditText show = (EditText) findViewById(R.id.et_building_time);
 										show.setText(year + " - " + (month + 1) + " - " + dayOfMonth);
 										flag = false; // 将状态位置非
@@ -125,21 +114,19 @@ public class StructureActivity extends Activity
 			        picker.setCanceledOnTouchOutside(true);
 			        picker.setTitle("设置建桥时间");
 			        picker.setButton(DialogInterface.BUTTON_POSITIVE, "确定",
-			                new DialogInterface.OnClickListener() 
-			        		{
+			                new DialogInterface.OnClickListener() {
+			        		
 			                    @Override
-			                    public void onClick(DialogInterface dialog, int which) 
-			                    {
+			                    public void onClick(DialogInterface dialog, int which) {
 			                        Log.d("Picker", "Correct behavior!");
 			                        flag = true;
 			                    }
 			                });
 			        picker.setButton(DialogInterface.BUTTON_NEGATIVE, "取消",
-			                new DialogInterface.OnClickListener() 
-			        		{
+			                new DialogInterface.OnClickListener() {
+			        		
 			                    @Override
-			                    public void onClick(DialogInterface dialog, int which) 
-			                    {
+			                    public void onClick(DialogInterface dialog, int which) {
 			                        Log.d("Picker", "Cancel!");
 			                        flag = false;
 			                    }
@@ -153,11 +140,10 @@ public class StructureActivity extends Activity
 		
 		// 上一步
         Button st_last_btn = (Button)findViewById(R.id.st_last_btn);
-        st_last_btn.setOnClickListener(new OnClickListener() 
-        {        	
+        st_last_btn.setOnClickListener(new OnClickListener() {
+        	
         	@Override
-        	public void onClick(View v) 
-        	{
+        	public void onClick(View v) {
         		Intent intent = new Intent(StructureActivity.this, Base3Activity.class);
         		intent.putExtra("toPrevId", bg_id); // 传给上一页的id
         		intent.putExtra("toPrev", "toPrevBg"); // 跳转上一页标识
@@ -167,11 +153,10 @@ public class StructureActivity extends Activity
         
         // 下一步
         Button st_next_btn = (Button)findViewById(R.id.st_next_btn);
-        st_next_btn.setOnClickListener(new OnClickListener() 
-        {        	
+        st_next_btn.setOnClickListener(new OnClickListener() {
+        	
         	@Override
-        	public void onClick(View v) 
-        	{        		
+        	public void onClick(View v) {        		
         		// 获取数据
         		String bridge_span = ((EditText) findViewById(R.id.et_bridge_span)).getText().toString(); // 桥跨组合
         		String longest_span = ((EditText) findViewById(R.id.et_longest_span)).getText().toString(); // 最大跨径
@@ -188,8 +173,7 @@ public class StructureActivity extends Activity
         		String deck_profile_grade = ((EditText) findViewById(R.id.et_deck_profile_grade)).getText().toString(); // 桥面纵坡
         		
         		// 如果有原始数据，执行修改操作
-        		if (cursor.moveToFirst())
-        		{
+        		if (cursor.moveToFirst()) {
         			String setValue = "bridge_span='" + bridge_span + "',longest_span='" + longest_span + "',total_len='" + total_len  + "',bridge_wide='" + bridge_wide 
         					+ "',full_wide='" + full_wide + "',clear_wide='" + clear_wide + "',bridge_high='" + bridge_high + "',high_limit='" + high_limit
         					+ "',building_time='" + building_time + "',navigation_level='" + navigation_level + "',section_high='" + section_high + "',deck_profile_grade='" + deck_profile_grade + "'";
@@ -197,12 +181,10 @@ public class StructureActivity extends Activity
         			// 修改数据
         			int flag = db.updateData("structure", setValue, "bg_id='" + bg_id + "'");
         			
-        			if (flag == 0)
-            		{
+        			if (flag == 0) {
             			Toast.makeText(StructureActivity.this, "修改失败", Toast.LENGTH_SHORT).show();
             		}
-            		else
-            		{
+            		else {
             			Toast.makeText(StructureActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
             			
             			Intent intent = new Intent(StructureActivity.this, PartsActivity.class);
@@ -211,8 +193,7 @@ public class StructureActivity extends Activity
                 		startActivity(intent);
             		}
         		}
-        		else // 没有则执行插入操作
-        		{
+        		else { // 没有则执行插入操作
         			String key = "bg_id, bridge_span, longest_span, total_len, bridge_wide, full_wide, clear_wide,"
         					+ "bridge_high, high_limit, building_time, navigation_level, section_high, deck_profile_grade";
             		
@@ -223,12 +204,10 @@ public class StructureActivity extends Activity
             		// 插入数据
         			int flag = db.insertData("structure", key, values);
             		
-            		if (flag == 0)
-            		{
+            		if (flag == 0) {
             			Toast.makeText(StructureActivity.this, "添加失败", Toast.LENGTH_SHORT).show();
             		}
-            		else
-            		{
+            		else {
             			Toast.makeText(StructureActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
             			
             			Intent intent = new Intent(StructureActivity.this, PartsActivity.class);

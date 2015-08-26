@@ -20,13 +20,11 @@ import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.Toast;
 
-public class PartsActivity  extends Activity
-{	
+public class PartsActivity  extends Activity {	
 	int bg_id; // 桥梁id
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_parts);
 		
@@ -37,12 +35,10 @@ public class PartsActivity  extends Activity
 		
 		final DbOperation db = new DbOperation(PartsActivity.this);
 		
-		if (fromPrev != null)
-		{
+		if (fromPrev != null) {
 			bg_id = bundle.getInt("toNextId"); // 获取从上一页面传递过来的id
 		}
-		else if (fromNext != null)
-		{
+		else if (fromNext != null) {
 			bg_id = bundle.getInt("toPrevId"); // 获取从下一页面传递过来的id
 		}
 		
@@ -50,42 +46,33 @@ public class PartsActivity  extends Activity
 		final Cursor cursor = db.queryData("*", "parts1", "bg_id='" + bg_id + "'");
 		
 		// 如果有原始数据，则将原始数据填入文本框
-		if (cursor.moveToFirst())
-		{
+		if (cursor.moveToFirst()) {
 			String wing_wall = cursor.getString(cursor.getColumnIndex("wing_wall"));
 			String conical_slope = cursor.getString(cursor.getColumnIndex("conical_slope"));
 			
-			if (wing_wall.charAt(0) == '1')
-			{
+			if (wing_wall.charAt(0) == '1') {
 				((CheckBox) findViewById(R.id.wall_l0)).setChecked(true);
 			}
-			if (wing_wall.charAt(1) == '1')
-			{
+			if (wing_wall.charAt(1) == '1') {
 				((CheckBox) findViewById(R.id.wall_r0)).setChecked(true);
 			}
-			if (wing_wall.charAt(2) == '1')
-			{
+			if (wing_wall.charAt(2) == '1') {
 				((CheckBox) findViewById(R.id.wall_l1)).setChecked(true);
 			}
-			if (wing_wall.charAt(3) == '1')
-			{
+			if (wing_wall.charAt(3) == '1') {
 				((CheckBox) findViewById(R.id.wall_r0)).setChecked(true);
 			}
 			
-			if (conical_slope.charAt(0) == '1')
-			{
+			if (conical_slope.charAt(0) == '1') {
 				((CheckBox) findViewById(R.id.slope_l0)).setChecked(true);
 			}
-			if (conical_slope.charAt(1) == '1')
-			{
+			if (conical_slope.charAt(1) == '1') {
 				((CheckBox) findViewById(R.id.slope_r0)).setChecked(true);
 			}
-			if (conical_slope.charAt(2) == '1')
-			{
+			if (conical_slope.charAt(2) == '1') {
 				((CheckBox) findViewById(R.id.slope_l1)).setChecked(true);
 			}
-			if (conical_slope.charAt(3) == '1')
-			{
+			if (conical_slope.charAt(3) == '1') {
 				((CheckBox) findViewById(R.id.slope_r1)).setChecked(true);
 			}
 			
@@ -94,20 +81,17 @@ public class PartsActivity  extends Activity
 			((EditText) findViewById(R.id.et_pa_num)).setText(cursor.getString(cursor.getColumnIndex("pa_num")));
 			((EditText) findViewById(R.id.et_bed_num)).setText(cursor.getString(cursor.getColumnIndex("bed_num")));
 			((EditText) findViewById(R.id.et_reg_structure)).setText(cursor.getString(cursor.getColumnIndex("reg_structure")));
-			
 		}
 		
 		final EditText pier_detail = (EditText) findViewById(R.id.et_pier_detail); // 桥墩详情
 		
 		// 点击桥墩文本框触发事件
-		pier_detail.setOnTouchListener(new OnTouchListener()
-		{
+		pier_detail.setOnTouchListener(new OnTouchListener() {
+			
 			@Override
-			public boolean onTouch(View v, MotionEvent event)
-			{
+			public boolean onTouch(View v, MotionEvent event) {
 				// TODO Auto-generated method stub
-				if (event.getAction() == MotionEvent.ACTION_DOWN)
-				{
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					pierShowView(v);
 					pier_detail.setFocusable(true);
 				}
@@ -117,11 +101,10 @@ public class PartsActivity  extends Activity
 		
 		// 上一步
         Button pa_last_btn = (Button)findViewById(R.id.pa_last_btn);
-        pa_last_btn.setOnClickListener(new OnClickListener()
-        {        	
+        pa_last_btn.setOnClickListener(new OnClickListener() {
+        	
         	@Override
-        	public void onClick(View v)
-        	{
+        	public void onClick(View v) {
         		Intent intent = new Intent(PartsActivity.this, StructureActivity.class);
         		intent.putExtra("toPrevId", bg_id); // 传给上一页的id
         		intent.putExtra("toPrev", "toPrevBg"); // 跳转上一页标识
@@ -131,11 +114,10 @@ public class PartsActivity  extends Activity
         
         // 下一步
         Button pa_next_btn = (Button)findViewById(R.id.pa_next_btn);
-        pa_next_btn.setOnClickListener(new OnClickListener()
-        {        	
+        pa_next_btn.setOnClickListener(new OnClickListener() {
+        	
         	@Override
-        	public void onClick(View v)
-        	{
+        	public void onClick(View v) {
         		// 翼墙、耳墙复选框
         		CheckBox wall_l0 = (CheckBox) findViewById(R.id.wall_l0);
         		CheckBox wall_r0 = (CheckBox) findViewById(R.id.wall_r0);
@@ -152,76 +134,60 @@ public class PartsActivity  extends Activity
         		String conical_slope = ""; // 锥坡
         		
         		// 翼墙、耳墙设置值
-        		if (wall_l0.isChecked())
-        		{
+        		if (wall_l0.isChecked()) {
         			wing_wall += "1";
         		}
-        		else
-        		{
+        		else {
         			wing_wall += "0";
         		}
         		
-        		if (wall_r0.isChecked())
-        		{
+        		if (wall_r0.isChecked()) {
         			wing_wall += "1";
         		}
-        		else
-        		{
+        		else {
         			wing_wall += "0";
         		}
         		
-        		if (wall_l1.isChecked())
-        		{
+        		if (wall_l1.isChecked()) {
         			wing_wall += "1";
         		}
-        		else
-        		{
+        		else {
         			wing_wall += "0";
         		}
         		
-        		if (wall_r1.isChecked())
-        		{
+        		if (wall_r1.isChecked()) {
         			wing_wall += "1";
         		}
-        		else
-        		{
+        		else {
         			wing_wall += "0";
         		}
         		
         		// 锥坡设置值
-        		if (slope_l0.isChecked())
-        		{
+        		if (slope_l0.isChecked()) {
         			conical_slope += "1";
         		}
-        		else
-        		{
+        		else {
         			conical_slope += "0";
         		}
         		
-        		if (slope_r0.isChecked())
-        		{
+        		if (slope_r0.isChecked()) {
         			conical_slope += "1";
         		}
-        		else
-        		{
+        		else {
         			conical_slope += "0";
         		}
         		
-        		if (slope_l1.isChecked())
-        		{
+        		if (slope_l1.isChecked()) {
         			conical_slope += "1";
         		}
-        		else
-        		{
+        		else {
         			conical_slope += "0";
         		}
         		
-        		if (slope_r1.isChecked())
-        		{
+        		if (slope_r1.isChecked()) {
         			conical_slope += "1";
         		}
-        		else
-        		{
+        		else {
         			conical_slope += "0";
         		}
         		
@@ -234,8 +200,7 @@ public class PartsActivity  extends Activity
         		String pier_detail_id = "0"; // 桥墩id
         		
         		// 如果有原始数据，执行修改操作
-        		if (cursor.moveToFirst())
-        		{
+        		if (cursor.moveToFirst()) {
         			String setValue = "wing_wall='" + wing_wall + "',conical_slope='" + conical_slope + "',protection_slope='" + protection_slope 
         					+ "',pier_detail='" + pier_detail_id + "',abutment_num='" + abutment_num + "',pa_num='" + pa_num
         					+ "',bed_num='" + bed_num + "',reg_structure='" + reg_structure + "'";
@@ -243,12 +208,10 @@ public class PartsActivity  extends Activity
         			// 修改数据
         			int flag = db.updateData("parts1", setValue, "bg_id='" + bg_id + "'");
         			
-        			if (flag == 0)
-            		{
+        			if (flag == 0) {
             			Toast.makeText(PartsActivity.this, "修改失败", Toast.LENGTH_SHORT).show();
             		}
-            		else
-            		{
+            		else {
             			Toast.makeText(PartsActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
             			
             			Intent intent = new Intent(PartsActivity.this, Parts2Activity.class);
@@ -257,8 +220,7 @@ public class PartsActivity  extends Activity
                 		startActivity(intent);
             		}
         		}
-        		else // 没有则执行插入操作
-        		{
+        		else { // 没有则执行插入操作
         			String key = "bg_id, wing_wall, conical_slope, protection_slope, pier_detail,"
         					+ "abutment_num, pa_num, bed_num, reg_structure";
             		
@@ -268,12 +230,10 @@ public class PartsActivity  extends Activity
             		// 插入数据
         			int flag = db.insertData("parts1", key, values);
             		
-            		if (flag == 0)
-            		{
+            		if (flag == 0) {
             			Toast.makeText(PartsActivity.this, "添加失败", Toast.LENGTH_SHORT).show();
             		}
-            		else
-            		{
+            		else {
             			Toast.makeText(PartsActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
             			
             			Intent intent = new Intent(PartsActivity.this, Parts2Activity.class);
@@ -287,8 +247,7 @@ public class PartsActivity  extends Activity
 	}
 	
 	// 桥墩信息展示弹出框
-	public void pierShowView (View source) 
-	{
+	public void pierShowView (View source) {
 		String pier_details = "";
 		String pier_nums = "";
 		String bent_cap_nums = "";
@@ -298,8 +257,7 @@ public class PartsActivity  extends Activity
 		DbOperation db = new DbOperation(PartsActivity.this);
 		Cursor cursor = db.queryData("*", "pier_detail", "bg_id='" + bg_id + "'");
 		
-		if (cursor.moveToFirst()) 
-		{
+		if (cursor.moveToFirst()) {
 			pier_details = cursor.getString(cursor.getColumnIndex("pier_details"));
 			pier_nums = cursor.getString(cursor.getColumnIndex("pier_nums"));
 			bent_cap_nums = cursor.getString(cursor.getColumnIndex("bent_cap_nums"));
@@ -307,14 +265,12 @@ public class PartsActivity  extends Activity
 		}
 		
 		// 判断是否有桥墩数据
-		if (pier_details.length() == 0 && pier_nums.length() == 0 && bent_cap_nums.length() == 0 && tie_beam_nums.length() == 0) 
-		{
+		if (pier_details.length() == 0 && pier_nums.length() == 0 && bent_cap_nums.length() == 0 && tie_beam_nums.length() == 0) {
 			arr = new String[] {"暂无桥墩信息"};
 		}
-		else 
-		{
-			arr = new String[] 
-					{"桥墩详情：\n" + pier_details, 
+		else  {
+			arr = new String[] {
+					"桥墩详情：\n" + pier_details, 
 					"桥墩编号：\n" + pier_nums,
 					"盖梁号：\n" + bent_cap_nums, 
 					"系梁号：\n" + tie_beam_nums};
@@ -327,21 +283,19 @@ public class PartsActivity  extends Activity
 			// 设置列表项
 			.setAdapter(new ArrayAdapter<String> (this, android.R.layout.simple_list_item_1, arr), null)
 			// 设置添加按钮
-			.setPositiveButton("添加", new DialogInterface.OnClickListener ()
-			{
+			.setPositiveButton("添加", new DialogInterface.OnClickListener () {
+				
 				@Override
-				public void onClick(DialogInterface dialog, int which) 
-				{
+				public void onClick(DialogInterface dialog, int which) {
 					// TODO Auto-generated method stub
 					pierDetailView(v);
 				}				
 			})
 			// 设置返回按钮
-			.setNegativeButton("返回", new DialogInterface.OnClickListener()
-			{
+			.setNegativeButton("返回", new DialogInterface.OnClickListener() {
+				
 				@Override
-				public void onClick(DialogInterface dialog, int which) 
-				{
+				public void onClick(DialogInterface dialog, int which) {
 					// TODO Auto-generated method stub
 					
 				}				
@@ -351,8 +305,7 @@ public class PartsActivity  extends Activity
 	}
 	
 	// 新建桥墩信息弹出框
-	public void pierDetailView (View source)
-	{
+	public void pierDetailView (View source) {
 		// 装载/res/layout/pier_detail.xml界面布局
 		final TableLayout pierForm = (TableLayout) getLayoutInflater().inflate(R.layout.pier_detail, null);		
 		
@@ -362,11 +315,10 @@ public class PartsActivity  extends Activity
 			// 设置对话框显示的View对象
 			.setView(pierForm)
 			// 为对话框设置一个“确定”按钮
-			.setPositiveButton("确定", new DialogInterface.OnClickListener ()
-			{
+			.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+				
 				@Override
-				public void onClick(DialogInterface dialog, int which)
-				{
+				public void onClick(DialogInterface dialog, int which) {
 					// TODO Auto-generated method stub
 					
 					String start_pier = ((EditText) pierForm.findViewById(R.id.et_start_pier)).getText().toString(); // 起始桥墩号
@@ -380,21 +332,17 @@ public class PartsActivity  extends Activity
 	        		String tie_beam = ""; // 系梁
 	        		String tap = "0"; // 墩号标志位
 	        		
-	        		if (ck_bent_cap.isChecked())
-	        		{
+	        		if (ck_bent_cap.isChecked()) {
 	        			bent_cap = "1";
 	        		}
-	        		else
-	        		{
+	        		else {
 	        			bent_cap = "0";
 	        		}
 	        		
-	        		if (ck_tie_beam.isChecked())
-	        		{
+	        		if (ck_tie_beam.isChecked()) {
 	        			tie_beam = "1";
 	        		}
-	        		else
-	        		{
+	        		else {
 	        			tie_beam = "0";
 	        		}
 	        		
@@ -404,28 +352,22 @@ public class PartsActivity  extends Activity
 	        		Cursor cursor_pa = db.queryData("*", "pier_add", "bg_id='" + bg_id + "' and id = (select max(id) from pier_add where bg_id='" + bg_id + "')"); // 查找桥墩添加信息
 	        		
 	        		// 控制墩号
-	        		if (cursor_pa.moveToFirst())
-	        		{
-	        			if (!cursor_pa.getString(cursor_pa.getColumnIndex("tap")).equals("")) 
-	        			{
+	        		if (cursor_pa.moveToFirst()) {
+	        			if (!cursor_pa.getString(cursor_pa.getColumnIndex("tap")).equals("")) {
 	        				tap = cursor_pa.getString(cursor_pa.getColumnIndex("tap"));
 	        			}
 	        		}
 	        		
 	        		// 非空验证
-	        		if (start_pier.length() != 0 && end_pier.length() != 0 && per_pier.length() != 0) 
-	        		{
+	        		if (start_pier.length() != 0 && end_pier.length() != 0 && per_pier.length() != 0) {
 	        			// 墩号验证
-	        			if (Integer.parseInt(end_pier) < Integer.parseInt(start_pier))
-		        		{
+	        			if (Integer.parseInt(end_pier) < Integer.parseInt(start_pier)) {
 		        			Toast.makeText(PartsActivity.this, "终止桥墩号不能小于起始桥墩号", Toast.LENGTH_SHORT).show();
 		        		}
-		        		else if(Integer.parseInt(start_pier) <= Integer.parseInt(tap) && tap != "0")
-		        		{
+		        		else if(Integer.parseInt(start_pier) <= Integer.parseInt(tap) && tap != "0") {
 		        			Toast.makeText(PartsActivity.this, "起始桥墩号须大于" + tap, Toast.LENGTH_SHORT).show();
 		        		}
-		        		else 
-		        		{
+		        		else {
 		        			// 验证通过，赋tap值
 		        			tap = end_pier;
 		        			
@@ -438,20 +380,17 @@ public class PartsActivity  extends Activity
 		            		// 插入数据
 		            		int flag1 = db.insertData("pier_add", key, values);
 		            		
-		            		if (flag1 == 0)
-		            		{
+		            		if (flag1 == 0) {
 		            			Toast.makeText(PartsActivity.this, "桥墩编号添加失败", Toast.LENGTH_SHORT).show();
 		            		}
-		            		else
-		            		{
+		            		else {
 		            			String pier_details = "";
 		            			String pier_nums = "";
 		            			String bent_cap_nums = "";
 		            			String tie_beam_nums = "";
 		            			
 		            			Cursor cursor = db.queryData("*", "pier_detail", "bg_id='" + bg_id + "'");
-		            			if (cursor.moveToFirst())
-		            			{
+		            			if (cursor.moveToFirst()) {
 		            				pier_details = cursor.getString(cursor.getColumnIndex("pier_details"));
 		            				pier_nums = cursor.getString(cursor.getColumnIndex("pier_nums"));
 		            				bent_cap_nums = cursor.getString(cursor.getColumnIndex("bent_cap_nums"));
@@ -464,21 +403,17 @@ public class PartsActivity  extends Activity
 		            			// 设置桥墩细节
 		            			pier_details += "从" + start_pier + "墩到" + end_pier + "墩，每墩" + per_pier + "个墩身，" + bc + tb;
 		            			
-		            			for(int i = Integer.parseInt(start_pier); i <= Integer.parseInt(end_pier); i++) 
-		            			{
-		            				for (int j = 1; j <= Integer.parseInt(per_pier); j++) 
-		            				{
+		            			for(int i = Integer.parseInt(start_pier); i <= Integer.parseInt(end_pier); i++) {
+		            				for (int j = 1; j <= Integer.parseInt(per_pier); j++) {
 		            					pier_nums += i + "-" + j + "; "; // 设置桥墩编号                    			
 		            				}
 		            				pier_nums += "\n";
 		            				
-		            				if (bent_cap == "1") 
-		            				{
+		            				if (bent_cap == "1") {
 		            					bent_cap_nums += i + ", "; // 设置盖梁编号
 		            				}
 		            				
-		            				if (tie_beam == "1") 
-		            				{
+		            				if (tie_beam == "1") {
 		            					tie_beam_nums += i + ", "; // 设置系梁编号
 		            				}
 		            			}
@@ -486,44 +421,38 @@ public class PartsActivity  extends Activity
 		            			int flag2 = 0;
 		            			
 		            			// 如果有原始数据，执行修改操作
-		            			if (cursor.moveToFirst())
-		            			{
+		            			if (cursor.moveToFirst()) {
 		            				String setValue = "pier_details='" + pier_details + "',pier_nums='" + pier_nums + "',bent_cap_nums='" + bent_cap_nums 
 		                					+ "',tie_beam_nums='" + tie_beam_nums + "'";
 		            				
 		            				flag2 = db.updateData("pier_detail", setValue, "bg_id='" + bg_id + "'");
 		            			}
-		            			else // 没有则执行插入操作
-		            			{
+		            			else { // 没有则执行插入操作
 		            				String detail_key = "bg_id, pier_details, pier_nums, bent_cap_nums, tie_beam_nums";
 			            			String detail_values = "'" + bg_id + "','" + pier_details + "','" + pier_nums + "','" + bent_cap_nums + "','" + tie_beam_nums + "'";
 			            			
 			            			flag2 = db.insertData("pier_detail", detail_key, detail_values);
 		            			}
 		            			
-		            			if (flag2 == 0)
-		                		{
+		            			if (flag2 == 0) {
 		                			Toast.makeText(PartsActivity.this, "桥墩细节添加失败", Toast.LENGTH_SHORT).show();
 		                		}
-		            			else 
-		            			{
+		            			else {
 		            				Toast.makeText(PartsActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
 		            			}
 		            		}
 		        		}
 	        		}
-	        		else 
-	        		{
+	        		else {
 	        			Toast.makeText(PartsActivity.this, "墩号不能为空", Toast.LENGTH_SHORT).show();
 	        		}
 				}
 			})
 			// 为对话框设置一个“取消”按钮
-			.setNegativeButton("取消", new DialogInterface.OnClickListener()
-			{
+			.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+				
 				@Override
-				public void onClick(DialogInterface dialog, int which)
-				{
+				public void onClick(DialogInterface dialog, int which) {
 					// TODO Auto-generated method stub
 					
 				}

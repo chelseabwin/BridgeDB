@@ -21,13 +21,11 @@ import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.Toast;
 
-public class Parts2Activity  extends Activity 
-{	
+public class Parts2Activity  extends Activity {	
 	int bg_id; // 桥梁id
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) 
-	{
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_parts2);
 		
@@ -38,12 +36,10 @@ public class Parts2Activity  extends Activity
 		
 		final DbOperation db = new DbOperation(Parts2Activity.this);
 		
-		if (fromPrev != null)
-		{
+		if (fromPrev != null) {
 			bg_id = bundle.getInt("toNextId"); // 获取从上一页面传递过来的id
 		}
-		else if (fromNext != null)
-		{
+		else if (fromNext != null) {
 			bg_id = bundle.getInt("toPrevId"); // 获取从下一页面传递过来的id
 		}
 		
@@ -51,26 +47,21 @@ public class Parts2Activity  extends Activity
 		final Cursor cursor = db.queryData("*", "parts2", "bg_id='" + bg_id + "'");
 		
 		// 如果有原始数据，则将原始数据填入文本框
-		if (cursor.moveToFirst())
-		{
+		if (cursor.moveToFirst()) {
 			String sidewalk = cursor.getString(cursor.getColumnIndex("sidewalk"));
 			String guardrail = cursor.getString(cursor.getColumnIndex("guardrail"));
 			
-			if (sidewalk.charAt(0) == '1')
-			{
+			if (sidewalk.charAt(0) == '1') {
 				((CheckBox) findViewById(R.id.sidewalk_l)).setChecked(true);
 			}
-			if (sidewalk.charAt(1) == '1')
-			{
+			if (sidewalk.charAt(1) == '1') {
 				((CheckBox) findViewById(R.id.sidewalk_r)).setChecked(true);
 			}
 			
-			if (guardrail.charAt(0) == '1')
-			{
+			if (guardrail.charAt(0) == '1') {
 				((CheckBox) findViewById(R.id.guardrail_l)).setChecked(true);
 			}
-			if (guardrail.charAt(1) == '1')
-			{
+			if (guardrail.charAt(1) == '1') {
 				((CheckBox) findViewById(R.id.guardrail_r)).setChecked(true);
 			}
 			
@@ -85,14 +76,12 @@ public class Parts2Activity  extends Activity
 		EditText support_detail = (EditText) findViewById(R.id.et_support_detail); // 支座详情
 		
 		// 点击上部承重构件文本框触发事件
-		load_detail.setOnTouchListener(new OnTouchListener() 
-		{
+		load_detail.setOnTouchListener(new OnTouchListener() {
+			
 			@Override
-			public boolean onTouch(View v, MotionEvent event) 
-			{
+			public boolean onTouch(View v, MotionEvent event) {
 				// TODO Auto-generated method stub
-				if (event.getAction() == MotionEvent.ACTION_DOWN) 
-				{
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					loadShowView(v);
 				}
 				return true;
@@ -100,14 +89,12 @@ public class Parts2Activity  extends Activity
 		});
 		
 		// 点击上部一般构件文本框触发事件
-		general_detail.setOnTouchListener(new OnTouchListener() 
-		{
+		general_detail.setOnTouchListener(new OnTouchListener() {
+			
 			@Override
-			public boolean onTouch(View v, MotionEvent event) 
-			{
+			public boolean onTouch(View v, MotionEvent event) {
 				// TODO Auto-generated method stub
-				if (event.getAction() == MotionEvent.ACTION_DOWN) 
-				{
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					generalShowView(v);
 				}
 				return true;
@@ -115,14 +102,12 @@ public class Parts2Activity  extends Activity
 		});
 		
 		// 点击支座文本框触发事件
-		support_detail.setOnTouchListener(new OnTouchListener() 
-		{
+		support_detail.setOnTouchListener(new OnTouchListener() {
+			
 			@Override
-			public boolean onTouch(View v, MotionEvent event) 
-			{
+			public boolean onTouch(View v, MotionEvent event) {
 				// TODO Auto-generated method stub
-				if (event.getAction() == MotionEvent.ACTION_DOWN) 
-				{
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					supportShowView(v);
 				}
 				return true;
@@ -131,11 +116,10 @@ public class Parts2Activity  extends Activity
 		
 		// 上一步
         Button pa2_last_btn = (Button)findViewById(R.id.pa2_last_btn);
-        pa2_last_btn.setOnClickListener(new OnClickListener() 
-        {        	
+        pa2_last_btn.setOnClickListener(new OnClickListener() {
+        	
         	@Override
-        	public void onClick(View v) 
-        	{
+        	public void onClick(View v) {
         		Intent intent = new Intent(Parts2Activity.this, PartsActivity.class);
         		intent.putExtra("toPrevId", bg_id); // 传给上一页的id
         		intent.putExtra("toPrev", "toPrevBg"); // 跳转上一页标识
@@ -145,11 +129,10 @@ public class Parts2Activity  extends Activity
         
         // 下一步
         Button pa2_finish_btn = (Button)findViewById(R.id.pa2_finish_btn);
-        pa2_finish_btn.setOnClickListener(new OnClickListener() 
-        {        	
+        pa2_finish_btn.setOnClickListener(new OnClickListener() {
+        	
         	@Override
-        	public void onClick(View v) 
-        	{        		
+        	public void onClick(View v) {        		
         		// 人行道复选框
         		CheckBox sidewalk_l = (CheckBox) findViewById(R.id.sidewalk_l);
         		CheckBox sidewalk_r = (CheckBox) findViewById(R.id.sidewalk_r);
@@ -162,40 +145,32 @@ public class Parts2Activity  extends Activity
         		String guardrail = ""; // 栏杆、护栏
         		
         		// 人行道设置值
-        		if (sidewalk_l.isChecked())
-        		{
+        		if (sidewalk_l.isChecked()) {
         			sidewalk += "1";
         		}
-        		else
-        		{
+        		else {
         			sidewalk += "0";
         		}
         		
-        		if (sidewalk_r.isChecked())
-        		{
+        		if (sidewalk_r.isChecked()) {
         			sidewalk += "1";
         		}
-        		else
-        		{
+        		else {
         			sidewalk += "0";
         		}
         		
         		// 栏杆、护栏设置值
-        		if (guardrail_l.isChecked())
-        		{
+        		if (guardrail_l.isChecked()) {
         			guardrail += "1";
         		}
-        		else
-        		{
+        		else {
         			guardrail += "0";
         		}
         		
-        		if (guardrail_r.isChecked())
-        		{
+        		if (guardrail_r.isChecked()) {
         			guardrail += "1";
         		}
-        		else
-        		{
+        		else {
         			guardrail += "0";
         		}
         		
@@ -209,8 +184,7 @@ public class Parts2Activity  extends Activity
         		String support_detail_id = "0"; // 支座id
         		
         		// 如果有原始数据，执行修改操作
-        		if (cursor.moveToFirst())
-        		{
+        		if (cursor.moveToFirst()) {
         			String setValue = "load_detail='" + load_detail_id + "',general_detail='" + general_detail_id + "',support_detail='" + support_detail_id 
         					+ "',deck_num='" + deck_num + "',joint_num='" + joint_num + "',sidewalk='" + sidewalk + "',guardrail='" + guardrail 
         					+ "',drainage_system='" + drainage_system + "',illuminated_sign='" + illuminated_sign + "'";
@@ -218,20 +192,17 @@ public class Parts2Activity  extends Activity
         			// 修改数据
         			int flag = db.updateData("parts2", setValue, "bg_id='" + bg_id + "'");
         			
-        			if (flag == 0)
-            		{
+        			if (flag == 0) {
             			Toast.makeText(Parts2Activity.this, "修改失败", Toast.LENGTH_SHORT).show();
             		}
-            		else
-            		{
+            		else {
             			Toast.makeText(Parts2Activity.this, "修改成功", Toast.LENGTH_SHORT).show();
             			
             			Intent intent = new Intent(Parts2Activity.this, MainActivity.class);
                 		startActivity(intent);
             		}
         		}
-        		else // 没有则执行插入操作
-        		{
+        		else { // 没有则执行插入操作
         			String key = "bg_id, load_detail, general_detail, support_detail, deck_num, joint_num,"
         					+ "sidewalk, guardrail, drainage_system, illuminated_sign";
             		
@@ -241,12 +212,10 @@ public class Parts2Activity  extends Activity
             		// 插入数据
         			int flag = db.insertData("parts2", key, values);
             		
-            		if (flag == 0)
-            		{
+            		if (flag == 0) {
             			Toast.makeText(Parts2Activity.this, "添加失败", Toast.LENGTH_SHORT).show();
             		}
-            		else
-            		{
+            		else {
             			Toast.makeText(Parts2Activity.this, "添加成功", Toast.LENGTH_SHORT).show();
             			
             			Intent intent = new Intent(Parts2Activity.this, MainActivity.class);
@@ -258,8 +227,7 @@ public class Parts2Activity  extends Activity
 	}
 	
 	// 上部承重构件信息展示弹出框
-	public void loadShowView(View source) 
-	{
+	public void loadShowView(View source) {
 		String load_details = "";
 		String load_nums = "";
 		String[] arr;
@@ -267,21 +235,18 @@ public class Parts2Activity  extends Activity
 		DbOperation db = new DbOperation(Parts2Activity.this);
 		Cursor cursor = db.queryData("*", "load_detail", "bg_id='" + bg_id + "'");
 		
-		if (cursor.moveToFirst()) 
-		{
+		if (cursor.moveToFirst()) {
 			load_details = cursor.getString(cursor.getColumnIndex("load_details"));
 			load_nums = cursor.getString(cursor.getColumnIndex("load_nums"));
 		}
 		
 		// 判断是否有上部承重构件数据
-		if (load_details.length() == 0 && load_nums.length() == 0) 
-		{
+		if (load_details.length() == 0 && load_nums.length() == 0) {
 			arr = new String[] {"暂无上部承重构件信息"};
 		}
-		else 
-		{
-			arr = new String[] 
-					{"上部承重构件详情：\n" + load_details, 
+		else {
+			arr = new String[] {
+					"上部承重构件详情：\n" + load_details, 
 					"上部承重构件编号：\n" + load_nums};
 		}
 		 
@@ -292,21 +257,18 @@ public class Parts2Activity  extends Activity
 			// 设置列表项
 			.setAdapter(new ArrayAdapter<String> (this, android.R.layout.simple_list_item_1, arr), null)
 			// 设置添加按钮
-			.setPositiveButton("添加", new DialogInterface.OnClickListener ()
-			{
+			.setPositiveButton("添加", new DialogInterface.OnClickListener () {
+				
 				@Override
-				public void onClick(DialogInterface dialog, int which) 
-				{
+				public void onClick(DialogInterface dialog, int which) {
 					// TODO Auto-generated method stub
 					loadDetailView(v);
 				}				
 			})
 			// 设置返回按钮
-			.setNegativeButton("返回", new DialogInterface.OnClickListener()
-			{
+			.setNegativeButton("返回", new DialogInterface.OnClickListener() {
 				@Override
-				public void onClick(DialogInterface dialog, int which) 
-				{
+				public void onClick(DialogInterface dialog, int which) {
 					// TODO Auto-generated method stub
 					
 				}				
@@ -316,8 +278,7 @@ public class Parts2Activity  extends Activity
 	}
 	
 	// 新建上部承重构件信息弹出框
-	public void loadDetailView(View source) 
-	{
+	public void loadDetailView(View source) {
 		// 装载/res/layout/load_general_detail.xml界面布局
 		final TableLayout loadForm = (TableLayout)getLayoutInflater()
 			.inflate( R.layout.load_general_detail, null);		
@@ -327,11 +288,10 @@ public class Parts2Activity  extends Activity
 			// 设置对话框显示的View对象
 			.setView(loadForm)
 			// 为对话框设置一个“确定”按钮
-			.setPositiveButton("确定", new DialogInterface.OnClickListener() 
-			{
+			.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+				
 				@Override
-				public void onClick(DialogInterface dialog, int which) 
-				{
+				public void onClick(DialogInterface dialog, int which) {
 					// TODO Auto-generated method stub
 					
 					String start_load = ((EditText) loadForm.findViewById(R.id.et_start_stride)).getText().toString(); // 起始跨号
@@ -346,28 +306,22 @@ public class Parts2Activity  extends Activity
 	        		Cursor cursor_la = db.queryData("*", "load_add", "bg_id='" + bg_id + "' and id = (select max(id) from load_add where bg_id='" + bg_id + "')"); // 查找桥跨添加信息
 					
 	        		// 控制跨号
-	        		if (cursor_la.moveToFirst())
-	        		{
-	        			if (!cursor_la.getString(cursor_la.getColumnIndex("tap")).equals("")) 
-	        			{
+	        		if (cursor_la.moveToFirst()) {
+	        			if (!cursor_la.getString(cursor_la.getColumnIndex("tap")).equals("")) {
 	        				tap = cursor_la.getString(cursor_la.getColumnIndex("tap"));
 	        			}
 	        		}
 	        		
 	        		// 非空验证
-	        		if (start_load.length() != 0 && end_load.length() != 0 && per_load.length() != 0) 
-	        		{
+	        		if (start_load.length() != 0 && end_load.length() != 0 && per_load.length() != 0) {
 	        			// 垮号验证
-	        			if (Integer.parseInt(end_load) < Integer.parseInt(start_load))
-		        		{
+	        			if (Integer.parseInt(end_load) < Integer.parseInt(start_load)) {
 		        			Toast.makeText(Parts2Activity.this, "终止跨号不能小于起始跨号", Toast.LENGTH_SHORT).show();
 		        		}
-		        		else if(Integer.parseInt(start_load) <= Integer.parseInt(tap) && tap != "0")
-		        		{
+		        		else if(Integer.parseInt(start_load) <= Integer.parseInt(tap) && tap != "0") {
 		        			Toast.makeText(Parts2Activity.this, "起始跨号须大于" + tap, Toast.LENGTH_SHORT).show();
 		        		}
-		        		else 
-		        		{
+		        		else {
 		        			// 验证通过，赋tap值
 		        			tap = end_load;
 		        			
@@ -379,18 +333,15 @@ public class Parts2Activity  extends Activity
 		            		// 插入数据
 		            		int flag1 = db.insertData("load_add", key, values);
 		            		
-		            		if (flag1 == 0)
-		            		{
+		            		if (flag1 == 0) {
 		            			Toast.makeText(Parts2Activity.this, "跨号添加失败", Toast.LENGTH_SHORT).show();
 		            		}
-		            		else
-		            		{
+		            		else {
 		            			String load_details = "";
 		            			String load_nums = "";
 		            			
 		            			Cursor cursor = db.queryData("*", "load_detail", "bg_id='" + bg_id + "'");
-		            			if (cursor.moveToFirst())
-		            			{
+		            			if (cursor.moveToFirst()) {
 		            				load_details = cursor.getString(cursor.getColumnIndex("load_details"));
 		            				load_nums = cursor.getString(cursor.getColumnIndex("load_nums"));
 		            			}
@@ -398,10 +349,8 @@ public class Parts2Activity  extends Activity
 		            			// 设置桥跨细节
 		            			load_details += "从" + start_load + "跨到" + end_load + "跨，每跨" + per_load + "个\n";
 		            			
-		            			for (int i = Integer.parseInt(start_load); i <= Integer.parseInt(end_load); i++) 
-		            			{
-		            				for (int j = 1; j <= Integer.parseInt(per_load); j++) 
-		            				{
+		            			for (int i = Integer.parseInt(start_load); i <= Integer.parseInt(end_load); i++) {
+		            				for (int j = 1; j <= Integer.parseInt(per_load); j++) {
 		            					load_nums += i + "-" + j + "; "; // 设置桥跨编号                    			
 		            				}
 		            				load_nums += "\n";
@@ -410,43 +359,37 @@ public class Parts2Activity  extends Activity
 		            			int flag2 = 0;
 		            			
 		            			// 如果有原始数据，执行修改操作
-		            			if (cursor.moveToFirst())
-		            			{
+		            			if (cursor.moveToFirst()) {
 		            				String setValue = "load_details='" + load_details + "',load_nums='" + load_nums + "'";
 		            				
 		            				flag2 = db.updateData("load_detail", setValue, "bg_id='" + bg_id + "'");
 		            			}
-		            			else // 没有则执行插入操作
-		            			{
+		            			else { // 没有则执行插入操作
 		            				String detail_key = "bg_id, load_details, load_nums";
 			            			String detail_values = "'" + bg_id + "','" + load_details + "','" + load_nums + "'";
 			            			
 			            			flag2 = db.insertData("load_detail", detail_key, detail_values);
 		            			}
 		            			
-		            			if (flag2 == 0)
-		                		{
+		            			if (flag2 == 0) {
 		                			Toast.makeText(Parts2Activity.this, "桥跨细节添加失败", Toast.LENGTH_SHORT).show();
 		                		}
-		            			else 
-		            			{
+		            			else {
 		            				Toast.makeText(Parts2Activity.this, "添加成功", Toast.LENGTH_SHORT).show();
 		            			}
 		            		}
 		        		}
 	        		}
-	        		else 
-	        		{
+	        		else {
 	        			Toast.makeText(Parts2Activity.this, "跨号不能为空", Toast.LENGTH_SHORT).show();
 	        		}
 				}
 			})
 			// 为对话框设置一个“取消”按钮
-			.setNegativeButton("取消", new DialogInterface.OnClickListener() 
-			{
+			.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+				
 				@Override
-				public void onClick(DialogInterface dialog, int which) 
-				{
+				public void onClick(DialogInterface dialog, int which) {
 					// TODO Auto-generated method stub
 					
 				}
@@ -457,8 +400,7 @@ public class Parts2Activity  extends Activity
 	}
 	
 	// 上部一般构件信息展示弹出框
-	public void generalShowView(View source) 
-	{
+	public void generalShowView(View source) {
 		String general_details = "";
 		String general_nums = "";
 		String[] arr;
@@ -466,21 +408,18 @@ public class Parts2Activity  extends Activity
 		DbOperation db = new DbOperation(Parts2Activity.this);
 		Cursor cursor = db.queryData("*", "general_detail", "bg_id='" + bg_id + "'");
 		
-		if (cursor.moveToFirst()) 
-		{
+		if (cursor.moveToFirst()) {
 			general_details = cursor.getString(cursor.getColumnIndex("general_details"));
 			general_nums = cursor.getString(cursor.getColumnIndex("general_nums"));
 		}
 		
 		// 判断是否有上部一般构件数据
-		if (general_details.length() == 0 && general_nums.length() == 0) 
-		{
+		if (general_details.length() == 0 && general_nums.length() == 0) {
 			arr = new String[] {"暂无上部一般构件信息"};
 		}
-		else 
-		{
-			arr = new String[] 
-					{"上部一般构件详情：\n" + general_details, 
+		else {
+			arr = new String[] {
+					"上部一般构件详情：\n" + general_details, 
 					"上部一般构件编号：\n" + general_nums};
 		}
 		 
@@ -491,21 +430,19 @@ public class Parts2Activity  extends Activity
 			// 设置列表项
 			.setAdapter(new ArrayAdapter<String> (this, android.R.layout.simple_list_item_1, arr), null)
 			// 设置添加按钮
-			.setPositiveButton("添加", new DialogInterface.OnClickListener ()
-			{
+			.setPositiveButton("添加", new DialogInterface.OnClickListener () {
+				
 				@Override
-				public void onClick(DialogInterface dialog, int which) 
-				{
+				public void onClick(DialogInterface dialog, int which) {
 					// TODO Auto-generated method stub
 					generalDetailView(v);
 				}				
 			})
 			// 设置返回按钮
-			.setNegativeButton("返回", new DialogInterface.OnClickListener()
-			{
+			.setNegativeButton("返回", new DialogInterface.OnClickListener() {
+				
 				@Override
-				public void onClick(DialogInterface dialog, int which) 
-				{
+				public void onClick(DialogInterface dialog, int which) {
 					// TODO Auto-generated method stub
 					
 				}				
@@ -515,8 +452,7 @@ public class Parts2Activity  extends Activity
 	}
 	
 	// 新建上部一般构件信息弹出框
-	public void generalDetailView(View source) 
-	{
+	public void generalDetailView(View source) {
 		// 装载/res/layout/load_general_detail.xml界面布局
 		final TableLayout generalForm = (TableLayout)getLayoutInflater().inflate(R.layout.load_general_detail, null);
 		
@@ -526,11 +462,10 @@ public class Parts2Activity  extends Activity
 			// 设置对话框显示的View对象
 			.setView(generalForm)
 			// 为对话框设置一个“确定”按钮
-			.setPositiveButton("确定", new DialogInterface.OnClickListener() 
-			{
+			.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+				
 				@Override
-				public void onClick(DialogInterface dialog, int which) 
-				{
+				public void onClick(DialogInterface dialog, int which) {
 					// TODO Auto-generated method stub
 					
 					String start_general = ((EditText) generalForm.findViewById(R.id.et_start_stride)).getText().toString(); // 起始跨号
@@ -545,28 +480,22 @@ public class Parts2Activity  extends Activity
 	        		Cursor cursor_ga = db.queryData("*", "general_add", "bg_id='" + bg_id + "' and id = (select max(id) from general_add where bg_id='" + bg_id + "')"); // 查找桥跨添加信息
 					
 	        		// 控制跨号
-	        		if (cursor_ga.moveToFirst())
-	        		{
-	        			if (!cursor_ga.getString(cursor_ga.getColumnIndex("tap")).equals("")) 
-	        			{
+	        		if (cursor_ga.moveToFirst()) {
+	        			if (!cursor_ga.getString(cursor_ga.getColumnIndex("tap")).equals("")) {
 	        				tap = cursor_ga.getString(cursor_ga.getColumnIndex("tap"));
 	        			}
 	        		}
 	        		
 	        		// 非空验证
-	        		if (start_general.length() != 0 && end_general.length() != 0 && per_general.length() != 0) 
-	        		{
+	        		if (start_general.length() != 0 && end_general.length() != 0 && per_general.length() != 0) {
 	        			// 垮号验证
-	        			if (Integer.parseInt(end_general) < Integer.parseInt(start_general))
-		        		{
+	        			if (Integer.parseInt(end_general) < Integer.parseInt(start_general)) {
 		        			Toast.makeText(Parts2Activity.this, "终止跨号不能小于起始跨号", Toast.LENGTH_SHORT).show();
 		        		}
-		        		else if(Integer.parseInt(start_general) <= Integer.parseInt(tap) && tap != "0")
-		        		{
+		        		else if(Integer.parseInt(start_general) <= Integer.parseInt(tap) && tap != "0") {
 		        			Toast.makeText(Parts2Activity.this, "起始跨号须大于" + tap, Toast.LENGTH_SHORT).show();
 		        		}
-		        		else 
-		        		{
+		        		else {
 		        			// 验证通过，赋tap值
 		        			tap = end_general;
 		        			
@@ -578,18 +507,15 @@ public class Parts2Activity  extends Activity
 		            		// 插入数据
 		            		int flag1 = db.insertData("general_add", key, values);
 		            		
-		            		if (flag1 == 0)
-		            		{
+		            		if (flag1 == 0) {
 		            			Toast.makeText(Parts2Activity.this, "跨号添加失败", Toast.LENGTH_SHORT).show();
 		            		}
-		            		else
-		            		{
+		            		else {
 		            			String general_details = "";
 		            			String general_nums = "";
 		            			
 		            			Cursor cursor = db.queryData("*", "general_detail", "bg_id='" + bg_id + "'");
-		            			if (cursor.moveToFirst())
-		            			{
+		            			if (cursor.moveToFirst()) {
 		            				general_details = cursor.getString(cursor.getColumnIndex("general_details"));
 		            				general_nums = cursor.getString(cursor.getColumnIndex("general_nums"));
 		            			}
@@ -597,10 +523,8 @@ public class Parts2Activity  extends Activity
 		            			// 设置桥跨细节
 		            			general_details += "从" + start_general + "跨到" + end_general + "跨，每跨" + per_general + "个\n";
 		            			
-		            			for (int i = Integer.parseInt(start_general); i <= Integer.parseInt(end_general); i++) 
-		            			{
-		            				for (int j = 1; j <= Integer.parseInt(per_general); j++) 
-		            				{
+		            			for (int i = Integer.parseInt(start_general); i <= Integer.parseInt(end_general); i++) {
+		            				for (int j = 1; j <= Integer.parseInt(per_general); j++) {
 		            					general_nums += i + "-" + j + "; "; // 设置桥跨编号                    			
 		            				}
 		            				general_nums += "\n";
@@ -609,43 +533,37 @@ public class Parts2Activity  extends Activity
 		            			int flag2 = 0;
 		            			
 		            			// 如果有原始数据，执行修改操作
-		            			if (cursor.moveToFirst())
-		            			{
+		            			if (cursor.moveToFirst()) {
 		            				String setValue = "general_details='" + general_details + "',general_nums='" + general_nums + "'";
 		            				
 		            				flag2 = db.updateData("general_detail", setValue, "bg_id='" + bg_id + "'");
 		            			}
-		            			else // 没有则执行插入操作
-		            			{
+		            			else { // 没有则执行插入操作
 		            				String detail_key = "bg_id, general_details, general_nums";
 			            			String detail_values = "'" + bg_id + "','" + general_details + "','" + general_nums + "'";
 			            			
 			            			flag2 = db.insertData("general_detail", detail_key, detail_values);
 		            			}
 		            			
-		            			if (flag2 == 0)
-		                		{
+		            			if (flag2 == 0) {
 		                			Toast.makeText(Parts2Activity.this, "桥跨细节添加失败", Toast.LENGTH_SHORT).show();
 		                		}
-		            			else 
-		            			{
+		            			else {
 		            				Toast.makeText(Parts2Activity.this, "添加成功", Toast.LENGTH_SHORT).show();
 		            			}
 		            		}
 		        		}
 	        		}
-	        		else 
-	        		{
+	        		else {
 	        			Toast.makeText(Parts2Activity.this, "跨号不能为空", Toast.LENGTH_SHORT).show();
 	        		}
 				}
 			})
 			// 为对话框设置一个“取消”按钮
-			.setNegativeButton("取消", new DialogInterface.OnClickListener() 
-			{
+			.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+				
 				@Override
-				public void onClick(DialogInterface dialog, int which) 
-				{
+				public void onClick(DialogInterface dialog, int which) {
 					// TODO Auto-generated method stub
 					
 				}
@@ -656,8 +574,7 @@ public class Parts2Activity  extends Activity
 	}
 	
 	// 支座信息展示弹出框
-	public void supportShowView(View source) 
-	{
+	public void supportShowView(View source) {
 		String support_details = "";
 		String support_nums = "";
 		String[] arr;
@@ -665,21 +582,18 @@ public class Parts2Activity  extends Activity
 		DbOperation db = new DbOperation(Parts2Activity.this);
 		Cursor cursor = db.queryData("*", "support_detail", "bg_id='" + bg_id + "'");
 		
-		if (cursor.moveToFirst()) 
-		{
+		if (cursor.moveToFirst()) {
 			support_details = cursor.getString(cursor.getColumnIndex("support_details"));
 			support_nums = cursor.getString(cursor.getColumnIndex("support_nums"));
 		}
 		
 		// 判断是否有支座数据
-		if (support_details.length() == 0 && support_nums.length() == 0) 
-		{
+		if (support_details.length() == 0 && support_nums.length() == 0) {
 			arr = new String[] {"暂无支座信息"};
 		}
-		else 
-		{
-			arr = new String[] 
-					{"支座详情：\n" + support_details, 
+		else {
+			arr = new String[] {
+					"支座详情：\n" + support_details, 
 					"支座编号：\n" + support_nums};
 		}
 		 
@@ -690,21 +604,19 @@ public class Parts2Activity  extends Activity
 			// 设置列表项
 			.setAdapter(new ArrayAdapter<String> (this, android.R.layout.simple_list_item_1, arr), null)
 			// 设置添加按钮
-			.setPositiveButton("添加", new DialogInterface.OnClickListener ()
-			{
+			.setPositiveButton("添加", new DialogInterface.OnClickListener () {
+				
 				@Override
-				public void onClick(DialogInterface dialog, int which) 
-				{
+				public void onClick(DialogInterface dialog, int which) {
 					// TODO Auto-generated method stub
 					supportDetailView(v);
 				}				
 			})
 			// 设置返回按钮
-			.setNegativeButton("返回", new DialogInterface.OnClickListener()
-			{
+			.setNegativeButton("返回", new DialogInterface.OnClickListener() {
+				
 				@Override
-				public void onClick(DialogInterface dialog, int which) 
-				{
+				public void onClick(DialogInterface dialog, int which) {
 					// TODO Auto-generated method stub
 					
 				}				
@@ -714,8 +626,7 @@ public class Parts2Activity  extends Activity
 	}
 	
 	// 新建支座信息弹出框
-	public void supportDetailView(View source) 
-	{
+	public void supportDetailView(View source) {
 		// 装载/res/layout/support_detail.xml界面布局
 		final TableLayout supportForm = (TableLayout)getLayoutInflater().inflate(R.layout.support_detail, null);
 		
@@ -725,11 +636,10 @@ public class Parts2Activity  extends Activity
 			// 设置对话框显示的View对象
 			.setView(supportForm)
 			// 为对话框设置一个“确定”按钮
-			.setPositiveButton("确定", new DialogInterface.OnClickListener() 
-			{
+			.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+				
 				@Override
-				public void onClick(DialogInterface dialog, int which) 
-				{
+				public void onClick(DialogInterface dialog, int which) {
 					// TODO Auto-generated method stub
 					
 					String start_support = ((EditText) supportForm.findViewById(R.id.et_start_spt)).getText().toString(); // 起始墩号
@@ -745,28 +655,22 @@ public class Parts2Activity  extends Activity
 	        		Cursor cursor_sa = db.queryData("*", "support_add", "bg_id='" + bg_id + "' and id = (select max(id) from support_add where bg_id='" + bg_id + "')"); // 查找支座添加信息
 					
 	        		// 控制墩（台）号
-	        		if (cursor_sa.moveToFirst())
-	        		{
-	        			if (!cursor_sa.getString(cursor_sa.getColumnIndex("tap")).equals("")) 
-	        			{
+	        		if (cursor_sa.moveToFirst()) {
+	        			if (!cursor_sa.getString(cursor_sa.getColumnIndex("tap")).equals("")) {
 	        				tap = cursor_sa.getString(cursor_sa.getColumnIndex("tap"));
 	        			}
 	        		}
 	        		
 	        		// 非空验证
-	        		if (start_support.length() != 0 && end_support.length() != 0 && raw_num.length() != 0 && support_num.length() != 0) 
-	        		{
+	        		if (start_support.length() != 0 && end_support.length() != 0 && raw_num.length() != 0 && support_num.length() != 0) {
 	        			// 墩（台）号验证
-	        			if (Integer.parseInt(end_support) < Integer.parseInt(start_support))
-		        		{
+	        			if (Integer.parseInt(end_support) < Integer.parseInt(start_support)) {
 		        			Toast.makeText(Parts2Activity.this, "终止墩（台）号不能小于起始墩（台）号", Toast.LENGTH_SHORT).show();
 		        		}
-		        		else if(Integer.parseInt(start_support) <= Integer.parseInt(tap) && tap != "0")
-		        		{
+		        		else if(Integer.parseInt(start_support) <= Integer.parseInt(tap) && tap != "0") {
 		        			Toast.makeText(Parts2Activity.this, "起始墩（台）号须大于" + tap, Toast.LENGTH_SHORT).show();
 		        		}
-		        		else 
-		        		{
+		        		else {
 		        			// 验证通过，赋tap值
 		        			tap = end_support;
 		        			
@@ -778,18 +682,15 @@ public class Parts2Activity  extends Activity
 		            		// 插入数据
 		            		int flag1 = db.insertData("support_add", key, values);
 		            		
-		            		if (flag1 == 0)
-		            		{
+		            		if (flag1 == 0) {
 		            			Toast.makeText(Parts2Activity.this, "墩（台）号添加失败", Toast.LENGTH_SHORT).show();
 		            		}
-		            		else
-		            		{
+		            		else {
 		            			String support_details = "";
 		            			String support_nums = "";
 		            			
 		            			Cursor cursor = db.queryData("*", "support_detail", "bg_id='" + bg_id + "'");
-		            			if (cursor.moveToFirst())
-		            			{
+		            			if (cursor.moveToFirst()) {
 		            				support_details = cursor.getString(cursor.getColumnIndex("support_details"));
 		            				support_nums = cursor.getString(cursor.getColumnIndex("support_nums"));
 		            			}
@@ -797,12 +698,9 @@ public class Parts2Activity  extends Activity
 		            			// 设置支座细节
 		            			support_details += "从" + start_support + "墩台到" + end_support + "墩台，每墩台" + raw_num + "排，每排" + support_num + "个\n";
 		            			
-		            			for (int i = Integer.parseInt(start_support); i <= Integer.parseInt(end_support); i++) 
-		            			{
-		            				for (int j = 1; j <= Integer.parseInt(raw_num); j++) 
-		            				{
-		            					for (int k = 1; k <= Integer.parseInt(support_num); k++) 
-		            					{
+		            			for (int i = Integer.parseInt(start_support); i <= Integer.parseInt(end_support); i++) {
+		            				for (int j = 1; j <= Integer.parseInt(raw_num); j++) {
+		            					for (int k = 1; k <= Integer.parseInt(support_num); k++) {
 		            						support_nums += i + "-" + j + "-" + k + "; "; // 设置支座编号
 		            					}		            					
 		            				}
@@ -812,43 +710,36 @@ public class Parts2Activity  extends Activity
 		            			int flag2 = 0;
 		            			
 		            			// 如果有原始数据，执行修改操作
-		            			if (cursor.moveToFirst())
-		            			{
+		            			if (cursor.moveToFirst()) {
 		            				String setValue = "support_details='" + support_details + "',support_nums='" + support_nums + "'";
 		            				
 		            				flag2 = db.updateData("support_detail", setValue, "bg_id='" + bg_id + "'");
 		            			}
-		            			else // 没有则执行插入操作
-		            			{
+		            			else { // 没有则执行插入操作
 		            				String detail_key = "bg_id, support_details, support_nums";
 			            			String detail_values = "'" + bg_id + "','" + support_details + "','" + support_nums + "'";
 			            			
 			            			flag2 = db.insertData("support_detail", detail_key, detail_values);
 		            			}
 		            			
-		            			if (flag2 == 0)
-		                		{
+		            			if (flag2 == 0) {
 		                			Toast.makeText(Parts2Activity.this, "支座细节添加失败", Toast.LENGTH_SHORT).show();
 		                		}
-		            			else 
-		            			{
+		            			else {
 		            				Toast.makeText(Parts2Activity.this, "添加成功", Toast.LENGTH_SHORT).show();
 		            			}
 		            		}
 		        		}
 	        		}
-	        		else 
-	        		{
+	        		else {
 	        			Toast.makeText(Parts2Activity.this, "墩（台）号不能为空", Toast.LENGTH_SHORT).show();
 	        		}
 				}
 			})
 			// 为对话框设置一个“取消”按钮
-			.setNegativeButton("取消", new DialogInterface.OnClickListener() 
-			{
+			.setNegativeButton("取消", new DialogInterface.OnClickListener() {
 				@Override
-				public void onClick(DialogInterface dialog, int which) 
-				{
+				public void onClick(DialogInterface dialog, int which) {
 					// TODO Auto-generated method stub
 					
 				}

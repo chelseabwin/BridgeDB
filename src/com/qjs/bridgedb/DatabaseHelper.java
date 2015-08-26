@@ -4,8 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DatabaseHelper extends SQLiteOpenHelper
-{	
+public class DatabaseHelper extends SQLiteOpenHelper {	
 	static String dbName = "bgdb.db";
 	static int dbVersion = 1; 
 	
@@ -71,15 +70,13 @@ public class DatabaseHelper extends SQLiteOpenHelper
 	final String CREATE_TABLE_SUPPORT_DETAIL = "create table if not exists support_detail (id integer primary key autoincrement,"
 			+ "bg_id, support_details, support_nums)";
 	
-	public DatabaseHelper(Context context)
-	{
+	public DatabaseHelper(Context context) {
 		super(context, dbName, null, dbVersion);
 		// TODO Auto-generated constructor stub		
 	}
 
 	@Override
-	public void onCreate(SQLiteDatabase db)
-	{
+	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub
 		db.execSQL(CREATE_TABLE_BASE1);
 		db.execSQL(CREATE_TABLE_BASE2);
@@ -102,8 +99,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
 	}
 
 	@Override
-	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
-	{
+	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// TODO Auto-generated method stub
 		
 	}
