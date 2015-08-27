@@ -623,6 +623,7 @@ public final class R {
         public static final int bridge_base=0x7f0a0062;
         public static final int bridge_detail_container=0x7f0a0060;
         public static final int bridge_list=0x7f0a005f;
+        public static final int btn_up1_submit=0x7f0a00ef;
         public static final int ck_bent_cap=0x7f0a00f6;
         public static final int ck_tie_beam=0x7f0a00f7;
         public static final int disease_info=0x7f0a0063;
@@ -694,7 +695,6 @@ public final class R {
         public static final int pa_tr5=0x7f0a0077;
         public static final int pa_tr6=0x7f0a007c;
         public static final int pa_tr7=0x7f0a0081;
-        public static final int rbtn_Peeling_off_angle=0x7f0a00d5;
         public static final int rbtn_cavitation=0x7f0a00d6;
         public static final int rbtn_fissure=0x7f0a00d7;
         public static final int rbtn_fissure1=0x7f0a00db;
@@ -709,6 +709,7 @@ public final class R {
         public static final int rbtn_location4=0x7f0a00ec;
         public static final int rbtn_location5=0x7f0a00ed;
         public static final int rbtn_other_disease=0x7f0a00d8;
+        public static final int rbtn_peeling_off_angle=0x7f0a00d5;
         public static final int rbtn_support=0x7f0a00ce;
         public static final int rbtn_voids_pits=0x7f0a00d4;
         public static final int rbtn_wet_joint=0x7f0a00cd;
@@ -822,10 +823,10 @@ public final class R {
         public static final int tv_support_detail=0x7f0a008e;
         public static final int tv_support_type=0x7f0a0036;
         public static final int tv_total_len=0x7f0a00ae;
+        public static final int tv_up1_add_content=0x7f0a00ee;
         public static final int tv_upper_parts=0x7f0a0087;
         public static final int tv_upper_type=0x7f0a002d;
         public static final int tv_wing_wall=0x7f0a0068;
-        public static final int up1_add_content=0x7f0a00ee;
         public static final int up1_ll1_dis_desc2=0x7f0a00e1;
         public static final int up1_ll1_dis_desc3=0x7f0a00e2;
         public static final int up1_ll1_dis_desc4=0x7f0a00e3;
@@ -834,7 +835,6 @@ public final class R {
         public static final int up1_ll2_dis_desc4=0x7f0a00e7;
         public static final int up1_ll_1=0x7f0a00e0;
         public static final int up1_ll_2=0x7f0a00e4;
-        public static final int up1_submit=0x7f0a00ef;
         public static final int up_rg=0x7f0a00cb;
         public static final int upper_detail_container=0x7f0a00d1;
         public static final int wall_l0=0x7f0a0069;

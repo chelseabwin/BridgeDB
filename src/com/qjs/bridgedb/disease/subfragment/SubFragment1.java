@@ -23,24 +23,17 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 
 public class SubFragment1 extends Fragment {
 	private RadioGroup up_rg;
-	private RadioButton girder, wetJoint, support;
 	private TextView spanNum, spanDetail;
 	private FrameLayout upperDetail;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_tab_page1, container, false);
+		final View rootView = inflater.inflate(R.layout.fragment_tab_page1, container, false);
 		
 		up_rg = (RadioGroup) rootView.findViewById(R.id.up_rg); // 属性复选框		
 		spanNum = (TextView) rootView.findViewById(R.id.tv_span_num); // 跨号
 		spanDetail = (TextView) rootView.findViewById(R.id.tv_span_detail); // 编号
 		upperDetail = (FrameLayout) rootView.findViewById(R.id.upper_detail_container); // 病害容器
-		
-		girder = (RadioButton) rootView.findViewById(R.id.rbtn_girder);
-		wetJoint = (RadioButton) rootView.findViewById(R.id.rbtn_wet_joint);
-		support = (RadioButton) rootView.findViewById(R.id.rbtn_support);
-		
-		final DbOperation db = new DbOperation(this.getActivity());
 		
 		final Bundle args = getArguments();
 		if (args != null) {
@@ -49,239 +42,153 @@ public class SubFragment1 extends Fragment {
 				@Override
 				public void onCheckedChanged(RadioGroup group, int checkedId) {
 					// TODO Auto-generated method stub
-					spanDetail.setVisibility(View.GONE);
-					upperDetail.setVisibility(View.GONE);
+					if (spanDetail.getVisibility() != View.GONE)
+						spanDetail.setVisibility(View.GONE); // 将编号详情设为不可见
+					if (upperDetail.getVisibility() != View.GONE)
+						upperDetail.setVisibility(View.GONE); // 将病害详情设为不可见
 					
 					spanNum.setTextSize(20);
 					spanNum.setText("跨号:\t");
 					
-					Cursor cursor = null;
-					// 选择“主梁”
-					if (checkedId == girder.getId()) {
-						// 根据id查找上部承重构件数据
-						cursor = db.queryData("*", "load_detail", "bg_id='" + args.getInt("BRIDGE_ID") + "'");
-						
-						if (cursor.moveToFirst()) {
-							// 拆分跨号
-							String[] gCodes = cursor.getString(cursor.getColumnIndex("load_nums")).split("\n");
-							// 拆分上部承重构件编号
-							final String[] girderCodes = cursor.getString(cursor.getColumnIndex("load_nums")).replace("\n", "").split("; ");
-							
-							// 设置数组长度为gCodes的长度
-							SpannableString[] ss1 = new SpannableString[gCodes.length];
-							
-							for (int i = 0; i < gCodes.length; i++) {
-								// 将跨号赋值到该数组
-								ss1[i] = new SpannableString(gCodes[i].split("-")[0]); // 定义可点击的字符串数组
-								final String num = i + 1 + "";
-								// 设置上部承重构件编号点击事件
-								ss1[i].setSpan(new ClickableSpan() {
-									
-									@Override
-									public void onClick(View widget) {
-										// TODO Auto-generated method stub
-										spanDetail.setVisibility(View.VISIBLE);
-										spanDetail.setTextSize(20);
-										spanDetail.setText("主梁:\t");
-										// 定义可点击的字符串数组，数组长度为girderCodes的长度
-										SpannableString[] ss2 = new SpannableString[girderCodes.length];
-										
-										for (int j = 0; j < girderCodes.length; j++) {
-											if (girderCodes[j].split("-")[0].equals(num)) {
-												final String str = girderCodes[j];
-												// 将主梁编号赋值到该数组
-												ss2[j] = new SpannableString(girderCodes[j]);
-												// 将上部承重构件编号赋值到该数组
-												ss2[j] = new SpannableString(girderCodes[j]);
-												// 设置上部承重构件编号点击事件
-												ss2[j].setSpan(new ClickableSpan() {
-
-													@Override
-													public void onClick(View widget) {
-														// TODO Auto-generated method stub
-														upperDetail.setVisibility(View.VISIBLE);
-														Bundle bd = new Bundle();
-														bd.putString("GIRDER", str);
-														
-														// 创建BridgeDetailFragment对象
-														girderFragment gf = new girderFragment();
-														// 向Fragment传入参数
-														gf.setArguments(bd);
-														// 使用fragment替换bridge_detail_container容器当前显示的Fragment
-														getChildFragmentManager().beginTransaction()
-															.replace(R.id.upper_detail_container, gf)
-															.commit();
-													}														
-												}, 0, ss2[j].length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-												
-												spanDetail.setHighlightColor(Color.TRANSPARENT); // 设置点击后的颜色为透明，否则会一直出现高亮
-												spanDetail.append(ss2[j]); // 将编号添加到TextView中
-												spanDetail.append("\t\t");					
-												spanDetail.setMovementMethod(LinkMovementMethod.getInstance()); // 开始响应点击事件
-											}
-										}
-									}
-								}, 0, ss1[i].length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-								
-								spanNum.setHighlightColor(Color.TRANSPARENT); // 设置点击后的颜色为透明，否则会一直出现高亮
-								spanNum.append(ss1[i]); // 将编号添加到TextView中
-								spanNum.append("\t\t");					
-								spanNum.setMovementMethod(LinkMovementMethod.getInstance()); // 开始响应点击事件
-							}
-						}						
-					}
-					// 选择“湿接缝”
-					else if (checkedId == wetJoint.getId()) {
-						// 根据id查找上部一般构件数据
-						cursor = db.queryData("*", "general_detail", "bg_id='" + args.getInt("BRIDGE_ID") + "'");
-						
-						if (cursor.moveToFirst()) {
-							// 拆分跨号
-							String[] gCodes = cursor.getString(cursor.getColumnIndex("general_nums")).split("\n");
-							// 拆分上部一般构件编号
-							final String[] wetJointCodes = cursor.getString(cursor.getColumnIndex("general_nums")).replace("\n", "").split("; ");
-							
-							// 设置数组长度为gCodes的长度
-							SpannableString[] ss1 = new SpannableString[gCodes.length];
-							
-							for (int i = 0; i < gCodes.length; i++) {
-								// 将跨号赋值到该数组
-								ss1[i] = new SpannableString(gCodes[i].split("-")[0]); // 定义可点击的字符串数组
-								final String num = i + 1 + "";
-								// 设置上部承重构件编号点击事件
-								ss1[i].setSpan(new ClickableSpan() {
-									
-									@Override
-									public void onClick(View widget) {
-										// TODO Auto-generated method stub
-										spanDetail.setVisibility(View.VISIBLE);
-										spanDetail.setTextSize(20);
-										spanDetail.setText("湿接缝:\t");
-										// 定义可点击的字符串数组，数组长度为girderCodes的长度
-										SpannableString[] ss2 = new SpannableString[wetJointCodes.length];
-										
-										for (int j = 0; j < wetJointCodes.length; j++) {
-											if (wetJointCodes[j].split("-")[0].equals(num)) {
-												final String str = wetJointCodes[j];
-												// 将主梁编号赋值到该数组
-												ss2[j] = new SpannableString(wetJointCodes[j]);
-												// 将上部承重构件编号赋值到该数组
-												ss2[j] = new SpannableString(wetJointCodes[j]);
-												// 设置上部承重构件编号点击事件
-												ss2[j].setSpan(new ClickableSpan() {
-
-													@Override
-													public void onClick(View widget) {
-														// TODO Auto-generated method stub
-														//upperDetail.setVisibility(View.VISIBLE);
-//														Bundle bd = new Bundle();
-//														bd.putString("WETJOINT", str);
-//														
-//														// 创建BridgeDetailFragment对象
-//														girderFragment gf = new girderFragment();
-//														// 向Fragment传入参数
-//														gf.setArguments(bd);
-//														// 使用fragment替换bridge_detail_container容器当前显示的Fragment
-//														getChildFragmentManager().beginTransaction()
-//															.replace(R.id.upper_detail_container, gf)
-//															.commit();
-													}														
-												}, 0, ss2[j].length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-												
-												spanDetail.setHighlightColor(Color.TRANSPARENT); // 设置点击后的颜色为透明，否则会一直出现高亮
-												spanDetail.append(ss2[j]); // 将编号添加到TextView中
-												spanDetail.append("\t\t");					
-												spanDetail.setMovementMethod(LinkMovementMethod.getInstance()); // 开始响应点击事件
-											}
-										}
-									}
-								}, 0, ss1[i].length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-								
-								spanNum.setHighlightColor(Color.TRANSPARENT); // 设置点击后的颜色为透明，否则会一直出现高亮
-								spanNum.append(ss1[i]); // 将编号添加到TextView中
-								spanNum.append("\t\t");					
-								spanNum.setMovementMethod(LinkMovementMethod.getInstance()); // 开始响应点击事件
-							}
-						}						
-					}
-					// 选择“支座”
-					else {
-						// 根据id查找上部一般构件数据
-						cursor = db.queryData("*", "support_detail", "bg_id='" + args.getInt("BRIDGE_ID") + "'");
-						
-						if (cursor.moveToFirst()) {
-							// 拆分跨号
-							String[] gCodes = cursor.getString(cursor.getColumnIndex("support_nums")).split("\n");
-							// 拆分支座编号
-							final String[] supportCodes = cursor.getString(cursor.getColumnIndex("support_nums")).replace("\n", "").split("; ");
-							
-							// 设置数组长度为gCodes的长度
-							SpannableString[] ss1 = new SpannableString[gCodes.length];
-							
-							for (int i = 0; i < gCodes.length; i++) {
-								// 将跨号赋值到该数组
-								ss1[i] = new SpannableString(gCodes[i].split("-")[0]); // 定义可点击的字符串数组
-								final String num = i + 1 + "";
-								// 设置上部承重构件编号点击事件
-								ss1[i].setSpan(new ClickableSpan() {
-									
-									@Override
-									public void onClick(View widget) {
-										// TODO Auto-generated method stub
-										spanDetail.setVisibility(View.VISIBLE);
-										spanDetail.setTextSize(20);
-										spanDetail.setText("支座:\t");
-										// 定义可点击的字符串数组，数组长度为girderCodes的长度
-										SpannableString[] ss2 = new SpannableString[supportCodes.length];
-										
-										for (int j = 0; j < supportCodes.length; j++) {
-											if (supportCodes[j].split("-")[0].equals(num)) {
-												final String str = supportCodes[j];
-												// 将主梁编号赋值到该数组
-												ss2[j] = new SpannableString(supportCodes[j]);
-												// 将上部承重构件编号赋值到该数组
-												ss2[j] = new SpannableString(supportCodes[j]);
-												// 设置上部承重构件编号点击事件
-												ss2[j].setSpan(new ClickableSpan() {
-
-													@Override
-													public void onClick(View widget) {
-														// TODO Auto-generated method stub
-														//upperDetail.setVisibility(View.VISIBLE);
-//														Bundle bd = new Bundle();
-//														bd.putString("SUPPORT", str);
-//														
-//														// 创建BridgeDetailFragment对象
-//														girderFragment gf = new girderFragment();
-//														// 向Fragment传入参数
-//														gf.setArguments(bd);
-//														// 使用fragment替换bridge_detail_container容器当前显示的Fragment
-//														getChildFragmentManager().beginTransaction()
-//															.replace(R.id.upper_detail_container, gf)
-//															.commit();
-													}														
-												}, 0, ss2[j].length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-												
-												spanDetail.setHighlightColor(Color.TRANSPARENT); // 设置点击后的颜色为透明，否则会一直出现高亮
-												spanDetail.append(ss2[j]); // 将编号添加到TextView中
-												spanDetail.append("\t\t");					
-												spanDetail.setMovementMethod(LinkMovementMethod.getInstance()); // 开始响应点击事件
-											}
-										}
-									}
-								}, 0, ss1[i].length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-								
-								spanNum.setHighlightColor(Color.TRANSPARENT); // 设置点击后的颜色为透明，否则会一直出现高亮
-								spanNum.append(ss1[i]); // 将编号添加到TextView中
-								spanNum.append("\t\t");					
-								spanNum.setMovementMethod(LinkMovementMethod.getInstance()); // 开始响应点击事件
-							}
-						}						
-					}
+					RadioButton rb = (RadioButton) rootView.findViewById(checkedId);
+					setSpanNum(rb, args.getInt("BRIDGE_ID")); // 设置跨号
 				}				
 			});
-		}
-		
+		}		
 		return rootView;
+	}	
+	
+	/** 设置跨号
+	 * rb: 病害选择button
+	 * bgId: 桥梁id
+	 * */
+	private void setSpanNum(RadioButton rb, int bgId) {
+		String tableName,fieldName,option;
+		
+		if ("主梁".equals(rb.getText())) {
+			tableName = "load_detail"; // 待查询的数据库表
+			fieldName = "load_nums"; // 表中字段
+			option = "GIRDER"; // 选择项（主梁、湿接缝、支座）
+		}
+		else if ("湿接缝".equals(rb.getText())) {
+			tableName = "general_detail";
+			fieldName = "general_nums";
+			option = "WETJOINT";
+		}
+		else {
+			tableName = "support_detail";
+			fieldName = "support_nums";
+			option = "SUPPORT";			
+		}
+		// 根据id查找数据
+		DbOperation db = new DbOperation(this.getActivity());
+		Cursor cursor = db.queryData("*", tableName, "bg_id='" + bgId + "'");
+		
+		if (cursor.moveToFirst()) {
+			// 拆分跨号
+			String[] lineCodes = cursor.getString(cursor.getColumnIndex(fieldName)).split("\n");
+			// 拆分上部承重构件编号
+			String[] itemCodes = cursor.getString(cursor.getColumnIndex(fieldName)).replace("\n", "").split("; ");
+			// 设置数组长度为lineCodes的长度
+			SpannableString[] ss = new SpannableString[lineCodes.length];
+			final String optionStr = option;
+			final String[] itemNum = itemCodes;
+			
+			for (int i = 0; i < lineCodes.length; i++) {
+				// 将跨号赋值到该数组
+				ss[i] = new SpannableString(lineCodes[i].split("-")[0]); // 定义可点击的字符串数组
+				final String num = i + 1 + ""; // 设置选中的跨号
+				// 设置跨号点击事件
+				ss[i].setSpan(new ClickableSpan() {
+					
+					@Override
+					public void onClick(View widget) {
+						// TODO Auto-generated method stub
+						setSpanDetail(itemNum, optionStr, num); // 设置编号详情
+					}
+				}, 0, ss[i].length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+				
+				spanNum.setHighlightColor(Color.TRANSPARENT); // 设置点击后的颜色为透明，否则会一直出现高亮
+				spanNum.append(ss[i]); // 将跨号添加到TextView中
+				spanNum.append("\t\t");					
+				spanNum.setMovementMethod(LinkMovementMethod.getInstance()); // 开始响应点击事件
+			}
+		}		
+	}
+	
+	/** 设置编号详情
+	 * ItemCodes: 编号数组
+	 * option: 选择项（主梁、湿接缝、支座）
+	 * num: 选择跨号
+	 * */
+	private void setSpanDetail(String[] ItemCodes, String option, String num) {
+		// 如果编号详情不可见，设为可见
+		if (spanDetail.getVisibility() != View.VISIBLE)
+			spanDetail.setVisibility(View.VISIBLE);
+	
+		spanDetail.setTextSize(20);
+		if (option.equals("GIRDER"))			
+			spanDetail.setText("主梁:\t");
+		else if (option.equals("WETJOINT"))
+			spanDetail.setText("湿接缝:\t");
+		else
+			spanDetail.setText("支座:\t");
+		
+		final String optionStr = option;
+		
+		// 定义可点击的字符串数组，数组长度为ItemCodes的长度
+		SpannableString[] ss = new SpannableString[ItemCodes.length];
+		
+		for (int j = 0; j < ItemCodes.length; j++) {
+			if (ItemCodes[j].split("-")[0].equals(num)) {
+				final String str = ItemCodes[j];
+				// 将编号赋值到该数组
+				ss[j] = new SpannableString(ItemCodes[j]);
+				// 设置编号点击事件
+				ss[j].setSpan(new ClickableSpan() {
+
+					@Override
+					public void onClick(View widget) {
+						// TODO Auto-generated method stub
+						setDiseaseDetail(optionStr, str); // 设置病害详情
+					}														
+				}, 0, ss[j].length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+				
+				spanDetail.setHighlightColor(Color.TRANSPARENT); // 设置点击后的颜色为透明，否则会一直出现高亮
+				spanDetail.append(ss[j]); // 将编号添加到TextView中
+				spanDetail.append("\t\t");					
+				spanDetail.setMovementMethod(LinkMovementMethod.getInstance()); // 开始响应点击事件
+			}
+		}		
+	}
+	
+	/** 设置病害详情
+	 * girderCodes: 编号数组
+	 * option: 选择项（主梁、湿接缝、支座）
+	 * Item: 选择跨号
+	 * */
+	private void setDiseaseDetail(String optionStr, String Item) {
+		// 如果病害详情不可见，设为可见
+		if (upperDetail.getVisibility() != View.VISIBLE)
+			upperDetail.setVisibility(View.VISIBLE);
+		Bundle bd = new Bundle();
+		bd.putString(optionStr, Item);
+		
+		// 创建Fragment对象
+		Fragment frag = new Fragment();
+		
+		if (optionStr.equals("GIRDER"))
+			frag = new girderFragment();
+//		else if (optionStr.equals("WETJOINT"))
+//			girderFragment frag = new girderFragment();
+//		else
+//			girderFragment frag = new girderFragment();
+		
+		// 向Fragment传入参数
+		frag.setArguments(bd);
+		// 使用fragment替换bridge_detail_container容器当前显示的Fragment
+		getChildFragmentManager().beginTransaction()
+			.replace(R.id.upper_detail_container, frag)
+			.commit();
 	}
 }

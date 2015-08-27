@@ -21,11 +21,10 @@
            android:id="@+id/rbtn_voids_pits"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="@string/voids_pits"
-           android:checked="true" />
+           android:text="@string/voids_pits" />
 
         <RadioButton
-           android:id="@+id/rbtn_Peeling_off_angle"
+           android:id="@+id/rbtn_peeling_off_angle"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:text="@string/Peeling_off_angle" />
@@ -70,8 +69,7 @@
            android:id="@+id/rbtn_fissure1"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="@string/vertical_fissure"
-           android:checked="true" />
+           android:text="@string/vertical_fissure" />
 
         <RadioButton
            android:id="@+id/rbtn_fissure2"
@@ -103,7 +101,8 @@
         android:id="@+id/up1_ll_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="horizontal"        
+        android:visibility="gone"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp" >
         
@@ -261,7 +260,7 @@
     </RadioGroup>
     
     <EditText
-	    android:id="@+id/up1_add_content"
+	    android:id="@+id/tv_up1_add_content"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:enabled="true"
@@ -269,14 +268,14 @@
 	    android:inputType="textMultiLine"
 	    android:minLines="8"
 	    android:maxLines="10"
-	    android:scrollbars="vertical" 
+	    android:scrollbars="vertical"
 	    android:background="@android:drawable/edit_text"
 	    android:layout_marginLeft="20dp"
 	    android:layout_marginRight="20dp" >
 	</EditText>
 	
     <Button
-	    android:id="@+id/up1_submit"
+	    android:id="@+id/btn_up1_submit"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:layout_gravity="center_vertical"
