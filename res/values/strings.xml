@@ -183,5 +183,8 @@
     <string name="left_web">左腹板</string>
     <string name="right_web">右腹板</string>
     <string name="bottom_plate">底板</string>
+    
+    <string name="bn_disease_image">选择病害图片</string>
+    <string name="disease_image">病害图片</string>
 
 </resources>

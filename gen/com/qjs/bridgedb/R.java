@@ -588,7 +588,7 @@ public final class R {
         public static final int parts_bg=0x7f020005;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a00fc;
+        public static final int action_settings=0x7f0a00fe;
         public static final int b1_tr1=0x7f0a0000;
         public static final int b1_tr2=0x7f0a0005;
         public static final int b1_tr3=0x7f0a000a;
@@ -623,9 +623,10 @@ public final class R {
         public static final int bridge_base=0x7f0a0062;
         public static final int bridge_detail_container=0x7f0a0060;
         public static final int bridge_list=0x7f0a005f;
-        public static final int btn_up1_submit=0x7f0a00ef;
-        public static final int ck_bent_cap=0x7f0a00f6;
-        public static final int ck_tie_beam=0x7f0a00f7;
+        public static final int btn_image=0x7f0a00f0;
+        public static final int btn_up1_submit=0x7f0a00f1;
+        public static final int ck_bent_cap=0x7f0a00f8;
+        public static final int ck_tie_beam=0x7f0a00f9;
         public static final int disease_info=0x7f0a0063;
         public static final int et_abutment_num=0x7f0a0079;
         public static final int et_across_name=0x7f0a0018;
@@ -641,9 +642,9 @@ public final class R {
         public static final int et_deck_num=0x7f0a0096;
         public static final int et_deck_profile_grade=0x7f0a00c5;
         public static final int et_drainage_system=0x7f0a00a2;
-        public static final int et_end_pier=0x7f0a00f4;
-        public static final int et_end_spt=0x7f0a00f9;
-        public static final int et_end_stride=0x7f0a00f1;
+        public static final int et_end_pier=0x7f0a00f6;
+        public static final int et_end_spt=0x7f0a00fb;
+        public static final int et_end_stride=0x7f0a00f3;
         public static final int et_full_wide=0x7f0a00b4;
         public static final int et_general_detail=0x7f0a008c;
         public static final int et_high_limit=0x7f0a00bb;
@@ -656,21 +657,22 @@ public final class R {
         public static final int et_pa_num=0x7f0a007b;
         public static final int et_path_name=0x7f0a0007;
         public static final int et_path_num=0x7f0a0004;
-        public static final int et_per_pier_num=0x7f0a00f5;
-        public static final int et_per_row_num=0x7f0a00fa;
-        public static final int et_per_spt_num=0x7f0a00fb;
-        public static final int et_per_stride_num=0x7f0a00f2;
+        public static final int et_per_pier_num=0x7f0a00f7;
+        public static final int et_per_row_num=0x7f0a00fc;
+        public static final int et_per_spt_num=0x7f0a00fd;
+        public static final int et_per_stride_num=0x7f0a00f4;
         public static final int et_pier_detail=0x7f0a0076;
         public static final int et_protection_slope=0x7f0a0074;
         public static final int et_reg_structure=0x7f0a0080;
         public static final int et_section_high=0x7f0a00c3;
-        public static final int et_start_pier=0x7f0a00f3;
-        public static final int et_start_spt=0x7f0a00f8;
-        public static final int et_start_stride=0x7f0a00f0;
+        public static final int et_start_pier=0x7f0a00f5;
+        public static final int et_start_spt=0x7f0a00fa;
+        public static final int et_start_stride=0x7f0a00f2;
         public static final int et_support_detail=0x7f0a008f;
         public static final int et_total_len=0x7f0a00af;
         public static final int guardrail_l=0x7f0a009e;
         public static final int guardrail_r=0x7f0a009f;
+        public static final int iv_image=0x7f0a00ef;
         public static final int next_step_btn=0x7f0a0020;
         public static final int pa2_finish_btn=0x7f0a00a7;
         public static final int pa2_last_btn=0x7f0a00a6;
@@ -882,6 +884,7 @@ public final class R {
         public static final int bed_num=0x7f070048;
         public static final int bent_cap=0x7f07004d;
         public static final int bn_add=0x7f070009;
+        public static final int bn_disease_image=0x7f07007a;
         public static final int bn_submit=0x7f07000a;
         public static final int bottom_plate=0x7f070079;
         public static final int bridge_base_btn=0x7f070012;
@@ -919,6 +922,7 @@ public final class R {
         public static final int dis_desc4=0x7f070072;
         public static final int dis_desc5=0x7f070073;
         public static final int dis_desc6=0x7f070074;
+        public static final int disease_image=0x7f07007b;
         public static final int disease_info_btn=0x7f070013;
         /**  病害信息页 
          */

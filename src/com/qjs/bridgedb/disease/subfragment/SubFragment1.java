@@ -3,6 +3,7 @@ package com.qjs.bridgedb.disease.subfragment;
 import com.qjs.bridgedb.DbOperation;
 import com.qjs.bridgedb.R;
 import com.qjs.bridgedb.disease.subfragment.sub1.girderFragment;
+import com.qjs.bridgedb.disease.subfragment.sub1.wetJointFragment;
 
 import android.database.Cursor;
 import android.graphics.Color;
@@ -179,8 +180,8 @@ public class SubFragment1 extends Fragment {
 		
 		if (optionStr.equals("GIRDER"))
 			frag = new girderFragment();
-//		else if (optionStr.equals("WETJOINT"))
-//			girderFragment frag = new girderFragment();
+		else if (optionStr.equals("WETJOINT"))
+			frag = new wetJointFragment();
 //		else
 //			girderFragment frag = new girderFragment();
 		

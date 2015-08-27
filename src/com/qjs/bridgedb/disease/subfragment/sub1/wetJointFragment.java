@@ -1,24 +1,12 @@
 package com.qjs.bridgedb.disease.subfragment.sub1;
 
-import java.io.FileNotFoundException;
-
 import com.qjs.bridgedb.R;
 
-import android.content.ContentResolver;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -26,14 +14,12 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class girderFragment extends Fragment {
-	private RadioGroup rgFeature,rgFissure;
+public class wetJointFragment extends Fragment {
+	private RadioGroup rgFeature,rgFissure,rgLocation;
 	private Spinner spOtherDisease;
 	private LinearLayout local1,local2;
 	private RadioButton voidsPits,fissure1,fissure5;
 	private TextView diseaseDescription;
-	private Button btnImage;
-	private ImageView ivImage;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -42,6 +28,7 @@ public class girderFragment extends Fragment {
 		
 		rgFeature = (RadioGroup) rootView.findViewById(R.id.rg); // 病害特征单选框
 		rgFissure = (RadioGroup) rootView.findViewById(R.id.rg2); // 裂缝单选框
+		rgLocation = (RadioGroup) rootView.findViewById(R.id.rg3); // 病害位置单选框
 		
 		spOtherDisease = (Spinner) rootView.findViewById(R.id.sp_other_disease); // 其他病害下拉列表
 		
@@ -50,16 +37,12 @@ public class girderFragment extends Fragment {
 		
 		voidsPits = (RadioButton) rootView.findViewById(R.id.rbtn_voids_pits); // 蜂窝麻面
 		fissure1 = (RadioButton) rootView.findViewById(R.id.rbtn_fissure1); // 竖向裂缝
-		fissure5 = (RadioButton) rootView.findViewById(R.id.rbtn_fissure5); // 网裂缝
-		
-		btnImage = (Button) rootView.findViewById(R.id.btn_image); // 病害图片按钮
-		
-		ivImage = (ImageView) rootView.findViewById(R.id.iv_image); // 病害图片
+		fissure5 = (RadioButton) rootView.findViewById(R.id.rbtn_fissure5); // 网裂缝	
 		
 		Bundle args = getArguments();
 		if (args != null) {
 			diseaseDescription.setTextSize(20);
-			diseaseDescription.setText("病害描述：主梁(" + args.getString("GIRDER") + ")");
+			diseaseDescription.setText("病害描述：湿接缝(" + args.getString("WETJOINT") + ")");
 			
 			// 设置病害特征监听
 			rgFeature.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -75,24 +58,6 @@ public class girderFragment extends Fragment {
 		}		
 		return rootView;		
 	}
-	
-	@Override
-	public void onActivityResult(int requestCode, int resultCode, Intent data) {  
-        this.getActivity();
-		if (resultCode == FragmentActivity.RESULT_OK) {
-            Uri uri = data.getData();  
-            Log.e("uri", uri.toString());  
-            ContentResolver cr = this.getActivity().getContentResolver();  
-            try {  
-                Bitmap bitmap = BitmapFactory.decodeStream(cr.openInputStream(uri));  
-                // 将Bitmap设定到ImageView
-                ivImage.setImageBitmap(bitmap);  
-            } catch (FileNotFoundException e) {  
-                Log.e("Exception", e.getMessage(),e);  
-            }  
-        }  
-        super.onActivityResult(requestCode, resultCode, data);  
-    }
 	
 	/** 设置病害特征选择
 	 * rb: 病害选择button
@@ -138,20 +103,7 @@ public class girderFragment extends Fragment {
 				rgFissure.setVisibility(View.GONE); // 如果裂缝单选框可见，设为不可见
 		}
 		
-		btnImage.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent();  
-                // 开启Pictures画面Type设定为image
-                intent.setType("image/*");  
-                // 使用Intent.ACTION_GET_CONTENT这个Action
-                intent.setAction(Intent.ACTION_GET_CONTENT);   
-                // 取得相片后返回本画面
-                startActivityForResult(intent, 1);				
-			}			
-		});
+		rgLocation.setVisibility(View.GONE); // 无病害位置单选框
 		
 		//diseaseAttribute = otherDisease.getSelectedItem().toString();
 		

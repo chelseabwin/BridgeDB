@@ -5,10 +5,10 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     
     <!-- 首页基本项 -->
-    <dimen name="fst_title_font">18pt</dimen> <!-- 首页标题字体大小 -->
+    <dimen name="fst_title_font">20pt</dimen> <!-- 首页标题字体大小 -->
     
     <dimen name="fst_btn_padding">50dip</dimen> <!-- 首页按钮内边距 -->
-    <dimen name="fst_btn_font">14pt</dimen> <!-- 首页按钮字体大小 -->
+    <dimen name="fst_btn_font">16pt</dimen> <!-- 首页按钮字体大小 -->
     
     <!-- 页面基本项 -->
     <dimen name="activity_margin_right">50dip</dimen> <!-- 页面右边距 -->
@@ -18,11 +18,11 @@
     <dimen name="group_title_font">12pt</dimen> <!-- 组合标题大小 -->
     
     <dimen name="button_margin">30dip</dimen> <!-- 按钮边距 -->
-    <dimen name="activity_font">10pt</dimen> <!-- 页面字体大小 -->
+    <dimen name="activity_font">11pt</dimen> <!-- 页面字体大小 -->
     
     <!-- 弹出对话框 -->
     <dimen name="dialog_option_margin">10dip</dimen> <!-- 弹出对话框项目边距 -->
-    <dimen name="dialog_font">8pt</dimen> <!-- 弹出对话框字体大小 -->
+    <dimen name="dialog_font">10pt</dimen> <!-- 弹出对话框字体大小 -->
     <dimen name="dialog_edit_space">180dp</dimen> <!-- 弹出对话框文本框长度 -->
 
 </resources>
