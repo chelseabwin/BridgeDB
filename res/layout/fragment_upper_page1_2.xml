@@ -21,30 +21,35 @@
            android:id="@+id/rbtn_voids_pits"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
            android:text="@string/voids_pits" />
 
         <RadioButton
            android:id="@+id/rbtn_peeling_off_angle"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
            android:text="@string/Peeling_off_angle" />
 
         <RadioButton
            android:id="@+id/rbtn_cavitation"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
            android:text="@string/cavitation" />
 
         <RadioButton
            android:id="@+id/rbtn_fissure"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
            android:text="@string/fissure" />
        
         <RadioButton
            android:id="@+id/rbtn_other_disease"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
            android:text="@string/other_disease" />
         
         <Spinner
@@ -69,30 +74,35 @@
            android:id="@+id/rbtn_fissure1"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
            android:text="@string/vertical_fissure" />
 
         <RadioButton
            android:id="@+id/rbtn_fissure2"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
            android:text="@string/landscape_fissure" />
 
         <RadioButton
            android:id="@+id/rbtn_fissure3"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
            android:text="@string/slant_fissure" />
 
         <RadioButton
            android:id="@+id/rbtn_fissure4"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
            android:text="@string/lengthways_fissure" />
        
         <RadioButton
            android:id="@+id/rbtn_fissure5"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
            android:text="@string/net_fissure" />
       
     </RadioGroup>
@@ -109,7 +119,7 @@
         <TextView
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:textSize="18sp"
+	        android:textSize="@dimen/radio_button_font"
 	        android:text="@string/dis_desc1" />
         
         <EditText
@@ -122,7 +132,7 @@
         <TextView
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:textSize="18sp"
+	        android:textSize="@dimen/radio_button_font"
 	        android:text="@string/dis_desc2" />
         
         <EditText
@@ -135,7 +145,7 @@
         <TextView
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:textSize="18sp"
+	        android:textSize="@dimen/radio_button_font"
 	        android:text="@string/dis_desc3" />
         
         <TextView
@@ -145,7 +155,7 @@
         <TextView
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:textSize="18sp"
+	        android:textSize="@dimen/radio_button_font"
 	        android:text="@string/dis_desc4" />
         
         <EditText
@@ -169,7 +179,7 @@
         <TextView
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:textSize="18sp"
+	        android:textSize="@dimen/radio_button_font"
 	        android:text="@string/dis_desc1" />
         
         <EditText
@@ -182,7 +192,7 @@
         <TextView
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:textSize="18sp"
+	        android:textSize="@dimen/radio_button_font"
 	        android:text="@string/dis_desc3" />
         
         <TextView
@@ -192,7 +202,7 @@
         <TextView
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:textSize="18sp"
+	        android:textSize="@dimen/radio_button_font"
 	        android:text="@string/dis_desc5" />
         
         <EditText
@@ -205,7 +215,7 @@
         <TextView
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:textSize="18sp"
+	        android:textSize="@dimen/radio_button_font"
 	        android:text="@string/dis_desc6" />
         
         <EditText
@@ -229,6 +239,7 @@
            android:id="@+id/rbtn_location1"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
            android:text="@string/left_flange"
            android:checked="true" />
 
@@ -236,24 +247,28 @@
            android:id="@+id/rbtn_location2"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
            android:text="@string/right_flange" />
 
         <RadioButton
            android:id="@+id/rbtn_location3"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
            android:text="@string/left_web" />
 
         <RadioButton
            android:id="@+id/rbtn_location4"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
            android:text="@string/right_web" />
        
         <RadioButton
            android:id="@+id/rbtn_location5"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
            android:text="@string/bottom_plate" />
       
     </RadioGroup>

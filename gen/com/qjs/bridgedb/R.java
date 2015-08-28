@@ -578,6 +578,9 @@ public final class R {
         /**  组合内部边距 
          */
         public static final int group_title_font=0x7f060008;
+        /**  弹出对话框文本框长度 
+         */
+        public static final int radio_button_font=0x7f06000e;
     }
     public static final class drawable {
         public static final int background=0x7f020000;
@@ -588,7 +591,7 @@ public final class R {
         public static final int parts_bg=0x7f020005;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a00fe;
+        public static final int action_settings=0x7f0a0104;
         public static final int b1_tr1=0x7f0a0000;
         public static final int b1_tr2=0x7f0a0005;
         public static final int b1_tr3=0x7f0a000a;
@@ -625,8 +628,8 @@ public final class R {
         public static final int bridge_list=0x7f0a005f;
         public static final int btn_image=0x7f0a00f0;
         public static final int btn_up1_submit=0x7f0a00f1;
-        public static final int ck_bent_cap=0x7f0a00f8;
-        public static final int ck_tie_beam=0x7f0a00f9;
+        public static final int ck_bent_cap=0x7f0a00fe;
+        public static final int ck_tie_beam=0x7f0a00ff;
         public static final int disease_info=0x7f0a0063;
         public static final int et_abutment_num=0x7f0a0079;
         public static final int et_across_name=0x7f0a0018;
@@ -642,9 +645,9 @@ public final class R {
         public static final int et_deck_num=0x7f0a0096;
         public static final int et_deck_profile_grade=0x7f0a00c5;
         public static final int et_drainage_system=0x7f0a00a2;
-        public static final int et_end_pier=0x7f0a00f6;
-        public static final int et_end_spt=0x7f0a00fb;
-        public static final int et_end_stride=0x7f0a00f3;
+        public static final int et_end_pier=0x7f0a00fc;
+        public static final int et_end_spt=0x7f0a0101;
+        public static final int et_end_stride=0x7f0a00f9;
         public static final int et_full_wide=0x7f0a00b4;
         public static final int et_general_detail=0x7f0a008c;
         public static final int et_high_limit=0x7f0a00bb;
@@ -657,17 +660,17 @@ public final class R {
         public static final int et_pa_num=0x7f0a007b;
         public static final int et_path_name=0x7f0a0007;
         public static final int et_path_num=0x7f0a0004;
-        public static final int et_per_pier_num=0x7f0a00f7;
-        public static final int et_per_row_num=0x7f0a00fc;
-        public static final int et_per_spt_num=0x7f0a00fd;
-        public static final int et_per_stride_num=0x7f0a00f4;
+        public static final int et_per_pier_num=0x7f0a00fd;
+        public static final int et_per_row_num=0x7f0a0102;
+        public static final int et_per_spt_num=0x7f0a0103;
+        public static final int et_per_stride_num=0x7f0a00fa;
         public static final int et_pier_detail=0x7f0a0076;
         public static final int et_protection_slope=0x7f0a0074;
         public static final int et_reg_structure=0x7f0a0080;
         public static final int et_section_high=0x7f0a00c3;
-        public static final int et_start_pier=0x7f0a00f5;
-        public static final int et_start_spt=0x7f0a00fa;
-        public static final int et_start_stride=0x7f0a00f2;
+        public static final int et_start_pier=0x7f0a00fb;
+        public static final int et_start_spt=0x7f0a0100;
+        public static final int et_start_stride=0x7f0a00f8;
         public static final int et_support_detail=0x7f0a008f;
         public static final int et_total_len=0x7f0a00af;
         public static final int guardrail_l=0x7f0a009e;
@@ -698,6 +701,9 @@ public final class R {
         public static final int pa_tr6=0x7f0a007c;
         public static final int pa_tr7=0x7f0a0081;
         public static final int rbtn_cavitation=0x7f0a00d6;
+        public static final int rbtn_defect=0x7f0a00f3;
+        public static final int rbtn_disengaging=0x7f0a00f4;
+        public static final int rbtn_displacement=0x7f0a00f7;
         public static final int rbtn_fissure=0x7f0a00d7;
         public static final int rbtn_fissure1=0x7f0a00db;
         public static final int rbtn_fissure2=0x7f0a00dc;
@@ -710,8 +716,11 @@ public final class R {
         public static final int rbtn_location3=0x7f0a00eb;
         public static final int rbtn_location4=0x7f0a00ec;
         public static final int rbtn_location5=0x7f0a00ed;
+        public static final int rbtn_module_damage=0x7f0a00f5;
         public static final int rbtn_other_disease=0x7f0a00d8;
         public static final int rbtn_peeling_off_angle=0x7f0a00d5;
+        public static final int rbtn_plate_abrasion=0x7f0a00f6;
+        public static final int rbtn_season_cracking=0x7f0a00f2;
         public static final int rbtn_support=0x7f0a00ce;
         public static final int rbtn_voids_pits=0x7f0a00d4;
         public static final int rbtn_wet_joint=0x7f0a00cd;
@@ -857,10 +866,11 @@ public final class R {
         public static final int fragment_tab_page1=0x7f030009;
         public static final int fragment_tab_page2=0x7f03000a;
         public static final int fragment_tab_page3=0x7f03000b;
-        public static final int fragment_upper_page1=0x7f03000c;
-        public static final int load_general_detail=0x7f03000d;
-        public static final int pier_detail=0x7f03000e;
-        public static final int support_detail=0x7f03000f;
+        public static final int fragment_upper_page1_2=0x7f03000c;
+        public static final int fragment_upper_page3=0x7f03000d;
+        public static final int load_general_detail=0x7f03000e;
+        public static final int pier_detail=0x7f03000f;
+        public static final int support_detail=0x7f030010;
     }
     public static final class menu {
         public static final int main=0x7f090000;
@@ -915,6 +925,7 @@ public final class R {
         public static final int deck_profile_grade=0x7f070040;
         public static final int deck_type=0x7f070033;
         public static final int decking_parts=0x7f07005a;
+        public static final int defect=0x7f07007d;
         public static final int design_load=0x7f070021;
         public static final int dis_desc1=0x7f07006f;
         public static final int dis_desc2=0x7f070070;
@@ -927,6 +938,8 @@ public final class R {
         /**  病害信息页 
          */
         public static final int disease_title=0x7f070061;
+        public static final int disengaging=0x7f07007e;
+        public static final int displacement=0x7f070081;
         public static final int drainage_system=0x7f07005f;
         public static final int end_pier=0x7f07004b;
         public static final int end_spt=0x7f070057;
@@ -959,6 +972,7 @@ public final class R {
          */
         public static final int main_title=0x7f070011;
         public static final int material_code=0x7f070025;
+        public static final int module_damage=0x7f07007f;
         public static final int navigation_level=0x7f07003e;
         public static final int net_fissure=0x7f07006e;
         public static final int next_step=0x7f070004;
@@ -977,6 +991,7 @@ public final class R {
         public static final int pier_detail=0x7f070045;
         public static final int pier_material=0x7f07002b;
         public static final int pier_type=0x7f07002d;
+        public static final int plate_abrasion=0x7f070080;
         public static final int pls_choose=0x7f070007;
         public static final int pls_click=0x7f070008;
         public static final int pls_enter=0x7f070006;
@@ -985,6 +1000,9 @@ public final class R {
         public static final int right_flange=0x7f070076;
         public static final int right_web=0x7f070078;
         public static final int rode_grade=0x7f070018;
+        /**  上部结构-支座  
+         */
+        public static final int season_cracking=0x7f07007c;
         public static final int section_form=0x7f07002c;
         public static final int section_high=0x7f07003f;
         public static final int sidewalk=0x7f07005d;
@@ -1009,7 +1027,7 @@ public final class R {
         public static final int upper_parts=0x7f07004f;
         public static final int upper_type=0x7f070024;
         public static final int vertical_fissure=0x7f07006a;
-        /**  上部结构-主梁 
+        /**  上部结构-主梁/湿接缝  
          */
         public static final int voids_pits=0x7f070065;
         public static final int wet_joint=0x7f070063;

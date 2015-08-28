@@ -4,6 +4,7 @@ import com.qjs.bridgedb.DbOperation;
 import com.qjs.bridgedb.R;
 import com.qjs.bridgedb.disease.subfragment.sub1.girderFragment;
 import com.qjs.bridgedb.disease.subfragment.sub1.wetJointFragment;
+import com.qjs.bridgedb.disease.subfragment.sub1.supportFragment;
 
 import android.database.Cursor;
 import android.graphics.Color;
@@ -48,7 +49,7 @@ public class SubFragment1 extends Fragment {
 					if (upperDetail.getVisibility() != View.GONE)
 						upperDetail.setVisibility(View.GONE); // 将病害详情设为不可见
 					
-					spanNum.setTextSize(20);
+					spanNum.setTextSize(25);
 					spanNum.setText("跨号:\t");
 					
 					RadioButton rb = (RadioButton) rootView.findViewById(checkedId);
@@ -127,7 +128,7 @@ public class SubFragment1 extends Fragment {
 		if (spanDetail.getVisibility() != View.VISIBLE)
 			spanDetail.setVisibility(View.VISIBLE);
 	
-		spanDetail.setTextSize(20);
+		spanDetail.setTextSize(25);
 		if (option.equals("GIRDER"))			
 			spanDetail.setText("主梁:\t");
 		else if (option.equals("WETJOINT"))
@@ -182,8 +183,8 @@ public class SubFragment1 extends Fragment {
 			frag = new girderFragment();
 		else if (optionStr.equals("WETJOINT"))
 			frag = new wetJointFragment();
-//		else
-//			girderFragment frag = new girderFragment();
+		else
+			frag = new supportFragment();
 		
 		// 向Fragment传入参数
 		frag.setArguments(bd);

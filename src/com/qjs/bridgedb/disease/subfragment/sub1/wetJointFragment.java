@@ -23,7 +23,7 @@ public class wetJointFragment extends Fragment {
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		final View rootView = inflater.inflate(R.layout.fragment_upper_page1, container, false);
+		final View rootView = inflater.inflate(R.layout.fragment_upper_page1_2, container, false);
 		diseaseDescription = (TextView) rootView.findViewById(R.id.tv_disease_description); // ²¡º¦Ãû³Æ
 		
 		rgFeature = (RadioGroup) rootView.findViewById(R.id.rg); // ²¡º¦ÌØÕ÷µ¥Ñ¡¿ò
@@ -41,7 +41,7 @@ public class wetJointFragment extends Fragment {
 		
 		Bundle args = getArguments();
 		if (args != null) {
-			diseaseDescription.setTextSize(20);
+			diseaseDescription.setTextSize(25);
 			diseaseDescription.setText("²¡º¦ÃèÊö£ºÊª½Ó·ì(" + args.getString("WETJOINT") + ")");
 			
 			// ÉèÖÃ²¡º¦ÌØÕ÷¼àÌı

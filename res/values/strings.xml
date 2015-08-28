@@ -157,7 +157,7 @@
     <string name="wet_joint">湿接缝</string>
     <string name="support">支座</string>
     
-    <!-- 上部结构-主梁 -->
+    <!-- 上部结构-主梁/湿接缝  -->
     <string name="voids_pits">蜂窝、麻面</string>
     <string name="Peeling_off_angle">剥落、掉角</string>
     <string name="cavitation">空洞、孔洞</string>
@@ -186,5 +186,13 @@
     
     <string name="bn_disease_image">选择病害图片</string>
     <string name="disease_image">病害图片</string>
+    
+    <!-- 上部结构-支座  -->
+    <string name="season_cracking">老化、开裂</string>
+    <string name="defect">缺陷</string>
+    <string name="disengaging">串动、脱空或剪切超限</string>
+    <string name="module_damage">组件损坏</string>
+    <string name="plate_abrasion">聚四氟乙烯滑板磨损</string>
+    <string name="displacement">位移、转角超限</string>
 
 </resources>

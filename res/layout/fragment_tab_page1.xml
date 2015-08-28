@@ -20,18 +20,21 @@
 	           android:id="@+id/rbtn_girder"
 	           android:layout_width="wrap_content"
 	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
 	           android:text="@string/girder" />
 	
 	        <RadioButton
 	           android:id="@+id/rbtn_wet_joint"
 	           android:layout_width="wrap_content"
 	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
 	           android:text="@string/wet_joint" />
 	
 	        <RadioButton
 	           android:id="@+id/rbtn_support"
 	           android:layout_width="wrap_content"
 	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
 	           android:text="@string/support" />
 	        
 	    </RadioGroup>
