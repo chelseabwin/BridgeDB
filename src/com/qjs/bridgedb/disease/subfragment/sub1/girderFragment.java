@@ -27,12 +27,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class girderFragment extends Fragment {
-	private RadioGroup rgFeature,rgFissure;
+	private RadioGroup rgFeature,rgFissure,rgLocation;
 	private Spinner spOtherDisease;
 	private LinearLayout local1,local2;
 	private RadioButton voidsPits,fissure1,fissure5;
 	private TextView diseaseDescription;
-	private Button btnImage;
+	private Button btnImage,btnSubmit;
 	private ImageView ivImage;
 	
 	@Override
@@ -42,6 +42,7 @@ public class girderFragment extends Fragment {
 		
 		rgFeature = (RadioGroup) rootView.findViewById(R.id.rg); // 病害特征单选框
 		rgFissure = (RadioGroup) rootView.findViewById(R.id.rg2); // 裂缝单选框
+		rgLocation = (RadioGroup) rootView.findViewById(R.id.rg3); // 位置单选框
 		
 		spOtherDisease = (Spinner) rootView.findViewById(R.id.sp_other_disease); // 其他病害下拉列表
 		
@@ -53,8 +54,9 @@ public class girderFragment extends Fragment {
 		fissure5 = (RadioButton) rootView.findViewById(R.id.rbtn_fissure5); // 网裂缝
 		
 		btnImage = (Button) rootView.findViewById(R.id.btn_image); // 病害图片按钮
-		
 		ivImage = (ImageView) rootView.findViewById(R.id.iv_image); // 病害图片
+		
+		btnSubmit = (Button) rootView.findViewById(R.id.btn_up1_submit); // 提交按钮
 		
 		Bundle args = getArguments();
 		if (args != null) {
@@ -68,7 +70,7 @@ public class girderFragment extends Fragment {
 				public void onCheckedChanged(RadioGroup group, int checkedId) {
 					// TODO Auto-generated method stub					
 					RadioButton rb = (RadioButton) rootView.findViewById(checkedId);
-					setDiseaseFeature(rb); // 设置病害特征选择
+					setDiseaseFeature(rb,rootView); // 设置病害特征选择
 				}				
 			});
 			voidsPits.setChecked(true); // 设置“蜂窝麻面”默认选中
@@ -95,8 +97,9 @@ public class girderFragment extends Fragment {
 	
 	/** 设置病害特征选择
 	 * rb: 病害选择button
+	 * rootView: 页面view
 	 * */
-	private void setDiseaseFeature(RadioButton rb) {
+	private void setDiseaseFeature(RadioButton rb, View rootView) {
 		if ("裂缝".equals(rb.getText())) {
 			if (spOtherDisease.getVisibility() != View.GONE)			
 				spOtherDisease.setVisibility(View.GONE); // 隐藏“其他病害”下拉列表
@@ -150,6 +153,28 @@ public class girderFragment extends Fragment {
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 // 取得相片后返回本画面
                 getRootFragment().startActivityForResult(intent, 1);
+			}			
+		});
+		
+		final View rv = rootView;
+		
+		// 提交按钮监听
+		btnSubmit.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				RadioButton rbFeature = (RadioButton) rv.findViewById(rgFeature.getCheckedRadioButtonId());
+				RadioButton rbFissure = (RadioButton) rv.findViewById(rgFissure.getCheckedRadioButtonId());
+				RadioButton rbLocation = (RadioButton) rv.findViewById(rgLocation.getCheckedRadioButtonId());
+				
+				String rg_feature = rbFeature.getText().toString(); // 病害特征
+				// 待加判断，小心空指针！！！
+				String rg_fissure = rbFissure.getText().toString(); // 裂缝
+				String rg_location = rbLocation.getText().toString(); // 位置
+				
+				System.out.println(rg_feature + "," + rg_fissure + "," + rg_location);
+				
 			}			
 		});
 		
