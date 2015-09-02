@@ -77,12 +77,11 @@ public class girderFragment extends Fragment {
 	}
 	
 	@Override
-	public void onActivityResult(int requestCode, int resultCode, Intent data) {  
-        this.getActivity();
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		this.getActivity();
 		if (resultCode == FragmentActivity.RESULT_OK) {
-            Uri uri = data.getData();  
-            Log.e("uri", uri.toString());  
-            ContentResolver cr = this.getActivity().getContentResolver();  
+            Uri uri = data.getData();
+            ContentResolver cr = this.getActivity().getContentResolver();
             try {  
                 Bitmap bitmap = BitmapFactory.decodeStream(cr.openInputStream(uri));  
                 // 将Bitmap设定到ImageView
@@ -138,23 +137,37 @@ public class girderFragment extends Fragment {
 				rgFissure.setVisibility(View.GONE); // 如果裂缝单选框可见，设为不可见
 		}
 		
+		// 选择病害图片监听
 		btnImage.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent();  
+				Intent intent = new Intent();
                 // 开启Pictures画面Type设定为image
-                intent.setType("image/*");  
+                intent.setType("image/*");
                 // 使用Intent.ACTION_GET_CONTENT这个Action
-                intent.setAction(Intent.ACTION_GET_CONTENT);   
+                intent.setAction(Intent.ACTION_GET_CONTENT);
                 // 取得相片后返回本画面
-                startActivityForResult(intent, 1);				
+                getRootFragment().startActivityForResult(intent, 1);
 			}			
 		});
 		
 		//diseaseAttribute = otherDisease.getSelectedItem().toString();
 		
 		
+	}
+	
+	/**
+	 * 得到根Fragment
+	 * 
+	 * @return
+	 */	 
+	private Fragment getRootFragment() {
+		Fragment fragment = getParentFragment();	  
+		while (fragment.getParentFragment() != null) {
+			fragment = fragment.getParentFragment();
+		}	  
+		return fragment;
 	}
 }

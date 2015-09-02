@@ -298,7 +298,7 @@
 	    <ImageView
 	        android:id="@+id/iv_image"  
 	        android:layout_width="0dip"
-			android:layout_height="wrap_content"
+			android:layout_height="fill_parent"
 			android:layout_weight="2"
 			android:contentDescription="@string/disease_image"
 			android:layout_marginLeft="20dp"

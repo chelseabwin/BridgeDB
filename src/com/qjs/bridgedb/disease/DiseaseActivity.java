@@ -2,10 +2,12 @@ package com.qjs.bridgedb.disease;
 
 import com.qjs.bridgedb.R;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 
-public class DiseaseActivity extends FragmentActivity implements BridgeListFragment.Callbacks {	
+public class DiseaseActivity extends BaseFragmentActiviy implements BridgeListFragment.Callbacks {
+	public Bitmap bitmap = null;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

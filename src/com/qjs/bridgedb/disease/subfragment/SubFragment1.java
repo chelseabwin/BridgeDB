@@ -58,7 +58,7 @@ public class SubFragment1 extends Fragment {
 			});
 		}		
 		return rootView;
-	}	
+	}
 	
 	/** …Ë÷√øÁ∫≈
 	 * rb: ≤°∫¶—°‘Òbutton
