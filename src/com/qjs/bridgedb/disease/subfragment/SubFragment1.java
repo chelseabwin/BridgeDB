@@ -95,6 +95,7 @@ public class SubFragment1 extends Fragment {
 			SpannableString[] ss = new SpannableString[lineCodes.length];
 			final String optionStr = option;
 			final String[] itemNum = itemCodes;
+			final int bg_id = bgId;
 			
 			for (int i = 0; i < lineCodes.length; i++) {
 				// 将跨号赋值到该数组
@@ -106,7 +107,7 @@ public class SubFragment1 extends Fragment {
 					@Override
 					public void onClick(View widget) {
 						// TODO Auto-generated method stub
-						setSpanDetail(itemNum, optionStr, num); // 设置编号详情
+						setSpanDetail(itemNum, optionStr, num, bg_id); // 设置编号详情
 					}
 				}, 0, ss[i].length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 				
@@ -122,8 +123,9 @@ public class SubFragment1 extends Fragment {
 	 * ItemCodes: 编号数组
 	 * option: 选择项（主梁、湿接缝、支座）
 	 * num: 选择跨号
+	 * bgId: 桥梁id
 	 * */
-	private void setSpanDetail(String[] ItemCodes, String option, String num) {
+	private void setSpanDetail(String[] ItemCodes, String option, String num, int bgId) {
 		// 如果编号详情不可见，设为可见
 		if (spanDetail.getVisibility() != View.VISIBLE)
 			spanDetail.setVisibility(View.VISIBLE);
@@ -137,6 +139,7 @@ public class SubFragment1 extends Fragment {
 			spanDetail.setText("支座:\t");
 		
 		final String optionStr = option;
+		final int bg_id = bgId;
 		
 		// 定义可点击的字符串数组，数组长度为ItemCodes的长度
 		SpannableString[] ss = new SpannableString[ItemCodes.length];
@@ -152,7 +155,7 @@ public class SubFragment1 extends Fragment {
 					@Override
 					public void onClick(View widget) {
 						// TODO Auto-generated method stub
-						setDiseaseDetail(optionStr, str); // 设置病害详情
+						setDiseaseDetail(optionStr, str, bg_id); // 设置病害详情
 					}														
 				}, 0, ss[j].length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 				
@@ -168,13 +171,15 @@ public class SubFragment1 extends Fragment {
 	 * girderCodes: 编号数组
 	 * option: 选择项（主梁、湿接缝、支座）
 	 * Item: 选择跨号
+	 * bgId: 桥梁id
 	 * */
-	private void setDiseaseDetail(String optionStr, String Item) {
+	private void setDiseaseDetail(String optionStr, String Item, int bdId) {
 		// 如果病害详情不可见，设为可见
 		if (upperDetail.getVisibility() != View.VISIBLE)
 			upperDetail.setVisibility(View.VISIBLE);
 		Bundle bd = new Bundle();
 		bd.putString(optionStr, Item);
+		bd.putInt("BRIDGE_ID", bdId);
 		
 		// 创建Fragment对象
 		Fragment frag = new Fragment();
