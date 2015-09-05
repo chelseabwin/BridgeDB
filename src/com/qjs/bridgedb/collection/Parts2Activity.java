@@ -36,12 +36,10 @@ public class Parts2Activity  extends Activity {
 		
 		final DbOperation db = new DbOperation(Parts2Activity.this);
 		
-		if (fromPrev != null) {
+		if (fromPrev != null)
 			bg_id = bundle.getInt("toNextId"); // 获取从上一页面传递过来的id
-		}
-		else if (fromNext != null) {
+		else if (fromNext != null)
 			bg_id = bundle.getInt("toPrevId"); // 获取从下一页面传递过来的id
-		}
 		
 		// 根据id查找数据
 		final Cursor cursor = db.queryData("*", "parts2", "bg_id='" + bg_id + "'");
@@ -187,14 +185,13 @@ public class Parts2Activity  extends Activity {
         		if (cursor.moveToFirst()) {
         			String setValue = "load_detail='" + load_detail_id + "',general_detail='" + general_detail_id + "',support_detail='" + support_detail_id 
         					+ "',deck_num='" + deck_num + "',joint_num='" + joint_num + "',sidewalk='" + sidewalk + "',guardrail='" + guardrail 
-        					+ "',drainage_system='" + drainage_system + "',illuminated_sign='" + illuminated_sign + "'";
+        					+ "',drainage_system='" + drainage_system + "',illuminated_sign='" + illuminated_sign + "',flag='0'";
         			
         			// 修改数据
         			int flag = db.updateData("parts2", setValue, "bg_id='" + bg_id + "'");
         			
-        			if (flag == 0) {
+        			if (flag == 0)
             			Toast.makeText(Parts2Activity.this, "修改失败", Toast.LENGTH_SHORT).show();
-            		}
             		else {
             			Toast.makeText(Parts2Activity.this, "修改成功", Toast.LENGTH_SHORT).show();
             			
@@ -204,17 +201,16 @@ public class Parts2Activity  extends Activity {
         		}
         		else { // 没有则执行插入操作
         			String key = "bg_id, load_detail, general_detail, support_detail, deck_num, joint_num,"
-        					+ "sidewalk, guardrail, drainage_system, illuminated_sign";
+        					+ "sidewalk, guardrail, drainage_system, illuminated_sign, flag";
             		
             		String values = "'" + bg_id + "','" + load_detail_id + "','" + general_detail_id + "','" + support_detail_id + "','" + deck_num + "','"
-            				+ joint_num + "','" + sidewalk + "','" + guardrail + "','" + drainage_system + "','" + illuminated_sign + "'";
+            				+ joint_num + "','" + sidewalk + "','" + guardrail + "','" + drainage_system + "','" + illuminated_sign + "','0'";
             		
             		// 插入数据
         			int flag = db.insertData("parts2", key, values);
             		
-            		if (flag == 0) {
+            		if (flag == 0)
             			Toast.makeText(Parts2Activity.this, "添加失败", Toast.LENGTH_SHORT).show();
-            		}
             		else {
             			Toast.makeText(Parts2Activity.this, "添加成功", Toast.LENGTH_SHORT).show();
             			
@@ -326,9 +322,9 @@ public class Parts2Activity  extends Activity {
 		        			tap = end_load;
 		        			
 		        			// 开始插入数据操作
-		        			String key = "bg_id, start_load, end_load, per_load, tap";
+		        			String key = "bg_id, start_load, end_load, per_load, tap, flag";
 		            		
-		            		String values = "'" + bg_id + "','" + start_load + "','" + end_load + "','" + per_load + "','" + tap + "'";
+		            		String values = "'" + bg_id + "','" + start_load + "','" + end_load + "','" + per_load + "','" + tap + "','0'";
 		            		
 		            		// 插入数据
 		            		int flag1 = db.insertData("load_add", key, values);
@@ -360,29 +356,26 @@ public class Parts2Activity  extends Activity {
 		            			
 		            			// 如果有原始数据，执行修改操作
 		            			if (cursor.moveToFirst()) {
-		            				String setValue = "load_details='" + load_details + "',load_nums='" + load_nums + "'";
+		            				String setValue = "load_details='" + load_details + "',load_nums='" + load_nums + "',flag='0'";
 		            				
 		            				flag2 = db.updateData("load_detail", setValue, "bg_id='" + bg_id + "'");
 		            			}
 		            			else { // 没有则执行插入操作
-		            				String detail_key = "bg_id, load_details, load_nums";
-			            			String detail_values = "'" + bg_id + "','" + load_details + "','" + load_nums + "'";
+		            				String detail_key = "bg_id, load_details, load_nums, flag";
+			            			String detail_values = "'" + bg_id + "','" + load_details + "','" + load_nums + "','0'";
 			            			
 			            			flag2 = db.insertData("load_detail", detail_key, detail_values);
 		            			}
 		            			
-		            			if (flag2 == 0) {
+		            			if (flag2 == 0)
 		                			Toast.makeText(Parts2Activity.this, "桥跨细节添加失败", Toast.LENGTH_SHORT).show();
-		                		}
-		            			else {
+		            			else
 		            				Toast.makeText(Parts2Activity.this, "添加成功", Toast.LENGTH_SHORT).show();
-		            			}
 		            		}
 		        		}
 	        		}
-	        		else {
+	        		else
 	        			Toast.makeText(Parts2Activity.this, "跨号不能为空", Toast.LENGTH_SHORT).show();
-	        		}
 				}
 			})
 			// 为对话框设置一个“取消”按钮
@@ -500,9 +493,9 @@ public class Parts2Activity  extends Activity {
 		        			tap = end_general;
 		        			
 		        			// 开始插入数据操作
-		        			String key = "bg_id, start_general, end_general, per_general, tap";
+		        			String key = "bg_id, start_general, end_general, per_general, tap, flag";
 		            		
-		            		String values = "'" + bg_id + "','" + start_general + "','" + end_general + "','" + per_general + "','" + tap + "'";
+		            		String values = "'" + bg_id + "','" + start_general + "','" + end_general + "','" + per_general + "','" + tap + "','0'";
 		            		
 		            		// 插入数据
 		            		int flag1 = db.insertData("general_add", key, values);
@@ -534,29 +527,26 @@ public class Parts2Activity  extends Activity {
 		            			
 		            			// 如果有原始数据，执行修改操作
 		            			if (cursor.moveToFirst()) {
-		            				String setValue = "general_details='" + general_details + "',general_nums='" + general_nums + "'";
+		            				String setValue = "general_details='" + general_details + "',general_nums='" + general_nums + "',flag='0'";
 		            				
 		            				flag2 = db.updateData("general_detail", setValue, "bg_id='" + bg_id + "'");
 		            			}
 		            			else { // 没有则执行插入操作
-		            				String detail_key = "bg_id, general_details, general_nums";
-			            			String detail_values = "'" + bg_id + "','" + general_details + "','" + general_nums + "'";
+		            				String detail_key = "bg_id, general_details, general_nums, flag";
+			            			String detail_values = "'" + bg_id + "','" + general_details + "','" + general_nums + "','0'";
 			            			
 			            			flag2 = db.insertData("general_detail", detail_key, detail_values);
 		            			}
 		            			
-		            			if (flag2 == 0) {
+		            			if (flag2 == 0)
 		                			Toast.makeText(Parts2Activity.this, "桥跨细节添加失败", Toast.LENGTH_SHORT).show();
-		                		}
-		            			else {
+		            			else
 		            				Toast.makeText(Parts2Activity.this, "添加成功", Toast.LENGTH_SHORT).show();
-		            			}
 		            		}
 		        		}
 	        		}
-	        		else {
+	        		else
 	        			Toast.makeText(Parts2Activity.this, "跨号不能为空", Toast.LENGTH_SHORT).show();
-	        		}
 				}
 			})
 			// 为对话框设置一个“取消”按钮
@@ -675,9 +665,9 @@ public class Parts2Activity  extends Activity {
 		        			tap = end_support;
 		        			
 		        			// 开始插入数据操作
-		        			String key = "bg_id, start_support, end_support, raw_num, support_num, tap";
+		        			String key = "bg_id, start_support, end_support, raw_num, support_num, tap, flag";
 		            		
-		            		String values = "'" + bg_id + "','" + start_support + "','" + end_support + "','" + raw_num + "','" + support_num + "','" + tap + "'";
+		            		String values = "'" + bg_id + "','" + start_support + "','" + end_support + "','" + raw_num + "','" + support_num + "','" + tap + "','0'";
 		            		
 		            		// 插入数据
 		            		int flag1 = db.insertData("support_add", key, values);
@@ -711,29 +701,26 @@ public class Parts2Activity  extends Activity {
 		            			
 		            			// 如果有原始数据，执行修改操作
 		            			if (cursor.moveToFirst()) {
-		            				String setValue = "support_details='" + support_details + "',support_nums='" + support_nums + "'";
+		            				String setValue = "support_details='" + support_details + "',support_nums='" + support_nums + "',flag='0'";
 		            				
 		            				flag2 = db.updateData("support_detail", setValue, "bg_id='" + bg_id + "'");
 		            			}
 		            			else { // 没有则执行插入操作
-		            				String detail_key = "bg_id, support_details, support_nums";
-			            			String detail_values = "'" + bg_id + "','" + support_details + "','" + support_nums + "'";
+		            				String detail_key = "bg_id, support_details, support_nums, flag";
+			            			String detail_values = "'" + bg_id + "','" + support_details + "','" + support_nums + "','0'";
 			            			
 			            			flag2 = db.insertData("support_detail", detail_key, detail_values);
 		            			}
 		            			
-		            			if (flag2 == 0) {
+		            			if (flag2 == 0)
 		                			Toast.makeText(Parts2Activity.this, "支座细节添加失败", Toast.LENGTH_SHORT).show();
-		                		}
-		            			else {
+		            			else
 		            				Toast.makeText(Parts2Activity.this, "添加成功", Toast.LENGTH_SHORT).show();
-		            			}
 		            		}
 		        		}
 	        		}
-	        		else {
+	        		else
 	        			Toast.makeText(Parts2Activity.this, "墩（台）号不能为空", Toast.LENGTH_SHORT).show();
-	        		}
 				}
 			})
 			// 为对话框设置一个“取消”按钮

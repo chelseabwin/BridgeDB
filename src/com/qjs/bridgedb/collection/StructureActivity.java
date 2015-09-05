@@ -39,12 +39,10 @@ public class StructureActivity extends Activity {
 		
 		final DbOperation db = new DbOperation(StructureActivity.this);
 		
-		if (fromPrev != null) {
+		if (fromPrev != null)
 			bg_id = bundle.getInt("toNextId"); // 获取从上一页面传递过来的id
-		}
-		else if (fromNext != null) {
+		else if (fromNext != null)
 			bg_id = bundle.getInt("toPrevId"); // 获取从下一页面传递过来的id
-		}
 		
 		// 根据id查找数据
 		final Cursor cursor = db.queryData("*", "structure", "bg_id='" + bg_id + "'");
@@ -176,14 +174,13 @@ public class StructureActivity extends Activity {
         		if (cursor.moveToFirst()) {
         			String setValue = "bridge_span='" + bridge_span + "',longest_span='" + longest_span + "',total_len='" + total_len  + "',bridge_wide='" + bridge_wide 
         					+ "',full_wide='" + full_wide + "',clear_wide='" + clear_wide + "',bridge_high='" + bridge_high + "',high_limit='" + high_limit
-        					+ "',building_time='" + building_time + "',navigation_level='" + navigation_level + "',section_high='" + section_high + "',deck_profile_grade='" + deck_profile_grade + "'";
+        					+ "',building_time='" + building_time + "',navigation_level='" + navigation_level + "',section_high='" + section_high + "',deck_profile_grade='" + deck_profile_grade + "',flag='0'";
         			
         			// 修改数据
         			int flag = db.updateData("structure", setValue, "bg_id='" + bg_id + "'");
         			
-        			if (flag == 0) {
+        			if (flag == 0)
             			Toast.makeText(StructureActivity.this, "修改失败", Toast.LENGTH_SHORT).show();
-            		}
             		else {
             			Toast.makeText(StructureActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
             			
@@ -195,18 +192,17 @@ public class StructureActivity extends Activity {
         		}
         		else { // 没有则执行插入操作
         			String key = "bg_id, bridge_span, longest_span, total_len, bridge_wide, full_wide, clear_wide,"
-        					+ "bridge_high, high_limit, building_time, navigation_level, section_high, deck_profile_grade";
+        					+ "bridge_high, high_limit, building_time, navigation_level, section_high, deck_profile_grade, flag";
             		
             		String values = "'" + bg_id + "','" + bridge_span + "','" + longest_span + "','" + total_len + "','"
             				+ bridge_wide + "','" + full_wide + "','" + clear_wide + "','" + bridge_high + "','" + high_limit + "','"
-            				+ building_time + "','" + navigation_level + "','" + section_high + "','" + deck_profile_grade + "'";
+            				+ building_time + "','" + navigation_level + "','" + section_high + "','" + deck_profile_grade + "','0'";
             		
             		// 插入数据
         			int flag = db.insertData("structure", key, values);
             		
-            		if (flag == 0) {
+            		if (flag == 0)
             			Toast.makeText(StructureActivity.this, "添加失败", Toast.LENGTH_SHORT).show();
-            		}
             		else {
             			Toast.makeText(StructureActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
             			

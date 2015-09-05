@@ -35,12 +35,10 @@ public class PartsActivity  extends Activity {
 		
 		final DbOperation db = new DbOperation(PartsActivity.this);
 		
-		if (fromPrev != null) {
+		if (fromPrev != null)
 			bg_id = bundle.getInt("toNextId"); // 获取从上一页面传递过来的id
-		}
-		else if (fromNext != null) {
+		else if (fromNext != null)
 			bg_id = bundle.getInt("toPrevId"); // 获取从下一页面传递过来的id
-		}
 		
 		// 根据id查找数据
 		final Cursor cursor = db.queryData("*", "parts1", "bg_id='" + bg_id + "'");
@@ -203,14 +201,13 @@ public class PartsActivity  extends Activity {
         		if (cursor.moveToFirst()) {
         			String setValue = "wing_wall='" + wing_wall + "',conical_slope='" + conical_slope + "',protection_slope='" + protection_slope 
         					+ "',pier_detail='" + pier_detail_id + "',abutment_num='" + abutment_num + "',pa_num='" + pa_num
-        					+ "',bed_num='" + bed_num + "',reg_structure='" + reg_structure + "'";
+        					+ "',bed_num='" + bed_num + "',reg_structure='" + reg_structure + "',flag='0'";
         			
         			// 修改数据
         			int flag = db.updateData("parts1", setValue, "bg_id='" + bg_id + "'");
         			
-        			if (flag == 0) {
+        			if (flag == 0)
             			Toast.makeText(PartsActivity.this, "修改失败", Toast.LENGTH_SHORT).show();
-            		}
             		else {
             			Toast.makeText(PartsActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
             			
@@ -222,17 +219,16 @@ public class PartsActivity  extends Activity {
         		}
         		else { // 没有则执行插入操作
         			String key = "bg_id, wing_wall, conical_slope, protection_slope, pier_detail,"
-        					+ "abutment_num, pa_num, bed_num, reg_structure";
+        					+ "abutment_num, pa_num, bed_num, reg_structure, flag";
             		
             		String values = "'" + bg_id + "','" + wing_wall + "','" + conical_slope + "','" + protection_slope + "','" + pier_detail_id + "','"
-            				+ abutment_num + "','" + pa_num + "','" + bed_num + "','" + reg_structure + "'";
+            				+ abutment_num + "','" + pa_num + "','" + bed_num + "','" + reg_structure + "','0'";
             		
             		// 插入数据
         			int flag = db.insertData("parts1", key, values);
             		
-            		if (flag == 0) {
+            		if (flag == 0)
             			Toast.makeText(PartsActivity.this, "添加失败", Toast.LENGTH_SHORT).show();
-            		}
             		else {
             			Toast.makeText(PartsActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
             			
@@ -372,10 +368,10 @@ public class PartsActivity  extends Activity {
 		        			tap = end_pier;
 		        			
 		        			// 开始插入数据操作
-		        			String key = "bg_id, start_pier, end_pier, per_pier, bent_cap, tie_beam, tap";
+		        			String key = "bg_id, start_pier, end_pier, per_pier, bent_cap, tie_beam, tap, flag";
 		            		
 		            		String values = "'" + bg_id + "','" + start_pier + "','" + end_pier + "','" + per_pier + "','"
-		            				+ bent_cap + "','" + tie_beam + "','" + tap + "'";
+		            				+ bent_cap + "','" + tie_beam + "','" + tap + "','0'";
 		            		
 		            		// 插入数据
 		            		int flag1 = db.insertData("pier_add", key, values);
@@ -423,29 +419,26 @@ public class PartsActivity  extends Activity {
 		            			// 如果有原始数据，执行修改操作
 		            			if (cursor.moveToFirst()) {
 		            				String setValue = "pier_details='" + pier_details + "',pier_nums='" + pier_nums + "',bent_cap_nums='" + bent_cap_nums 
-		                					+ "',tie_beam_nums='" + tie_beam_nums + "'";
+		                					+ "',tie_beam_nums='" + tie_beam_nums + "',flag='0'";
 		            				
 		            				flag2 = db.updateData("pier_detail", setValue, "bg_id='" + bg_id + "'");
 		            			}
 		            			else { // 没有则执行插入操作
-		            				String detail_key = "bg_id, pier_details, pier_nums, bent_cap_nums, tie_beam_nums";
-			            			String detail_values = "'" + bg_id + "','" + pier_details + "','" + pier_nums + "','" + bent_cap_nums + "','" + tie_beam_nums + "'";
+		            				String detail_key = "bg_id, pier_details, pier_nums, bent_cap_nums, tie_beam_nums, flag";
+			            			String detail_values = "'" + bg_id + "','" + pier_details + "','" + pier_nums + "','" + bent_cap_nums + "','" + tie_beam_nums + "','0'";
 			            			
 			            			flag2 = db.insertData("pier_detail", detail_key, detail_values);
 		            			}
 		            			
-		            			if (flag2 == 0) {
+		            			if (flag2 == 0)
 		                			Toast.makeText(PartsActivity.this, "桥墩细节添加失败", Toast.LENGTH_SHORT).show();
-		                		}
-		            			else {
+		            			else
 		            				Toast.makeText(PartsActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
-		            			}
 		            		}
 		        		}
 	        		}
-	        		else {
+	        		else
 	        			Toast.makeText(PartsActivity.this, "墩号不能为空", Toast.LENGTH_SHORT).show();
-	        		}
 				}
 			})
 			// 为对话框设置一个“取消”按钮

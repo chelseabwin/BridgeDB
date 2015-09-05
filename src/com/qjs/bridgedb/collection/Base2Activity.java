@@ -33,12 +33,10 @@ public class Base2Activity extends Activity {
 		
 		final DbOperation db = new DbOperation(Base2Activity.this);
 		
-		if (fromPrev != null) {
+		if (fromPrev != null)
 			bg_id = bundle.getInt("toNextId"); // 获取从上一页面传递过来的id
-		}
-		else if (fromNext != null) {
+		else if (fromNext != null)
 			bg_id = bundle.getInt("toPrevId"); // 获取从下一页面传递过来的id
-		}
 		
 		// 桥梁类型Spinner
 		sp_bt = (Spinner) findViewById(R.id.sp_bridge_type);
@@ -139,14 +137,13 @@ public class Base2Activity extends Activity {
         		if (cursor.moveToFirst()) {
         			String setValue = "bridge_classify='" + bridge_classify + "',design_load='" + design_load + "',bridge_use='" + bridge_use 
         					+ "',bridge_status='" + bridge_status + "',material_code='" + material_code + "',bridge_panel='" + bridge_panel
-        					+ "',stress_pattern='" + stress_pattern + "',support_type='" + support_type + "',bridge_type='" + bridge_type + "'";
+        					+ "',stress_pattern='" + stress_pattern + "',support_type='" + support_type + "',bridge_type='" + bridge_type + "',flag='0'";
         			
         			// 修改数据
         			int flag = db.updateData("base2", setValue, "bg_id='" + bg_id + "'");
         			
-        			if (flag == 0) {
+        			if (flag == 0)
             			Toast.makeText(Base2Activity.this, "修改失败", Toast.LENGTH_SHORT).show();
-            		}
             		else {
             			Toast.makeText(Base2Activity.this, "修改成功", Toast.LENGTH_SHORT).show();
             			
@@ -158,17 +155,16 @@ public class Base2Activity extends Activity {
         		}
         		else { // 没有则执行插入操作 
         			String key = "bg_id, bridge_classify, design_load, bridge_use, bridge_status,"
-            				+ "material_code, bridge_panel, stress_pattern, support_type, bridge_type";
+            				+ "material_code, bridge_panel, stress_pattern, support_type, bridge_type, flag";
             		
             		String values = "'" + bg_id + "','" + bridge_classify + "','" + design_load + "','" + bridge_use + "','" + bridge_status + "','"
-            				+ material_code + "','" + bridge_panel + "','" + stress_pattern + "','" + support_type + "','" + bridge_type + "'";
+            				+ material_code + "','" + bridge_panel + "','" + stress_pattern + "','" + support_type + "','" + bridge_type + "','0'";
             		
             		// 插入数据
         			int flag = db.insertData("base2", key, values);
             		
-            		if (flag == 0) {
+            		if (flag == 0)
             			Toast.makeText(Base2Activity.this, "添加失败", Toast.LENGTH_SHORT).show();
-            		}
             		else {
             			Toast.makeText(Base2Activity.this, "添加成功", Toast.LENGTH_SHORT).show();
             			

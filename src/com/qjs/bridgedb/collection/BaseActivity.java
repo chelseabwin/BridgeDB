@@ -98,9 +98,8 @@ public class BaseActivity extends Activity {
             		// 插入数据
         			int flag = db.insertData("base1", key, values);
             		
-            		if (flag == 0) {
+            		if (flag == 0)
             			Toast.makeText(BaseActivity.this, "添加失败", Toast.LENGTH_SHORT).show();
-            		}
             		else {
             			Toast.makeText(BaseActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
             			
@@ -120,9 +119,8 @@ public class BaseActivity extends Activity {
         			int bg_id = bundle.getInt("toPrevId");
         			int flag = db.updateData("base1", setValue, "id=" + bg_id);
         			
-        			if (flag == 0) {
+        			if (flag == 0)
             			Toast.makeText(BaseActivity.this, "修改失败", Toast.LENGTH_SHORT).show();
-            		}
             		else {
             			Toast.makeText(BaseActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
             			

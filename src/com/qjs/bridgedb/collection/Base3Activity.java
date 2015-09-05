@@ -28,12 +28,10 @@ public class Base3Activity extends Activity {
 		
 		final DbOperation db = new DbOperation(Base3Activity.this);
 		
-		if (fromPrev != null) {
+		if (fromPrev != null)
 			bg_id = bundle.getInt("toNextId"); // 获取从上一页面传递过来的id
-		}
-		else if (fromNext != null) {
+		else if (fromNext != null)
 			bg_id = bundle.getInt("toPrevId"); // 获取从下一页面传递过来的id
-		}
 		
 		// 根据id查找数据
 		final Cursor cursor = db.queryData("*", "base3", "bg_id='" + bg_id + "'");
@@ -89,14 +87,13 @@ public class Base3Activity extends Activity {
         		if (cursor.moveToFirst()) {
         			String setValue = "pier_material='" + pier_material + "',section_form='" + section_form + "',pier_type='" + pier_type 
         					+ "',abutment_material='" + abutment_material + "',abutment_type='" + abutment_type + "',pier_abutment_material='" + pier_abutment_material
-        					+ "',pier_abutment_base='" + pier_abutment_base + "',deck_type='" + deck_type + "',joint_type='" + joint_type + "'";
+        					+ "',pier_abutment_base='" + pier_abutment_base + "',deck_type='" + deck_type + "',joint_type='" + joint_type + "',flag='0'";
         			
         			// 修改数据
         			int flag = db.updateData("base3", setValue, "bg_id='" + bg_id + "'");
         			
-        			if (flag == 0) {
+        			if (flag == 0)
             			Toast.makeText(Base3Activity.this, "修改失败", Toast.LENGTH_SHORT).show();
-            		}
             		else {
             			Toast.makeText(Base3Activity.this, "修改成功", Toast.LENGTH_SHORT).show();
             			
@@ -108,17 +105,16 @@ public class Base3Activity extends Activity {
         		}
         		else { // 没有则执行插入操作
         			String key = "bg_id, pier_material, section_form, pier_type, abutment_material, abutment_type,"
-        					+ "pier_abutment_material, pier_abutment_base, deck_type, joint_type";
+        					+ "pier_abutment_material, pier_abutment_base, deck_type, joint_type, flag";
             		
             		String values = "'" + bg_id + "','" + pier_material + "','" + section_form + "','" + pier_type + "','" + abutment_material + "','"
-            				+ abutment_type + "','" + pier_abutment_material + "','" + pier_abutment_base + "','" + deck_type + "','" + joint_type + "'";
+            				+ abutment_type + "','" + pier_abutment_material + "','" + pier_abutment_base + "','" + deck_type + "','" + joint_type + "','0'";
             		
             		// 插入数据
         			int flag = db.insertData("base3", key, values);
             		
-            		if (flag == 0) {
+            		if (flag == 0)
             			Toast.makeText(Base3Activity.this, "添加失败", Toast.LENGTH_SHORT).show();
-            		}
             		else {
             			Toast.makeText(Base3Activity.this, "添加成功", Toast.LENGTH_SHORT).show();
             			
