@@ -14,7 +14,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -105,7 +104,7 @@ public class girderFragment extends Fragment {
 			voidsPits.setChecked(true); // 设置“蜂窝麻面”默认选中
 			
 			db = new DbOperation(this.getActivity());
-			cursor = db.queryData("*", "disease_girder", "bg_id='" + bgId + "'" + " and girder_id='" + bgCode + "'"); // 查找disease_girder表中是否有对应的数据
+			cursor = db.queryData("*", "disease_girder", "bg_id='" + bgId + "'" + " and parts_id='" + bgCode + "'"); // 查找disease_girder表中是否有对应的数据
 			
 			// 如果有则填入相应数据
 			if (cursor.moveToFirst()) {
@@ -169,13 +168,13 @@ public class girderFragment extends Fragment {
 				addContent.setText(cursor.getString(cursor.getColumnIndex("add_content")));
 				
 				uri = Uri.parse(cursor.getString(cursor.getColumnIndex("disease_image")));
-				try {  
-	                Bitmap bitmap = BitmapFactory.decodeStream(this.getActivity().getContentResolver().openInputStream(uri));  
-	                // 将Bitmap设定到ImageView
-	                ivImage.setImageBitmap(bitmap); // 设置图片
-	            } catch (FileNotFoundException e) {  
-	                Log.e("Exception", e.getMessage(),e);  
-	            }				
+				if (uri != null) {
+					try {  
+		                Bitmap bitmap = BitmapFactory.decodeStream(this.getActivity().getContentResolver().openInputStream(uri));  
+		                // 将Bitmap设定到ImageView
+		                ivImage.setImageBitmap(bitmap); // 设置图片
+		            } catch (FileNotFoundException e) {}
+				}		
 			}
 		}		
 		return rootView;		
@@ -186,13 +185,13 @@ public class girderFragment extends Fragment {
 		this.getActivity();
 		if (resultCode == FragmentActivity.RESULT_OK) {
             uri = data.getData();
-            ContentResolver cr = this.getActivity().getContentResolver();
-            try {  
-                Bitmap bitmap = BitmapFactory.decodeStream(cr.openInputStream(uri));  
-                // 将Bitmap设定到ImageView
-                ivImage.setImageBitmap(bitmap);
-            } catch (FileNotFoundException e) {  
-                Log.e("Exception", e.getMessage(),e);  
+            if (uri != null) {
+	            ContentResolver cr = this.getActivity().getContentResolver();
+	            try {  
+	                Bitmap bitmap = BitmapFactory.decodeStream(cr.openInputStream(uri));  
+	                // 将Bitmap设定到ImageView
+	                ivImage.setImageBitmap(bitmap);
+	            } catch (FileNotFoundException e) {}
             }
         }  
         super.onActivityResult(requestCode, resultCode, data);  
@@ -285,7 +284,9 @@ public class girderFragment extends Fragment {
 				String l2_width = "0";	// l2宽度
 				String rg_location = rbLocation.getText().toString(); // 位置
 				String add_content = addContent.getText().toString(); // 病害描述				
-				String disease_image = uri.toString(); // 本地图片地址
+				String disease_image = null; // 本地图片地址
+				if (uri != null)
+					disease_image = uri.toString();
 				
 				if ("裂缝".equals(rbFeature.getText())) {
 					RadioButton rbFissure = (RadioButton) rv.findViewById(rgFissure.getCheckedRadioButtonId());
@@ -319,9 +320,8 @@ public class girderFragment extends Fragment {
 							+ "',l1_start='" + l1_start + "',l1_end='" + l1_end + "',l1_area='" + l1_area + "',l2_start='" + l2_start
 							+ "',l2_length='" + l2_length + "',l2_width='" + l2_width + "',rg_location='" + rg_location + "',add_content='" + add_content
 							+ "',disease_image='" + disease_image + "',flag='0'";
-					System.out.println(sql);
     				
-    				flag1 = db.updateData("disease_girder", sql, "bg_id='" + bg_id + "'" + " and girder_id='" + parts_id + "'");
+    				flag1 = db.updateData("disease_girder", sql, "bg_id='" + bg_id + "'" + " and parts_id='" + parts_id + "'");
     				
     				if (flag1 == 0)
             			Toast.makeText(getActivity(), "修改失败", Toast.LENGTH_SHORT).show();
@@ -329,7 +329,7 @@ public class girderFragment extends Fragment {
         				Toast.makeText(getActivity(), "修改成功", Toast.LENGTH_SHORT).show();
 				}
 				else { // 没有则插入
-					String key = "bg_id, girder_id, rg_feature, rg_fissure, sp_otherDisease, l1_start, l1_end, l1_area, l2_start,"
+					String key = "bg_id, parts_id, rg_feature, rg_fissure, sp_otherDisease, l1_start, l1_end, l1_area, l2_start,"
 							+ "l2_length, l2_width, rg_location, add_content, disease_image, flag";
         			String values = "'" + bg_id + "','" + parts_id + "','" + rg_feature + "','" + rg_fissure + "','" + sp_otherDisease + "','"
         					 + l1_start + "','" + l1_end + "','" + l1_area + "','" + l2_start + "','" + l2_length + "','" + l2_width + "','"
@@ -341,7 +341,23 @@ public class girderFragment extends Fragment {
             			Toast.makeText(getActivity(), "添加失败", Toast.LENGTH_SHORT).show();
         			else
         				Toast.makeText(getActivity(), "添加成功", Toast.LENGTH_SHORT).show();
-				}				
+				}
+				cursor.close();
+				
+				// 刷新页面
+				Bundle bd = new Bundle();
+				bd.putString("GIRDER", parts_id);
+				bd.putInt("BRIDGE_ID", bg_id);
+				
+				// 创建Fragment对象
+				Fragment frag = new girderFragment();
+				
+				// 向Fragment传入参数
+				frag.setArguments(bd);
+				// 使用fragment替换bridge_detail_container容器当前显示的Fragment
+				getFragmentManager().beginTransaction()
+					.replace(R.id.upper_detail_container, frag)
+					.commit();
 			}			
 		});		
 	}

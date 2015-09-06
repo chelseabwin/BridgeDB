@@ -22,8 +22,7 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:textSize="@dimen/radio_button_font"
-           android:text="@string/season_cracking"
-           android:checked="true" />
+           android:text="@string/season_cracking" />
 
         <RadioButton
            android:id="@+id/rbtn_defect"
@@ -87,7 +86,7 @@
 	    <ImageView
 	        android:id="@+id/iv_image"  
 	        android:layout_width="0dip"
-			android:layout_height="wrap_content"
+			android:layout_height="fill_parent"
 			android:layout_weight="2"
 			android:contentDescription="@string/disease_image"
 			android:layout_marginLeft="20dp"

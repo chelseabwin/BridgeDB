@@ -72,8 +72,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	
 	// 病害-上部结构-主梁信息
 	final String CREATE_TABLE_DISEASE_GIRDER = "create table if not exists disease_girder (id integer primary key autoincrement,"
-			+ "bg_id, girder_id, rg_feature, rg_fissure, sp_otherDisease, l1_start, l1_end, l1_area, l2_start,"
-			+ "l2_length, l2_width,rg_location, add_content, disease_image, flag)";
+			+ "bg_id, parts_id, rg_feature, rg_fissure, sp_otherDisease, l1_start, l1_end, l1_area, l2_start,"
+			+ "l2_length, l2_width, rg_location, add_content, disease_image, flag)";
+	
+	// 病害-上部结构-湿接缝信息
+	final String CREATE_TABLE_DISEASE_WETJOINT = "create table if not exists disease_wetjoint (id integer primary key autoincrement,"
+			+ "bg_id, parts_id, rg_feature, rg_fissure, sp_otherDisease, l1_start, l1_end, l1_area, l2_start,"
+			+ "l2_length, l2_width, add_content, disease_image, flag)";
+	
+	// 病害-上部结构-支座信息
+	final String CREATE_TABLE_DISEASE_SUPPORT = "create table if not exists disease_support (id integer primary key autoincrement,"
+			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";
 	
 	public DatabaseHelper(Context context) {
 		super(context, dbName, null, dbVersion);
@@ -103,6 +112,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL(CREATE_TABLE_SUPPORT_DETAIL);
 		
 		db.execSQL(CREATE_TABLE_DISEASE_GIRDER);
+		db.execSQL(CREATE_TABLE_DISEASE_WETJOINT);
+		db.execSQL(CREATE_TABLE_DISEASE_SUPPORT);
 	}
 
 	@Override
