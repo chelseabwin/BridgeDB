@@ -1,13 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="match_parent" >
     
-    <TextView  
-        android:id="@+id/textview"         
-        android:layout_width="wrap_content"  
-        android:layout_height="wrap_content"   
-        android:text="@string/lower_parts" />
-
-</LinearLayout>
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" >
+	    
+	    <com.qjs.bridgedb.disease.subfragment.FlowRadioGroup 
+	        android:id="@+id/down_rg"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:layout_marginLeft="20dp"
+	        android:layout_marginTop="20dp" >
+        
+	        <RadioButton
+	           android:id="@+id/rb_pier"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/rb_pier" />
+	
+	        <RadioButton
+	           android:id="@+id/rb_bent_cap"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/rb_bent_cap" />
+	
+	        <RadioButton
+	           android:id="@+id/rb_tie_beam"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/rb_tie_beam" />
+	
+	        <RadioButton
+	           android:id="@+id/rb_abutment_body"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/rb_abutment_body" />
+	
+	        <RadioButton
+	           android:id="@+id/rb_abutment_capping"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/rb_abutment_capping" />
+	        
+	        <RadioButton
+	           android:id="@+id/rb_pa"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/rb_pa" />
+	
+	        <RadioButton
+	           android:id="@+id/rb_bed"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/rb_bed" />
+	
+	        <RadioButton
+	           android:id="@+id/rb_reg_structure"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/rb_reg_structure" />
+	        
+	        <RadioButton
+	           android:id="@+id/rb_wing_wall"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/rb_wing_wall" />
+	
+	        <RadioButton
+	           android:id="@+id/rb_conical_slope"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/rb_conical_slope" />
+	
+	        <RadioButton
+	           android:id="@+id/rb_protection_slope"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/rb_protection_slope" />
+	        
+	    </com.qjs.bridgedb.disease.subfragment.FlowRadioGroup>
+	    
+	    <TextView  
+	        android:id="@+id/tv_span_num"         
+	        android:layout_width="wrap_content"  
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="7dp"
+	        android:layout_marginBottom="7dp"
+	        android:layout_marginLeft="20dp"
+	        android:layout_marginRight="7dp" />
+	    
+	    <TextView  
+	        android:id="@+id/tv_span_detail"         
+	        android:layout_width="wrap_content"  
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="7dp"
+	        android:layout_marginBottom="7dp"
+	        android:layout_marginLeft="20dp"
+	        android:layout_marginRight="7dp" />
+	    
+	    <FrameLayout 
+	        android:id="@+id/down_detail_container"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent" />
+	
+	</LinearLayout>
+</ScrollView>
