@@ -171,7 +171,7 @@
     
     <!-- 上部结构-主梁/湿接缝  -->
     <string name="voids_pits">蜂窝、麻面</string>
-    <string name="Peeling_off_angle">剥落、掉角</string>
+    <string name="peeling_off_angle">剥落、掉角</string>
     <string name="cavitation">空洞、孔洞</string>
     <string name="fissure">裂缝</string>
     <string name="other_disease">其他病害</string>
@@ -181,6 +181,7 @@
     <string name="slant_fissure">斜向裂缝</string>
     <string name="lengthways_fissure">纵向裂缝</string>
     <string name="net_fissure">网裂缝</string>
+    <string name="standard_fissure">水平裂缝</string>
     
     <string name="dis_desc1">纵向距本跨梁端</string>
     <string name="dis_desc2">米  到</string>
@@ -206,5 +207,13 @@
     <string name="module_damage">组件损坏</string>
     <string name="plate_abrasion">聚四氟乙烯滑板磨损</string>
     <string name="displacement">位移、转角超限</string>
+    
+    <!-- 下部结构-桥墩  -->
+    <string name="leakage_tendon">剥落、露筋</string>
+    <string name="masonry_defects">圬工砌体缺陷</string>
+    
+    <!-- 下部结构-盖梁、系梁  -->
+    <string name="corrosion">钢筋锈蚀</string>
+    <string name="carbonation">混凝土碳化、腐蚀</string>
 
 </resources>

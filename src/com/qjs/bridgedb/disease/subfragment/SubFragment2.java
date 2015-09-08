@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 import com.qjs.bridgedb.DbOperation;
 import com.qjs.bridgedb.R;
-//import com.qjs.bridgedb.disease.subfragment.sub2.pierFragment;
+import com.qjs.bridgedb.disease.subfragment.sub2.beamFragment;
+import com.qjs.bridgedb.disease.subfragment.sub2.pierFragment;
 
 import android.database.Cursor;
 import android.graphics.Color;
@@ -323,10 +324,10 @@ public class SubFragment2 extends Fragment {
 		// 创建Fragment对象
 		Fragment frag = new Fragment();
 		
-//		if (optionStr.equals("PIER"))
-//			frag = new pierFragment();
-//		else if (optionStr.equals("WETJOINT"))
-//			frag = new wetJointFragment();
+		if (optionStr.equals("PIER"))
+			frag = new pierFragment();
+		else if (optionStr.equals("BENTCAP") || optionStr.equals("TIEBEAM"))
+			frag = new beamFragment();
 //		else
 //			frag = new supportFragment();
 		

@@ -130,7 +130,7 @@ public class girderFragment extends Fragment {
 						if ((fissure3.getText().toString()).equals(rg_fissure))
 							fissure3.setChecked(true);
 						if ((fissure4.getText().toString()).equals(rg_fissure))
-							fissure5.setChecked(true);
+							fissure4.setChecked(true);
 						
 						((EditText) rootView.findViewById(R.id.up1_ll2_dis_desc2)).setText(cursor.getString(cursor.getColumnIndex("l2_start")));
 						((EditText) rootView.findViewById(R.id.up1_ll2_dis_desc3)).setText(cursor.getString(cursor.getColumnIndex("l2_length")));

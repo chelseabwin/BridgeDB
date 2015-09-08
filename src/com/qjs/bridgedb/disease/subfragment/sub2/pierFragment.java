@@ -30,11 +30,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class pierFragment extends Fragment {
-	private RadioGroup rgFeature,rgFissure,rgLocation;
+	private RadioGroup rgFeature,rgFissure;
 	private Spinner spOtherDisease;
 	private LinearLayout local1,local2;
-	private RadioButton voidsPits,peelingOffAngle,cavitation,fissure,otherDisease;
-	private RadioButton fissure1,fissure2,fissure3,fissure4,fissure5;
+	private RadioButton voidsPits,leakageTendon,cavitation,masonryDefects,fissure,otherDisease;
+	private RadioButton fissure1,fissure2,fissure3,fissure4;
 	private TextView diseaseDescription;
 	private EditText addContent;
 	private Button btnImage,btnSubmit;
@@ -45,45 +45,42 @@ public class pierFragment extends Fragment {
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		final View rootView = inflater.inflate(R.layout.fragment_upper_page1_2, container, false);
+		final View rootView = inflater.inflate(R.layout.fragment_down_page1, container, false);
 		diseaseDescription = (TextView) rootView.findViewById(R.id.tv_disease_description); // 病害名称
 		
 		rgFeature = (RadioGroup) rootView.findViewById(R.id.rg); // 病害特征单选框
 		rgFissure = (RadioGroup) rootView.findViewById(R.id.rg2); // 裂缝单选框
-		rgLocation = (RadioGroup) rootView.findViewById(R.id.rg3); // 位置单选框（去除）
 		
 		spOtherDisease = (Spinner) rootView.findViewById(R.id.sp_other_disease); // 其他病害下拉列表
 		
-		local1 = (LinearLayout) rootView.findViewById(R.id.up1_ll_1); // 位置信息（含网裂缝除其他裂缝）
-		local2 = (LinearLayout) rootView.findViewById(R.id.up1_ll_2); // 其他裂缝位置信息
+		local1 = (LinearLayout) rootView.findViewById(R.id.down1_ll_1); // 位置信息（含网裂缝除其他裂缝）
+		local2 = (LinearLayout) rootView.findViewById(R.id.down1_ll_2); // 其他裂缝位置信息
 		
 		voidsPits = (RadioButton) rootView.findViewById(R.id.rbtn_voids_pits); // 蜂窝麻面
-		peelingOffAngle = (RadioButton) rootView.findViewById(R.id.rbtn_peeling_off_angle); // 剥落掉角
+		leakageTendon = (RadioButton) rootView.findViewById(R.id.rbtn_leakage_tendon); // 剥落露筋
 		cavitation = (RadioButton) rootView.findViewById(R.id.rbtn_cavitation); // 空洞孔洞
+		masonryDefects = (RadioButton) rootView.findViewById(R.id.rbtn_masonry_defects); // 圬工砌体缺陷
 		fissure = (RadioButton) rootView.findViewById(R.id.rbtn_fissure); // 裂缝
 		otherDisease = (RadioButton) rootView.findViewById(R.id.rbtn_other_disease); // 其他病害
 		
 		fissure1 = (RadioButton) rootView.findViewById(R.id.rbtn_fissure1); // 竖向裂缝
-		fissure2 = (RadioButton) rootView.findViewById(R.id.rbtn_fissure2); // 横向裂缝
-		fissure3 = (RadioButton) rootView.findViewById(R.id.rbtn_fissure3); // 斜向裂缝
-		fissure4 = (RadioButton) rootView.findViewById(R.id.rbtn_fissure4); // 纵向裂缝
-		fissure5 = (RadioButton) rootView.findViewById(R.id.rbtn_fissure5); // 网裂缝
+		fissure2 = (RadioButton) rootView.findViewById(R.id.rbtn_fissure2); // 斜向裂缝
+		fissure3 = (RadioButton) rootView.findViewById(R.id.rbtn_fissure3); // 水平裂缝
+		fissure4 = (RadioButton) rootView.findViewById(R.id.rbtn_fissure4); // 网裂缝
 		
-		addContent = (EditText) rootView.findViewById(R.id.tv_up1_add_content); // 病害描述
+		addContent = (EditText) rootView.findViewById(R.id.tv_down1_add_content); // 病害描述
 		
 		btnImage = (Button) rootView.findViewById(R.id.btn_image); // 病害图片按钮
 		ivImage = (ImageView) rootView.findViewById(R.id.iv_image); // 病害图片
 		
-		btnSubmit = (Button) rootView.findViewById(R.id.btn_up1_submit); // 提交按钮
-		
-		rgLocation.setVisibility(View.GONE);
+		btnSubmit = (Button) rootView.findViewById(R.id.btn_down1_submit); // 提交按钮
 		
 		Bundle args = getArguments();
 		if (args != null) {
 			diseaseDescription.setTextSize(25);
-			diseaseDescription.setText("病害描述：湿接缝(" + args.getString("WETJOINT") + ")");
+			diseaseDescription.setText("病害描述：桥墩(" + args.getString("PIER") + ")");
 			
-			final String bgCode = args.getString("WETJOINT");
+			final String bgCode = args.getString("PIER");
 			final int bgId = args.getInt("BRIDGE_ID");
 			
 			// 设置病害特征监听
@@ -99,7 +96,7 @@ public class pierFragment extends Fragment {
 			voidsPits.setChecked(true); // 设置“蜂窝麻面”默认选中
 			
 			db = new DbOperation(this.getActivity());
-			cursor = db.queryData("*", "disease_wetjoint", "bg_id='" + bgId + "'" + " and parts_id='" + bgCode + "'"); // 查找disease_wetjoint表中是否有对应的数据
+			cursor = db.queryData("*", "disease_pier", "bg_id='" + bgId + "'" + " and parts_id='" + bgCode + "'"); // 查找disease_pier表中是否有对应的数据
 			
 			// 如果有则填入相应数据
 			if (cursor.moveToFirst()) {
@@ -109,12 +106,12 @@ public class pierFragment extends Fragment {
 				if ((fissure.getText().toString()).equals(rg_feature)) { // 如果是裂缝
 					fissure.setChecked(true);
 					
-					if ((fissure5.getText().toString()).equals(rg_fissure)) { // 如果是网裂缝
-						fissure5.setChecked(true);
+					if ((fissure4.getText().toString()).equals(rg_fissure)) { // 如果是网裂缝
+						fissure4.setChecked(true);
 						
-						((EditText) rootView.findViewById(R.id.up1_ll1_dis_desc2)).setText(cursor.getString(cursor.getColumnIndex("l1_start")));
-						((EditText) rootView.findViewById(R.id.up1_ll1_dis_desc3)).setText(cursor.getString(cursor.getColumnIndex("l1_end")));
-						((EditText) rootView.findViewById(R.id.up1_ll1_dis_desc4)).setText(cursor.getString(cursor.getColumnIndex("l1_area")));
+						((EditText) rootView.findViewById(R.id.down1_ll1_dis_desc2)).setText(cursor.getString(cursor.getColumnIndex("l1_start")));
+						((EditText) rootView.findViewById(R.id.down1_ll1_dis_desc3)).setText(cursor.getString(cursor.getColumnIndex("l1_end")));
+						((EditText) rootView.findViewById(R.id.down1_ll1_dis_desc4)).setText(cursor.getString(cursor.getColumnIndex("l1_area")));
 					}
 					else { // 其他裂缝
 						if ((fissure1.getText().toString()).equals(rg_fissure))
@@ -123,28 +120,28 @@ public class pierFragment extends Fragment {
 							fissure2.setChecked(true);
 						if ((fissure3.getText().toString()).equals(rg_fissure))
 							fissure3.setChecked(true);
-						if ((fissure4.getText().toString()).equals(rg_fissure))
-							fissure5.setChecked(true);
 						
-						((EditText) rootView.findViewById(R.id.up1_ll2_dis_desc2)).setText(cursor.getString(cursor.getColumnIndex("l2_start")));
-						((EditText) rootView.findViewById(R.id.up1_ll2_dis_desc3)).setText(cursor.getString(cursor.getColumnIndex("l2_length")));
-						((EditText) rootView.findViewById(R.id.up1_ll2_dis_desc4)).setText(cursor.getString(cursor.getColumnIndex("l2_width")));
+						((EditText) rootView.findViewById(R.id.down1_ll2_dis_desc2)).setText(cursor.getString(cursor.getColumnIndex("l2_start")));
+						((EditText) rootView.findViewById(R.id.down1_ll2_dis_desc3)).setText(cursor.getString(cursor.getColumnIndex("l2_length")));
+						((EditText) rootView.findViewById(R.id.down1_ll2_dis_desc4)).setText(cursor.getString(cursor.getColumnIndex("l2_width")));
 					}
 				}
 				else { // 除裂缝以外的病害
 					if ((voidsPits.getText().toString()).equals(rg_feature))
 						voidsPits.setChecked(true);
-					if ((peelingOffAngle.getText().toString()).equals(rg_feature))
-						peelingOffAngle.setChecked(true);
+					if ((leakageTendon.getText().toString()).equals(rg_feature))
+						leakageTendon.setChecked(true);
 					if ((cavitation.getText().toString()).equals(rg_feature))
 						cavitation.setChecked(true);
+					if ((masonryDefects.getText().toString()).equals(rg_feature))
+						masonryDefects.setChecked(true);
 					if ((otherDisease.getText().toString()).equals(rg_feature)) { // 其他病害
 						otherDisease.setChecked(true);
 						DbOperation.setSpinnerItemSelectedByValue(spOtherDisease, cursor.getString(cursor.getColumnIndex("sp_otherDisease")));						
 					}
-					((EditText) rootView.findViewById(R.id.up1_ll1_dis_desc2)).setText(cursor.getString(cursor.getColumnIndex("l1_start")));
-					((EditText) rootView.findViewById(R.id.up1_ll1_dis_desc3)).setText(cursor.getString(cursor.getColumnIndex("l1_end")));
-					((EditText) rootView.findViewById(R.id.up1_ll1_dis_desc4)).setText(cursor.getString(cursor.getColumnIndex("l1_area")));					
+					((EditText) rootView.findViewById(R.id.down1_ll1_dis_desc2)).setText(cursor.getString(cursor.getColumnIndex("l1_start")));
+					((EditText) rootView.findViewById(R.id.down1_ll1_dis_desc3)).setText(cursor.getString(cursor.getColumnIndex("l1_end")));
+					((EditText) rootView.findViewById(R.id.down1_ll1_dis_desc4)).setText(cursor.getString(cursor.getColumnIndex("l1_area")));					
 				}
 				
 				addContent.setText(cursor.getString(cursor.getColumnIndex("add_content")));
@@ -198,7 +195,7 @@ public class pierFragment extends Fragment {
 				@Override
 				public void onCheckedChanged(RadioGroup group, int checkedId) {
 					// TODO Auto-generated method stub
-					if (checkedId == fissure5.getId()) {
+					if (checkedId == fissure4.getId()) {
 						// 显示位置信息1
 						local1.setVisibility(View.VISIBLE);
 						local2.setVisibility(View.GONE);
@@ -273,23 +270,23 @@ public class pierFragment extends Fragment {
 					rg_fissure = rbFissure.getText().toString(); // 裂缝
 					
 					if ("网裂缝".equals(rbFissure.getText())) {
-						l1_start = ((EditText) rv.findViewById(R.id.up1_ll1_dis_desc2)).getText().toString();
-						l1_end = ((EditText) rv.findViewById(R.id.up1_ll1_dis_desc3)).getText().toString();
-						l1_area = ((EditText) rv.findViewById(R.id.up1_ll1_dis_desc4)).getText().toString();
+						l1_start = ((EditText) rv.findViewById(R.id.down1_ll1_dis_desc2)).getText().toString();
+						l1_end = ((EditText) rv.findViewById(R.id.down1_ll1_dis_desc3)).getText().toString();
+						l1_area = ((EditText) rv.findViewById(R.id.down1_ll1_dis_desc4)).getText().toString();
 					}
 					else {
-						l2_start = ((EditText) rv.findViewById(R.id.up1_ll2_dis_desc2)).getText().toString();
-						l2_length = ((EditText) rv.findViewById(R.id.up1_ll2_dis_desc3)).getText().toString();
-						l2_width = ((EditText) rv.findViewById(R.id.up1_ll2_dis_desc4)).getText().toString();						
+						l2_start = ((EditText) rv.findViewById(R.id.down1_ll2_dis_desc2)).getText().toString();
+						l2_length = ((EditText) rv.findViewById(R.id.down1_ll2_dis_desc3)).getText().toString();
+						l2_width = ((EditText) rv.findViewById(R.id.down1_ll2_dis_desc4)).getText().toString();						
 					}
 				}
 				else {
 					if ("其他病害".equals(rbFeature.getText()))
 						sp_otherDisease = spOtherDisease.getSelectedItem().toString(); // 其他病害-病害信息
 					
-					l1_start = ((EditText) rv.findViewById(R.id.up1_ll1_dis_desc2)).getText().toString();
-					l1_end = ((EditText) rv.findViewById(R.id.up1_ll1_dis_desc3)).getText().toString();
-					l1_area = ((EditText) rv.findViewById(R.id.up1_ll1_dis_desc4)).getText().toString();
+					l1_start = ((EditText) rv.findViewById(R.id.down1_ll1_dis_desc2)).getText().toString();
+					l1_end = ((EditText) rv.findViewById(R.id.down1_ll1_dis_desc3)).getText().toString();
+					l1_area = ((EditText) rv.findViewById(R.id.down1_ll1_dis_desc4)).getText().toString();
 				}
 				
 				int flag1 = 0;
@@ -301,7 +298,7 @@ public class pierFragment extends Fragment {
 							+ "',l2_length='" + l2_length + "',l2_width='" + l2_width + "',add_content='" + add_content
 							+ "',disease_image='" + disease_image + "',flag='0'";
     				
-    				flag1 = db.updateData("disease_wetjoint", sql, "bg_id='" + bg_id + "'" + " and parts_id='" + parts_id + "'");
+    				flag1 = db.updateData("disease_pier", sql, "bg_id='" + bg_id + "'" + " and parts_id='" + parts_id + "'");
     				
     				if (flag1 == 0)
             			Toast.makeText(getActivity(), "修改失败", Toast.LENGTH_SHORT).show();
@@ -315,7 +312,7 @@ public class pierFragment extends Fragment {
         					 + l1_start + "','" + l1_end + "','" + l1_area + "','" + l2_start + "','" + l2_length + "','" + l2_width + "','"
         					 + add_content + "','" + disease_image + "','0'";
         			
-        			flag2 = db.insertData("disease_wetjoint", key, values);
+        			flag2 = db.insertData("disease_pier", key, values);
         			
         			if (flag2 == 0)
             			Toast.makeText(getActivity(), "添加失败", Toast.LENGTH_SHORT).show();
@@ -326,7 +323,7 @@ public class pierFragment extends Fragment {
 				
 				// 刷新页面
 				Bundle bd = new Bundle();
-				bd.putString("WETJOINT", parts_id);
+				bd.putString("PIER", parts_id);
 				bd.putInt("BRIDGE_ID", bg_id);
 				
 				// 创建Fragment对象
@@ -336,7 +333,7 @@ public class pierFragment extends Fragment {
 				frag.setArguments(bd);
 				// 使用fragment替换bridge_detail_container容器当前显示的Fragment
 				getFragmentManager().beginTransaction()
-					.replace(R.id.upper_detail_container, frag)
+					.replace(R.id.down_detail_container, frag)
 					.commit();
 			}			
 		});		

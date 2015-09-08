@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp" />
     
-    <RadioGroup 
+    <com.qjs.bridgedb.disease.subfragment.FlowRadioGroup 
         android:id="@+id/rg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,11 +25,11 @@
            android:text="@string/voids_pits" />
 
         <RadioButton
-           android:id="@+id/rbtn_peeling_off_angle"
+           android:id="@+id/rbtn_leakage_tendon"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:textSize="@dimen/radio_button_font"
-           android:text="@string/peeling_off_angle" />
+           android:text="@string/leakage_tendon" />
 
         <RadioButton
            android:id="@+id/rbtn_cavitation"
@@ -38,6 +38,13 @@
            android:textSize="@dimen/radio_button_font"
            android:text="@string/cavitation" />
 
+        <RadioButton
+           android:id="@+id/rbtn_masonry_defects"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
+           android:text="@string/masonry_defects" />
+        
         <RadioButton
            android:id="@+id/rbtn_fissure"
            android:layout_width="wrap_content"
@@ -57,9 +64,9 @@
 	        android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:visibility="gone"
-			android:entries="@array/girder_evaluate" />
+			android:entries="@array/pier_evaluate" />
       
-    </RadioGroup>
+    </com.qjs.bridgedb.disease.subfragment.FlowRadioGroup>
     
     <RadioGroup 
         android:id="@+id/rg2"
@@ -82,24 +89,17 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:textSize="@dimen/radio_button_font"
-           android:text="@string/landscape_fissure" />
+           android:text="@string/slant_fissure" />
 
         <RadioButton
            android:id="@+id/rbtn_fissure3"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:textSize="@dimen/radio_button_font"
-           android:text="@string/slant_fissure" />
-
-        <RadioButton
-           android:id="@+id/rbtn_fissure4"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:textSize="@dimen/radio_button_font"
-           android:text="@string/lengthways_fissure" />
+           android:text="@string/standard_fissure" />
        
         <RadioButton
-           android:id="@+id/rbtn_fissure5"
+           android:id="@+id/rbtn_fissure4"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:textSize="@dimen/radio_button_font"
@@ -108,7 +108,7 @@
     </RadioGroup>
     
     <LinearLayout
-        android:id="@+id/up1_ll_1"
+        android:id="@+id/down1_ll_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"        
@@ -123,7 +123,7 @@
 	        android:text="@string/dis_desc1" />
         
         <EditText
-	        android:id="@+id/up1_ll1_dis_desc2"
+	        android:id="@+id/down1_ll1_dis_desc2"
 	        android:layout_width="100dp"
 	        android:layout_height="wrap_content"
 			android:inputType="number"
@@ -136,7 +136,7 @@
 	        android:text="@string/dis_desc2" />
         
         <EditText
-	        android:id="@+id/up1_ll1_dis_desc3"
+	        android:id="@+id/down1_ll1_dis_desc3"
 	        android:layout_width="100dp"
 	        android:layout_height="wrap_content"
 			android:inputType="number"
@@ -159,7 +159,7 @@
 	        android:text="@string/dis_desc4" />
         
         <EditText
-	        android:id="@+id/up1_ll1_dis_desc4"
+	        android:id="@+id/down1_ll1_dis_desc4"
 	        android:layout_width="100dp"
 	        android:layout_height="wrap_content"
 			android:inputType="number"
@@ -168,7 +168,7 @@
     </LinearLayout>
     
     <LinearLayout
-        android:id="@+id/up1_ll_2"
+        android:id="@+id/down1_ll_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -183,7 +183,7 @@
 	        android:text="@string/dis_desc1" />
         
         <EditText
-	        android:id="@+id/up1_ll2_dis_desc2"
+	        android:id="@+id/down1_ll2_dis_desc2"
 	        android:layout_width="100dp"
 	        android:layout_height="wrap_content"
 			android:inputType="number"
@@ -206,7 +206,7 @@
 	        android:text="@string/dis_desc5" />
         
         <EditText
-	        android:id="@+id/up1_ll2_dis_desc3"
+	        android:id="@+id/down1_ll2_dis_desc3"
 	        android:layout_width="100dp"
 	        android:layout_height="wrap_content"
 			android:inputType="number"
@@ -219,7 +219,7 @@
 	        android:text="@string/dis_desc6" />
         
         <EditText
-	        android:id="@+id/up1_ll2_dis_desc4"
+	        android:id="@+id/down1_ll2_dis_desc4"
 	        android:layout_width="100dp"
 	        android:layout_height="wrap_content"
 			android:inputType="number"
@@ -227,59 +227,13 @@
         
     </LinearLayout>
     
-    <RadioGroup 
-        android:id="@+id/rg3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-		android:layout_marginLeft="20dp"
-		android:layout_marginTop="10dp" >
-        
-        <RadioButton
-           android:id="@+id/rbtn_location1"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:textSize="@dimen/radio_button_font"
-           android:text="@string/left_flange"
-           android:checked="true" />
-
-        <RadioButton
-           android:id="@+id/rbtn_location2"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:textSize="@dimen/radio_button_font"
-           android:text="@string/right_flange" />
-
-        <RadioButton
-           android:id="@+id/rbtn_location3"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:textSize="@dimen/radio_button_font"
-           android:text="@string/left_web" />
-
-        <RadioButton
-           android:id="@+id/rbtn_location4"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:textSize="@dimen/radio_button_font"
-           android:text="@string/right_web" />
-       
-        <RadioButton
-           android:id="@+id/rbtn_location5"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:textSize="@dimen/radio_button_font"
-           android:text="@string/bottom_plate" />
-      
-    </RadioGroup>
-    
     <LinearLayout 
         android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:orientation="horizontal" >
     
 	    <EditText
-		    android:id="@+id/tv_up1_add_content"
+		    android:id="@+id/tv_down1_add_content"
 		    android:layout_width="0dip"
 			android:layout_height="wrap_content"
 			android:layout_weight="3"
@@ -316,7 +270,7 @@
         android:layout_marginTop="10dp" />    
 	
     <Button
-	    android:id="@+id/btn_up1_submit"
+	    android:id="@+id/btn_down1_submit"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:layout_gravity="center_vertical"

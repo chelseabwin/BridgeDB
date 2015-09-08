@@ -245,4 +245,12 @@
         <item>[6]结构变位</item>
         <item>[7]预应力构件损伤</item>
     </string-array>
+    
+    <!-- 桥墩病害 -->
+    <string-array name="pier_evaluate">
+        <item>[1]钢筋锈蚀</item>
+        <item>[2]混凝土碳化、腐蚀</item>
+        <item>[3]磨损</item>
+        <item>[4]位移</item>
+    </string-array>
 </resources>
