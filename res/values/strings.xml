@@ -215,5 +215,21 @@
     <!-- 下部结构-盖梁、系梁  -->
     <string name="corrosion">钢筋锈蚀</string>
     <string name="carbonation">混凝土碳化、腐蚀</string>
+    
+    <!-- 下部结构-桥台身  -->
+    <string name="peel_off">剥落</string>
+    <string name="abrasion">磨损</string>
+    <string name="vehicle_jump">桥台跳车</string>
+    <string name="drainage">台背排水</string>
+    
+    <!-- 下部结构-桥台帽  -->
+    <string name="breakage">破损</string>
+    
+    <!-- 下部结构-墩台基础  -->
+    <string name="scouring">冲刷、淘空</string>
+    <string name="washout">冲蚀</string>
+    <string name="bottom_paving">河底铺砌</string>
+    <string name="sedimentation">沉降</string>
+    <string name="slip_tilt">滑移和倾斜</string>
 
 </resources>

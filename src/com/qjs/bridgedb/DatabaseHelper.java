@@ -97,6 +97,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	final String CREATE_TABLE_DISEASE_TIEBEAM = "create table if not exists disease_tiebeam (id integer primary key autoincrement,"
 			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";
 	
+	// 病害-上部结构-桥台身
+	final String CREATE_TABLE_DISEASE_ATBODY = "create table if not exists disease_atbody (id integer primary key autoincrement,"
+			+ "bg_id, parts_id, rg_feature, sp_otherDisease, add_content, disease_image, flag)";
+	
+	// 病害-上部结构-桥台帽
+	final String CREATE_TABLE_DISEASE_ATCAPPING = "create table if not exists disease_atcapping (id integer primary key autoincrement,"
+			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";
+	
+	// 病害-上部结构-墩台基础
+	final String CREATE_TABLE_DISEASE_PA = "create table if not exists disease_pa (id integer primary key autoincrement,"
+			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";
+	
 	public DatabaseHelper(Context context) {
 		super(context, dbName, null, dbVersion);
 		// TODO Auto-generated constructor stub		
@@ -131,6 +143,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL(CREATE_TABLE_DISEASE_PIER);
 		db.execSQL(CREATE_TABLE_DISEASE_BENTCAP);
 		db.execSQL(CREATE_TABLE_DISEASE_TIEBEAM);
+		db.execSQL(CREATE_TABLE_DISEASE_ATBODY);
+		db.execSQL(CREATE_TABLE_DISEASE_ATCAPPING);
+		db.execSQL(CREATE_TABLE_DISEASE_PA);
 	}
 
 	@Override

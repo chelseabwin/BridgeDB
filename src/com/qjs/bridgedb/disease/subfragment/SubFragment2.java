@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.qjs.bridgedb.DbOperation;
 import com.qjs.bridgedb.R;
+import com.qjs.bridgedb.disease.subfragment.sub2.abutmentFragment;
 import com.qjs.bridgedb.disease.subfragment.sub2.beamFragment;
 import com.qjs.bridgedb.disease.subfragment.sub2.pierFragment;
 
@@ -328,6 +329,8 @@ public class SubFragment2 extends Fragment {
 			frag = new pierFragment();
 		else if (optionStr.equals("BENTCAP") || optionStr.equals("TIEBEAM"))
 			frag = new beamFragment();
+		else if (optionStr.equals("ATBODY") || optionStr.equals("ATCAPPING") || optionStr.equals("PA"))
+			frag = new abutmentFragment();
 //		else
 //			frag = new supportFragment();
 		
