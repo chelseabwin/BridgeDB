@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_disease_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp" />
+    
+    <com.qjs.bridgedb.disease.subfragment.FlowRadioGroup 
+        android:id="@+id/rg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_marginLeft="20dp" >
+        
+        <RadioButton
+           android:id="@+id/rg1_rbtn_jam"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
+           android:text="@string/jam" />
+
+        <RadioButton
+           android:id="@+id/rg1_rbtn_washing"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
+           android:text="@string/washing" />
+
+        <RadioButton
+           android:id="@+id/rg1_rbtn_riverbed"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
+           android:text="@string/riverbed" />
+      
+    </com.qjs.bridgedb.disease.subfragment.FlowRadioGroup>
+    
+    <com.qjs.bridgedb.disease.subfragment.FlowRadioGroup 
+        android:id="@+id/rg2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_marginLeft="20dp" >
+        
+        <RadioButton
+           android:id="@+id/rg2_rbtn_damage"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
+           android:text="@string/damage" />
+
+        <RadioButton
+           android:id="@+id/rg2_rbtn_transformation"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
+           android:text="@string/transformation" />
+      
+    </com.qjs.bridgedb.disease.subfragment.FlowRadioGroup>
+    
+    <com.qjs.bridgedb.disease.subfragment.FlowRadioGroup 
+        android:id="@+id/rg3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_marginLeft="20dp" >
+        
+        <RadioButton
+           android:id="@+id/rg3_rbtn_breakage"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
+           android:text="@string/breakage" />
+
+        <RadioButton
+           android:id="@+id/rg3_rbtn_offset"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
+           android:text="@string/offset" />
+
+        <RadioButton
+           android:id="@+id/rg3_bulging"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
+           android:text="@string/bulging" />
+
+        <RadioButton
+           android:id="@+id/rg3_rbtn_fissure"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
+           android:text="@string/fissure" />
+      
+    </com.qjs.bridgedb.disease.subfragment.FlowRadioGroup>
+    
+    <com.qjs.bridgedb.disease.subfragment.FlowRadioGroup 
+        android:id="@+id/rg4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_marginLeft="20dp" >
+        
+        <RadioButton
+           android:id="@+id/rg4_rbtn_defect"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
+           android:text="@string/defect" />
+
+        <RadioButton
+           android:id="@+id/rg4_rbtn_washing"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
+           android:text="@string/washing" />
+      
+    </com.qjs.bridgedb.disease.subfragment.FlowRadioGroup>
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/tv_down1_add_content"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="3"
+            android:background="@android:drawable/edit_text"
+            android:ems="10"
+            android:enabled="true"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:maxLines="10"
+            android:minLines="8"
+            android:scrollbars="vertical" >
+
+            <requestFocus />
+        </EditText>
+		
+	    <ImageView
+	        android:id="@+id/iv_image"  
+	        android:layout_width="0dip"
+			android:layout_height="fill_parent"
+			android:layout_weight="2"
+			android:contentDescription="@string/disease_image"
+			android:layout_marginLeft="20dp"
+			android:layout_marginRight="20dp"
+	        android:layout_marginTop="10dp" />
+        
+    </LinearLayout>
+	
+    <Button   
+        android:id="@+id/btn_image"  
+        android:layout_width="wrap_content"   
+        android:layout_height="wrap_content"
+        android:text="@string/bn_disease_image"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp" />    
+	
+    <Button
+	    android:id="@+id/btn_down1_submit"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center_vertical"
+	    android:text="@string/bn_submit"
+	    android:background="@color/lightgray"
+	    android:layout_marginLeft="20dp"
+	    android:layout_marginRight="20dp"
+	    android:layout_marginTop="10dp"
+	    android:layout_marginBottom="20dp"
+	    style="?android:attr/buttonBarButtonStyle" />
+    
+</LinearLayout>

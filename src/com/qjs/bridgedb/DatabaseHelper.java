@@ -107,6 +107,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	
 	// 病害-上部结构-墩台基础
 	final String CREATE_TABLE_DISEASE_PA = "create table if not exists disease_pa (id integer primary key autoincrement,"
+			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";	
+	
+	// 病害-上部结构-河床
+	final String CREATE_TABLE_DISEASE_BED = "create table if not exists disease_bed (id integer primary key autoincrement,"
+			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";
+	
+	// 病害-上部结构-调治构造物
+	final String CREATE_TABLE_DISEASE_REGSTRUC = "create table if not exists disease_regstruc (id integer primary key autoincrement,"
+			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";
+	
+	// 病害-上部结构-翼墙、耳墙
+	final String CREATE_TABLE_DISEASE_WINGWALL = "create table if not exists disease_wingwall (id integer primary key autoincrement,"
+			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";
+	
+	// 病害-上部结构-锥坡
+	final String CREATE_TABLE_DISEASE_CONSLOPE = "create table if not exists disease_conslope (id integer primary key autoincrement,"
+			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";
+	
+	// 病害-上部结构-护坡
+	final String CREATE_TABLE_DISEASE_PROSLOPE = "create table if not exists disease_proslope (id integer primary key autoincrement,"
 			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";
 	
 	public DatabaseHelper(Context context) {
@@ -146,6 +166,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL(CREATE_TABLE_DISEASE_ATBODY);
 		db.execSQL(CREATE_TABLE_DISEASE_ATCAPPING);
 		db.execSQL(CREATE_TABLE_DISEASE_PA);
+		db.execSQL(CREATE_TABLE_DISEASE_BED);
+		db.execSQL(CREATE_TABLE_DISEASE_REGSTRUC);
+		db.execSQL(CREATE_TABLE_DISEASE_WINGWALL);
+		db.execSQL(CREATE_TABLE_DISEASE_CONSLOPE);
+		db.execSQL(CREATE_TABLE_DISEASE_PROSLOPE);
 	}
 
 	@Override

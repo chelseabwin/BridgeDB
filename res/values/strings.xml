@@ -231,5 +231,20 @@
     <string name="bottom_paving">河底铺砌</string>
     <string name="sedimentation">沉降</string>
     <string name="slip_tilt">滑移和倾斜</string>
+    
+    <!-- 下部结构-翼墙、耳墙  -->
+    <string name="offset">位移</string>
+    <string name="bulging">鼓肚、砌体松动</string>
+    
+    <!-- 下部结构-锥坡、护坡  -->
+    <string name="washing">冲刷</string>
+    
+    <!-- 下部结构-河床  -->
+    <string name="jam">堵塞</string>
+    <string name="riverbed">河床变迁</string>
+    
+    <!-- 下部结构-调治构造物  -->
+    <string name="damage">损坏</string>
+    <string name="transformation">冲刷、变形</string>
 
 </resources>
