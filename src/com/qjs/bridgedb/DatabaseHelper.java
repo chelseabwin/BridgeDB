@@ -89,44 +89,68 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			+ "bg_id, parts_id, rg_feature, rg_fissure, sp_otherDisease, l1_start, l1_end, l1_area, l2_start,"
 			+ "l2_length, l2_width, add_content, disease_image, flag)";
 	
-	// 病害-上部结构-盖梁
+	// 病害-下部结构-盖梁
 	final String CREATE_TABLE_DISEASE_BENTCAP = "create table if not exists disease_bentcap (id integer primary key autoincrement,"
 			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";
 	
-	// 病害-上部结构-系梁
+	// 病害-下部结构-系梁
 	final String CREATE_TABLE_DISEASE_TIEBEAM = "create table if not exists disease_tiebeam (id integer primary key autoincrement,"
 			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";
 	
-	// 病害-上部结构-桥台身
+	// 病害-下部结构-桥台身
 	final String CREATE_TABLE_DISEASE_ATBODY = "create table if not exists disease_atbody (id integer primary key autoincrement,"
 			+ "bg_id, parts_id, rg_feature, sp_otherDisease, add_content, disease_image, flag)";
 	
-	// 病害-上部结构-桥台帽
+	// 病害-下部结构-桥台帽
 	final String CREATE_TABLE_DISEASE_ATCAPPING = "create table if not exists disease_atcapping (id integer primary key autoincrement,"
 			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";
 	
-	// 病害-上部结构-墩台基础
+	// 病害-下部结构-墩台基础
 	final String CREATE_TABLE_DISEASE_PA = "create table if not exists disease_pa (id integer primary key autoincrement,"
 			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";	
 	
-	// 病害-上部结构-河床
+	// 病害-下部结构-河床
 	final String CREATE_TABLE_DISEASE_BED = "create table if not exists disease_bed (id integer primary key autoincrement,"
 			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";
 	
-	// 病害-上部结构-调治构造物
+	// 病害-下部结构-调治构造物
 	final String CREATE_TABLE_DISEASE_REGSTRUC = "create table if not exists disease_regstruc (id integer primary key autoincrement,"
 			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";
 	
-	// 病害-上部结构-翼墙、耳墙
+	// 病害-下部结构-翼墙、耳墙
 	final String CREATE_TABLE_DISEASE_WINGWALL = "create table if not exists disease_wingwall (id integer primary key autoincrement,"
 			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";
 	
-	// 病害-上部结构-锥坡
+	// 病害-下部结构-锥坡
 	final String CREATE_TABLE_DISEASE_CONSLOPE = "create table if not exists disease_conslope (id integer primary key autoincrement,"
 			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";
 	
-	// 病害-上部结构-护坡
+	// 病害-下部结构-护坡
 	final String CREATE_TABLE_DISEASE_PROSLOPE = "create table if not exists disease_proslope (id integer primary key autoincrement,"
+			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";
+	
+	// 病害-桥面系-桥面铺装
+	final String CREATE_TABLE_DISEASE_DECK = "create table if not exists disease_deck (id integer primary key autoincrement,"
+			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";
+	
+	// 病害-桥面系-伸缩缝
+	final String CREATE_TABLE_DISEASE_JOINT = "create table if not exists disease_joint (id integer primary key autoincrement,"
+			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";
+	
+	// 病害-桥面系-人行道
+	final String CREATE_TABLE_DISEASE_SIDEWALK = "create table if not exists disease_sidewalk (id integer primary key autoincrement,"
+			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";
+	
+	// 病害-桥面系-栏杆、护栏
+	final String CREATE_TABLE_DISEASE_FENCE = "create table if not exists disease_fence (id integer primary key autoincrement,"
+			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";
+	
+	// 病害-桥面系-防排水系统
+	final String CREATE_TABLE_DISEASE_WATERTIGHT = "create table if not exists disease_watertight (id integer primary key autoincrement,"
+			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";
+	
+	// 病害-桥面系-照明、标志
+	final String CREATE_TABLE_DISEASE_LIGHTING = "create table if not exists disease_lighting (id integer primary key autoincrement,"
 			+ "bg_id, parts_id, rg_feature, add_content, disease_image, flag)";
 	
 	public DatabaseHelper(Context context) {
@@ -171,6 +195,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL(CREATE_TABLE_DISEASE_WINGWALL);
 		db.execSQL(CREATE_TABLE_DISEASE_CONSLOPE);
 		db.execSQL(CREATE_TABLE_DISEASE_PROSLOPE);
+		
+		db.execSQL(CREATE_TABLE_DISEASE_DECK);
+		db.execSQL(CREATE_TABLE_DISEASE_JOINT);
+		db.execSQL(CREATE_TABLE_DISEASE_SIDEWALK);
+		db.execSQL(CREATE_TABLE_DISEASE_FENCE);
+		db.execSQL(CREATE_TABLE_DISEASE_WATERTIGHT);
+		db.execSQL(CREATE_TABLE_DISEASE_LIGHTING);
 	}
 
 	@Override

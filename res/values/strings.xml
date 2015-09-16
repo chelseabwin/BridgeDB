@@ -12,6 +12,7 @@
     <string name="pls_click">请点击查看</string>
     <string name="bn_add">添加</string>
     <string name="bn_submit">提交</string>
+    <string name="zero">0</string>
     
     <string name="L0">L0</string>
     <string name="R0">R0</string>
@@ -147,7 +148,7 @@
     <string name="sidewalk">人行道</string>
     <string name="guardrail">栏杆、护栏</string>
     
-    <string name="drainage_system">排水系统个数</string>
+    <string name="drainage_system">防排水系统个数</string>
     <string name="illuminated_sign">照明、标志个数</string>
     
     <!-- 病害信息页 -->
@@ -168,6 +169,11 @@
     <string name="rb_wing_wall">翼墙、耳墙</string>
     <string name="rb_conical_slope">锥坡</string>
     <string name="rb_protection_slope">护坡</string>
+    
+    <string name="rb_bridge_deck">桥面铺装</string>
+    <string name="rb_joint">伸缩缝装置</string>
+    <string name="rb_watertight">防排水系统</string>
+    <string name="rb_lighting">照明、标志</string>
     
     <!-- 上部结构-主梁/湿接缝  -->
     <string name="voids_pits">蜂窝、麻面</string>
@@ -246,5 +252,29 @@
     <!-- 下部结构-调治构造物  -->
     <string name="damage">损坏</string>
     <string name="transformation">冲刷、变形</string>
+    
+    <!-- 桥面系-桥面铺装  -->
+    <string name="track">变形（车辙、拥包、高低不平等）</string>
+    <string name="bleeding">泛油</string>
+    
+    <!-- 桥面系-伸缩缝  -->
+    <string name="irregularity">凹凸不平</string>
+    <string name="anchorage">锚固区缺陷</string>
+    <string name="failure">失效</string>
+    
+    <!-- 桥面系-人行道  -->
+    <string name="lost">缺失</string>
+    
+    <!-- 桥面系-栏杆、护栏  -->
+    <string name="crack_up">撞坏、缺失</string>
+    
+    <!-- 桥面系-防排水系统  -->
+    <string name="impeded">排水不畅</string>
+    <string name="flaw">排水管、引水槽缺陷</string>
+    
+    <!-- 桥面系-照明、标志  -->
+    <string name="dirty">污损或破坏</string>
+    <string name="lack_of_lighting">照明设施缺失</string>
+    <string name="sign_missing">标志脱落、缺失</string>
 
 </resources>

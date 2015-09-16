@@ -177,6 +177,16 @@ public class Parts2Activity  extends Activity {
         		String drainage_system = ((EditText) findViewById(R.id.et_drainage_system)).getText().toString(); // 排水系统个数
         		String illuminated_sign = ((EditText) findViewById(R.id.et_illuminated_sign)).getText().toString(); // 照明、标志个数
         		
+        		// 如果为空，赋值为“0”
+        		if (deck_num.equals(""))
+        			deck_num = "0";
+        		if (joint_num.equals(""))
+        			joint_num = "0";
+        		if (drainage_system.equals(""))
+        			drainage_system = "0";
+        		if (illuminated_sign.equals(""))
+        			illuminated_sign = "0";
+        		
         		String load_detail_id = "0"; // 上部承重构件id
         		String general_detail_id = "0"; // 上部一般构件id
         		String support_detail_id = "0"; // 支座id

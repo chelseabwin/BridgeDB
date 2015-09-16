@@ -195,6 +195,18 @@ public class PartsActivity  extends Activity {
         		String bed_num = ((EditText) findViewById(R.id.et_bed_num)).getText().toString(); // 河床个数
         		String reg_structure = ((EditText) findViewById(R.id.et_reg_structure)).getText().toString(); // 调治构造物个数
         		
+        		// 如果为空，赋值为“0”
+        		if (protection_slope.equals(""))
+        			protection_slope = "0";
+        		if (abutment_num.equals(""))
+        			abutment_num = "0";
+        		if (pa_num.equals(""))
+        			pa_num = "0";
+        		if (bed_num.equals(""))
+        			bed_num = "0";
+        		if (reg_structure.equals(""))
+        			reg_structure = "0";
+        		
         		String pier_detail_id = "0"; // 桥墩id
         		
         		// 如果有原始数据，执行修改操作
