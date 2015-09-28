@@ -50,7 +50,7 @@ public class SubFragment3 extends Fragment {
 						deckDetail.setVisibility(View.GONE); // 将病害详情设为不可见
 					
 					RadioButton rb = (RadioButton) rootView.findViewById(checkedId);
-					setSpanNum(rb, args.getInt("BRIDGE_ID")); // 设置跨号
+					setSpanNum(rb, args.getString("BRIDGE_ID")); // 设置跨号
 				}				
 			});
 		}		
@@ -61,7 +61,7 @@ public class SubFragment3 extends Fragment {
 	 * rb: 病害选择button
 	 * bgId: 桥梁id
 	 * */
-	private void setSpanNum(RadioButton rb, int bgId) {
+	private void setSpanNum(RadioButton rb, String bgId) {
 		String tableName,fieldName,option;
 		
 		if ("桥面铺装".equals(rb.getText())) {
@@ -130,7 +130,7 @@ public class SubFragment3 extends Fragment {
 	 * option: 选择项
 	 * bgId: 桥梁id
 	 * */
-	private void setSpanDetail(String[] ItemCodes, String option,int bgId) {
+	private void setSpanDetail(String[] ItemCodes, String option,String bgId) {
 		// 如果编号详情不可见，设为可见
 		if (spanDetail.getVisibility() != View.VISIBLE)
 			spanDetail.setVisibility(View.VISIBLE);
@@ -150,7 +150,7 @@ public class SubFragment3 extends Fragment {
 			spanDetail.setText("照明、标志:\t");
 		
 		final String optionStr = option;
-		final int bg_id = bgId;
+		final String bg_id = bgId;
 		
 		// 定义可点击的字符串数组，数组长度为ItemCodes的长度
 		SpannableString[] ss = new SpannableString[ItemCodes.length];
@@ -182,13 +182,13 @@ public class SubFragment3 extends Fragment {
 	 * Item: 选择跨号
 	 * bgId: 桥梁id
 	 * */
-	private void setDiseaseDetail(String optionStr, String Item, int bdId) {
+	private void setDiseaseDetail(String optionStr, String Item, String bdId) {
 		// 如果病害详情不可见，设为可见
 		if (deckDetail.getVisibility() != View.VISIBLE)
 			deckDetail.setVisibility(View.VISIBLE);
 		Bundle bd = new Bundle();
 		bd.putString(optionStr, Item);
-		bd.putInt("BRIDGE_ID", bdId);
+		bd.putString("BRIDGE_ID", bdId);
 		
 		// 创建Fragment对象
 		Fragment frag = new Fragment();

@@ -1,5 +1,10 @@
 package com.qjs.bridgedb.collection;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import com.qjs.bridgedb.DbOperation;
 import com.qjs.bridgedb.MainActivity;
 import com.qjs.bridgedb.R;
@@ -34,7 +39,7 @@ public class BaseActivity extends Activity {
 			int bg_id = bundle.getInt("toPrevId");
 			
 			// 根据id查找数据
-			Cursor cursor = db.queryData("*", "base1", "id=" + bg_id);
+			Cursor cursor = db.queryData("*", "base1", "bridge_code=" + bg_id);
 			
 			// 页面文本框赋值
 			cursor.moveToNext();
@@ -85,7 +90,10 @@ public class BaseActivity extends Activity {
         		String across_type = ((Spinner) findViewById(R.id.sp_across_type)).getSelectedItem().toString(); // 跨越地物类型
         		String bridge_nature = ((Spinner) findViewById(R.id.sp_bridge_nature)).getSelectedItem().toString(); // 桥梁性质
         		
-        		String bridge_code = path_num + path_type.substring(1, 2) + order_num; // 生成桥梁代码        		
+        		Date date = new Date();
+        		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        		String bridge_code = format.format(date); // 用系统当前时间作为桥梁代码
+        		System.out.println(bridge_code);
         		
         		if (fromPrev != null) {
         			String key = "bridge_code, bridge_name, path_num, path_name, path_type, rode_grade, order_num,"
@@ -104,7 +112,7 @@ public class BaseActivity extends Activity {
             			Toast.makeText(BaseActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
             			
             			Intent intent = new Intent(BaseActivity.this, Base2Activity.class);
-            			intent.putExtra("toNextId", flag); // 传递id值
+            			intent.putExtra("toNextId", bridge_code); // 传递id值
             			intent.putExtra("toNext", "toNextBg"); // 传递添加跳转
                 		startActivity(intent);
             		}
@@ -117,7 +125,7 @@ public class BaseActivity extends Activity {
         			
         			// 修改数据
         			int bg_id = bundle.getInt("toPrevId");
-        			int flag = db.updateData("base1", setValue, "id=" + bg_id);
+        			int flag = db.updateData("base1", setValue, "bridge_code=" + bg_id);
         			
         			if (flag == 0)
             			Toast.makeText(BaseActivity.this, "修改失败", Toast.LENGTH_SHORT).show();

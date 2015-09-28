@@ -81,7 +81,7 @@ public class pierFragment extends Fragment {
 			diseaseDescription.setText("病害描述：桥墩(" + args.getString("PIER") + ")");
 			
 			final String bgCode = args.getString("PIER");
-			final int bgId = args.getInt("BRIDGE_ID");
+			final String bgId = args.getString("BRIDGE_ID");
 			
 			// 设置病害特征监听
 			rgFeature.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -182,7 +182,7 @@ public class pierFragment extends Fragment {
 	 * bgCode: 桥梁部件编号
 	 * bgId:桥梁id
 	 * */
-	private void setDiseaseFeature(RadioButton rb, View rootView, String bgCode, int bgId) {
+	private void setDiseaseFeature(RadioButton rb, View rootView, String bgCode, String bgId) {
 		if ("裂缝".equals(rb.getText())) {
 			if (spOtherDisease.getVisibility() != View.GONE)			
 				spOtherDisease.setVisibility(View.GONE); // 隐藏“其他病害”下拉列表
@@ -241,7 +241,7 @@ public class pierFragment extends Fragment {
 		
 		final View rv = rootView;
 		final String parts_id = bgCode;
-		final int bg_id = bgId;
+		final String bg_id = bgId;
 		
 		// 提交按钮监听
 		btnSubmit.setOnClickListener(new OnClickListener() {
@@ -324,7 +324,7 @@ public class pierFragment extends Fragment {
 				// 刷新页面
 				Bundle bd = new Bundle();
 				bd.putString("PIER", parts_id);
-				bd.putInt("BRIDGE_ID", bg_id);
+				bd.putString("BRIDGE_ID", bg_id);
 				
 				// 创建Fragment对象
 				Fragment frag = new pierFragment();

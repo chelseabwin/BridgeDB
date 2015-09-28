@@ -21,7 +21,7 @@ import android.widget.TableLayout;
 import android.widget.Toast;
 
 public class PartsActivity  extends Activity {	
-	int bg_id; // 桥梁id
+	String bg_id; // 桥梁id
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +36,9 @@ public class PartsActivity  extends Activity {
 		final DbOperation db = new DbOperation(PartsActivity.this);
 		
 		if (fromPrev != null)
-			bg_id = bundle.getInt("toNextId"); // 获取从上一页面传递过来的id
+			bg_id = bundle.getString("toNextId"); // 获取从上一页面传递过来的id
 		else if (fromNext != null)
-			bg_id = bundle.getInt("toPrevId"); // 获取从下一页面传递过来的id
+			bg_id = bundle.getString("toPrevId"); // 获取从下一页面传递过来的id
 		
 		// 根据id查找数据
 		final Cursor cursor = db.queryData("*", "parts1", "bg_id='" + bg_id + "'");

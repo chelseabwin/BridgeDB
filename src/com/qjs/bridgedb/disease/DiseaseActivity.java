@@ -16,11 +16,11 @@ public class DiseaseActivity extends BaseFragmentActiviy implements BridgeListFr
 	
 	// 实现BridgeListFragment.Callbacks接口的方法
 	@Override
-	public void onItemSelected(Integer id) {
+	public void onItemSelected(String bg_code) {
 		// TODO Auto-generated method stub
 		// 创建Bundle，准备向Fragment传入参数
 		Bundle bd = new Bundle();
-		bd.putInt("BRIDGE_ID", id);
+		bd.putString("BRIDGE_ID", bg_code);
 		
 		// 创建BridgeDetailFragment对象
 		BridgeDetailFragment bdf = new BridgeDetailFragment();

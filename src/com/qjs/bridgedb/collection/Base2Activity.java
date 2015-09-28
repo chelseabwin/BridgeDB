@@ -19,7 +19,7 @@ public class Base2Activity extends Activity {
 	Spinner sp_bt; // 桥梁类型一级
 	Spinner sp_bt2; // 桥梁类型二级
 	
-	int bg_id; // 桥梁id
+	String bg_id; // 桥梁id
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +34,10 @@ public class Base2Activity extends Activity {
 		final DbOperation db = new DbOperation(Base2Activity.this);
 		
 		if (fromPrev != null)
-			bg_id = bundle.getInt("toNextId"); // 获取从上一页面传递过来的id
+			bg_id = bundle.getString("toNextId"); // 获取从上一页面传递过来的id
 		else if (fromNext != null)
-			bg_id = bundle.getInt("toPrevId"); // 获取从下一页面传递过来的id
+			bg_id = bundle.getString("toPrevId"); // 获取从下一页面传递过来的id
+		System.out.println(bg_id);
 		
 		// 桥梁类型Spinner
 		sp_bt = (Spinner) findViewById(R.id.sp_bridge_type);
