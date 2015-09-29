@@ -299,7 +299,7 @@ public class wetJointFragment extends Fragment {
 					String sql = "rg_feature='" + rg_feature + "',rg_fissure='" + rg_fissure + "',sp_otherDisease='" + sp_otherDisease
 							+ "',l1_start='" + l1_start + "',l1_end='" + l1_end + "',l1_area='" + l1_area + "',l2_start='" + l2_start
 							+ "',l2_length='" + l2_length + "',l2_width='" + l2_width + "',add_content='" + add_content
-							+ "',disease_image='" + disease_image + "',flag='0'";
+							+ "',disease_image='" + disease_image + "',flag='2'";
     				
     				flag1 = db.updateData("disease_wetjoint", sql, "bg_id='" + bg_id + "'" + " and parts_id='" + parts_id + "'");
     				

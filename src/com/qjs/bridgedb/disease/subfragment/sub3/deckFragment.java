@@ -268,7 +268,7 @@ public class deckFragment extends Fragment {
 				int flag2 = 0;
 				
 				if (cursor.moveToFirst()) { // 如果有则修改
-					String sql = "rg_feature='" + rg_feature + "',add_content='" + add_content + "',disease_image='" + disease_image + "',flag='0'";
+					String sql = "rg_feature='" + rg_feature + "',add_content='" + add_content + "',disease_image='" + disease_image + "',flag='2'";
     				
     				flag1 = db.updateData(tableName, sql, "bg_id='" + bg_id + "'" + " and parts_id='" + parts_id + "'");
     				

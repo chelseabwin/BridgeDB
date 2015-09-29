@@ -121,7 +121,7 @@ public class BaseActivity extends Activity {
         			String setValue = "bridge_code='" + bridge_code + "',bridge_name='" + bridge_name + "',path_num='" + path_num 
         					+ "',path_name='" + path_name + "',path_type='" + path_type + "',rode_grade='" + rode_grade + "',order_num='" + order_num
         					+ "',location='" + location + "',center_stake='" + center_stake + "',custody_unit='" + custody_unit
-        					+ "',across_name='" + across_name + "',across_type='" + across_type + "',bridge_nature='" + bridge_nature + "',flag='0'";
+        					+ "',across_name='" + across_name + "',across_type='" + across_type + "',bridge_nature='" + bridge_nature + "',flag='2'";
         			
         			// ÐÞ¸ÄÊý¾Ý
         			int bg_id = bundle.getInt("toPrevId");

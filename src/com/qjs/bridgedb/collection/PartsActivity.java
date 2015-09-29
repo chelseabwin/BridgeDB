@@ -213,7 +213,7 @@ public class PartsActivity  extends Activity {
         		if (cursor.moveToFirst()) {
         			String setValue = "wing_wall='" + wing_wall + "',conical_slope='" + conical_slope + "',protection_slope='" + protection_slope 
         					+ "',pier_detail='" + pier_detail_id + "',abutment_num='" + abutment_num + "',pa_num='" + pa_num
-        					+ "',bed_num='" + bed_num + "',reg_structure='" + reg_structure + "',flag='0'";
+        					+ "',bed_num='" + bed_num + "',reg_structure='" + reg_structure + "',flag='2'";
         			
         			// 修改数据
         			int flag = db.updateData("parts1", setValue, "bg_id='" + bg_id + "'");
@@ -431,7 +431,7 @@ public class PartsActivity  extends Activity {
 		            			// 如果有原始数据，执行修改操作
 		            			if (cursor.moveToFirst()) {
 		            				String setValue = "pier_details='" + pier_details + "',pier_nums='" + pier_nums + "',bent_cap_nums='" + bent_cap_nums 
-		                					+ "',tie_beam_nums='" + tie_beam_nums + "',flag='0'";
+		                					+ "',tie_beam_nums='" + tie_beam_nums + "',flag='2'";
 		            				
 		            				flag2 = db.updateData("pier_detail", setValue, "bg_id='" + bg_id + "'");
 		            			}

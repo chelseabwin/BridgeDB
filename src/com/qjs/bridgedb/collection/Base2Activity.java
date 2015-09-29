@@ -138,7 +138,7 @@ public class Base2Activity extends Activity {
         		if (cursor.moveToFirst()) {
         			String setValue = "bridge_classify='" + bridge_classify + "',design_load='" + design_load + "',bridge_use='" + bridge_use 
         					+ "',bridge_status='" + bridge_status + "',material_code='" + material_code + "',bridge_panel='" + bridge_panel
-        					+ "',stress_pattern='" + stress_pattern + "',support_type='" + support_type + "',bridge_type='" + bridge_type + "',flag='0'";
+        					+ "',stress_pattern='" + stress_pattern + "',support_type='" + support_type + "',bridge_type='" + bridge_type + "',flag='2'";
         			
         			// ÐÞ¸ÄÊý¾Ý
         			int flag = db.updateData("base2", setValue, "bg_id='" + bg_id + "'");

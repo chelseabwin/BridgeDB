@@ -174,7 +174,7 @@ public class StructureActivity extends Activity {
         		if (cursor.moveToFirst()) {
         			String setValue = "bridge_span='" + bridge_span + "',longest_span='" + longest_span + "',total_len='" + total_len  + "',bridge_wide='" + bridge_wide 
         					+ "',full_wide='" + full_wide + "',clear_wide='" + clear_wide + "',bridge_high='" + bridge_high + "',high_limit='" + high_limit
-        					+ "',building_time='" + building_time + "',navigation_level='" + navigation_level + "',section_high='" + section_high + "',deck_profile_grade='" + deck_profile_grade + "',flag='0'";
+        					+ "',building_time='" + building_time + "',navigation_level='" + navigation_level + "',section_high='" + section_high + "',deck_profile_grade='" + deck_profile_grade + "',flag='2'";
         			
         			// ÐÞ¸ÄÊý¾Ý
         			int flag = db.updateData("structure", setValue, "bg_id='" + bg_id + "'");

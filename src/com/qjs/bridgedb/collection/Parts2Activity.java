@@ -195,7 +195,7 @@ public class Parts2Activity  extends Activity {
         		if (cursor.moveToFirst()) {
         			String setValue = "load_detail='" + load_detail_id + "',general_detail='" + general_detail_id + "',support_detail='" + support_detail_id 
         					+ "',deck_num='" + deck_num + "',joint_num='" + joint_num + "',sidewalk='" + sidewalk + "',guardrail='" + guardrail 
-        					+ "',drainage_system='" + drainage_system + "',illuminated_sign='" + illuminated_sign + "',flag='0'";
+        					+ "',drainage_system='" + drainage_system + "',illuminated_sign='" + illuminated_sign + "',flag='2'";
         			
         			// 修改数据
         			int flag = db.updateData("parts2", setValue, "bg_id='" + bg_id + "'");
@@ -366,7 +366,7 @@ public class Parts2Activity  extends Activity {
 		            			
 		            			// 如果有原始数据，执行修改操作
 		            			if (cursor.moveToFirst()) {
-		            				String setValue = "load_details='" + load_details + "',load_nums='" + load_nums + "',flag='0'";
+		            				String setValue = "load_details='" + load_details + "',load_nums='" + load_nums + "',flag='2'";
 		            				
 		            				flag2 = db.updateData("load_detail", setValue, "bg_id='" + bg_id + "'");
 		            			}
@@ -537,7 +537,7 @@ public class Parts2Activity  extends Activity {
 		            			
 		            			// 如果有原始数据，执行修改操作
 		            			if (cursor.moveToFirst()) {
-		            				String setValue = "general_details='" + general_details + "',general_nums='" + general_nums + "',flag='0'";
+		            				String setValue = "general_details='" + general_details + "',general_nums='" + general_nums + "',flag='2'";
 		            				
 		            				flag2 = db.updateData("general_detail", setValue, "bg_id='" + bg_id + "'");
 		            			}
@@ -711,7 +711,7 @@ public class Parts2Activity  extends Activity {
 		            			
 		            			// 如果有原始数据，执行修改操作
 		            			if (cursor.moveToFirst()) {
-		            				String setValue = "support_details='" + support_details + "',support_nums='" + support_nums + "',flag='0'";
+		            				String setValue = "support_details='" + support_details + "',support_nums='" + support_nums + "',flag='2'";
 		            				
 		            				flag2 = db.updateData("support_detail", setValue, "bg_id='" + bg_id + "'");
 		            			}

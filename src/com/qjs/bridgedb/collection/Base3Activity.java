@@ -87,7 +87,7 @@ public class Base3Activity extends Activity {
         		if (cursor.moveToFirst()) {
         			String setValue = "pier_material='" + pier_material + "',section_form='" + section_form + "',pier_type='" + pier_type 
         					+ "',abutment_material='" + abutment_material + "',abutment_type='" + abutment_type + "',pier_abutment_material='" + pier_abutment_material
-        					+ "',pier_abutment_base='" + pier_abutment_base + "',deck_type='" + deck_type + "',joint_type='" + joint_type + "',flag='0'";
+        					+ "',pier_abutment_base='" + pier_abutment_base + "',deck_type='" + deck_type + "',joint_type='" + joint_type + "',flag='2'";
         			
         			// ÐÞ¸ÄÊý¾Ý
         			int flag = db.updateData("base3", setValue, "bg_id='" + bg_id + "'");
