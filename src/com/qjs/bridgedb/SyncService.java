@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.Toast;
 
 public class SyncService extends IntentService {    
@@ -57,7 +58,7 @@ public class SyncService extends IntentService {
 				hm.put(tableName, cur); // 保存该cursor
 				
 				JSONObject jsonTable = new JSONObject(); // 用于存储某张表的数据
-				JSONArray jsonRow = new JSONArray(); // 用于存储某一行的数据				
+				JSONArray jsonRow = new JSONArray(); // 用于存储某一行的数据
 				
 				String[] columnNames = cur.getColumnNames();
 				
@@ -119,13 +120,16 @@ public class SyncService extends IntentService {
                 		
                 		if(cur2.moveToFirst()) {
 	                		do {
-	                			System.out.println(tableName + " " + cur2.getString(cur2.getColumnIndex("flag")));
-	                			//int flag = db.updateData(tableName, "flag='1'", null);
+	                			int flag = db.updateData(tableName, "flag='1'", null);
+	                			if (flag == 0)
+	                				Log.w("-- flag_status --", "修改状态失败");
+	                			else
+	                				Log.i("-- flag_status --", "修改状态成功");
 							} while (cur2.moveToNext());
                 		}
-                	}          	
+                	}
 				}
-            }  
+            }
             
             // 关闭资源  
             br.close();

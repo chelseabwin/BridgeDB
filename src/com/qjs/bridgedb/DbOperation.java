@@ -59,8 +59,14 @@ public class DbOperation {
 	 * @return 修改成功返回1，失败返回0
 	 */
 	public int updateData(String table, String setValue, String where) {
+		String sql = null;
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
-		String sql = "update " + table + " set " + setValue + " where " + where;
+		if (where == null) {
+			sql = "update " + table + " set " + setValue;
+		}
+		else {
+			sql = "update " + table + " set " + setValue + " where " + where;
+		}
 		
 		Log.i("-- update --", sql);
 		
