@@ -1,4 +1,4 @@
-package com.qjs.bridgedb.disease;
+package com.qjs.bridgedb;
 
 import java.util.List;
 

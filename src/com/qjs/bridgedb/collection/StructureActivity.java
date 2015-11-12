@@ -146,6 +146,7 @@ public class StructureActivity extends Activity {
         		intent.putExtra("toPrevId", bg_id); // 传给上一页的id
         		intent.putExtra("toPrev", "toPrevBg"); // 跳转上一页标识
         		startActivity(intent);
+    			finish();
         	}
         });
         
@@ -211,7 +212,8 @@ public class StructureActivity extends Activity {
             			intent.putExtra("toNext", "toNextBg"); // 传递添加跳转
                 		startActivity(intent);
             		}
-        		}        		
+        		}
+    			finish();        		
         	}
         });
 	}

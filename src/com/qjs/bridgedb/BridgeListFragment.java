@@ -1,4 +1,4 @@
-package com.qjs.bridgedb.disease;
+package com.qjs.bridgedb;
 
 import java.util.ArrayList;
 
@@ -6,6 +6,7 @@ import com.qjs.bridgedb.DbOperation;
 
 import android.app.Activity;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.View;
@@ -15,7 +16,7 @@ import android.widget.ListView;
 public class BridgeListFragment extends ListFragment {
 	private Callbacks mCallbacks;
 	private ArrayList<String> data = new ArrayList<String>();
-	String bg_code = "";
+	private ArrayList<String> bg_code = new ArrayList<String>();
 	
 	// 通过回调接口将此fragment与所在activity交互
 	public interface Callbacks {
@@ -32,7 +33,7 @@ public class BridgeListFragment extends ListFragment {
 		int index = 0;
 		
 		while (cursor.moveToNext()) {
-			bg_code = cursor.getString(cursor.getColumnIndex("bridge_code"));
+			bg_code.add(cursor.getString(cursor.getColumnIndex("bridge_code")));
 			String bg_name = cursor.getString(cursor.getColumnIndex("bridge_name"));
 			data.add(++index + ". " + bg_name);
 		}
@@ -67,7 +68,18 @@ public class BridgeListFragment extends ListFragment {
 	@Override
 	public void onListItemClick(ListView listView, View view, int position, long id) {
 		super.onListItemClick(listView, view, position, id);
+		
+		for (int i = 0; i < listView.getCount(); i++) {
+            View v = listView.getChildAt(i);
+            if (position == i) {
+                v.setBackgroundColor(Color.CYAN);
+            }
+            else {
+                v.setBackgroundColor(Color.TRANSPARENT);
+            }
+        }
+		
 		// 激发mCallbacks的onItemSelected方法
-		mCallbacks.onItemSelected(bg_code);
+		mCallbacks.onItemSelected(bg_code.get(position));
 	}
 }

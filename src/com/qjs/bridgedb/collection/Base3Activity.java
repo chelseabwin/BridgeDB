@@ -61,6 +61,7 @@ public class Base3Activity extends Activity {
         		intent.putExtra("toPrevId", bg_id); // 传给上一页的id
         		intent.putExtra("toPrev", "toPrevBg"); // 跳转上一页标识
         		startActivity(intent);
+    			finish();
         	}
         });
         
@@ -124,6 +125,7 @@ public class Base3Activity extends Activity {
                 		startActivity(intent);
             		}
         		}
+    			finish();
         	}
         });
 	}

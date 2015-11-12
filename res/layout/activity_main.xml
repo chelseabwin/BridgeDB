@@ -14,14 +14,15 @@
         android:layout_weight="1"
         android:layout_marginLeft="50dip"
         android:textSize="@dimen/fst_title_font"
-        android:gravity="center"
+        android:gravity="bottom|center"
         android:text="@string/main_title" />
     
     <TableRow
         android:layout_width="fill_parent"
         android:layout_height="0dip"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:layout_marginRight="@dimen/button_margin"
+        android:gravity="center"
         android:orientation="vertical" >
         
 	    <Button
@@ -32,9 +33,7 @@
 		    android:textSize="@dimen/fst_btn_font"
 		    android:layout_marginLeft="@dimen/button_margin"
 		    android:padding="@dimen/fst_btn_padding"
-	        android:text="@string/bridge_base_btn"
-	        android:background="@color/lightgray"
-	        style="?android:attr/buttonBarButtonStyle" />
+	        android:text="@string/bridge_base_edit" />
 	   
 	    <Button
 	        android:id="@+id/disease_info"
@@ -44,10 +43,44 @@
 		    android:textSize="@dimen/fst_btn_font"
 		    android:layout_marginLeft="@dimen/button_margin"
 		    android:padding="@dimen/fst_btn_padding"
-	        android:text="@string/disease_info_btn"
-	        android:background="@color/lightgray"
-	        style="?android:attr/buttonBarButtonStyle" />
+	        android:text="@string/disease_info_add" />
     
     </TableRow>
+    
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/button_margin"
+        android:orientation="vertical" >
+        
+	    <Button
+	        android:id="@+id/detailed_base"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+		    android:textSize="@dimen/fst_btn_font"
+		    android:layout_marginLeft="@dimen/button_margin"
+		    android:padding="@dimen/fst_btn_padding"
+	        android:text="@string/detailed_base_show" />
+	   
+	    <Button
+	        android:id="@+id/detailed_disease"
+	        android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+		    android:textSize="@dimen/fst_btn_font"
+		    android:layout_marginLeft="@dimen/button_margin"
+		    android:padding="@dimen/fst_btn_padding"
+	        android:text="@string/detailed_disease_show" />
+    
+    </TableRow>
+    
+    <TextView
+        android:id="@+id/textVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/app_version" />
 
 </TableLayout>

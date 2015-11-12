@@ -155,12 +155,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	
 	public DatabaseHelper(Context context) {
 		super(context, dbName, null, dbVersion);
-		// TODO Auto-generated constructor stub		
 	}
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		// TODO Auto-generated method stub
 		db.execSQL(CREATE_TABLE_BASE1);
 		db.execSQL(CREATE_TABLE_BASE2);
 		db.execSQL(CREATE_TABLE_BASE3);
@@ -206,7 +204,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		// TODO Auto-generated method stub
 		
 	}
 }

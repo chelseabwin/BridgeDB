@@ -107,6 +107,7 @@ public class PartsActivity  extends Activity {
         		intent.putExtra("toPrevId", bg_id); // 传给上一页的id
         		intent.putExtra("toPrev", "toPrevBg"); // 跳转上一页标识
         		startActivity(intent);
+    			finish();
         	}
         });
         
@@ -250,6 +251,7 @@ public class PartsActivity  extends Activity {
                 		startActivity(intent);
             		}
         		}
+    			finish();
         	}
         });
 	}

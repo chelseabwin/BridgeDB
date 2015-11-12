@@ -1,7 +1,11 @@
 package com.qjs.bridgedb.disease;
 
+import com.qjs.bridgedb.BaseFragmentActiviy;
+import com.qjs.bridgedb.BridgeListFragment;
+import com.qjs.bridgedb.MainActivity;
 import com.qjs.bridgedb.R;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
@@ -11,8 +15,15 @@ public class DiseaseActivity extends BaseFragmentActiviy implements BridgeListFr
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_disease);
+		setContentView(R.layout.activity_fragment_list);
 	}
+	
+	@Override
+    public void onBackPressed() {
+		Intent intent = new Intent(DiseaseActivity.this, MainActivity.class);
+		startActivity(intent);
+		finish();
+    }
 	
 	// 实现BridgeListFragment.Callbacks接口的方法
 	@Override
@@ -23,7 +34,7 @@ public class DiseaseActivity extends BaseFragmentActiviy implements BridgeListFr
 		bd.putString("BRIDGE_ID", bg_code);
 		
 		// 创建BridgeDetailFragment对象
-		BridgeDetailFragment bdf = new BridgeDetailFragment();
+		DiseaseDetailFragment bdf = new DiseaseDetailFragment();
 		// 向Fragment传入参数
 		bdf.setArguments(bd);
 		// 使用fragment替换bridge_detail_container容器当前显示的Fragment

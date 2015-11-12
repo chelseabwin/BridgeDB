@@ -37,7 +37,6 @@ public class Base2Activity extends Activity {
 			bg_id = bundle.getString("toNextId"); // 获取从上一页面传递过来的id
 		else if (fromNext != null)
 			bg_id = bundle.getString("toPrevId"); // 获取从下一页面传递过来的id
-		System.out.println(bg_id);
 		
 		// 桥梁类型Spinner
 		sp_bt = (Spinner) findViewById(R.id.sp_bridge_type);
@@ -57,7 +56,6 @@ public class Base2Activity extends Activity {
 			
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) { // 选项改变的时候触发
-				// TODO Auto-generated method stub				
 				ArrayAdapter<String> adapterType = new ArrayAdapter<String>(Base2Activity.this,
                         android.R.layout.simple_spinner_item, // 显示风格
                         BridgeTypeData[position]); // 在列表视图中所代表的对象
@@ -113,6 +111,7 @@ public class Base2Activity extends Activity {
         		intent.putExtra("toPrevId", bg_id); // 传给上一页的id
         		intent.putExtra("toPrev", "toPrevBg"); // 跳转上一页标识
         		startActivity(intent);
+    			finish();
         	}
         });
         
@@ -175,6 +174,7 @@ public class Base2Activity extends Activity {
                 		startActivity(intent);
             		}
         		}
+    			finish();
         	}
         });
 	}

@@ -21,6 +21,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 public class BaseActivity extends Activity {
+	String bg_id; // 桥梁id
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +35,16 @@ public class BaseActivity extends Activity {
 		
 		final DbOperation db = new DbOperation(BaseActivity.this);
 		
-		// 下一页点击返回时，根据id找到本页相应的数据
-		if (fromNext != null) {
-			int bg_id = bundle.getInt("toPrevId");
-			
-			// 根据id查找数据
-			Cursor cursor = db.queryData("*", "base1", "bridge_code=" + bg_id);
-			
-			// 页面文本框赋值
-			cursor.moveToNext();
+		if (fromPrev != null)
+			bg_id = bundle.getString("toNextId"); // 获取从上一页面传递过来的id
+		else if (fromNext != null)
+			bg_id = bundle.getString("toPrevId"); // 获取从下一页面传递过来的id
+		
+		// 根据id查找数据
+		final Cursor cursor = db.queryData("*", "base1", "bridge_code='" + bg_id + "'");
+		
+		// 如果有原始数据，则将原始数据填入文本框
+		if (cursor.moveToFirst()) {
 			((EditText) findViewById(R.id.et_bridge_name)).setText(cursor.getString(cursor.getColumnIndex("bridge_name")));
 			((EditText) findViewById(R.id.et_path_num)).setText(cursor.getString(cursor.getColumnIndex("path_num")));
 			((EditText) findViewById(R.id.et_path_name)).setText(cursor.getString(cursor.getColumnIndex("path_name")));
@@ -55,7 +57,7 @@ public class BaseActivity extends Activity {
 			((EditText) findViewById(R.id.et_custody_unit)).setText(cursor.getString(cursor.getColumnIndex("custody_unit")));
 			((EditText) findViewById(R.id.et_across_name)).setText(cursor.getString(cursor.getColumnIndex("across_name")));
 			DbOperation.setSpinnerItemSelectedByValue((Spinner) findViewById(R.id.sp_across_type), cursor.getString(cursor.getColumnIndex("across_type")));
-			DbOperation.setSpinnerItemSelectedByValue((Spinner) findViewById(R.id.sp_bridge_nature), cursor.getString(cursor.getColumnIndex("bridge_nature")));
+			DbOperation.setSpinnerItemSelectedByValue((Spinner) findViewById(R.id.sp_bridge_nature), cursor.getString(cursor.getColumnIndex("bridge_nature")));			
 		}
 		
 		// 返回
@@ -66,6 +68,7 @@ public class BaseActivity extends Activity {
         	public void onClick(View v) {
         		Intent intent = new Intent(BaseActivity.this, MainActivity.class);
         		startActivity(intent);
+        		finish();
         	}
         });
         
@@ -138,6 +141,7 @@ public class BaseActivity extends Activity {
                 		startActivity(intent);
             		}
         		}
+    			finish();
         	}
         });
 	}

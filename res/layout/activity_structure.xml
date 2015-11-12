@@ -265,11 +265,12 @@
 	</TableRow>
 	
     <TableRow
-        android:id="@+id/st_tr7"
         android:layout_width="fill_parent"
         android:layout_height="0dip"
         android:layout_weight="1"
-        android:layout_marginRight="@dimen/button_margin" >
+        android:layout_marginRight="@dimen/button_margin"
+        android:gravity="center"
+        android:orientation="vertical"  >
         
         <Button
 		    android:id="@+id/st_last_btn"
@@ -278,9 +279,7 @@
 		    android:layout_weight="1"
 		    android:layout_marginLeft="@dimen/button_margin"
 		    android:layout_gravity="center_vertical"
-		    android:text="@string/last_step"
-		    android:background="@color/lightgray"
-		    style="?android:attr/buttonBarButtonStyle" />
+		    android:text="@string/last_step" />
 		
 		<Button
 		    android:id="@+id/st_next_btn"
@@ -289,9 +288,7 @@
 		    android:layout_weight="1"
 		    android:layout_marginLeft="@dimen/button_margin"
 		    android:layout_gravity="center_vertical"
-		    android:text="@string/next_step"
-		    android:background="@color/lightgray"
-		    style="?android:attr/buttonBarButtonStyle" />
+		    android:text="@string/next_step" />
     </TableRow>
         
 </TableLayout>

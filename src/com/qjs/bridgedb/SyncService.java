@@ -70,7 +70,6 @@ public class SyncService extends IntentService {
 						}
 						jsonRow.put(jsonField);
 					} catch (JSONException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
@@ -78,7 +77,6 @@ public class SyncService extends IntentService {
 				try {
 					jsonTable.put(cursor.getString(0), jsonRow); // 向表对象里面添加包含某行的数据
 				} catch (JSONException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				jsonDb.put(jsonTable); // 整合所有表
@@ -138,10 +136,8 @@ public class SyncService extends IntentService {
             os.close();
             socket.close();
 		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

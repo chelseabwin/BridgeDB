@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class BridgeDetailFragment extends Fragment {	 
+public class DiseaseDetailFragment extends Fragment {	 
     private FragmentTabHost mTabHost; // 定义FragmentTabHost对象  
     
 	@Override
@@ -24,7 +24,7 @@ public class BridgeDetailFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {		
 		// 加载/res/layout/目录下的fragment_bridge_detail.xml布局文件
-		View rootView = inflater.inflate(R.layout.fragment_bridge_detail, null);
+		View rootView = inflater.inflate(R.layout.fragment_disease_edit, null);
 		
 		mTabHost = (FragmentTabHost) rootView.findViewById(android.R.id.tabhost);
 		mTabHost.setup(getActivity(), getChildFragmentManager(), R.id.realtabcontent);

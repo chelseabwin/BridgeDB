@@ -271,33 +271,30 @@
 	</TableRow>
 	
     <TableRow
-        android:id="@+id/b1_tr7"
         android:layout_width="fill_parent"
         android:layout_height="0dip"
         android:layout_weight="1"
-        android:layout_marginRight="@dimen/button_margin" >
+        android:layout_marginRight="@dimen/button_margin"
+        android:gravity="center"
+        android:orientation="vertical"  >
         
         <Button
 		    android:id="@+id/back_btn"
-		    android:layout_width="0dip"
+		    android:layout_width="0dp"
 		    android:layout_height="wrap_content"
 		    android:layout_weight="1"
 		    android:layout_marginLeft="@dimen/button_margin"
 		    android:layout_gravity="center_vertical"
-		    android:text="@string/back"
-		    android:background="@color/lightgray"
-		    style="?android:attr/buttonBarButtonStyle" />
+		    android:text="@string/back" />
 		
 		<Button
 		    android:id="@+id/next_step_btn"
-		    android:layout_width="0dip"
+		    android:layout_width="0dp"
 		    android:layout_height="wrap_content"
 		    android:layout_weight="1"
 		    android:layout_marginLeft="@dimen/button_margin"
 		    android:layout_gravity="center_vertical"
-		    android:text="@string/next_step"
-		    android:background="@color/lightgray"
-		    style="?android:attr/buttonBarButtonStyle" />
+		    android:text="@string/next_step" />
     </TableRow>
         
 </TableLayout>
