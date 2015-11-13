@@ -122,6 +122,40 @@ public class DbOperation {
 		return cursor;
 	}
 	
+	/** 删除数据
+	 * 
+	 * @param table 待插入表名
+	 * @param where 删除位置
+	 * @return 删除成功返回1，失败返回0
+	 */
+	public int deleteData(String table, String where) {		
+		String sql = null;
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		if (where == null) {
+			sql = "delete from " + table;
+		}
+		else  {
+			sql = "delete from " + table + " where " + where;
+		}
+		
+		Log.i("-- delete --", sql);
+		
+		db.beginTransaction();
+		try {
+			db.execSQL(sql);
+			db.setTransactionSuccessful();
+		}
+		catch(Exception e) {
+			return 0;
+		}
+		finally {
+			db.endTransaction();
+		}
+		
+		db.close();
+		return 1;
+	}
+	
 	/**
 	 * 根据值, 设置spinner默认选中
 	 * @param spinner

@@ -78,7 +78,6 @@ public class Parts2Activity  extends Activity {
 			
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				// TODO Auto-generated method stub
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					loadShowView(v);
 				}
@@ -91,7 +90,6 @@ public class Parts2Activity  extends Activity {
 			
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				// TODO Auto-generated method stub
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					generalShowView(v);
 				}
@@ -104,7 +102,6 @@ public class Parts2Activity  extends Activity {
 			
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				// TODO Auto-generated method stub
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					supportShowView(v);
 				}
@@ -269,7 +266,6 @@ public class Parts2Activity  extends Activity {
 				
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
 					loadDetailView(v);
 				}				
 			})
@@ -280,6 +276,21 @@ public class Parts2Activity  extends Activity {
 					// TODO Auto-generated method stub
 					
 				}				
+			})
+			// 设置清空按钮
+			.setNeutralButton("清空", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					DbOperation db = new DbOperation(Parts2Activity.this);
+					int flag = db.deleteData("load_add", null);
+					int flag1 = db.deleteData("load_detail", null);
+					
+					if (flag == 1 && flag1 == 1)
+            			Toast.makeText(Parts2Activity.this, "上部承重构件信息删除成功", Toast.LENGTH_SHORT).show();
+            		else
+            			Toast.makeText(Parts2Activity.this, "上部承重构件信息删除失败", Toast.LENGTH_SHORT).show();
+				}
 			})
 			.create()
 			.show();			
@@ -300,7 +311,6 @@ public class Parts2Activity  extends Activity {
 				
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
 					
 					String start_load = ((EditText) loadForm.findViewById(R.id.et_start_stride)).getText().toString(); // 起始跨号
 					String end_load = ((EditText) loadForm.findViewById(R.id.et_end_stride)).getText().toString(); // 终止跨号
@@ -439,7 +449,6 @@ public class Parts2Activity  extends Activity {
 				
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
 					generalDetailView(v);
 				}				
 			})
@@ -451,6 +460,21 @@ public class Parts2Activity  extends Activity {
 					// TODO Auto-generated method stub
 					
 				}				
+			})
+			// 设置清空按钮
+			.setNeutralButton("清空", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					DbOperation db = new DbOperation(Parts2Activity.this);
+					int flag = db.deleteData("general_add", null);
+					int flag1 = db.deleteData("general_detail", null);
+					
+					if (flag == 1 && flag1 == 1)
+            			Toast.makeText(Parts2Activity.this, "上部一般构件信息删除成功", Toast.LENGTH_SHORT).show();
+            		else
+            			Toast.makeText(Parts2Activity.this, "上部一般构件信息删除失败", Toast.LENGTH_SHORT).show();
+				}
 			})
 			.create()
 			.show();			
@@ -471,7 +495,6 @@ public class Parts2Activity  extends Activity {
 				
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
 					
 					String start_general = ((EditText) generalForm.findViewById(R.id.et_start_stride)).getText().toString(); // 起始跨号
 					String end_general = ((EditText) generalForm.findViewById(R.id.et_end_stride)).getText().toString(); // 终止跨号
@@ -610,7 +633,6 @@ public class Parts2Activity  extends Activity {
 				
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
 					supportDetailView(v);
 				}				
 			})
@@ -622,6 +644,21 @@ public class Parts2Activity  extends Activity {
 					// TODO Auto-generated method stub
 					
 				}				
+			})
+			// 设置清空按钮
+			.setNeutralButton("清空", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					DbOperation db = new DbOperation(Parts2Activity.this);
+					int flag = db.deleteData("support_add", null);
+					int flag1 = db.deleteData("support_detail", null);
+					
+					if (flag == 1 && flag1 == 1)
+            			Toast.makeText(Parts2Activity.this, "支座信息删除成功", Toast.LENGTH_SHORT).show();
+            		else
+            			Toast.makeText(Parts2Activity.this, "支座信息删除失败", Toast.LENGTH_SHORT).show();
+				}
 			})
 			.create()
 			.show();			
@@ -642,7 +679,6 @@ public class Parts2Activity  extends Activity {
 				
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
 					
 					String start_support = ((EditText) supportForm.findViewById(R.id.et_start_spt)).getText().toString(); // 起始墩号
 					String end_support = ((EditText) supportForm.findViewById(R.id.et_end_spt)).getText().toString(); // 终止墩号

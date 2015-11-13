@@ -88,7 +88,6 @@ public class PartsActivity  extends Activity {
 			
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				// TODO Auto-generated method stub
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					pierShowView(v);
 					pier_detail.setFocusable(true);
@@ -297,7 +296,6 @@ public class PartsActivity  extends Activity {
 				
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
 					pierDetailView(v);
 				}				
 			})
@@ -309,6 +307,21 @@ public class PartsActivity  extends Activity {
 					// TODO Auto-generated method stub
 					
 				}				
+			})			
+			// …Ë÷√«Âø’∞¥≈•
+			.setNeutralButton("«Âø’", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					DbOperation db = new DbOperation(PartsActivity.this);
+					int flag = db.deleteData("pier_add", null);
+					int flag1 = db.deleteData("pier_detail", null);
+					
+					if (flag == 1 && flag1 == 1)
+            			Toast.makeText(PartsActivity.this, "«≈∂’–≈œ¢…æ≥˝≥…π¶", Toast.LENGTH_SHORT).show();
+            		else
+            			Toast.makeText(PartsActivity.this, "«≈∂’–≈œ¢…æ≥˝ ß∞‹", Toast.LENGTH_SHORT).show();
+				}
 			})
 			.create()
 			.show();			
@@ -329,7 +342,6 @@ public class PartsActivity  extends Activity {
 				
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
 					
 					String start_pier = ((EditText) pierForm.findViewById(R.id.et_start_pier)).getText().toString(); // ∆ º«≈∂’∫≈
 					String end_pier = ((EditText) pierForm.findViewById(R.id.et_end_pier)).getText().toString(); // ÷’÷π«≈∂’∫≈

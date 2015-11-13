@@ -7,17 +7,26 @@ import java.util.Map;
 
 import com.qjs.bridgedb.DbOperation;
 import com.qjs.bridgedb.R;
+import com.qjs.bridgedb.collection.Base2Activity;
+import com.qjs.bridgedb.collection.Base3Activity;
+import com.qjs.bridgedb.collection.BaseActivity;
+import com.qjs.bridgedb.collection.Parts2Activity;
+import com.qjs.bridgedb.collection.PartsActivity;
+import com.qjs.bridgedb.collection.StructureActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -34,6 +43,7 @@ public class BaseDetailFragment extends Fragment{
 		final View rootView = inflater.inflate(R.layout.fragment_detailed_baselist, container, false);
 		
 		ListView baseList = (ListView) rootView.findViewById(R.id.base_list);
+		final Button btnEdit = (Button) rootView.findViewById(R.id.info_edit);
 		
 		final Bundle args = getArguments();
 		final String bgCode = args.getString("BRIDGE_ID");
@@ -50,7 +60,7 @@ public class BaseDetailFragment extends Fragment{
 		data.add("支座详情");
 		data.add("桥墩详情");
 		
-		rootView.findViewById(R.id.info_edit).setVisibility(View.GONE);
+		btnEdit.setVisibility(View.GONE);
 		
 		// 设置列表
 		baseList.setAdapter(new ArrayAdapter<String>(getActivity(),
@@ -63,7 +73,6 @@ public class BaseDetailFragment extends Fragment{
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				ListView baseInfoList = (ListView) rootView.findViewById(R.id.base_info);
 				List<Map<String, String>> ListItems = getBaseInfo(position, bgCode);
-				System.out.println(ListItems);
 				
 				for (int i = 0; i < parent.getCount(); i++) {
 		            View v = parent.getChildAt(i);
@@ -81,7 +90,74 @@ public class BaseDetailFragment extends Fragment{
 						new String[] {"fieldName", "fieldValue"},
 						new int[] {R.id.field_name, R.id.field_value});
 				
-				rootView.findViewById(R.id.info_edit).setVisibility(View.VISIBLE);
+				btnEdit.setVisibility(View.VISIBLE);
+				final int item = position;
+				
+				btnEdit.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						
+						switch (item) {
+						case 0:
+							Intent baseIntent = new Intent(getActivity(), BaseActivity.class);
+							baseIntent.putExtra("toPrevId", bgCode);
+							baseIntent.putExtra("toPrev", "toPrevBg");
+			        		startActivity(baseIntent);
+			    			getActivity().finish();							
+							break;
+						case 1:
+							Intent base2Intent = new Intent(getActivity(), Base2Activity.class);
+							base2Intent.putExtra("toPrevId", bgCode);
+							base2Intent.putExtra("toPrev", "toPrevBg");
+			        		startActivity(base2Intent);
+			    			getActivity().finish();							
+							break;
+						case 2:
+							Intent base3Intent = new Intent(getActivity(), Base3Activity.class);
+							base3Intent.putExtra("toPrevId", bgCode);
+							base3Intent.putExtra("toPrev", "toPrevBg");
+			        		startActivity(base3Intent);
+			    			getActivity().finish();							
+							break;
+						case 3:
+							Intent strIntent = new Intent(getActivity(), StructureActivity.class);
+							strIntent.putExtra("toPrevId", bgCode);
+							strIntent.putExtra("toPrev", "toPrevBg");
+			        		startActivity(strIntent);
+			    			getActivity().finish();							
+							break;
+						case 4:
+							Intent partsIntent = new Intent(getActivity(), PartsActivity.class);
+							partsIntent.putExtra("toPrevId", bgCode);
+							partsIntent.putExtra("toPrev", "toPrevBg");
+			        		startActivity(partsIntent);
+			    			getActivity().finish();							
+							break;
+						case 5:
+						case 6:
+						case 7:
+						case 8:
+							Intent parts2Intent = new Intent(getActivity(), Parts2Activity.class);
+							parts2Intent.putExtra("toPrevId", bgCode);
+							parts2Intent.putExtra("toPrev", "toPrevBg");
+			        		startActivity(parts2Intent);
+			    			getActivity().finish();							
+							break;
+						case 9:
+							Intent partsIntent1 = new Intent(getActivity(), PartsActivity.class);
+							partsIntent1.putExtra("toPrevId", bgCode);
+							partsIntent1.putExtra("toPrev", "toPrevBg");
+			        		startActivity(partsIntent1);
+			    			getActivity().finish();	
+							break;
+
+						default:
+							break;
+						}
+						
+					}
+				});
 				
 				baseInfoList.setAdapter(simpleAdapter);
 			}
