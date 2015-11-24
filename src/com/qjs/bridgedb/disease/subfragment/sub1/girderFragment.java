@@ -168,6 +168,7 @@ public class girderFragment extends Fragment {
 				addContent.setText(cursor.getString(cursor.getColumnIndex("add_content")));
 				
 				uri = Uri.parse(cursor.getString(cursor.getColumnIndex("disease_image")));
+				System.out.println(uri);
 				if (uri != null) {
 					try {  
 		                Bitmap bitmap = BitmapFactory.decodeStream(this.getActivity().getContentResolver().openInputStream(uri));  

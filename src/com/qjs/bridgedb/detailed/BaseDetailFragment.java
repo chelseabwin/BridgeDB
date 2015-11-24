@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.qjs.bridgedb.DbOperation;
+import com.qjs.bridgedb.MyArrayAdapter;
 import com.qjs.bridgedb.R;
 import com.qjs.bridgedb.collection.Base2Activity;
 import com.qjs.bridgedb.collection.Base3Activity;
@@ -16,7 +17,6 @@ import com.qjs.bridgedb.collection.StructureActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -25,7 +25,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -62,10 +61,12 @@ public class BaseDetailFragment extends Fragment{
 		
 		btnEdit.setVisibility(View.GONE);
 		
-		// 设置列表
-		baseList.setAdapter(new ArrayAdapter<String>(getActivity(),
+		final MyArrayAdapter myArrayAdapter = new MyArrayAdapter(getActivity(),
 				android.R.layout.simple_list_item_activated_1,
-				data));
+				data);
+		
+		// 设置列表
+		baseList.setAdapter(myArrayAdapter);
 		
 		baseList.setOnItemClickListener(new OnItemClickListener() {
 
@@ -74,15 +75,8 @@ public class BaseDetailFragment extends Fragment{
 				ListView baseInfoList = (ListView) rootView.findViewById(R.id.base_info);
 				List<Map<String, String>> ListItems = getBaseInfo(position, bgCode);
 				
-				for (int i = 0; i < parent.getCount(); i++) {
-		            View v = parent.getChildAt(i);
-		            if (position == i) {
-		                v.setBackgroundColor(Color.CYAN);
-		            }
-		            else {
-		                v.setBackgroundColor(Color.TRANSPARENT);
-		            }
-		        }
+				myArrayAdapter.setSelectItem(position);  
+				myArrayAdapter.notifyDataSetInvalidated();
 				
 				// 设置列表
 				SimpleAdapter simpleAdapter = new SimpleAdapter(getActivity(), ListItems, 
@@ -305,12 +299,16 @@ public class BaseDetailFragment extends Fragment{
 			}			
 		}
 		
-		List<Map<String, String>> listItems = new ArrayList<Map<String, String>>();	
+		List<Map<String, String>> listItems = new ArrayList<Map<String, String>>();
+		
+		System.out.println(fieldNameList);
+		System.out.println(fieldValueList);
 		
 		for (int i = 0; i < fieldNameList.size(); i++) {
 			Map<String, String> listItem = new HashMap<String, String>();
 			listItem.put("fieldName", fieldNameList.get(i));
-			listItem.put("fieldValue", fieldValueList.get(i));
+			if (!fieldValueList.isEmpty())
+				listItem.put("fieldValue", fieldValueList.get(i));
 			listItems.add(listItem);
 		}
 		return listItems;		

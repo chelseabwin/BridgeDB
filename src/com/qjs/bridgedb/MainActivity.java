@@ -5,6 +5,7 @@ import java.util.TimerTask;
 
 import com.qjs.bridgedb.collection.BaseActivity;
 import com.qjs.bridgedb.detailed.BaseDetailedActivity;
+import com.qjs.bridgedb.detailed.DiseaseDetailedActivity;
 import com.qjs.bridgedb.disease.DiseaseActivity;
 
 import android.os.Bundle;
@@ -57,6 +58,18 @@ public class MainActivity extends Activity {
         	@Override
         	public void onClick(View v) {
         		Intent intent = new Intent(MainActivity.this, BaseDetailedActivity.class);
+        		startActivity(intent);
+    			finish();
+        	}
+        });
+        
+        // 查看病害信息按钮跳转
+        Button detailed_disease = (Button)findViewById(R.id.detailed_disease);
+        detailed_disease.setOnClickListener(new OnClickListener() {
+
+        	@Override
+        	public void onClick(View v) {
+        		Intent intent = new Intent(MainActivity.this, DiseaseDetailedActivity.class);
         		startActivity(intent);
     			finish();
         	}

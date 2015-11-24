@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
-public class BaseDetailedActivity extends BaseFragmentActiviy implements BridgeListFragment.Callbacks {
+public class DiseaseDetailedActivity extends BaseFragmentActiviy implements BridgeListFragment.Callbacks {
 	public Bitmap bitmap = null;
 	
 	@Override
@@ -20,7 +20,7 @@ public class BaseDetailedActivity extends BaseFragmentActiviy implements BridgeL
 	
 	@Override
     public void onBackPressed() {
-		Intent intent = new Intent(BaseDetailedActivity.this, MainActivity.class);
+		Intent intent = new Intent(DiseaseDetailedActivity.this, MainActivity.class);
 		startActivity(intent);
 		finish();
     }
@@ -32,13 +32,13 @@ public class BaseDetailedActivity extends BaseFragmentActiviy implements BridgeL
 		Bundle bd = new Bundle();
 		bd.putString("BRIDGE_ID", bg_code);
 		
-		// 创建BaseDetailFragment对象
-		BaseDetailFragment bdf = new BaseDetailFragment();
+		// 创建DiseaseDetailFragment对象
+		DiseaseDetailFragment ddf = new DiseaseDetailFragment();
 		// 向Fragment传入参数
-		bdf.setArguments(bd);
+		ddf.setArguments(bd);
 		// 使用fragment替换bridge_detail_container容器当前显示的Fragment
 		getSupportFragmentManager().beginTransaction()
-			.replace(R.id.bridge_detail_container, bdf)
+			.replace(R.id.bridge_detail_container, ddf)
 			.commit();
 	}
 }

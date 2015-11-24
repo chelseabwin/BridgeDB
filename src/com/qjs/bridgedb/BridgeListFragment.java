@@ -6,17 +6,16 @@ import com.qjs.bridgedb.DbOperation;
 
 import android.app.Activity;
 import android.database.Cursor;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class BridgeListFragment extends ListFragment {
 	private Callbacks mCallbacks;
 	private ArrayList<String> data = new ArrayList<String>();
 	private ArrayList<String> bg_code = new ArrayList<String>();
+	private MyArrayAdapter myArrayAdapter;
 	
 	// 通过回调接口将此fragment与所在activity交互
 	public interface Callbacks {
@@ -38,10 +37,12 @@ public class BridgeListFragment extends ListFragment {
 			data.add(++index + ". " + bg_name);
 		}
 		
-		// 设置列表
-		setListAdapter(new ArrayAdapter<String>(getActivity(),
+		myArrayAdapter = new MyArrayAdapter(getActivity(),
 				android.R.layout.simple_list_item_activated_1,
-				data));
+				data);
+		
+		// 设置列表
+		setListAdapter(myArrayAdapter);
 	}
 	
 	// fragment被添加到activity时被回调
@@ -69,15 +70,8 @@ public class BridgeListFragment extends ListFragment {
 	public void onListItemClick(ListView listView, View view, int position, long id) {
 		super.onListItemClick(listView, view, position, id);
 		
-		for (int i = 0; i < listView.getCount(); i++) {
-            View v = listView.getChildAt(i);
-            if (position == i) {
-                v.setBackgroundColor(Color.CYAN);
-            }
-            else {
-                v.setBackgroundColor(Color.TRANSPARENT);
-            }
-        }
+		myArrayAdapter.setSelectItem(position);  
+		myArrayAdapter.notifyDataSetInvalidated();
 		
 		// 激发mCallbacks的onItemSelected方法
 		mCallbacks.onItemSelected(bg_code.get(position));
