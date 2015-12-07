@@ -46,7 +46,6 @@ public class SubFragment2 extends Fragment {
 				
 				@Override
 				public void onCheckedChanged(RadioGroup group, int checkedId) {
-					// TODO Auto-generated method stub
 					if (spanDetail.getVisibility() != View.GONE)
 						spanDetail.setVisibility(View.GONE); // 将编号详情设为不可见
 					if (downDetail.getVisibility() != View.GONE)
@@ -141,6 +140,7 @@ public class SubFragment2 extends Fragment {
 					// 设置数组长度为lineCodes的长度
 					SpannableString[] ss = new SpannableString[lineCodes.length];
 					final String optionStr = option;
+					final String itemName = rb.getText().toString();
 					final String[] itemNum = itemCodes;
 					final String bg_id = bgId;
 					
@@ -153,8 +153,7 @@ public class SubFragment2 extends Fragment {
 							
 							@Override
 							public void onClick(View widget) {
-								// TODO Auto-generated method stub
-								setSpanDetail(itemNum, optionStr, num, bg_id); // 设置编号详情
+								setSpanDetail(itemNum, optionStr, itemName, num, bg_id); // 设置编号详情
 							}
 						}, 0, ss[i].length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 						
@@ -168,7 +167,7 @@ public class SubFragment2 extends Fragment {
 					String[] itemCodes = cursor.getString(cursor.getColumnIndex(fieldName)).split(", ");
 					if (spanNum.getVisibility() != View.GONE)
 						spanNum.setVisibility(View.GONE); // 将编号详情设为不可见
-					setSpanDetail(itemCodes, option, bgId); // 设置编号详情
+					setSpanDetail(itemCodes, option, rb.getText().toString(), bgId); // 设置编号详情
 				}
 			}
 			else {
@@ -200,7 +199,7 @@ public class SubFragment2 extends Fragment {
 					
 					if (spanNum.getVisibility() != View.GONE)
 						spanNum.setVisibility(View.GONE); // 将墩号设为不可见
-					setSpanDetail(itemCodes, option, bgId); // 设置编号详情
+					setSpanDetail(itemCodes, option, rb.getText().toString(), bgId); // 设置编号详情
 				}				
 			}			
 		}		
@@ -209,10 +208,11 @@ public class SubFragment2 extends Fragment {
 	/** 设置编号详情
 	 * ItemCodes: 编号数组
 	 * option: 选择项（桥墩）
+	 * itemName: 选择项名称
 	 * num: 选择墩号
 	 * bgId: 桥梁id
 	 * */
-	private void setSpanDetail(String[] ItemCodes, String option, String num, String bgId) {
+	private void setSpanDetail(String[] ItemCodes, String option, String itemName, String num, String bgId) {
 		// 如果编号详情不可见，设为可见
 		if (spanDetail.getVisibility() != View.VISIBLE)
 			spanDetail.setVisibility(View.VISIBLE);
@@ -222,6 +222,7 @@ public class SubFragment2 extends Fragment {
 			spanDetail.setText("桥墩:\t");
 		
 		final String optionStr = option;
+		final String itemNameStr = itemName;
 		final String bg_id = bgId;
 		
 		// 定义可点击的字符串数组，数组长度为ItemCodes的长度
@@ -237,8 +238,7 @@ public class SubFragment2 extends Fragment {
 
 					@Override
 					public void onClick(View widget) {
-						// TODO Auto-generated method stub
-						setDiseaseDetail(optionStr, str, bg_id); // 设置病害详情
+						setDiseaseDetail(optionStr, itemNameStr, str, bg_id); // 设置病害详情
 					}														
 				}, 0, ss[j].length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 				
@@ -252,10 +252,11 @@ public class SubFragment2 extends Fragment {
 	
 	/** 设置编号详情（重载）
 	 * ItemCodes: 编号数组
-	 * option: 选择项（盖梁、系梁...）
+	 * option: 选择项 （除桥墩其他的）
+	 * itemName: 选择项名称
 	 * bgId: 桥梁id
 	 * */
-	private void setSpanDetail(String[] ItemCodes, String option,String bgId) {
+	private void setSpanDetail(String[] ItemCodes, String option, String itemName, String bgId) {
 		// 如果编号详情不可见，设为可见
 		if (spanDetail.getVisibility() != View.VISIBLE)
 			spanDetail.setVisibility(View.VISIBLE);
@@ -283,6 +284,7 @@ public class SubFragment2 extends Fragment {
 			spanDetail.setText("护坡:\t");
 		
 		final String optionStr = option;
+		final String itemNameStr = itemName;
 		final String bg_id = bgId;
 		
 		// 定义可点击的字符串数组，数组长度为ItemCodes的长度
@@ -297,8 +299,7 @@ public class SubFragment2 extends Fragment {
 
 				@Override
 				public void onClick(View widget) {
-					// TODO Auto-generated method stub
-					setDiseaseDetail(optionStr, str, bg_id); // 设置病害详情
+					setDiseaseDetail(optionStr, itemNameStr, str, bg_id); // 设置病害详情
 				}														
 			}, 0, ss[j].length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 			
@@ -311,15 +312,17 @@ public class SubFragment2 extends Fragment {
 	
 	/** 设置病害详情
 	 * girderCodes: 编号数组
-	 * option: 选择项（主梁、湿接缝、支座）
+	 * option: 选择项
+	 * ItemName: 选择项名称
 	 * Item: 选择跨号
 	 * bgId: 桥梁id
 	 * */
-	private void setDiseaseDetail(String optionStr, String Item, String bdId) {
+	private void setDiseaseDetail(String optionStr, String ItemName, String Item, String bdId) {
 		// 如果病害详情不可见，设为可见
 		if (downDetail.getVisibility() != View.VISIBLE)
 			downDetail.setVisibility(View.VISIBLE);
 		Bundle bd = new Bundle();
+		bd.putString("ITEM_NAME", ItemName);
 		bd.putString(optionStr, Item);
 		bd.putString("BRIDGE_ID", bdId);
 		

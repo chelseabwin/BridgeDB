@@ -13,7 +13,7 @@ import android.widget.ListView;
 
 public class BridgeListFragment extends ListFragment {
 	private Callbacks mCallbacks;
-	private ArrayList<String> data = new ArrayList<String>();
+	public ArrayList<String> data = new ArrayList<String>();
 	private ArrayList<String> bg_code = new ArrayList<String>();
 	private MyArrayAdapter myArrayAdapter;
 	

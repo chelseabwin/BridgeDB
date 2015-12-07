@@ -84,6 +84,13 @@
             android:windowSoftInputMode="adjustPan" >
         </activity>
         
+        <activity
+            android:name="com.qjs.bridgedb.detailed.EditDiseaseActivity"
+            android:label="@string/detailed_disease_edit"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        
         <service 
             android:name="com.qjs.bridgedb.SyncService" >
         </service>

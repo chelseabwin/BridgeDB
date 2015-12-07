@@ -29,9 +29,140 @@
 	           android:layout_height="wrap_content"
 	           android:textSize="@dimen/radio_button_font"
 	           android:text="@string/wet_joint" />
+	        
+	        <RadioButton
+	           android:id="@+id/rbtn_diaphragm"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/diaphragm" />
 	
 	        <RadioButton
 	           android:id="@+id/rbtn_support"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/support" />
+	        
+	    </RadioGroup>
+	    
+	    <RadioGroup 
+	        android:id="@+id/up_rg2"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:layout_marginLeft="20dp"
+	        android:layout_marginTop="20dp" >
+        
+	        <RadioButton
+	           android:id="@+id/rbtn_hollow_slab"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/hollow_slab" />
+	
+	        <RadioButton
+	           android:id="@+id/rbtn_hinge_joint"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/hinge_joint" />
+	
+	        <RadioButton
+	           android:id="@+id/rbtn_support2"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/support" />
+	        
+	    </RadioGroup>
+	    
+	    <RadioGroup 
+	        android:id="@+id/up_rg3"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:layout_marginLeft="20dp"
+	        android:layout_marginTop="20dp" >
+        
+	        <RadioButton
+	           android:id="@+id/rbtn_main_ring"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/main_ring" />
+	
+	        <RadioButton
+	           android:id="@+id/rbtn_arch_structure"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/arch_structure" />
+	
+	        <RadioButton
+	           android:id="@+id/rbtn_deck_slab"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/deck_slab" />
+	        
+	    </RadioGroup>
+	    
+	    <RadioGroup 
+	        android:id="@+id/up_rg4"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:layout_marginLeft="20dp"
+	        android:layout_marginTop="20dp" >
+        
+	        <RadioButton
+	           android:id="@+id/rbtn_arch_piece"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/arch_piece" />
+	
+	        <RadioButton
+	           android:id="@+id/rbtn_sway_bracing"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/sway_bracing" />
+	
+	        <RadioButton
+	           android:id="@+id/rbtn_deck_slab2"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/deck_slab" />
+	        
+	    </RadioGroup>
+	    
+	    <RadioGroup 
+	        android:id="@+id/up_rg5"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:layout_marginLeft="20dp"
+	        android:layout_marginTop="20dp" >
+        
+	        <RadioButton
+	           android:id="@+id/rbtn_load"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/load" />
+	
+	        <RadioButton
+	           android:id="@+id/rbtn_general"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:textSize="@dimen/radio_button_font"
+	           android:text="@string/general" />
+	
+	        <RadioButton
+	           android:id="@+id/rbtn_support3"
 	           android:layout_width="wrap_content"
 	           android:layout_height="wrap_content"
 	           android:textSize="@dimen/radio_button_font"

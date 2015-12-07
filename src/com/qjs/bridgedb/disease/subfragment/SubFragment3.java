@@ -43,7 +43,6 @@ public class SubFragment3 extends Fragment {
 				
 				@Override
 				public void onCheckedChanged(RadioGroup group, int checkedId) {
-					// TODO Auto-generated method stub
 					if (spanDetail.getVisibility() != View.GONE)
 						spanDetail.setVisibility(View.GONE); // 将编号详情设为不可见
 					if (deckDetail.getVisibility() != View.GONE)
@@ -164,7 +163,6 @@ public class SubFragment3 extends Fragment {
 
 				@Override
 				public void onClick(View widget) {
-					// TODO Auto-generated method stub
 					setDiseaseDetail(optionStr, str, bg_id); // 设置病害详情
 				}														
 			}, 0, ss[j].length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -189,6 +187,7 @@ public class SubFragment3 extends Fragment {
 		Bundle bd = new Bundle();
 		bd.putString(optionStr, Item);
 		bd.putString("BRIDGE_ID", bdId);
+		bd.putString("FROM", "SUB_PAGE");
 		
 		// 创建Fragment对象
 		Fragment frag = new Fragment();

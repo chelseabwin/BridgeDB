@@ -32,6 +32,7 @@
     <string name="disease_info_add">病害信息添加</string>
     <string name="detailed_base_show">桥梁基本数据查看</string>
     <string name="detailed_disease_show">病害信息查看</string>
+    <string name="detailed_disease_edit">病害信息修改</string>
     
     <!-- 桥梁基本数据编辑页-识别1 -->
     <string name="bridge_name">桥梁名称</string>    
@@ -160,10 +161,32 @@
     <!-- 病害信息页 -->
     <string name="disease_title">病害信息页</string>
     
+    <!-- 上部 -->
+    
+    <!-- 梁式桥 -->
     <string name="girder">主梁</string>
     <string name="wet_joint">湿接缝</string>
+    <string name="diaphragm">横隔板</string>
     <string name="support">支座</string>
     
+    <!-- 板式桥 -->
+    <string name="hollow_slab">空心板</string>
+    <string name="hinge_joint">铰缝</string>
+    
+    <!-- 拱式桥 -->
+    <string name="main_ring">主拱圈</string>
+    <string name="arch_structure">拱上结构</string>
+    <string name="deck_slab">桥面板</string>
+    
+    <!-- 钢、桁架拱桥 -->
+    <string name="arch_piece">钢、桁架拱片</string>
+    <string name="sway_bracing">横向联结系</string>
+    
+    <!-- 其他 -->
+    <string name="load">上部承重构件</string>
+    <string name="general">上部一般构件</string>
+    
+    <!-- 下部 -->
     <string name="rb_pier">桥墩</string>
     <string name="rb_bent_cap">盖梁</string>
     <string name="rb_tie_beam">系梁</string>
@@ -176,6 +199,7 @@
     <string name="rb_conical_slope">锥坡</string>
     <string name="rb_protection_slope">护坡</string>
     
+    <!-- 桥面系 -->
     <string name="rb_bridge_deck">桥面铺装</string>
     <string name="rb_joint">伸缩缝装置</string>
     <string name="rb_watertight">防排水系统</string>

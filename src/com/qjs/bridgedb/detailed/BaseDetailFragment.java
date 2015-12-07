@@ -98,35 +98,35 @@ public class BaseDetailFragment extends Fragment{
 							baseIntent.putExtra("toPrevId", bgCode);
 							baseIntent.putExtra("toPrev", "toPrevBg");
 			        		startActivity(baseIntent);
-			    			getActivity().finish();							
+			    			getActivity().finish();
 							break;
 						case 1:
 							Intent base2Intent = new Intent(getActivity(), Base2Activity.class);
 							base2Intent.putExtra("toPrevId", bgCode);
 							base2Intent.putExtra("toPrev", "toPrevBg");
 			        		startActivity(base2Intent);
-			    			getActivity().finish();							
+			    			getActivity().finish();
 							break;
 						case 2:
 							Intent base3Intent = new Intent(getActivity(), Base3Activity.class);
 							base3Intent.putExtra("toPrevId", bgCode);
 							base3Intent.putExtra("toPrev", "toPrevBg");
 			        		startActivity(base3Intent);
-			    			getActivity().finish();							
+			    			getActivity().finish();
 							break;
 						case 3:
 							Intent strIntent = new Intent(getActivity(), StructureActivity.class);
 							strIntent.putExtra("toPrevId", bgCode);
 							strIntent.putExtra("toPrev", "toPrevBg");
 			        		startActivity(strIntent);
-			    			getActivity().finish();							
+			    			getActivity().finish();
 							break;
 						case 4:
 							Intent partsIntent = new Intent(getActivity(), PartsActivity.class);
 							partsIntent.putExtra("toPrevId", bgCode);
 							partsIntent.putExtra("toPrev", "toPrevBg");
 			        		startActivity(partsIntent);
-			    			getActivity().finish();							
+			    			getActivity().finish();
 							break;
 						case 5:
 						case 6:
@@ -136,14 +136,14 @@ public class BaseDetailFragment extends Fragment{
 							parts2Intent.putExtra("toPrevId", bgCode);
 							parts2Intent.putExtra("toPrev", "toPrevBg");
 			        		startActivity(parts2Intent);
-			    			getActivity().finish();							
+			    			getActivity().finish();
 							break;
 						case 9:
 							Intent partsIntent1 = new Intent(getActivity(), PartsActivity.class);
 							partsIntent1.putExtra("toPrevId", bgCode);
 							partsIntent1.putExtra("toPrev", "toPrevBg");
 			        		startActivity(partsIntent1);
-			    			getActivity().finish();	
+			    			getActivity().finish();
 							break;
 
 						default:
