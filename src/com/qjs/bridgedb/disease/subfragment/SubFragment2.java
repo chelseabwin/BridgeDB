@@ -6,7 +6,7 @@ import com.qjs.bridgedb.DbOperation;
 import com.qjs.bridgedb.R;
 import com.qjs.bridgedb.disease.subfragment.sub2.abutmentFragment;
 import com.qjs.bridgedb.disease.subfragment.sub2.beamFragment;
-import com.qjs.bridgedb.disease.subfragment.sub2.otherFragment;
+import com.qjs.bridgedb.disease.subfragment.sub2.sub2OtherFragment;
 import com.qjs.bridgedb.disease.subfragment.sub2.pierFragment;
 
 import android.database.Cursor;
@@ -311,7 +311,6 @@ public class SubFragment2 extends Fragment {
 	}
 	
 	/** 设置病害详情
-	 * girderCodes: 编号数组
 	 * option: 选择项
 	 * ItemName: 选择项名称
 	 * Item: 选择跨号
@@ -336,7 +335,7 @@ public class SubFragment2 extends Fragment {
 		else if (optionStr.equals("ATBODY") || optionStr.equals("ATCAPPING") || optionStr.equals("PA"))
 			frag = new abutmentFragment();
 		else
-			frag = new otherFragment();
+			frag = new sub2OtherFragment();
 		
 		// 向Fragment传入参数
 		frag.setArguments(bd);

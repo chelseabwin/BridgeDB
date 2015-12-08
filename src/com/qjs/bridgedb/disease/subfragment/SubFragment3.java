@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.qjs.bridgedb.DbOperation;
 import com.qjs.bridgedb.R;
 import com.qjs.bridgedb.disease.subfragment.sub3.deckFragment;
-import com.qjs.bridgedb.disease.subfragment.sub3.otherFragment;
+import com.qjs.bridgedb.disease.subfragment.sub3.sub3OtherFragment;
 
 import android.database.Cursor;
 import android.graphics.Color;
@@ -119,7 +119,7 @@ public class SubFragment3 extends Fragment {
 						itemCodes[i] = String.valueOf(i+1);
 					}
 				}
-				setSpanDetail(itemCodes, option, bgId); // 设置编号详情				
+				setSpanDetail(itemCodes, option, rb.getText().toString(), bgId); // 设置编号详情
 			}
 		}		
 	}
@@ -127,9 +127,10 @@ public class SubFragment3 extends Fragment {
 	/** 设置编号详情
 	 * ItemCodes: 编号数组
 	 * option: 选择项
+	 * itemName: 选择项名称
 	 * bgId: 桥梁id
 	 * */
-	private void setSpanDetail(String[] ItemCodes, String option,String bgId) {
+	private void setSpanDetail(String[] ItemCodes, String option, String itemName, String bgId) {
 		// 如果编号详情不可见，设为可见
 		if (spanDetail.getVisibility() != View.VISIBLE)
 			spanDetail.setVisibility(View.VISIBLE);
@@ -149,6 +150,7 @@ public class SubFragment3 extends Fragment {
 			spanDetail.setText("照明、标志:\t");
 		
 		final String optionStr = option;
+		final String itemNameStr = itemName;
 		final String bg_id = bgId;
 		
 		// 定义可点击的字符串数组，数组长度为ItemCodes的长度
@@ -163,7 +165,7 @@ public class SubFragment3 extends Fragment {
 
 				@Override
 				public void onClick(View widget) {
-					setDiseaseDetail(optionStr, str, bg_id); // 设置病害详情
+					setDiseaseDetail(optionStr, itemNameStr, str, bg_id); // 设置病害详情
 				}														
 			}, 0, ss[j].length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 			
@@ -175,19 +177,19 @@ public class SubFragment3 extends Fragment {
 	}
 	
 	/** 设置病害详情
-	 * girderCodes: 编号数组
-	 * option: 选择项（主梁、湿接缝、支座）
+	 * ItemName: 选择项名称
+	 * option: 选择项
 	 * Item: 选择跨号
 	 * bgId: 桥梁id
 	 * */
-	private void setDiseaseDetail(String optionStr, String Item, String bdId) {
+	private void setDiseaseDetail(String optionStr, String ItemName, String Item, String bdId) {
 		// 如果病害详情不可见，设为可见
 		if (deckDetail.getVisibility() != View.VISIBLE)
 			deckDetail.setVisibility(View.VISIBLE);
 		Bundle bd = new Bundle();
+		bd.putString("ITEM_NAME", ItemName);
 		bd.putString(optionStr, Item);
 		bd.putString("BRIDGE_ID", bdId);
-		bd.putString("FROM", "SUB_PAGE");
 		
 		// 创建Fragment对象
 		Fragment frag = new Fragment();
@@ -195,7 +197,7 @@ public class SubFragment3 extends Fragment {
 		if (optionStr.equals("DECK") || optionStr.equals("JOINT") || optionStr.equals("WATERTIGHT") || optionStr.equals("LIGHTING"))
 			frag = new deckFragment();
 		else
-			frag = new otherFragment();
+			frag = new sub3OtherFragment();
 		
 		// 向Fragment传入参数
 		frag.setArguments(bd);
