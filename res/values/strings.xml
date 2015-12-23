@@ -234,6 +234,7 @@
     <string name="bottom_plate">底板</string>
     
     <string name="bn_disease_image">选择病害图片</string>
+    <string name="bn_disease_camera">打开照相机</string>
     <string name="disease_image">病害图片</string>
     
     <!-- 上部结构-支座  -->

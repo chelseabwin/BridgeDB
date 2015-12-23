@@ -1,23 +1,23 @@
 package com.qjs.bridgedb.collection;
 
-import java.util.Calendar;
+//import java.util.Calendar;
 
 import com.qjs.bridgedb.DbOperation;
 import com.qjs.bridgedb.R;
 
 import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.content.DialogInterface;
+//import android.app.DatePickerDialog;
+//import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
+//import android.util.Log;
+//import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
+//import android.view.View.OnTouchListener;
 import android.widget.Button;
-import android.widget.DatePicker;
+//import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -66,75 +66,75 @@ public class StructureActivity extends Activity {
 		}
 				
 		// 建桥时间
-		EditText et_building_time = (EditText) findViewById(R.id.et_building_time);
-		et_building_time.setOnTouchListener(new OnTouchListener() {
-			
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				// TODO Auto-generated method stub
-				if (event.getAction() == MotionEvent.ACTION_DOWN) {					
-					int c_year, c_month, c_day;
-					EditText et = (EditText) findViewById(R.id.et_building_time);
-					String str = et.getText().toString();
-					
-					if(str == null || str.length() <= 0) { // 如果未选中日期，则将当天设为默认弹出日期
-						Calendar c = Calendar.getInstance();
-						
-						c_year = c.get(Calendar.YEAR);
-				        c_month = c.get(Calendar.MONTH);
-				        c_day = c.get(Calendar.DAY_OF_MONTH);
-					}
-					else { // 如果已选中日期，则将选中日期设为默认弹出日期
-						String[] date_arr = str.split(" - ");
-						
-						c_year = Integer.parseInt(date_arr[0]);
-				        c_month = Integer.parseInt(date_arr[1]) - 1;
-				        c_day = Integer.parseInt(date_arr[2]);
-					}
-			        
-			        DatePickerDialog picker = new DatePickerDialog(StructureActivity.this, 
-			        		// 绑定监听器
-	        				new DatePickerDialog.OnDateSetListener() {
-			        		
-								@Override
-								public void onDateSet(DatePicker dp, int year,
-									int month, int dayOfMonth) {
-									// 只有当状态位为真时才会修改editText
-									if(flag) {
-										EditText show = (EditText) findViewById(R.id.et_building_time);
-										show.setText(year + " - " + (month + 1) + " - " + dayOfMonth);
-										flag = false; // 将状态位置非
-									}
-								}
-							}
-			        		,c_year, c_month, c_day);
-			        picker.setCancelable(true);
-			        picker.setCanceledOnTouchOutside(true);
-			        picker.setTitle("设置建桥时间");
-			        picker.setButton(DialogInterface.BUTTON_POSITIVE, "确定",
-			                new DialogInterface.OnClickListener() {
-			        		
-			                    @Override
-			                    public void onClick(DialogInterface dialog, int which) {
-			                        Log.d("Picker", "Correct behavior!");
-			                        flag = true;
-			                    }
-			                });
-			        picker.setButton(DialogInterface.BUTTON_NEGATIVE, "取消",
-			                new DialogInterface.OnClickListener() {
-			        		
-			                    @Override
-			                    public void onClick(DialogInterface dialog, int which) {
-			                        Log.d("Picker", "Cancel!");
-			                        flag = false;
-			                    }
-			                });
-			        picker.show();
-				}
-        		
-				return true;
-			}
-		});
+//		EditText et_building_time = (EditText) findViewById(R.id.et_building_time);
+//		et_building_time.setOnTouchListener(new OnTouchListener() {
+//			
+//			@Override
+//			public boolean onTouch(View v, MotionEvent event) {
+//				// TODO Auto-generated method stub
+//				if (event.getAction() == MotionEvent.ACTION_DOWN) {					
+//					int c_year, c_month, c_day;
+//					EditText et = (EditText) findViewById(R.id.et_building_time);
+//					String str = et.getText().toString();
+//					
+//					if(str == null || str.length() <= 0) { // 如果未选中日期，则将当天设为默认弹出日期
+//						Calendar c = Calendar.getInstance();
+//						
+//						c_year = c.get(Calendar.YEAR);
+//				        c_month = c.get(Calendar.MONTH);
+//				        c_day = c.get(Calendar.DAY_OF_MONTH);
+//					}
+//					else { // 如果已选中日期，则将选中日期设为默认弹出日期
+//						String[] date_arr = str.split(" - ");
+//						
+//						c_year = Integer.parseInt(date_arr[0]);
+//				        c_month = Integer.parseInt(date_arr[1]) - 1;
+//				        c_day = Integer.parseInt(date_arr[2]);
+//					}
+//			        
+//			        DatePickerDialog picker = new DatePickerDialog(StructureActivity.this, 
+//			        		// 绑定监听器
+//	        				new DatePickerDialog.OnDateSetListener() {
+//			        		
+//								@Override
+//								public void onDateSet(DatePicker dp, int year,
+//									int month, int dayOfMonth) {
+//									// 只有当状态位为真时才会修改editText
+//									if(flag) {
+//										EditText show = (EditText) findViewById(R.id.et_building_time);
+//										show.setText(year + " - " + (month + 1) + " - " + dayOfMonth);
+//										flag = false; // 将状态位置非
+//									}
+//								}
+//							}
+//			        		,c_year, c_month, c_day);
+//			        picker.setCancelable(true);
+//			        picker.setCanceledOnTouchOutside(true);
+//			        picker.setTitle("设置建桥时间");
+//			        picker.setButton(DialogInterface.BUTTON_POSITIVE, "确定",
+//			                new DialogInterface.OnClickListener() {
+//			        		
+//			                    @Override
+//			                    public void onClick(DialogInterface dialog, int which) {
+//			                        Log.d("Picker", "Correct behavior!");
+//			                        flag = true;
+//			                    }
+//			                });
+//			        picker.setButton(DialogInterface.BUTTON_NEGATIVE, "取消",
+//			                new DialogInterface.OnClickListener() {
+//			        		
+//			                    @Override
+//			                    public void onClick(DialogInterface dialog, int which) {
+//			                        Log.d("Picker", "Cancel!");
+//			                        flag = false;
+//			                    }
+//			                });
+//			        picker.show();
+//				}
+//        		
+//				return true;
+//			}
+//		});
 		
 		// 上一步
         Button st_last_btn = (Button)findViewById(R.id.st_last_btn);

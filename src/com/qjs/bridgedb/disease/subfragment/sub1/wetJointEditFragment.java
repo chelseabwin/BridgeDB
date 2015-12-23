@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 
 import com.qjs.bridgedb.DbOperation;
 import com.qjs.bridgedb.R;
+import com.qjs.bridgedb.detailed.EditDiseaseActivity;
 
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -12,8 +13,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -37,11 +40,14 @@ public class wetJointEditFragment extends Fragment {
 	private RadioButton fissure1,fissure2,fissure3,fissure4,fissure5;
 	private TextView diseaseDescription;
 	private EditText addContent;
-	private Button btnImage,btnSubmit;
+	private Button btnImage,btnCamera,btnSubmit;
 	private ImageView ivImage;
 	private Uri uri = null; // 保存本地图片地址
 	private DbOperation db = null;
 	private Cursor cursor = null;
+	
+	private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100; // 图片库反馈码
+    private static final int CAPTURE_CAMERA_ACTIVITY_REQUEST_CODE = 200; // 照相机反馈码
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -69,12 +75,13 @@ public class wetJointEditFragment extends Fragment {
 		fissure4 = (RadioButton) rootView.findViewById(R.id.rbtn_fissure4); // 纵向裂缝
 		fissure5 = (RadioButton) rootView.findViewById(R.id.rbtn_fissure5); // 网裂缝
 		
-		addContent = (EditText) rootView.findViewById(R.id.tv_up1_add_content); // 病害描述
+		addContent = (EditText) rootView.findViewById(R.id.tv_add_content); // 病害描述
 		
 		btnImage = (Button) rootView.findViewById(R.id.btn_image); // 病害图片按钮
+		btnCamera = (Button) rootView.findViewById(R.id.btn_camera); // 打开照相机按钮
 		ivImage = (ImageView) rootView.findViewById(R.id.iv_image); // 病害图片
 		
-		btnSubmit = (Button) rootView.findViewById(R.id.btn_up1_submit); // 提交按钮
+		btnSubmit = (Button) rootView.findViewById(R.id.btn_submit); // 提交按钮
 		
 		rgLocation.setVisibility(View.GONE);
 		
@@ -151,12 +158,10 @@ public class wetJointEditFragment extends Fragment {
 				addContent.setText(cursor.getString(cursor.getColumnIndex("add_content")));
 				
 				uri = Uri.parse(cursor.getString(cursor.getColumnIndex("disease_image")));
-				if (uri != null) {
-					try {  
-		                Bitmap bitmap = BitmapFactory.decodeStream(this.getActivity().getContentResolver().openInputStream(uri));  
-		                // 将Bitmap设定到ImageView
-		                ivImage.setImageBitmap(bitmap); // 设置图片
-		            } catch (FileNotFoundException e) {}
+				if (uri != null) {					
+					String mFileName = EditDiseaseActivity.getPath(this.getActivity().getApplicationContext(), uri); // 获取图片绝对路径
+					Bitmap bitmap = EditDiseaseActivity.getBitmap(mFileName); // 根据绝对路径找到图片
+					ivImage.setImageBitmap(bitmap); // 设置图片
 				}
 			}
 		}		
@@ -165,18 +170,34 @@ public class wetJointEditFragment extends Fragment {
 	
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		this.getActivity();
-		if (resultCode == FragmentActivity.RESULT_OK) {
-            uri = data.getData();
-            if (uri != null) {
-	            ContentResolver cr = this.getActivity().getContentResolver();
-	            try {  
-	                Bitmap bitmap = BitmapFactory.decodeStream(cr.openInputStream(uri));  
-	                // 将Bitmap设定到ImageView
-	                ivImage.setImageBitmap(bitmap);
-	            } catch (FileNotFoundException e) {}
-            }
-        }  
+		this.getActivity();		
+		if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) { // 来自图片库
+			if (resultCode == FragmentActivity.RESULT_OK) {
+	            uri = data.getData();
+	            if (uri != null) {
+		            ContentResolver cr = this.getActivity().getContentResolver();
+		            try {  
+		                Bitmap bitmap = BitmapFactory.decodeStream(cr.openInputStream(uri));  
+		                // 将Bitmap设定到ImageView
+		                ivImage.setImageBitmap(bitmap);
+		            } catch (FileNotFoundException e) {
+		            	Log.e("Exception", e.getMessage(),e);
+		            }
+	            }
+	        }
+		}
+		else if (requestCode == CAPTURE_CAMERA_ACTIVITY_REQUEST_CODE) { // 来自照相机
+			if (resultCode == FragmentActivity.RESULT_OK) {
+				if (data != null) {
+					uri = data.getData();
+                    if (data.hasExtra("data")) {
+                    	Bitmap bitmap = data.getParcelableExtra("data");
+						// 将Bitmap设定到ImageView
+						ivImage.setImageBitmap(bitmap);
+                    }
+                }
+			}			
+		}		
         super.onActivityResult(requestCode, resultCode, data);  
     }
 	
@@ -236,11 +257,22 @@ public class wetJointEditFragment extends Fragment {
 				Intent intent = new Intent();
                 // 开启Pictures画面Type设定为image
                 intent.setType("image/*");
-                // 使用Intent.ACTION_GET_CONTENT这个Action
-                intent.setAction(Intent.ACTION_GET_CONTENT);
+                // 使用Intent.ACTION_GET_CONTENT / ACTION_OPEN_DOCUMENT这个Action
+                intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
                 // 取得相片后返回本画面
-                startActivityForResult(intent, 1);
+                startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 			}			
+		});
+		
+		// 打开照相机
+		btnCamera.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+				// 拍照后返回本画面
+				startActivityForResult(intent, CAPTURE_CAMERA_ACTIVITY_REQUEST_CODE);
+			}
 		});
 		
 		final View rv = rootView;

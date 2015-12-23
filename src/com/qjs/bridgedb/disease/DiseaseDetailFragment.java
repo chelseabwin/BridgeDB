@@ -41,17 +41,4 @@ public class DiseaseDetailFragment extends Fragment {
 		
 		return rootView;
 	}
-	
-	/**
-	 * µÃµ½¸ùFragment
-	 * 
-	 * @return
-	 */	 
-	public Fragment getRootFragment() {
-		Fragment fragment = getParentFragment();	  
-		while (fragment.getParentFragment() != null) {
-			fragment = fragment.getParentFragment();
-		}	  
-		return fragment;
-	}
 }
