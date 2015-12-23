@@ -337,7 +337,8 @@
 		    android:layout_weight="1"
 		    android:layout_marginLeft="@dimen/button_margin"
 		    android:layout_gravity="center_vertical"
-		    android:text="@string/last_step" />
+		    android:text="@string/last_step"
+		    android:background="@drawable/btn_cancel_style" />
 		
 		<Button
 		    android:id="@+id/pa2_finish_btn"
@@ -346,7 +347,8 @@
 		    android:layout_weight="1"
 		    android:layout_marginLeft="@dimen/button_margin"
 		    android:layout_gravity="center_vertical"
-		    android:text="@string/finish_btn" />
+		    android:text="@string/finish_btn"
+		    android:background="@drawable/btn_submit_style" />
     </TableRow>
         
 </TableLayout>

@@ -285,7 +285,8 @@
 		    android:layout_weight="1"
 		    android:layout_marginLeft="@dimen/button_margin"
 		    android:layout_gravity="center_vertical"
-		    android:text="@string/back" />
+		    android:text="@string/back"
+		    android:background="@drawable/btn_cancel_style" />
 		
 		<Button
 		    android:id="@+id/next_step_btn"
@@ -294,7 +295,8 @@
 		    android:layout_weight="1"
 		    android:layout_marginLeft="@dimen/button_margin"
 		    android:layout_gravity="center_vertical"
-		    android:text="@string/next_step" />
+		    android:text="@string/next_step"
+		    android:background="@drawable/btn_submit_style" />
     </TableRow>
         
 </TableLayout>
