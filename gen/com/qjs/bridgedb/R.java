@@ -601,7 +601,7 @@ public final class R {
         public static final int parts_bg=0x7f020009;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0168;
+        public static final int action_settings=0x7f0a0169;
         public static final int b1_tr1=0x7f0a0000;
         public static final int b1_tr2=0x7f0a0005;
         public static final int b1_tr3=0x7f0a000a;
@@ -642,7 +642,7 @@ public final class R {
         public static final int btn_submit=0x7f0a00dd;
         public static final int ck_bent_cap=0x7f0a015f;
         public static final int ck_tie_beam=0x7f0a0160;
-        public static final int data_sync=0x7f0a0167;
+        public static final int data_sync=0x7f0a0168;
         public static final int deck_detail_container=0x7f0a0143;
         public static final int deck_rg=0x7f0a013c;
         public static final int detailed_base=0x7f0a0062;
@@ -674,7 +674,7 @@ public final class R {
         public static final int et_deck_profile_grade=0x7f0a00c4;
         public static final int et_drainage_system=0x7f0a00a2;
         public static final int et_end_pier=0x7f0a015d;
-        public static final int et_end_spt=0x7f0a0164;
+        public static final int et_end_spt=0x7f0a0165;
         public static final int et_end_stride=0x7f0a015a;
         public static final int et_full_wide=0x7f0a00b3;
         public static final int et_general_detail=0x7f0a008c;
@@ -689,18 +689,19 @@ public final class R {
         public static final int et_path_name=0x7f0a0007;
         public static final int et_path_num=0x7f0a0004;
         public static final int et_per_pier_num=0x7f0a015e;
-        public static final int et_per_row_num=0x7f0a0165;
-        public static final int et_per_spt_num=0x7f0a0166;
+        public static final int et_per_row_num=0x7f0a0166;
+        public static final int et_per_spt_num=0x7f0a0167;
         public static final int et_per_stride_num=0x7f0a015b;
         public static final int et_pier_detail=0x7f0a0077;
         public static final int et_protection_slope=0x7f0a0075;
         public static final int et_reg_structure=0x7f0a0081;
         public static final int et_section_high=0x7f0a00c2;
         public static final int et_start_pier=0x7f0a015c;
-        public static final int et_start_spt=0x7f0a0163;
+        public static final int et_start_spt=0x7f0a0164;
         public static final int et_start_stride=0x7f0a0159;
         public static final int et_support_detail=0x7f0a008f;
         public static final int et_total_len=0x7f0a00ae;
+        public static final int field_image=0x7f0a0163;
         public static final int field_name=0x7f0a0161;
         public static final int field_value=0x7f0a0162;
         public static final int guardrail_l=0x7f0a009e;
@@ -989,8 +990,9 @@ public final class R {
         public static final int fragment_upper_page3=0x7f030016;
         public static final int load_general_detail=0x7f030017;
         public static final int pier_detail=0x7f030018;
-        public static final int simple_item=0x7f030019;
-        public static final int support_detail=0x7f03001a;
+        public static final int simple_item_1=0x7f030019;
+        public static final int simple_item_2=0x7f03001a;
+        public static final int support_detail=0x7f03001b;
     }
     public static final class menu {
         public static final int main=0x7f090000;

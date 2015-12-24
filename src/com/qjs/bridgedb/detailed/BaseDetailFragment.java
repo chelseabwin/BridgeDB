@@ -48,9 +48,9 @@ public class BaseDetailFragment extends Fragment{
 		final String bgCode = args.getString("BRIDGE_ID");
 
 		ArrayList<String> data = new ArrayList<String>();
-		data.add("桥梁基本数据-识别1");
-		data.add("桥梁基本数据-识别2");
-		data.add("桥梁基本数据-识别3");
+		data.add("桥梁基本数据-桥梁名称");
+		data.add("桥梁基本数据-桥梁分类/上部");
+		data.add("桥梁基本数据-下部/桥面系");
 		data.add("桥梁基本数据-结构");
 		data.add("桥梁基本数据-部件1");
 		data.add("桥梁基本数据-部件2");
@@ -80,7 +80,7 @@ public class BaseDetailFragment extends Fragment{
 				
 				// 设置列表
 				SimpleAdapter simpleAdapter = new SimpleAdapter(getActivity(), ListItems, 
-						R.layout.simple_item, 
+						R.layout.simple_item_1, 
 						new String[] {"fieldName", "fieldValue"},
 						new int[] {R.id.field_name, R.id.field_value});
 				
@@ -279,9 +279,7 @@ public class BaseDetailFragment extends Fragment{
 		if (tableName.equals("base1"))
 			bgCodeName = "bridge_code";
 		else
-			bgCodeName = "bg_id";
-		
-		
+			bgCodeName = "bg_id";		
 		
 		DbOperation db = new DbOperation(this.getActivity());		
 		Cursor cursor = db.queryData("*", tableName, bgCodeName + "='" + bgCode + "'");
@@ -300,9 +298,6 @@ public class BaseDetailFragment extends Fragment{
 		}
 		
 		List<Map<String, String>> listItems = new ArrayList<Map<String, String>>();
-		
-		System.out.println(fieldNameList);
-		System.out.println(fieldValueList);
 		
 		for (int i = 0; i < fieldNameList.size(); i++) {
 			Map<String, String> listItem = new HashMap<String, String>();

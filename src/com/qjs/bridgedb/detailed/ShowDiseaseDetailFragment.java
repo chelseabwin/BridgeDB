@@ -7,10 +7,13 @@ import java.util.Map;
 
 import com.qjs.bridgedb.DbOperation;
 import com.qjs.bridgedb.MyArrayAdapter;
+import com.qjs.bridgedb.MyBaseAdapter;
 import com.qjs.bridgedb.R;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -21,7 +24,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
 public class ShowDiseaseDetailFragment extends Fragment{
 	private String itemName, acrossNum, bgCode; // 条目名称, 跨号, 桥梁id
@@ -29,7 +31,7 @@ public class ShowDiseaseDetailFragment extends Fragment{
 	private ArrayList<String> data = new ArrayList<String>();
 	private ListView baseList, baseInfoList; // 两个list列表
 	private List<Map<String, Object>> ListItems = null; // baseInfoList的项目
-	private int jumpFlag = 0; // 跳转标志位(0为展示页，1为修改页)
+	private int jumpFlag = 0; // 跳转标志位(0为展示页，1为修改页)	
     
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -131,15 +133,13 @@ public class ShowDiseaseDetailFragment extends Fragment{
 				}
 				
 				ListItems = getBaseInfo(tableId, bgCode, acrossNum, itemId);
+				LayoutInflater inflater = LayoutInflater.from(getActivity());
 				
 				myArrayAdapter.setSelectItem(position);  
 				myArrayAdapter.notifyDataSetInvalidated();
 				
-				// 设置列表
-				SimpleAdapter simpleAdapter = new SimpleAdapter(getActivity(), ListItems, 
-						R.layout.simple_item, 
-						new String[] {"fieldName", "fieldValue"},
-						new int[] {R.id.field_name, R.id.field_value});
+				// 自定义列表显示病害详情
+				MyBaseAdapter myBaseAdapter = new MyBaseAdapter(ListItems, inflater);
 				
 				btnEdit.setVisibility(View.VISIBLE);
 				
@@ -158,8 +158,7 @@ public class ShowDiseaseDetailFragment extends Fragment{
 		        		startActivity(intent);
 					}					
 				});
-				
-				baseInfoList.setAdapter(simpleAdapter);
+				baseInfoList.setAdapter(myBaseAdapter);
 			}
 		});
 		
@@ -172,12 +171,14 @@ public class ShowDiseaseDetailFragment extends Fragment{
 		
 		if (jumpFlag == 1) { // 如果是从修改页而来的，则刷新第二个列表
 			ListItems = getBaseInfo(tableId, bgCode, acrossNum, itemId);
-			baseInfoList.setAdapter(new SimpleAdapter(getActivity(), ListItems, 
-					R.layout.simple_item, 
-					new String[] {"fieldName", "fieldValue"},
-					new int[] {R.id.field_name, R.id.field_value}));
+			LayoutInflater inflater = LayoutInflater.from(getActivity());
+			
+			// 自定义列表显示病害详情
+			MyBaseAdapter myBaseAdapter = new MyBaseAdapter(ListItems, inflater);
+			baseInfoList.setAdapter(myBaseAdapter);
+			
 			jumpFlag = 0;
-		}		
+		}
 	}
 	
 	private List<Map<String, Object>> getBaseInfo(int tableId, String bgCode, String partsId, int itemId) {
@@ -318,7 +319,21 @@ public class ShowDiseaseDetailFragment extends Fragment{
 		for (int i = 0; i < fieldNameList.size(); i++) {
 			Map<String, Object> listItem = new HashMap<String, Object>();
 			listItem.put("fieldName", fieldNameList.get(i));
-			listItem.put("fieldValue", fieldValueList.get(i));
+			
+			if ("病害照片".equals(fieldNameList.get(i))) {
+				listItem.put("fieldValue", null);
+				Uri uri = Uri.parse(fieldValueList.get(i));
+				if (uri != null) {					
+					String mFileName = EditDiseaseActivity.getPath(this.getActivity().getApplicationContext(), uri); // 获取图片绝对路径
+					Bitmap bitmap = EditDiseaseActivity.getBitmap(mFileName); // 根据绝对路径找到图片
+					listItem.put("fieldImage", bitmap);
+				}				
+			}
+			else {
+				listItem.put("fieldValue", fieldValueList.get(i));
+				listItem.put("fieldImage", null);				
+			}
+			
 			listItems.add(listItem);
 		}
 		return listItems;		
