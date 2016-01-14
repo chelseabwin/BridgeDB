@@ -244,6 +244,7 @@
         <item>[5]跨中挠度</item>
         <item>[6]结构变位</item>
         <item>[7]预应力构件损伤</item>
+        <item>[8]其他</item>
     </string-array>
     
     <!-- 桥墩病害 -->
@@ -252,12 +253,13 @@
         <item>[2]混凝土碳化、腐蚀</item>
         <item>[3]磨损</item>
         <item>[4]位移</item>
+        <item>[5]其他</item>
     </string-array>
     
     <!-- 桥台病害 -->
     <string-array name="abutment_evaluate">
-        <item>[1]磨损</item>
-        <item>[2]混凝土碳化、腐蚀</item>
-        <item>[3]位移</item>
+        <item>[1]混凝土碳化、腐蚀</item>
+        <item>[2]位移</item>
+        <item>[3]其他</item>
     </string-array>
 </resources>

@@ -163,18 +163,24 @@ public class pierFragment extends Fragment {
 			});
 			fissure1.setChecked(true); // 设置“竖向裂缝”默认选中
 		}
-		else {
-			if ("其他病害".equals(rb.getText()))
-				spOtherDisease.setVisibility(View.VISIBLE); // 显示“其他病害”下拉列表
-			else
-				spOtherDisease.setVisibility(View.GONE); // 隐藏“其他病害”下拉列表
-			
+		else {			
 			if (local1.getVisibility() != View.VISIBLE)
 				local1.setVisibility(View.VISIBLE); // 如果位置信息1不可见，设为可见
 			if (local2.getVisibility() != View.GONE)
 				local2.setVisibility(View.GONE); // 如果位置信息2可见，设为不可见
 			if (rgFissure.getVisibility() != View.GONE)
 				rgFissure.setVisibility(View.GONE); // 如果裂缝单选框可见，设为不可见
+			
+			if ("其他病害".equals(rb.getText())) {
+				spOtherDisease.setVisibility(View.VISIBLE); // 显示“其他病害”下拉列表
+				local1.setVisibility(View.GONE);
+				local2.setVisibility(View.GONE);
+			}
+			else {
+				spOtherDisease.setVisibility(View.GONE); // 隐藏“其他病害”下拉列表
+				local1.setVisibility(View.VISIBLE);
+				local2.setVisibility(View.GONE);
+			}
 		}
 		
 		// 选择病害图片监听

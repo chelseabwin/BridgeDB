@@ -128,7 +128,6 @@
 	        android:id="@+id/up1_ll1_dis_desc2"
 	        android:layout_width="100dp"
 	        android:layout_height="wrap_content"
-			android:inputType="number"
 	        android:hint="@string/pls_enter" />
         
         <TextView
@@ -141,7 +140,6 @@
 	        android:id="@+id/up1_ll1_dis_desc3"
 	        android:layout_width="100dp"
 	        android:layout_height="wrap_content"
-			android:inputType="number"
 	        android:hint="@string/pls_enter" />
         
         <TextView
@@ -164,7 +162,6 @@
 	        android:id="@+id/up1_ll1_dis_desc4"
 	        android:layout_width="100dp"
 	        android:layout_height="wrap_content"
-			android:inputType="number"
 	        android:hint="@string/pls_enter" />
         
     </LinearLayout>
@@ -188,7 +185,6 @@
 	        android:id="@+id/up1_ll2_dis_desc2"
 	        android:layout_width="100dp"
 	        android:layout_height="wrap_content"
-			android:inputType="number"
 	        android:hint="@string/pls_enter" />
         
         <TextView
@@ -211,7 +207,6 @@
 	        android:id="@+id/up1_ll2_dis_desc3"
 	        android:layout_width="100dp"
 	        android:layout_height="wrap_content"
-			android:inputType="number"
 	        android:hint="@string/pls_enter" />
         
         <TextView
@@ -224,7 +219,6 @@
 	        android:id="@+id/up1_ll2_dis_desc4"
 	        android:layout_width="100dp"
 	        android:layout_height="wrap_content"
-			android:inputType="number"
 	        android:hint="@string/pls_enter" />
         
     </LinearLayout>

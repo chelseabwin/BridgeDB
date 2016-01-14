@@ -293,8 +293,14 @@ public class ShowDiseaseDetailFragment extends Fragment{
 						}					
 					}
 					else if (cursor.getString(4).equals("ÆäËû²¡º¦")) {
-						if (i == 5 || i == 10 || i == 11 || i == 12)
-							continue;
+						if (tableName.equals("disease_girder")) {
+							if (i == 5 || i == 10 || i == 11 || i == 12)
+								continue;
+						}
+						else {
+							if (i == 5 || i == 7 || i == 8 || i == 9 || i == 10 || i == 11 || i == 12)
+								continue;
+						}
 					}
 					else {
 						if (i == 5 || i == 6 || i == 10 || i == 11 || i == 12)
