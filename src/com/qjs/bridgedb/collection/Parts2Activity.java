@@ -336,7 +336,7 @@ public class Parts2Activity  extends Activity {
 	        			if (Integer.parseInt(end_load) < Integer.parseInt(start_load)) {
 		        			Toast.makeText(Parts2Activity.this, "终止跨号不能小于起始跨号", Toast.LENGTH_SHORT).show();
 		        		}
-		        		else if(Integer.parseInt(start_load) <= Integer.parseInt(tap) && tap != "0") {
+		        		else if(Integer.parseInt(start_load) <= Integer.parseInt(tap)) {
 		        			Toast.makeText(Parts2Activity.this, "起始跨号须大于" + tap, Toast.LENGTH_SHORT).show();
 		        		}
 		        		else {

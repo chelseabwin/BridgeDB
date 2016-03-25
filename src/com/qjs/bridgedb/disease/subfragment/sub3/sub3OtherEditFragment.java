@@ -32,8 +32,8 @@ import android.widget.TextView;
 
 public class sub3OtherEditFragment extends Fragment {
 	private RadioGroup rgFeature,rg1,rg2;
-	private RadioButton rg1Breakage,rg1Lost;
-	private RadioButton rg2CrackUp,rg2Breakage;
+	private RadioButton rg1Breakage,rg1Lost,rg1OtherDisease;
+	private RadioButton rg2CrackUp,rg2Breakage,rg2OtherDisease;
 	private TextView diseaseDescription;
 	private EditText addContent;
 	private Button btnImage,btnCamera,btnSubmit;
@@ -74,6 +74,7 @@ public class sub3OtherEditFragment extends Fragment {
 				
 				rg1Breakage = (RadioButton) rootView.findViewById(R.id.rg1_rbtn_breakage); // ÆÆËð
 				rg1Lost = (RadioButton) rootView.findViewById(R.id.rg1_rbtn_lost); // È±Ê§
+				rg1OtherDisease = (RadioButton) rootView.findViewById(R.id.rg1_rbtn_other_disease); // ÆäËû²¡º¦
 				
 				optionStr = "SIDEWALK";
 				tableName = "disease_sidewalk";
@@ -85,6 +86,7 @@ public class sub3OtherEditFragment extends Fragment {
 				
 				rg2CrackUp = (RadioButton) rootView.findViewById(R.id.rg2_rbtn_crack_up); // ×²»µ¡¢È±Ê§
 				rg2Breakage = (RadioButton) rootView.findViewById(R.id.rg2_rbtn_breakage); // ÆÆËð
+				rg2OtherDisease = (RadioButton) rootView.findViewById(R.id.rg2_rbtn_other_disease); // ÆäËû²¡º¦
 				
 				optionStr = "FENCE";
 				tableName = "disease_fence";
@@ -123,12 +125,16 @@ public class sub3OtherEditFragment extends Fragment {
 						rg1Breakage.setChecked(true);
 					if ((rg1Lost.getText().toString()).equals(rg_feature))
 						rg1Lost.setChecked(true);
+					if ((rg1OtherDisease.getText().toString()).equals(rg_feature))
+						rg1OtherDisease.setChecked(true);
 				}
 				else if (optionStr == "FENCE") {
 					if ((rg2CrackUp.getText().toString()).equals(rg_feature))
 						rg2CrackUp.setChecked(true);
 					if ((rg2Breakage.getText().toString()).equals(rg_feature))
 						rg2Breakage.setChecked(true);
+					if ((rg2OtherDisease.getText().toString()).equals(rg_feature))
+						rg2OtherDisease.setChecked(true);
 				}
 				
 				addContent.setText(cursor.getString(cursor.getColumnIndex("add_content")));

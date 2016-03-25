@@ -193,7 +193,12 @@ public class SubFragment2 extends Fragment {
 						int num = Integer.valueOf(itemNum).intValue();
 						itemCodes = new String[num];
 						for (int i = 0; i < num; i++) {
-							itemCodes[i] = String.valueOf(i+1);
+							if (option == "ATBODY" || option == "ATCAPPING") { // 处理桥台身和桥台帽
+								itemCodes[i] = String.valueOf(i);
+							}
+							else {
+								itemCodes[i] = String.valueOf(i+1);
+							}							
 						}
 					}
 					

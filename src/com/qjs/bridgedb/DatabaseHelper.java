@@ -20,7 +20,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	
 	// 识别表3
 	final String CREATE_TABLE_BASE3 = "create table if not exists base3 (id integer primary key autoincrement,"
-			+ "bg_id, pier_material, section_form, pier_type, abutment_material, abutment_type,"
+			+ "bg_id, pier_material, section_form, pier_type, section_shape, abutment_material, abutment_type,"
 			+ "pier_abutment_material, pier_abutment_base, deck_type, joint_type, flag)";
 	
 	// 结构表
@@ -72,8 +72,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	
 	// 病害-上部结构-主梁信息
 	final String CREATE_TABLE_DISEASE_GIRDER = "create table if not exists disease_girder (id integer primary key autoincrement,"
-			+ "bg_id, parts_id, item_name, rg_feature, rg_fissure, sp_otherDisease, l1_start, l1_end, l1_area, l2_start,"
-			+ "l2_length, l2_width, rg_location, add_content, disease_image, flag)";
+			+ "bg_id, parts_id, item_name, rg_feature, rg_fissure, sp_otherDisease, start, end, area, length, width,"
+			+ "side_start, side_end, side_length, side_width, rg_location, add_content, disease_image, flag)";
 	
 	// 病害-上部结构-湿接缝信息
 	final String CREATE_TABLE_DISEASE_WETJOINT = "create table if not exists disease_wetjoint (id integer primary key autoincrement,"

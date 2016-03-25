@@ -32,10 +32,10 @@ import android.widget.TextView;
 
 public class deckEditFragment extends Fragment {
 	private RadioGroup rgFeature,rg1,rg2,rg3,rg4;
-	private RadioButton rg1Track,rg1Bleeding,rg1Breakage,rg1Fissure;
-	private RadioButton rg2Irregularity,rg2Anchorage,rg2Breakage,rg2Failure;
-	private RadioButton rg3Impeded,rg3Flaw;
-	private RadioButton rg4Dirty,rg4LackOfLighting,rg4SignMissing;
+	private RadioButton rg1Track,rg1Bleeding,rg1Breakage,rg1Fissure,rg1OtherDisease;
+	private RadioButton rg2Irregularity,rg2Anchorage,rg2Breakage,rg2Failure,rg2OtherDisease;
+	private RadioButton rg3Impeded,rg3Flaw,rg3OtherDisease;
+	private RadioButton rg4Dirty,rg4LackOfLighting,rg4SignMissing,rg4OtherDisease;
 	private TextView diseaseDescription;
 	private EditText addContent;
 	private Button btnImage,btnCamera,btnSubmit;
@@ -68,6 +68,7 @@ public class deckEditFragment extends Fragment {
 		btnSubmit = (Button) rootView.findViewById(R.id.btn_submit); // 提交按钮
 		
 		Bundle args = getArguments();
+		
 		if (args != null) {
 			diseaseDescription.setTextSize(25);
 			diseaseDescription.setText("病害描述：" + args.getString("ITEM_NAME") + "(" + args.getString("ACROSS_NUM") + ")");
@@ -82,6 +83,7 @@ public class deckEditFragment extends Fragment {
 				rg1Bleeding = (RadioButton) rootView.findViewById(R.id.rg1_rbtn_bleeding); // 泛油
 				rg1Breakage = (RadioButton) rootView.findViewById(R.id.rg1_rbtn_breakage); // 破损
 				rg1Fissure = (RadioButton) rootView.findViewById(R.id.rg1_rbtn_fissure); // 裂缝
+				rg1OtherDisease = (RadioButton) rootView.findViewById(R.id.rg1_rbtn_other_disease); // 其他病害
 				
 				optionStr = "DECK";
 				tableName = "disease_deck";
@@ -97,6 +99,7 @@ public class deckEditFragment extends Fragment {
 				rg2Anchorage = (RadioButton) rootView.findViewById(R.id.rg2_rbtn_anchorage); // 锚固区缺陷
 				rg2Breakage = (RadioButton) rootView.findViewById(R.id.rg2_rbtn_breakage); // 破损
 				rg2Failure = (RadioButton) rootView.findViewById(R.id.rg2_rbtn_failure); // 失效
+				rg2OtherDisease = (RadioButton) rootView.findViewById(R.id.rg2_rbtn_other_disease); // 其他病害
 				
 				optionStr = "JOINT";
 				tableName = "disease_joint";
@@ -110,6 +113,7 @@ public class deckEditFragment extends Fragment {
 				
 				rg3Impeded = (RadioButton) rootView.findViewById(R.id.rg3_rbtn_impeded); // 排水不畅
 				rg3Flaw = (RadioButton) rootView.findViewById(R.id.rg3_rbtn_flaw); // 排水管、引水槽缺陷
+				rg3OtherDisease = (RadioButton) rootView.findViewById(R.id.rg3_rbtn_other_disease); // 其他病害
 				
 				optionStr = "WATERTIGHT";
 				tableName = "disease_watertight";
@@ -124,6 +128,7 @@ public class deckEditFragment extends Fragment {
 				rg4Dirty = (RadioButton) rootView.findViewById(R.id.rg4_rbtn_dirty); // 污损或破坏
 				rg4LackOfLighting = (RadioButton) rootView.findViewById(R.id.rg4_rbtn_lack_of_lighting); // 照明设施缺失
 				rg4SignMissing = (RadioButton) rootView.findViewById(R.id.rg4_rbtn_sign_missing); // 标志脱落、缺失
+				rg4OtherDisease = (RadioButton) rootView.findViewById(R.id.rg4_rbtn_other_disease); // 其他病害
 				
 				optionStr = "LIGHTING";
 				tableName = "disease_lighting";
@@ -154,7 +159,7 @@ public class deckEditFragment extends Fragment {
 				rg4Dirty.setChecked(true); // 设置“污损或破坏”默认选中
 			
 			db = new DbOperation(this.getActivity());
-			cursor = db.queryData("*", tableName, "bg_id='" + bgId + "'" + " and parts_id='" + bgCode + "'"); // 查找表中是否有对应的数据
+			cursor = db.queryData("*", tableName, "id=" + itemId + " and bg_id='" + bgId + "'" + " and parts_id='" + bgCode + "'"); // 查找表中是否有对应的数据
 			
 			
 			// 如果有则填入相应数据
@@ -170,6 +175,8 @@ public class deckEditFragment extends Fragment {
 						rg1Breakage.setChecked(true);
 					if ((rg1Fissure.getText().toString()).equals(rg_feature))
 						rg1Fissure.setChecked(true);
+					if ((rg1OtherDisease.getText().toString()).equals(rg_feature))
+						rg1OtherDisease.setChecked(true);
 				}
 				else if (optionStr == "JOINT") {
 					if ((rg2Irregularity.getText().toString()).equals(rg_feature))
@@ -180,12 +187,16 @@ public class deckEditFragment extends Fragment {
 						rg2Breakage.setChecked(true);
 					if ((rg2Failure.getText().toString()).equals(rg_feature))
 						rg2Failure.setChecked(true);
+					if ((rg2OtherDisease.getText().toString()).equals(rg_feature))
+						rg2OtherDisease.setChecked(true);
 				}
 				else if (optionStr == "WATERTIGHT") {
 					if ((rg3Impeded.getText().toString()).equals(rg_feature))
 						rg3Impeded.setChecked(true);
 					if ((rg3Flaw.getText().toString()).equals(rg_feature))
 						rg3Flaw.setChecked(true);
+					if ((rg3OtherDisease.getText().toString()).equals(rg_feature))
+						rg3OtherDisease.setChecked(true);
 				}
 				else if (optionStr == "LIGHTING") {
 					if ((rg4Dirty.getText().toString()).equals(rg_feature))
@@ -194,6 +205,8 @@ public class deckEditFragment extends Fragment {
 						rg4LackOfLighting.setChecked(true);
 					if ((rg4SignMissing.getText().toString()).equals(rg_feature))
 						rg4SignMissing.setChecked(true);
+					if ((rg4OtherDisease.getText().toString()).equals(rg_feature))
+						rg4OtherDisease.setChecked(true);
 				}
 				
 				addContent.setText(cursor.getString(cursor.getColumnIndex("add_content")));

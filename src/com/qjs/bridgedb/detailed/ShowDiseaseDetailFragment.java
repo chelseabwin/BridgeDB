@@ -9,7 +9,8 @@ import com.qjs.bridgedb.DbOperation;
 import com.qjs.bridgedb.MyArrayAdapter;
 import com.qjs.bridgedb.MyBaseAdapter;
 import com.qjs.bridgedb.R;
-
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -24,6 +25,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class ShowDiseaseDetailFragment extends Fragment{
 	private String itemName, acrossNum, bgCode; // 条目名称, 跨号, 桥梁id
@@ -31,7 +33,7 @@ public class ShowDiseaseDetailFragment extends Fragment{
 	private ArrayList<String> data = new ArrayList<String>();
 	private ListView baseList, baseInfoList; // 两个list列表
 	private List<Map<String, Object>> ListItems = null; // baseInfoList的项目
-	private int jumpFlag = 0; // 跳转标志位(0为展示页，1为修改页)	
+	private int jumpFlag = 0; // 跳转标志位(0为展示页，1为修改页)
     
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class ShowDiseaseDetailFragment extends Fragment{
 		
 		baseList = (ListView) rootView.findViewById(R.id.base_list);
 		final Button btnEdit = (Button) rootView.findViewById(R.id.info_edit);
+		final Button btnDelete = (Button) rootView.findViewById(R.id.info_delete);
 		
 		final Bundle args = getArguments();
 		bgCode = args.getString("BRIDGE_ID");
@@ -105,6 +108,7 @@ public class ShowDiseaseDetailFragment extends Fragment{
 		}
 		
 		btnEdit.setVisibility(View.GONE);
+		btnDelete.setVisibility(View.GONE);
 		
 		final MyArrayAdapter myArrayAdapter = new MyArrayAdapter(getActivity(),
 				android.R.layout.simple_list_item_activated_1,
@@ -140,10 +144,12 @@ public class ShowDiseaseDetailFragment extends Fragment{
 				
 				// 自定义列表显示病害详情
 				MyBaseAdapter myBaseAdapter = new MyBaseAdapter(ListItems, inflater);
+				baseInfoList.setAdapter(myBaseAdapter);
 				
 				btnEdit.setVisibility(View.VISIBLE);
+				btnDelete.setVisibility(View.VISIBLE);
 				
-				btnEdit.setOnClickListener(new OnClickListener() {
+				btnEdit.setOnClickListener(new OnClickListener() { // 修改按钮
 
 					@Override
 					public void onClick(View v) {
@@ -158,7 +164,70 @@ public class ShowDiseaseDetailFragment extends Fragment{
 		        		startActivity(intent);
 					}					
 				});
-				baseInfoList.setAdapter(myBaseAdapter);
+				
+				btnDelete.setOnClickListener(new OnClickListener() { // 删除按钮
+					
+					@Override
+					public void onClick(View v) {
+						
+						AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+						builder.setTitle("删除病害信息对话框") // 设置标题
+							// 设置信息
+							.setMessage("确认删除吗？该过程不可逆！")
+							// 设置添加按钮
+							.setPositiveButton("确认", new DialogInterface.OnClickListener () {
+								
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									DbOperation db = new DbOperation(getActivity());
+									int flag = db.deleteData(tableNames[tableId], "id=" + itemId + " and bg_id='" + bgCode + "'" + " and parts_id='" + acrossNum + "'");
+									
+									if (flag == 1)
+				            			Toast.makeText(getActivity(), "病害信息删除成功", Toast.LENGTH_SHORT).show();
+				            		else
+				            			Toast.makeText(getActivity(), "病害信息删除失败", Toast.LENGTH_SHORT).show();
+									
+									// 刷新列表
+									baseList.removeAllViewsInLayout();
+									ArrayList<String> new_data = new ArrayList<String>();
+									for (int i = 0; i < tableNames.length; i++) {
+										Cursor cursor = db.queryData("*", tableNames[i], "bg_id='" + bgCode + "'");
+										
+										while (cursor.moveToNext()) {
+											new_data.add(cursor.getString(cursor.getColumnIndex("item_name")) 
+													+ ": " + cursor.getString(cursor.getColumnIndex("parts_id"))
+													+ ": " + cursor.getString(cursor.getColumnIndex("id")));				
+										}
+									}
+									
+									MyArrayAdapter myArrayAdapter = new MyArrayAdapter(getActivity(),
+											android.R.layout.simple_list_item_activated_1,
+											new_data);						
+									
+									baseList.setAdapter(myArrayAdapter);
+									
+									btnEdit.setVisibility(View.GONE);
+									btnDelete.setVisibility(View.GONE);
+									
+									// 清空baseInfoList列表
+									LayoutInflater inflater = LayoutInflater.from(getActivity());						
+									MyBaseAdapter myBaseAdapter = new MyBaseAdapter(new ArrayList<Map<String, Object>>(), inflater);
+									baseInfoList.setAdapter(myBaseAdapter);									
+								}				
+							})
+							// 设置返回按钮
+							.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+								
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									// TODO Auto-generated method stub
+									
+								}				
+							})
+							.create()
+							.show();
+					}
+				});
 			}
 		});
 		
@@ -193,7 +262,8 @@ public class ShowDiseaseDetailFragment extends Fragment{
 		case 0:
 			tableName = "disease_girder";
 			fieldNameArray = new String[] {"病害类型", "裂缝类型", "其他病害", "距本跨梁端起始距离", "距本跨梁端终止距离", 
-					"病害面积", "裂缝距本跨梁端起始距离", "裂缝长度", "裂缝宽度", "病害位置", "病害描述", "病害照片"};
+					"病害面积", "裂缝长度", "裂缝宽度", "侧向距本跨梁端起始距离", "侧向距本跨梁端终止距离", "侧向裂缝长度", "侧向裂缝宽度", 
+					"病害位置", "病害描述", "病害照片"};
 			break;
 		case 1:
 			tableName = "disease_wetjoint";
@@ -279,9 +349,34 @@ public class ShowDiseaseDetailFragment extends Fragment{
 		
 		cursor = db.queryData("*", tableName, "id=" + itemId + " and bg_id='" + bgCode + "'" + " and parts_id='" + partsId + "'");
 		if (cursor.moveToFirst()) {
-			for (int i = 4; i < cursor.getColumnCount()-1; i++) { // 去掉第一、第二、第三、第四和最后一项
-				if (tableName.equals("disease_girder") || tableName.equals("disease_wetjoint") 
-						|| tableName.equals("disease_pier")) {
+			for (int i = 4; i < cursor.getColumnCount()-1; i++) { // 去掉第一、第二、第三、第四和最后一项				
+				if (tableName.equals("disease_girder")) {
+					if (cursor.getString(4).equals("裂缝")) {
+						if (cursor.getString(5).equals("网裂缝")) {
+							if (i == 6 || i == 10 || i == 11)
+								continue;
+						}
+						else {
+							if (i == 6 || i == 9)
+								continue;
+						}
+						
+						if (!cursor.getString(16).equals("左翼板") && !cursor.getString(16).equals("右翼板")) {
+							if (i == 12 || i == 13 || i == 14 || i == 15)
+								continue;
+						}
+					}
+					else if (cursor.getString(4).equals("其他病害")) {
+						if (i == 5 || i == 10 || i == 11 || i == 12 || i == 13 || i == 14 || i == 15)
+							continue;
+					}
+					else {
+						if (i == 5 || i == 6 || i == 10 || i == 11 || i == 12 || i == 13 || i == 14 || i == 15)
+							continue;
+					}
+				}
+				
+				if (tableName.equals("disease_wetjoint") || tableName.equals("disease_pier")) {
 					if (cursor.getString(4).equals("裂缝")) {
 						if (cursor.getString(5).equals("网裂缝")) {
 							if (i == 6 || i == 10 || i == 11 || i == 12)
@@ -293,14 +388,8 @@ public class ShowDiseaseDetailFragment extends Fragment{
 						}					
 					}
 					else if (cursor.getString(4).equals("其他病害")) {
-						if (tableName.equals("disease_girder")) {
-							if (i == 5 || i == 10 || i == 11 || i == 12)
-								continue;
-						}
-						else {
-							if (i == 5 || i == 7 || i == 8 || i == 9 || i == 10 || i == 11 || i == 12)
-								continue;
-						}
+						if (i == 5 || i == 7 || i == 8 || i == 9 || i == 10 || i == 11 || i == 12)
+							continue;
 					}
 					else {
 						if (i == 5 || i == 6 || i == 10 || i == 11 || i == 12)

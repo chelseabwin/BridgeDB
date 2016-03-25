@@ -113,6 +113,13 @@
            android:layout_height="wrap_content"
            android:textSize="@dimen/radio_button_font"
            android:text="@string/cavitation" />
+        
+        <RadioButton
+           android:id="@+id/rg2_rbtn_other_disease"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
+           android:text="@string/other_disease" />
       
     </com.qjs.bridgedb.disease.subfragment.FlowRadioGroup>
     
@@ -172,6 +179,13 @@
            android:layout_height="wrap_content"
            android:textSize="@dimen/radio_button_font"
            android:text="@string/fissure" />
+        
+        <RadioButton
+           android:id="@+id/rg3_rbtn_other_disease"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
+           android:text="@string/other_disease" />
       
     </com.qjs.bridgedb.disease.subfragment.FlowRadioGroup>
     

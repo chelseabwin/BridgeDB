@@ -32,7 +32,7 @@ import android.widget.TextView;
 
 public class beamEditFragment extends Fragment {
 	private RadioGroup rgFeature;
-	private RadioButton voidsPits,leakageTendon,cavitation,corrosion,carbonation,fissure;
+	private RadioButton voidsPits,leakageTendon,cavitation,corrosion,carbonation,fissure,otherDisease;
 	private TextView diseaseDescription;
 	private EditText addContent;
 	private Button btnImage,btnCamera,btnSubmit;
@@ -58,6 +58,7 @@ public class beamEditFragment extends Fragment {
 		corrosion = (RadioButton) rootView.findViewById(R.id.rbtn_corrosion); // ∏÷ΩÓ–‚ ¥
 		carbonation = (RadioButton) rootView.findViewById(R.id.rbtn_carbonation); // ªÏƒ˝Õ¡ÃºªØ°¢∏Ø ¥
 		fissure = (RadioButton) rootView.findViewById(R.id.rbtn_fissure); // ¡—∑Ï
+		otherDisease = (RadioButton) rootView.findViewById(R.id.rbtn_other_disease); // ∆‰À˚≤°∫¶
 		
 		addContent = (EditText) rootView.findViewById(R.id.tv_add_content); // ≤°∫¶√Ë ˆ
 		
@@ -111,6 +112,8 @@ public class beamEditFragment extends Fragment {
 					carbonation.setChecked(true);
 				if ((fissure.getText().toString()).equals(rg_feature))
 					fissure.setChecked(true);
+				if ((otherDisease.getText().toString()).equals(rg_feature))
+					otherDisease.setChecked(true);
 				
 				addContent.setText(cursor.getString(cursor.getColumnIndex("add_content")));
 				

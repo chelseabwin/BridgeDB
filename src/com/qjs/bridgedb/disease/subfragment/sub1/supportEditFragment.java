@@ -32,7 +32,7 @@ import android.widget.TextView;
 
 public class supportEditFragment extends Fragment {
 	private RadioGroup rgFeature;
-	private RadioButton seasonCracking,defect,disengaging,moduleDamage,plateAbrasion,displacement;
+	private RadioButton seasonCracking,defect,disengaging,moduleDamage,plateAbrasion,displacement,otherDisease;
 	private TextView diseaseDescription;
 	private EditText addContent;
 	private Button btnImage,btnCamera,btnSubmit;
@@ -57,6 +57,7 @@ public class supportEditFragment extends Fragment {
 		moduleDamage = (RadioButton) rootView.findViewById(R.id.rbtn_module_damage); // ×é¼þËð»µ
 		plateAbrasion = (RadioButton) rootView.findViewById(R.id.rbtn_plate_abrasion); // ¾ÛËÄ·úÒÒÏ©»¬°åÄ¥Ëð
 		displacement = (RadioButton) rootView.findViewById(R.id.rbtn_displacement); // Î»ÒÆ¡¢×ª½Ç³¬ÏÞ
+		otherDisease = (RadioButton) rootView.findViewById(R.id.rbtn_other_disease); // ÆäËû²¡º¦
 		
 		addContent = (EditText) rootView.findViewById(R.id.tv_add_content); // ²¡º¦ÃèÊö
 		
@@ -106,6 +107,8 @@ public class supportEditFragment extends Fragment {
 					plateAbrasion.setChecked(true);
 				if ((displacement.getText().toString()).equals(rg_feature))
 					displacement.setChecked(true);
+				if ((otherDisease.getText().toString()).equals(rg_feature))
+					otherDisease.setChecked(true);
 				
 				addContent.setText(cursor.getString(cursor.getColumnIndex("add_content")));
 				

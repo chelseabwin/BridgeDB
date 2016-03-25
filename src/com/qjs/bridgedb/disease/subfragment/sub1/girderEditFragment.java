@@ -35,7 +35,7 @@ import android.widget.TextView;
 public class girderEditFragment extends Fragment {
 	private RadioGroup rgFeature,rgFissure,rgLocation;
 	private Spinner spOtherDisease;
-	private LinearLayout local1,local2;
+	private LinearLayout local1,local2,local3;
 	private RadioButton voidsPits,peelingOffAngle,cavitation,fissure,otherDisease;
 	private RadioButton fissure1,fissure2,fissure3,fissure4,fissure5;
 	private RadioButton location1,location2,location3,location4,location5;
@@ -63,6 +63,7 @@ public class girderEditFragment extends Fragment {
 		
 		local1 = (LinearLayout) rootView.findViewById(R.id.up1_ll_1); // 位置信息（含网裂缝除其他裂缝）
 		local2 = (LinearLayout) rootView.findViewById(R.id.up1_ll_2); // 其他裂缝位置信息
+		local3 = (LinearLayout) rootView.findViewById(R.id.up1_ll_3); // 其他裂缝位置信息
 		
 		voidsPits = (RadioButton) rootView.findViewById(R.id.rbtn_voids_pits); // 蜂窝麻面
 		peelingOffAngle = (RadioButton) rootView.findViewById(R.id.rbtn_peeling_off_angle); // 剥落掉角
@@ -127,9 +128,9 @@ public class girderEditFragment extends Fragment {
 					if ((fissure5.getText().toString()).equals(rg_fissure)) { // 如果是网裂缝
 						fissure5.setChecked(true);
 						
-						((EditText) rootView.findViewById(R.id.up1_ll1_dis_desc2)).setText(cursor.getString(cursor.getColumnIndex("l1_start")));
-						((EditText) rootView.findViewById(R.id.up1_ll1_dis_desc3)).setText(cursor.getString(cursor.getColumnIndex("l1_end")));
-						((EditText) rootView.findViewById(R.id.up1_ll1_dis_desc4)).setText(cursor.getString(cursor.getColumnIndex("l1_area")));
+						((EditText) rootView.findViewById(R.id.up1_ll1_dis_desc2)).setText(cursor.getString(cursor.getColumnIndex("start")));
+						((EditText) rootView.findViewById(R.id.up1_ll1_dis_desc3)).setText(cursor.getString(cursor.getColumnIndex("end")));
+						((EditText) rootView.findViewById(R.id.up1_ll1_dis_desc4)).setText(cursor.getString(cursor.getColumnIndex("area")));
 					}
 					else { // 其他裂缝
 						if ((fissure1.getText().toString()).equals(rg_fissure))
@@ -141,9 +142,27 @@ public class girderEditFragment extends Fragment {
 						if ((fissure4.getText().toString()).equals(rg_fissure))
 							fissure4.setChecked(true);
 						
-						((EditText) rootView.findViewById(R.id.up1_ll2_dis_desc2)).setText(cursor.getString(cursor.getColumnIndex("l2_start")));
-						((EditText) rootView.findViewById(R.id.up1_ll2_dis_desc3)).setText(cursor.getString(cursor.getColumnIndex("l2_length")));
-						((EditText) rootView.findViewById(R.id.up1_ll2_dis_desc4)).setText(cursor.getString(cursor.getColumnIndex("l2_width")));
+						((EditText) rootView.findViewById(R.id.up1_ll2_dis_desc2)).setText(cursor.getString(cursor.getColumnIndex("start")));
+						((EditText) rootView.findViewById(R.id.up1_ll2_dis_desc3)).setText(cursor.getString(cursor.getColumnIndex("end")));
+						((EditText) rootView.findViewById(R.id.up1_ll2_dis_desc4)).setText(cursor.getString(cursor.getColumnIndex("length")));
+						((EditText) rootView.findViewById(R.id.up1_ll2_dis_desc5)).setText(cursor.getString(cursor.getColumnIndex("width")));
+					}
+					
+					if ((location1.getText().toString()).equals(rg_location)) { // 如果是左翼板
+						location1.setChecked(true);
+						
+						((EditText) rootView.findViewById(R.id.up1_ll3_dis_desc2)).setText(cursor.getString(cursor.getColumnIndex("side_start")));
+						((EditText) rootView.findViewById(R.id.up1_ll3_dis_desc3)).setText(cursor.getString(cursor.getColumnIndex("side_end")));
+						((EditText) rootView.findViewById(R.id.up1_ll3_dis_desc4)).setText(cursor.getString(cursor.getColumnIndex("side_length")));
+						((EditText) rootView.findViewById(R.id.up1_ll3_dis_desc5)).setText(cursor.getString(cursor.getColumnIndex("side_width")));
+					}
+					else if ((location2.getText().toString()).equals(rg_location)) { // 如果是右翼板
+						location2.setChecked(true);
+						
+						((EditText) rootView.findViewById(R.id.up1_ll3_dis_desc2)).setText(cursor.getString(cursor.getColumnIndex("side_start")));
+						((EditText) rootView.findViewById(R.id.up1_ll3_dis_desc3)).setText(cursor.getString(cursor.getColumnIndex("side_end")));
+						((EditText) rootView.findViewById(R.id.up1_ll3_dis_desc4)).setText(cursor.getString(cursor.getColumnIndex("side_length")));
+						((EditText) rootView.findViewById(R.id.up1_ll3_dis_desc5)).setText(cursor.getString(cursor.getColumnIndex("side_width")));
 					}
 				}
 				else { // 除裂缝以外的病害
@@ -253,6 +272,20 @@ public class girderEditFragment extends Fragment {
 				}								
 			});
 			fissure1.setChecked(true); // 设置“竖向裂缝”默认选中
+			
+			rgLocation.setOnCheckedChangeListener(new OnCheckedChangeListener() { // 侧向裂缝监听
+				
+				@Override
+				public void onCheckedChanged(RadioGroup group, int checkedId) {
+					if (checkedId == location1.getId() || checkedId == location2.getId()) {
+						local3.setVisibility(View.VISIBLE);						
+					}
+					else {
+						local3.setVisibility(View.GONE);
+					}					
+				}
+			});
+			location1.setChecked(true); // 设置“左翼板”默认选中
 		}
 		else {
 			if ("其他病害".equals(rb.getText()))
@@ -264,6 +297,8 @@ public class girderEditFragment extends Fragment {
 				local1.setVisibility(View.VISIBLE); // 如果位置信息1不可见，设为可见
 			if (local2.getVisibility() != View.GONE)
 				local2.setVisibility(View.GONE); // 如果位置信息2可见，设为不可见
+			if (local3.getVisibility() != View.GONE)
+				local3.setVisibility(View.GONE); // 如果位置信息3可见，设为不可见
 			if (rgFissure.getVisibility() != View.GONE)
 				rgFissure.setVisibility(View.GONE); // 如果裂缝单选框可见，设为不可见
 		}
@@ -311,12 +346,15 @@ public class girderEditFragment extends Fragment {
 				String rg_feature = rbFeature.getText().toString(); // 病害特征
 				String rg_fissure = "0"; // 裂缝
 				String sp_otherDisease = "0"; // 其他病害-病害信息
-				String l1_start = "0"; // l1开始位置 
-				String l1_end = "0"; // l1结束位置
-				String l1_area = "0"; // l1面积
-				String l2_start = "0"; // l2开始位置
-				String l2_length = "0"; // l2长度
-				String l2_width = "0";	// l2宽度
+				String start = "0"; // 开始位置 
+				String end = "0"; // 结束位置
+				String area = "0"; // 面积
+				String length = "0"; // 长度
+				String width = "0";	// 宽度
+				String side_start = "0"; // 侧向开始位置 
+				String side_end = "0"; // 侧向结束位置
+				String side_length = "0"; // 侧向长度
+				String side_width = "0";	// 侧向宽度
 				String rg_location = rbLocation.getText().toString(); // 位置
 				String add_content = addContent.getText().toString(); // 病害描述				
 				String disease_image = null; // 本地图片地址
@@ -328,29 +366,38 @@ public class girderEditFragment extends Fragment {
 					rg_fissure = rbFissure.getText().toString(); // 裂缝
 					
 					if ("网裂缝".equals(rbFissure.getText())) {
-						l1_start = ((EditText) rv.findViewById(R.id.up1_ll1_dis_desc2)).getText().toString();
-						l1_end = ((EditText) rv.findViewById(R.id.up1_ll1_dis_desc3)).getText().toString();
-						l1_area = ((EditText) rv.findViewById(R.id.up1_ll1_dis_desc4)).getText().toString();
+						start = ((EditText) rv.findViewById(R.id.up1_ll1_dis_desc2)).getText().toString();
+						end = ((EditText) rv.findViewById(R.id.up1_ll1_dis_desc3)).getText().toString();
+						area = ((EditText) rv.findViewById(R.id.up1_ll1_dis_desc4)).getText().toString();
 					}
 					else {
-						l2_start = ((EditText) rv.findViewById(R.id.up1_ll2_dis_desc2)).getText().toString();
-						l2_length = ((EditText) rv.findViewById(R.id.up1_ll2_dis_desc3)).getText().toString();
-						l2_width = ((EditText) rv.findViewById(R.id.up1_ll2_dis_desc4)).getText().toString();						
+						start = ((EditText) rv.findViewById(R.id.up1_ll2_dis_desc2)).getText().toString();
+						end = ((EditText) rv.findViewById(R.id.up1_ll2_dis_desc3)).getText().toString();
+						length = ((EditText) rv.findViewById(R.id.up1_ll2_dis_desc4)).getText().toString();
+						width = ((EditText) rv.findViewById(R.id.up1_ll2_dis_desc5)).getText().toString();
+					}
+					
+					if ("左翼板".equals(rbLocation.getText()) || "右翼板".equals(rbLocation.getText())) {
+						local3.setVisibility(View.VISIBLE);
+						side_start = ((EditText) rv.findViewById(R.id.up1_ll3_dis_desc2)).getText().toString();
+						side_end = ((EditText) rv.findViewById(R.id.up1_ll3_dis_desc3)).getText().toString();
+						side_length = ((EditText) rv.findViewById(R.id.up1_ll3_dis_desc4)).getText().toString();
+						side_width = ((EditText) rv.findViewById(R.id.up1_ll3_dis_desc5)).getText().toString();
 					}
 				}
 				else {
 					if ("其他病害".equals(rbFeature.getText()))
 						sp_otherDisease = spOtherDisease.getSelectedItem().toString(); // 其他病害-病害信息
 					
-					l1_start = ((EditText) rv.findViewById(R.id.up1_ll1_dis_desc2)).getText().toString();
-					l1_end = ((EditText) rv.findViewById(R.id.up1_ll1_dis_desc3)).getText().toString();
-					l1_area = ((EditText) rv.findViewById(R.id.up1_ll1_dis_desc4)).getText().toString();
+					start = ((EditText) rv.findViewById(R.id.up1_ll1_dis_desc2)).getText().toString();
+					end = ((EditText) rv.findViewById(R.id.up1_ll1_dis_desc3)).getText().toString();
+					area = ((EditText) rv.findViewById(R.id.up1_ll1_dis_desc4)).getText().toString();
 				}
 				
 				String sql = "item_name='" + item_name + "',rg_feature='" + rg_feature + "',rg_fissure='" + rg_fissure + "',sp_otherDisease='" + sp_otherDisease
-						+ "',l1_start='" + l1_start + "',l1_end='" + l1_end + "',l1_area='" + l1_area + "',l2_start='" + l2_start
-						+ "',l2_length='" + l2_length + "',l2_width='" + l2_width + "',rg_location='" + rg_location + "',add_content='" + add_content
-						+ "',disease_image='" + disease_image + "',flag='2'";
+						+ "',start='" + start + "',end='" + end + "',area='" + area + "',length='" + length + "',width='" + width + "',side_start='" + side_start
+						+ "',side_end='" + side_end + "',side_length='" + side_length + "',side_width='" + side_width + "',rg_location='" + rg_location
+						+ "',add_content='" + add_content + "',disease_image='" + disease_image + "',flag='2'";
 				
 				int flag = db.updateData("disease_girder", sql, "id=" + item_id + " and bg_id='" + bg_id + "'" + " and parts_id='" + parts_id + "'");
 				

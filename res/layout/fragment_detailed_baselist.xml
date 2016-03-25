@@ -14,30 +14,41 @@
         android:layout_height="match_parent"
         android:layout_weight="1"/>
     
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="2" >
+        android:layout_weight="2"
+        android:orientation="vertical" >
 
 		<Button 
 		    android:id="@+id/info_edit" 
 		    android:layout_width="match_parent"  
 		    android:layout_height="wrap_content" 
 		    android:text="@string/bn_edit"
-		    android:layout_alignParentTop="true" 
+		    android:visibility="gone"
 		    android:layout_marginLeft="20dp"
 		    android:layout_marginRight="20dp"
 		    android:layout_marginTop="10dp"
 		    android:layout_marginBottom="10dp"
-		    android:background="@drawable/btn_default_style"
-		    android:visibility="gone" />
+		    android:background="@drawable/btn_default_style" />
+		
+		<Button 
+		    android:id="@+id/info_delete" 
+		    android:layout_width="match_parent"  
+		    android:layout_height="wrap_content" 
+		    android:text="@string/bn_delete"
+		    android:visibility="gone"
+		    android:layout_marginLeft="20dp"
+		    android:layout_marginRight="20dp"
+		    android:layout_marginTop="10dp"
+		    android:layout_marginBottom="10dp"
+		    android:background="@drawable/btn_cancel_style" />
 		
 		<ListView 
 		    android:id="@+id/base_info"
 	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-  			android:layout_below="@id/info_edit" />
+	        android:layout_height="wrap_content" />
         
-    </RelativeLayout>
+    </LinearLayout>
 
 </LinearLayout>

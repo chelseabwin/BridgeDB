@@ -191,6 +191,18 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:textSize="@dimen/radio_button_font"
+	        android:text="@string/dis_desc2" />
+        
+        <EditText
+	        android:id="@+id/up1_ll2_dis_desc3"
+	        android:layout_width="100dp"
+	        android:layout_height="wrap_content"
+	        android:hint="@string/pls_enter" />
+        
+        <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="@dimen/radio_button_font"
 	        android:text="@string/dis_desc3" />
         
         <TextView
@@ -204,7 +216,7 @@
 	        android:text="@string/dis_desc5" />
         
         <EditText
-	        android:id="@+id/up1_ll2_dis_desc3"
+	        android:id="@+id/up1_ll2_dis_desc4"
 	        android:layout_width="100dp"
 	        android:layout_height="wrap_content"
 	        android:hint="@string/pls_enter" />
@@ -216,7 +228,7 @@
 	        android:text="@string/dis_desc6" />
         
         <EditText
-	        android:id="@+id/up1_ll2_dis_desc4"
+	        android:id="@+id/up1_ll2_dis_desc5"
 	        android:layout_width="100dp"
 	        android:layout_height="wrap_content"
 	        android:hint="@string/pls_enter" />
@@ -236,8 +248,7 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:textSize="@dimen/radio_button_font"
-           android:text="@string/left_flange"
-           android:checked="true" />
+           android:text="@string/left_flange" />
 
         <RadioButton
            android:id="@+id/rbtn_location2"
@@ -268,6 +279,75 @@
            android:text="@string/bottom_plate" />
       
     </RadioGroup>
+    
+    <LinearLayout
+        android:id="@+id/up1_ll_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp" >
+        
+        <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="@dimen/radio_button_font"
+	        android:text="@string/dis_desc" />
+        
+        <EditText
+	        android:id="@+id/up1_ll3_dis_desc2"
+	        android:layout_width="100dp"
+	        android:layout_height="wrap_content"
+	        android:hint="@string/pls_enter" />
+        
+        <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="@dimen/radio_button_font"
+	        android:text="@string/dis_desc2" />
+        
+        <EditText
+	        android:id="@+id/up1_ll3_dis_desc3"
+	        android:layout_width="100dp"
+	        android:layout_height="wrap_content"
+	        android:hint="@string/pls_enter" />
+        
+        <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="@dimen/radio_button_font"
+	        android:text="@string/dis_desc3" />
+        
+        <TextView
+	        android:layout_width="50dp"
+	        android:layout_height="wrap_content" />
+        
+        <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="@dimen/radio_button_font"
+	        android:text="@string/dis_desc5" />
+        
+        <EditText
+	        android:id="@+id/up1_ll3_dis_desc4"
+	        android:layout_width="100dp"
+	        android:layout_height="wrap_content"
+	        android:hint="@string/pls_enter" />
+        
+        <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="@dimen/radio_button_font"
+	        android:text="@string/dis_desc6" />
+        
+        <EditText
+	        android:id="@+id/up1_ll3_dis_desc5"
+	        android:layout_width="100dp"
+	        android:layout_height="wrap_content"
+	        android:hint="@string/pls_enter" />
+        
+    </LinearLayout>
     
     <LinearLayout 
         android:layout_width="fill_parent"

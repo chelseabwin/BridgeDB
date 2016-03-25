@@ -16,6 +16,7 @@
     <string name="bn_add">添加</string>
     <string name="bn_submit">提交</string>
     <string name="bn_edit">修改</string>
+    <string name="bn_delete">删除</string>
     <string name="zero">0</string>
     
     <string name="L0">L0</string>
@@ -76,6 +77,7 @@
     <string name="pier_material">桥墩材料</string>
     <string name="section_form">桥墩截面形式</string>
     <string name="pier_type">桥墩类型</string>
+    <string name="section_shape">桥墩截面形状</string>
     
     <string name="abutment_material">桥台材料</string>
     <string name="abutment_type">桥台类型</string>
@@ -220,6 +222,7 @@
     <string name="standard_fissure">水平裂缝</string>
     
     <string name="dis_desc1">纵向距本跨梁端</string>
+    <string name="dis_desc">距下缘</string>
     <string name="dis_desc2">米  到</string>
     <string name="dis_desc3">米</string>
     

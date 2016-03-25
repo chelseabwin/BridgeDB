@@ -223,7 +223,7 @@ public class abutmentFragment extends Fragment {
 				String disease_image = null; // 本地图片地址
 				if (uri != null)
 					disease_image = uri.toString();
-				if ("其他病害".equals(rbFeature.getText()))
+				if ("其他病害".equals(rbFeature.getText()) && tableName == "disease_atbody")
 					sp_otherDisease = spOtherDisease.getSelectedItem().toString(); // 其他病害-病害信息
 				
 				String key = null;

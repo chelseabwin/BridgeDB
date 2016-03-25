@@ -35,8 +35,8 @@ public class abutmentEditFragment extends Fragment {
 	private RadioGroup rgFeature,rg1,rg2,rg3;
 	private Spinner spOtherDisease;
 	private RadioButton rg1PeelOff,rg1Abrasion,rg1Fissure,rg1MasonryDefects,rg1VehicleJump,rg1Drainage,rg1OtherDisease;
-	private RadioButton rg2Breakage,rg2Carbonation,rg2Fissure,rg2Cavitation;
-	private RadioButton rg3Scouring,rg3LeakageTendon,rg3Washout,rg3BottomPaving,rg3Sedimentation,rg3SlipTilt,rg3Fissure;
+	private RadioButton rg2Breakage,rg2Carbonation,rg2Fissure,rg2Cavitation,rg2OtherDisease;
+	private RadioButton rg3Scouring,rg3LeakageTendon,rg3Washout,rg3BottomPaving,rg3Sedimentation,rg3SlipTilt,rg3Fissure,rg3OtherDisease;
 	private TextView diseaseDescription;
 	private EditText addContent;
 	private Button btnImage,btnCamera,btnSubmit;
@@ -99,6 +99,7 @@ public class abutmentEditFragment extends Fragment {
 				rg2Carbonation = (RadioButton) rootView.findViewById(R.id.rg2_rbtn_carbonation); // ªÏƒ˝Õ¡ÃºªØ°¢∏Ø ¥
 				rg2Fissure = (RadioButton) rootView.findViewById(R.id.rg2_rbtn_fissure); // ¡—∑Ï
 				rg2Cavitation = (RadioButton) rootView.findViewById(R.id.rg2_rbtn_cavitation); // ø’∂¥°¢ø◊∂¥
+				rg2OtherDisease = (RadioButton) rootView.findViewById(R.id.rg2_rbtn_other_disease); // ∆‰À˚≤°∫¶
 				
 				optionStr = "ATCAPPING";
 				tableName = "disease_atcapping";
@@ -116,6 +117,7 @@ public class abutmentEditFragment extends Fragment {
 				rg3Sedimentation = (RadioButton) rootView.findViewById(R.id.rg3_rbtn_sedimentation); // ≥¡Ωµ
 				rg3SlipTilt = (RadioButton) rootView.findViewById(R.id.rg3_rbtn_slip_tilt); // ª¨“∆∫Õ«„–±
 				rg3Fissure = (RadioButton) rootView.findViewById(R.id.rg3_rbtn_fissure); // ¡—∑Ï
+				rg3OtherDisease = (RadioButton) rootView.findViewById(R.id.rg3_rbtn_other_disease); // ∆‰À˚≤°∫¶
 				
 				optionStr = "PA";
 				tableName = "disease_pa";
@@ -177,7 +179,9 @@ public class abutmentEditFragment extends Fragment {
 					if ((rg2Fissure.getText().toString()).equals(rg_feature))
 						rg2Fissure.setChecked(true);
 					if ((rg2Cavitation.getText().toString()).equals(rg_feature))
-						rg2Cavitation.setChecked(true);					
+						rg2Cavitation.setChecked(true);
+					if ((rg2OtherDisease.getText().toString()).equals(rg_feature))
+						rg2OtherDisease.setChecked(true);
 				}
 				else if (optionStr == "PA") {
 					if ((rg3Scouring.getText().toString()).equals(rg_feature))
@@ -194,6 +198,8 @@ public class abutmentEditFragment extends Fragment {
 						rg3SlipTilt.setChecked(true);
 					if ((rg3Fissure.getText().toString()).equals(rg_feature))
 						rg3Fissure.setChecked(true);
+					if ((rg3OtherDisease.getText().toString()).equals(rg_feature))
+						rg3OtherDisease.setChecked(true);
 				}
 				
 				addContent.setText(cursor.getString(cursor.getColumnIndex("add_content")));
@@ -303,7 +309,7 @@ public class abutmentEditFragment extends Fragment {
 				String disease_image = null; // ±æµÿÕº∆¨µÿ÷∑
 				if (uri != null)
 					disease_image = uri.toString();
-				if ("∆‰À˚≤°∫¶".equals(rbFeature.getText()))
+				if ("∆‰À˚≤°∫¶".equals(rbFeature.getText()) && tableName == "disease_atbody")
 					sp_otherDisease = spOtherDisease.getSelectedItem().toString(); // ∆‰À˚≤°∫¶-≤°∫¶–≈œ¢
 				
 				String sql = null;

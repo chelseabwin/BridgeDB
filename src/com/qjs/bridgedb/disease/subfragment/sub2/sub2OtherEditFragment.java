@@ -32,10 +32,10 @@ import android.widget.TextView;
 
 public class sub2OtherEditFragment extends Fragment {
 	private RadioGroup rgFeature,rg1,rg2,rg3,rg4;
-	private RadioButton rg1Jam,rg1Washing,rg1Riverbed;
-	private RadioButton rg2Damage,rg2Transformation;
-	private RadioButton rg3Breakage,rg3Offset,rg3Bulging,rg3Fissure;
-	private RadioButton rg4Defect,rg4Washing;
+	private RadioButton rg1Jam,rg1Washing,rg1Riverbed,rg1OtherDisease;
+	private RadioButton rg2Damage,rg2Transformation,rg2OtherDisease;
+	private RadioButton rg3Breakage,rg3Offset,rg3Bulging,rg3Fissure,rg3OtherDisease;
+	private RadioButton rg4Defect,rg4Washing,rg4OtherDisease;
 	private TextView diseaseDescription;
 	private EditText addContent;
 	private Button btnImage,btnCamera,btnSubmit;
@@ -81,6 +81,7 @@ public class sub2OtherEditFragment extends Fragment {
 				rg1Jam = (RadioButton) rootView.findViewById(R.id.rg1_rbtn_jam); // ¶ÂÈû
 				rg1Washing = (RadioButton) rootView.findViewById(R.id.rg1_rbtn_washing); // ³åË¢
 				rg1Riverbed = (RadioButton) rootView.findViewById(R.id.rg1_rbtn_riverbed); // ºÓ´²±äÇ¨
+				rg1OtherDisease = (RadioButton) rootView.findViewById(R.id.rg1_rbtn_other_disease); // ÆäËû²¡º¦
 				
 				optionStr = "BED";
 				tableName = "disease_bed";
@@ -94,6 +95,7 @@ public class sub2OtherEditFragment extends Fragment {
 				
 				rg2Damage = (RadioButton) rootView.findViewById(R.id.rg2_rbtn_damage); // Ëð»µ
 				rg2Transformation = (RadioButton) rootView.findViewById(R.id.rg2_rbtn_transformation); // ³åË¢¡¢±äÐÎ
+				rg2OtherDisease = (RadioButton) rootView.findViewById(R.id.rg2_rbtn_other_disease); // ÆäËû²¡º¦
 				
 				optionStr = "REGSTRUC";
 				tableName = "disease_regstruc";
@@ -109,6 +111,7 @@ public class sub2OtherEditFragment extends Fragment {
 				rg3Offset = (RadioButton) rootView.findViewById(R.id.rg3_rbtn_offset); // Î»ÒÆ
 				rg3Bulging = (RadioButton) rootView.findViewById(R.id.rg3_bulging); // ¹Ä¶Ç¡¢ÆöÌåËÉ¶¯
 				rg3Fissure = (RadioButton) rootView.findViewById(R.id.rg3_rbtn_fissure); // ÁÑ·ì
+				rg3OtherDisease = (RadioButton) rootView.findViewById(R.id.rg3_rbtn_other_disease); // ÆäËû²¡º¦
 				
 				optionStr = "WINGWALL";
 				tableName = "disease_wingwall";
@@ -122,6 +125,7 @@ public class sub2OtherEditFragment extends Fragment {
 				
 				rg4Defect = (RadioButton) rootView.findViewById(R.id.rg4_rbtn_defect); // È±ÏÝ
 				rg4Washing = (RadioButton) rootView.findViewById(R.id.rg4_rbtn_washing); // ³åË¢
+				rg4OtherDisease = (RadioButton) rootView.findViewById(R.id.rg4_rbtn_other_disease); // ÆäËû²¡º¦
 				
 				if (args.getString("ITEM_NAME").equals("×¶ÆÂ")) {
 					optionStr = "CONSLOPE";
@@ -172,12 +176,16 @@ public class sub2OtherEditFragment extends Fragment {
 						rg1Washing.setChecked(true);
 					if ((rg1Riverbed.getText().toString()).equals(rg_feature))
 						rg1Riverbed.setChecked(true);
+					if ((rg1OtherDisease.getText().toString()).equals(rg_feature))
+						rg1OtherDisease.setChecked(true);
 				}
 				else if (optionStr == "REGSTRUC") {
 					if ((rg2Damage.getText().toString()).equals(rg_feature))
 						rg2Damage.setChecked(true);
 					if ((rg2Transformation.getText().toString()).equals(rg_feature))
 						rg2Transformation.setChecked(true);
+					if ((rg2OtherDisease.getText().toString()).equals(rg_feature))
+						rg2OtherDisease.setChecked(true);
 				}
 				else if (optionStr == "WINGWALL") {
 					if ((rg3Breakage.getText().toString()).equals(rg_feature))
@@ -188,12 +196,16 @@ public class sub2OtherEditFragment extends Fragment {
 						rg3Bulging.setChecked(true);
 					if ((rg3Fissure.getText().toString()).equals(rg_feature))
 						rg3Fissure.setChecked(true);
+					if ((rg3OtherDisease.getText().toString()).equals(rg_feature))
+						rg3OtherDisease.setChecked(true);
 				}
 				else if (optionStr == "CONSLOPE" || optionStr == "PROSLOPE") {
 					if ((rg4Defect.getText().toString()).equals(rg_feature))
 						rg4Defect.setChecked(true);
 					if ((rg4Washing.getText().toString()).equals(rg_feature))
 						rg4Washing.setChecked(true);
+					if ((rg4OtherDisease.getText().toString()).equals(rg_feature))
+						rg4OtherDisease.setChecked(true);
 				}
 				
 				addContent.setText(cursor.getString(cursor.getColumnIndex("add_content")));

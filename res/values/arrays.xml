@@ -189,6 +189,14 @@
         <item>[6]其他</item>
     </string-array>
     
+    <!-- 桥墩截面形状 -->
+    <string-array name="section_shape">
+        <item>[1]矩形</item>
+        <item>[2]圆形</item>
+        <item>[3]花瓶形</item>
+        <item>[4]其他</item>
+    </string-array>
+    
     <!-- 桥台类型 -->
     <string-array name="abutment_type">
         <item>[1]肋板式桥台</item>

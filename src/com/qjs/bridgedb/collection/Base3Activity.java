@@ -41,6 +41,7 @@ public class Base3Activity extends Activity {
 			DbOperation.setSpinnerItemSelectedByValue((Spinner) findViewById(R.id.sp_pier_material), cursor.getString(cursor.getColumnIndex("pier_material")));
 			DbOperation.setSpinnerItemSelectedByValue((Spinner) findViewById(R.id.sp_section_form), cursor.getString(cursor.getColumnIndex("section_form")));
 			DbOperation.setSpinnerItemSelectedByValue((Spinner) findViewById(R.id.sp_pier_type), cursor.getString(cursor.getColumnIndex("pier_type")));
+			DbOperation.setSpinnerItemSelectedByValue((Spinner) findViewById(R.id.sp_section_shape), cursor.getString(cursor.getColumnIndex("section_shape")));
 			
 			DbOperation.setSpinnerItemSelectedByValue((Spinner) findViewById(R.id.sp_abutment_material), cursor.getString(cursor.getColumnIndex("abutment_material")));
 			DbOperation.setSpinnerItemSelectedByValue((Spinner) findViewById(R.id.sp_abutment_type), cursor.getString(cursor.getColumnIndex("abutment_type")));
@@ -75,6 +76,7 @@ public class Base3Activity extends Activity {
         		String pier_material = ((Spinner) findViewById(R.id.sp_pier_material)).getSelectedItem().toString(); // 桥墩材料
         		String section_form = ((Spinner) findViewById(R.id.sp_section_form)).getSelectedItem().toString(); // 桥墩截面形式
         		String pier_type = ((Spinner) findViewById(R.id.sp_pier_type)).getSelectedItem().toString(); // 桥墩类型
+        		String section_shape = ((Spinner) findViewById(R.id.sp_section_shape)).getSelectedItem().toString(); // 桥墩截面形状
         		
         		String abutment_material = ((Spinner) findViewById(R.id.sp_abutment_material)).getSelectedItem().toString(); // 桥台材料
         		String abutment_type = ((Spinner) findViewById(R.id.sp_abutment_type)).getSelectedItem().toString(); // 桥台类型
@@ -86,7 +88,7 @@ public class Base3Activity extends Activity {
         		
         		// 如果有原始数据，执行修改操作
         		if (cursor.moveToFirst()) {
-        			String setValue = "pier_material='" + pier_material + "',section_form='" + section_form + "',pier_type='" + pier_type 
+        			String setValue = "pier_material='" + pier_material + "',section_form='" + section_form + "',pier_type='" + pier_type + "',section_shape='" + section_shape
         					+ "',abutment_material='" + abutment_material + "',abutment_type='" + abutment_type + "',pier_abutment_material='" + pier_abutment_material
         					+ "',pier_abutment_base='" + pier_abutment_base + "',deck_type='" + deck_type + "',joint_type='" + joint_type + "',flag='2'";
         			
@@ -105,10 +107,10 @@ public class Base3Activity extends Activity {
             		}
         		}
         		else { // 没有则执行插入操作
-        			String key = "bg_id, pier_material, section_form, pier_type, abutment_material, abutment_type,"
+        			String key = "bg_id, pier_material, section_form, pier_type, section_shape, abutment_material, abutment_type, "
         					+ "pier_abutment_material, pier_abutment_base, deck_type, joint_type, flag";
             		
-            		String values = "'" + bg_id + "','" + pier_material + "','" + section_form + "','" + pier_type + "','" + abutment_material + "','"
+            		String values = "'" + bg_id + "','" + pier_material + "','" + section_form + "','" + pier_type + "','" + section_shape + "','" + abutment_material + "','"
             				+ abutment_type + "','" + pier_abutment_material + "','" + pier_abutment_base + "','" + deck_type + "','" + joint_type + "','0'";
             		
             		// 插入数据

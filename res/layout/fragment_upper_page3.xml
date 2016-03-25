@@ -60,6 +60,13 @@
            android:layout_height="wrap_content"
            android:textSize="@dimen/radio_button_font"
            android:text="@string/displacement" />
+        
+        <RadioButton
+           android:id="@+id/rbtn_other_disease"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="@dimen/radio_button_font"
+           android:text="@string/other_disease" />
       
     </com.qjs.bridgedb.disease.subfragment.FlowRadioGroup>
     

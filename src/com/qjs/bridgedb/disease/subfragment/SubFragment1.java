@@ -161,7 +161,16 @@ public class SubFragment1 extends Fragment {
 			for (int i = 0; i < lineCodes.length; i++) {
 				// 将跨号赋值到该数组
 				ss[i] = new SpannableString(lineCodes[i].split("-")[0]); // 定义可点击的字符串数组
-				final String num = i + 1 + ""; // 设置选中的跨号
+				
+				String tap = ""; 
+				if (tableName == "general_detail" || tableName == "support_detail") {
+					tap = i + ""; // 设置选中的跨号
+				}
+				else {
+					tap = i + 1 + ""; // 设置选中的跨号
+				}
+				final String num = tap;
+				
 				// 设置跨号点击事件
 				ss[i].setSpan(new ClickableSpan() {
 					
