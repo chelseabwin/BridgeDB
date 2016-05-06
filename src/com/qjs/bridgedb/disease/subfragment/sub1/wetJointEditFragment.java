@@ -33,7 +33,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class wetJointEditFragment extends Fragment {
-	private RadioGroup rgFeature,rgFissure,rgLocation;
+	private RadioGroup rgFeature,rgFissure;
 	private Spinner spOtherDisease;
 	private LinearLayout local1,local2;
 	private RadioButton voidsPits,peelingOffAngle,cavitation,fissure,otherDisease;
@@ -51,12 +51,11 @@ public class wetJointEditFragment extends Fragment {
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		final View rootView = inflater.inflate(R.layout.fragment_upper_page1_2, container, false);
+		final View rootView = inflater.inflate(R.layout.fragment_upper_page2, container, false);
 		diseaseDescription = (TextView) rootView.findViewById(R.id.tv_disease_description); // 病害名称
 		
 		rgFeature = (RadioGroup) rootView.findViewById(R.id.rg); // 病害特征单选框
 		rgFissure = (RadioGroup) rootView.findViewById(R.id.rg2); // 裂缝单选框
-		rgLocation = (RadioGroup) rootView.findViewById(R.id.rg3); // 位置单选框（去除）
 		
 		spOtherDisease = (Spinner) rootView.findViewById(R.id.sp_other_disease); // 其他病害下拉列表
 		
@@ -82,8 +81,6 @@ public class wetJointEditFragment extends Fragment {
 		ivImage = (ImageView) rootView.findViewById(R.id.iv_image); // 病害图片
 		
 		btnSubmit = (Button) rootView.findViewById(R.id.btn_submit); // 提交按钮
-		
-		rgLocation.setVisibility(View.GONE);
 		
 		Bundle args = getArguments();
 		if (args != null) {

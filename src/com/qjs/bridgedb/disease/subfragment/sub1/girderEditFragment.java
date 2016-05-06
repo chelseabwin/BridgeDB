@@ -52,7 +52,7 @@ public class girderEditFragment extends Fragment {
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		final View rootView = inflater.inflate(R.layout.fragment_upper_page1_2, container, false);
+		final View rootView = inflater.inflate(R.layout.fragment_upper_page1, container, false);
 		diseaseDescription = (TextView) rootView.findViewById(R.id.tv_disease_description); // 病害名称
 		
 		rgFeature = (RadioGroup) rootView.findViewById(R.id.rg); // 病害特征单选框
@@ -176,9 +176,9 @@ public class girderEditFragment extends Fragment {
 						otherDisease.setChecked(true);
 						DbOperation.setSpinnerItemSelectedByValue(spOtherDisease, cursor.getString(cursor.getColumnIndex("sp_otherDisease")));						
 					}
-					((EditText) rootView.findViewById(R.id.up1_ll1_dis_desc2)).setText(cursor.getString(cursor.getColumnIndex("l1_start")));
-					((EditText) rootView.findViewById(R.id.up1_ll1_dis_desc3)).setText(cursor.getString(cursor.getColumnIndex("l1_end")));
-					((EditText) rootView.findViewById(R.id.up1_ll1_dis_desc4)).setText(cursor.getString(cursor.getColumnIndex("l1_area")));					
+					((EditText) rootView.findViewById(R.id.up1_ll1_dis_desc2)).setText(cursor.getString(cursor.getColumnIndex("start")));
+					((EditText) rootView.findViewById(R.id.up1_ll1_dis_desc3)).setText(cursor.getString(cursor.getColumnIndex("end")));
+					((EditText) rootView.findViewById(R.id.up1_ll1_dis_desc4)).setText(cursor.getString(cursor.getColumnIndex("area")));					
 				}
 				
 				// 设置位置选中
