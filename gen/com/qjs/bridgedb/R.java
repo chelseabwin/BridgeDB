@@ -600,12 +600,14 @@ public final class R {
         public static final int corners_bg=0x7f020005;
         public static final int ic_launcher=0x7f020006;
         public static final int ic_launcher_bridge=0x7f020007;
-        public static final int img_bg_texture=0x7f020008;
-        public static final int parts_bg=0x7f020009;
-        public static final int welcome1=0x7f02000a;
-        public static final int welcome2=0x7f02000b;
-        public static final int welcome3=0x7f02000c;
-        public static final int welcome4=0x7f02000d;
+        public static final int ic_launcher_bridge2=0x7f020008;
+        public static final int img_bg_texture=0x7f020009;
+        public static final int parts_bg=0x7f02000a;
+        public static final int welcome1=0x7f02000b;
+        public static final int welcome2=0x7f02000c;
+        public static final int welcome3=0x7f02000d;
+        public static final int welcome4=0x7f02000e;
+        public static final int welcome5=0x7f02000f;
     }
     public static final class id {
         public static final int action_settings=0x7f0a0176;

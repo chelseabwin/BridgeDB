@@ -92,12 +92,20 @@ public class SubFragment1 extends Fragment {
 				up_rg = up_rg5;
 			}
 		}
+		else {
+			up_rg1.setVisibility(View.GONE);
+			up_rg2.setVisibility(View.GONE);
+			up_rg3.setVisibility(View.GONE);
+			up_rg4.setVisibility(View.GONE);
+			up_rg5.setVisibility(View.GONE);
+			up_rg = null;
+		}
 		
 		spanNum = (TextView) rootView.findViewById(R.id.tv_span_num); // ¿çºÅ
 		spanDetail = (TextView) rootView.findViewById(R.id.tv_span_detail); // ±àºÅ
 		upperDetail = (FrameLayout) rootView.findViewById(R.id.upper_detail_container); // ²¡º¦ÈÝÆ÷		
 		
-		if (args != null) {
+		if (args != null & up_rg != null) {
 			up_rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 				
 				@Override

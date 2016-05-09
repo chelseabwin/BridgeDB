@@ -7,7 +7,7 @@
         android:id="@+id/welcomr_image"
 		android:layout_width="fill_parent"
 		android:layout_height="fill_parent"
-    	android:background="@drawable/welcome4" 
+    	android:background="@drawable/welcome5" 
     	android:contentDescription="@string/welcome"/>
     
 
