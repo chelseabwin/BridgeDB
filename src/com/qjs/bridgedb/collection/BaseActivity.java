@@ -96,7 +96,8 @@ public class BaseActivity extends Activity {
         		Date date = new Date();
         		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
         		String[] bgCode = format.format(date).split(" ");
-        		String bridge_code = bgCode[0] + "-" + bgCode[1]; // 用系统当前时间作为桥梁代码
+        		String[] time = bgCode[1].split(":");
+        		String bridge_code = bgCode[0] + "-" + time[0] + time[1] + time[2]; // 用系统当前时间作为桥梁代码
         		
         		if (fromPrev != null) {
         			String key = "bridge_code, bridge_name, path_num, path_name, path_type, rode_grade, order_num,"
