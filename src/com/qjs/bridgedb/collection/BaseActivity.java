@@ -3,7 +3,13 @@ package com.qjs.bridgedb.collection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Locale;
+import java.util.Map;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.qjs.bridgedb.DbOperation;
 import com.qjs.bridgedb.MainActivity;
@@ -58,6 +64,34 @@ public class BaseActivity extends Activity {
 			((EditText) findViewById(R.id.et_across_name)).setText(cursor.getString(cursor.getColumnIndex("across_name")));
 			DbOperation.setSpinnerItemSelectedByValue((Spinner) findViewById(R.id.sp_across_type), cursor.getString(cursor.getColumnIndex("across_type")));
 			DbOperation.setSpinnerItemSelectedByValue((Spinner) findViewById(R.id.sp_bridge_nature), cursor.getString(cursor.getColumnIndex("bridge_nature")));			
+		}
+		else if (bundle.getString("qr_add") != null && bundle.getString("qr_add").equals("qr_add")) {
+			JSONObject jsonObj = null;
+			try {
+				jsonObj = new JSONObject(bundle.getString("qr_data"));
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			Iterator<String> nameItr = jsonObj.keys();
+			String name;
+			Map<String, String> outMap = new HashMap<String, String>();
+			while (nameItr.hasNext()) {
+				name = nameItr.next();
+				try {
+					outMap.put(name, jsonObj.getString(name));
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			((EditText) findViewById(R.id.et_bridge_name)).setText(outMap.get("bridge_name"));
+			((EditText) findViewById(R.id.et_path_num)).setText(outMap.get("path_num"));
+			((EditText) findViewById(R.id.et_path_name)).setText(outMap.get("path_name"));
+			((EditText) findViewById(R.id.et_custody_unit)).setText(outMap.get("custody_unit"));
+			((EditText) findViewById(R.id.et_location)).setText(outMap.get("location"));
 		}
 		
 		// ·µ»Ø

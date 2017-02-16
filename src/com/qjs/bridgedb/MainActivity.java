@@ -3,6 +3,7 @@ package com.qjs.bridgedb;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.qjs.bridgedb.zxing.library.CaptureActivity;
 import com.qjs.bridgedb.collection.BaseActivity;
 import com.qjs.bridgedb.detailed.BaseDetailedActivity;
 import com.qjs.bridgedb.detailed.DiseaseDetailedActivity;
@@ -20,6 +21,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
+	
+	private static final int REQUEST_CODE_SCAN = 0x0000;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +94,13 @@ public class MainActivity extends Activity {
             Intent intent = new Intent(this, SyncService.class);
             startService(intent);
             break;
-        }
+        
+	    case R.id.qr_code:
+	    	Intent intent_qrcode = new Intent(MainActivity.this,
+					CaptureActivity.class);
+			startActivityForResult(intent_qrcode, REQUEST_CODE_SCAN);
+	        break;
+	    }
     	return super.onOptionsItemSelected(item);
     }
     
